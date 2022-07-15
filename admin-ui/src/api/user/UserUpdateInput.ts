@@ -3,7 +3,7 @@ import { CandidateUpdateManyWithoutUsersInput } from "./CandidateUpdateManyWitho
 import { CommunityWhereUniqueInput } from "../community/CommunityWhereUniqueInput";
 import { InterviewUpdateManyWithoutUsersInput } from "./InterviewUpdateManyWithoutUsersInput";
 import { OpportunityUpdateManyWithoutUsersInput } from "./OpportunityUpdateManyWithoutUsersInput";
-import { ProjectWhereUniqueInput } from "../project/ProjectWhereUniqueInput";
+import { ProjectUpdateManyWithoutUsersInput } from "./ProjectUpdateManyWithoutUsersInput";
 import { SkillSetUpdateManyWithoutUsersInput } from "./SkillSetUpdateManyWithoutUsersInput";
 
 export type UserUpdateInput = {
@@ -32,7 +32,7 @@ export type UserUpdateInput = {
   panNumber?: string | null;
   password?: string;
   personalEmailId?: string | null;
-  project?: ProjectWhereUniqueInput | null;
+  project?: ProjectUpdateManyWithoutUsersInput;
   roles?: Array<string>;
   skillSets?: SkillSetUpdateManyWithoutUsersInput;
   toPerson?: AwardUpdateManyWithoutUsersInput;

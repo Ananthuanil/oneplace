@@ -23,7 +23,6 @@ export type UserOrderByInput = {
   panNumber?: SortOrder;
   password?: SortOrder;
   personalEmailId?: SortOrder;
-  projectId?: SortOrder;
   roles?: SortOrder;
   totalExperience?: SortOrder;
   updatedAt?: SortOrder;
