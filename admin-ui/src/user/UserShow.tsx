@@ -17,7 +17,6 @@ import { CANDIDATE_TITLE_FIELD } from "../candidate/CandidateTitle";
 import { OPPORTUNITY_TITLE_FIELD } from "../opportunity/OpportunityTitle";
 import { PARTNER_TITLE_FIELD } from "../partner/PartnerTitle";
 import { COMMUNITY_TITLE_FIELD } from "../community/CommunityTitle";
-import { PROJECT_TITLE_FIELD } from "../project/ProjectTitle";
 
 export const UserShow = (props: ShowProps): React.ReactElement => {
   return (
@@ -53,9 +52,6 @@ export const UserShow = (props: ShowProps): React.ReactElement => {
         <TextField label="Last Name" source="lastName" />
         <TextField label="Pan Number" source="panNumber" />
         <TextField label="Personal Email ID" source="personalEmailId" />
-        <ReferenceField label="Project" source="project.id" reference="Project">
-          <TextField source={PROJECT_TITLE_FIELD} />
-        </ReferenceField>
         <TextField label="Roles" source="roles" />
         <TextField label="Total Experience" source="totalExperience" />
         <DateField source="updatedAt" label="Updated At" />

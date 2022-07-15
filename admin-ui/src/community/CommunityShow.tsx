@@ -12,7 +12,6 @@ import {
 } from "react-admin";
 
 import { COMMUNITY_TITLE_FIELD } from "./CommunityTitle";
-import { PROJECT_TITLE_FIELD } from "../project/ProjectTitle";
 
 export const CommunityShow = (props: ShowProps): React.ReactElement => {
   return (
@@ -55,13 +54,6 @@ export const CommunityShow = (props: ShowProps): React.ReactElement => {
             <TextField label="Last Name" source="lastName" />
             <TextField label="Pan Number" source="panNumber" />
             <TextField label="Personal Email ID" source="personalEmailId" />
-            <ReferenceField
-              label="Project"
-              source="project.id"
-              reference="Project"
-            >
-              <TextField source={PROJECT_TITLE_FIELD} />
-            </ReferenceField>
             <TextField label="Roles" source="roles" />
             <TextField label="Total Experience" source="totalExperience" />
             <DateField source="updatedAt" label="Updated At" />
