@@ -33,11 +33,10 @@ import { InterviewFindManyArgs } from "../../interview/base/InterviewFindManyArg
 import { Interview } from "../../interview/base/Interview";
 import { OpportunityFindManyArgs } from "../../opportunity/base/OpportunityFindManyArgs";
 import { Opportunity } from "../../opportunity/base/Opportunity";
-import { ProjectFindManyArgs } from "../../project/base/ProjectFindManyArgs";
-import { Project } from "../../project/base/Project";
 import { SkillSetFindManyArgs } from "../../skillSet/base/SkillSetFindManyArgs";
 import { SkillSet } from "../../skillSet/base/SkillSet";
 import { Community } from "../../community/base/Community";
+import { Project } from "../../project/base/Project";
 import { UserService } from "../user.service";
 
 @graphql.Resolver(() => User)
@@ -92,6 +91,12 @@ export class UserResolverBase {
               connect: args.data.community,
             }
           : undefined,
+
+        project: args.data.project
+          ? {
+              connect: args.data.project,
+            }
+          : undefined,
       },
     });
   }
@@ -108,6 +113,12 @@ export class UserResolverBase {
           community: args.data.community
             ? {
                 connect: args.data.community,
+              }
+            : undefined,
+
+          project: args.data.project
+            ? {
+                connect: args.data.project,
               }
             : undefined,
         },
@@ -218,21 +229,6 @@ export class UserResolverBase {
   }
 
   @Public()
-  @graphql.ResolveField(() => [Project])
-  async project(
-    @graphql.Parent() parent: User,
-    @graphql.Args() args: ProjectFindManyArgs
-  ): Promise<Project[]> {
-    const results = await this.service.findProject(parent.id, args);
-
-    if (!results) {
-      return [];
-    }
-
-    return results;
-  }
-
-  @Public()
   @graphql.ResolveField(() => [SkillSet])
   async skillSets(
     @graphql.Parent() parent: User,
@@ -271,6 +267,17 @@ export class UserResolverBase {
   @graphql.ResolveField(() => Community, { nullable: true })
   async community(@graphql.Parent() parent: User): Promise<Community | null> {
     const result = await this.service.getCommunity(parent.id);
+
+    if (!result) {
+      return null;
+    }
+    return result;
+  }
+
+  @Public()
+  @graphql.ResolveField(() => Project, { nullable: true })
+  async project(@graphql.Parent() parent: User): Promise<Project | null> {
+    const result = await this.service.getProject(parent.id);
 
     if (!result) {
       return null;

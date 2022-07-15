@@ -3,7 +3,7 @@ import { CandidateCreateNestedManyWithoutUsersInput } from "./CandidateCreateNes
 import { CommunityWhereUniqueInput } from "../community/CommunityWhereUniqueInput";
 import { InterviewCreateNestedManyWithoutUsersInput } from "./InterviewCreateNestedManyWithoutUsersInput";
 import { OpportunityCreateNestedManyWithoutUsersInput } from "./OpportunityCreateNestedManyWithoutUsersInput";
-import { ProjectCreateNestedManyWithoutUsersInput } from "./ProjectCreateNestedManyWithoutUsersInput";
+import { ProjectWhereUniqueInput } from "../project/ProjectWhereUniqueInput";
 import { SkillSetCreateNestedManyWithoutUsersInput } from "./SkillSetCreateNestedManyWithoutUsersInput";
 
 export type UserCreateInput = {
@@ -32,7 +32,7 @@ export type UserCreateInput = {
   panNumber?: string | null;
   password: string;
   personalEmailId?: string | null;
-  project?: ProjectCreateNestedManyWithoutUsersInput;
+  project?: ProjectWhereUniqueInput | null;
   roles: Array<string>;
   skillSets?: SkillSetCreateNestedManyWithoutUsersInput;
   toPerson?: AwardCreateNestedManyWithoutUsersInput;

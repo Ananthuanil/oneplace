@@ -33,7 +33,7 @@ export type User = {
   opportunities?: Array<Opportunity>;
   panNumber: string | null;
   personalEmailId: string | null;
-  project?: Array<Project>;
+  project?: Project | null;
   roles: Array<string>;
   skillSets?: Array<SkillSet>;
   toPerson?: Array<Award>;

@@ -26,7 +26,7 @@ import { CommunityWhereUniqueInput } from "../../community/base/CommunityWhereUn
 import { EnumUserGender } from "./EnumUserGender";
 import { InterviewUpdateManyWithoutUsersInput } from "./InterviewUpdateManyWithoutUsersInput";
 import { OpportunityUpdateManyWithoutUsersInput } from "./OpportunityUpdateManyWithoutUsersInput";
-import { ProjectUpdateManyWithoutUsersInput } from "./ProjectUpdateManyWithoutUsersInput";
+import { ProjectWhereUniqueInput } from "../../project/base/ProjectWhereUniqueInput";
 import { SkillSetUpdateManyWithoutUsersInput } from "./SkillSetUpdateManyWithoutUsersInput";
 @InputType()
 class UserUpdateInput {
@@ -313,15 +313,15 @@ class UserUpdateInput {
 
   @ApiProperty({
     required: false,
-    type: () => ProjectUpdateManyWithoutUsersInput,
+    type: () => ProjectWhereUniqueInput,
   })
   @ValidateNested()
-  @Type(() => ProjectUpdateManyWithoutUsersInput)
+  @Type(() => ProjectWhereUniqueInput)
   @IsOptional()
-  @Field(() => ProjectUpdateManyWithoutUsersInput, {
+  @Field(() => ProjectWhereUniqueInput, {
     nullable: true,
   })
-  project?: ProjectUpdateManyWithoutUsersInput;
+  project?: ProjectWhereUniqueInput | null;
 
   @ApiProperty({
     required: false,

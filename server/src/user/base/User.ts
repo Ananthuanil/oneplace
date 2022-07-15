@@ -293,12 +293,12 @@ class User {
 
   @ApiProperty({
     required: false,
-    type: () => [Project],
+    type: () => Project,
   })
   @ValidateNested()
   @Type(() => Project)
   @IsOptional()
-  project?: Array<Project>;
+  project?: Project | null;
 
   @ApiProperty({
     required: true,
