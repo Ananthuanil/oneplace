@@ -1,3 +1,5 @@
 #!/bin/sh
-npm run db:init
+#Add for intializing
+#npm run db:init
+npx prisma migrate deploy
 node dist/main
