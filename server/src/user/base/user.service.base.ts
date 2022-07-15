@@ -18,9 +18,9 @@ import {
   Candidate,
   Interview,
   Opportunity,
+  Project,
   SkillSet,
   Community,
-  Project,
 } from "@prisma/client";
 
 import { PasswordService } from "../../auth/password.service";
@@ -139,6 +139,17 @@ export class UserServiceBase {
       .opportunities(args);
   }
 
+  async findProject(
+    parentId: string,
+    args: Prisma.ProjectFindManyArgs
+  ): Promise<Project[]> {
+    return this.prisma.user
+      .findUnique({
+        where: { id: parentId },
+      })
+      .project(args);
+  }
+
   async findSkillSets(
     parentId: string,
     args: Prisma.SkillSetFindManyArgs
@@ -167,13 +178,5 @@ export class UserServiceBase {
         where: { id: parentId },
       })
       .community();
-  }
-
-  async getProject(parentId: string): Promise<Project | null> {
-    return this.prisma.user
-      .findUnique({
-        where: { id: parentId },
-      })
-      .project();
   }
 }

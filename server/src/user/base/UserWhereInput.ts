@@ -23,7 +23,7 @@ import { StringFilter } from "../../util/StringFilter";
 import { EnumUserGender } from "./EnumUserGender";
 import { InterviewListRelationFilter } from "../../interview/base/InterviewListRelationFilter";
 import { OpportunityListRelationFilter } from "../../opportunity/base/OpportunityListRelationFilter";
-import { ProjectWhereUniqueInput } from "../../project/base/ProjectWhereUniqueInput";
+import { ProjectListRelationFilter } from "../../project/base/ProjectListRelationFilter";
 import { SkillSetListRelationFilter } from "../../skillSet/base/SkillSetListRelationFilter";
 @InputType()
 class UserWhereInput {
@@ -310,15 +310,15 @@ class UserWhereInput {
 
   @ApiProperty({
     required: false,
-    type: () => ProjectWhereUniqueInput,
+    type: () => ProjectListRelationFilter,
   })
   @ValidateNested()
-  @Type(() => ProjectWhereUniqueInput)
+  @Type(() => ProjectListRelationFilter)
   @IsOptional()
-  @Field(() => ProjectWhereUniqueInput, {
+  @Field(() => ProjectListRelationFilter, {
     nullable: true,
   })
-  project?: ProjectWhereUniqueInput;
+  project?: ProjectListRelationFilter;
 
   @ApiProperty({
     required: false,
