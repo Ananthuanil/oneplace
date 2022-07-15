@@ -36,8 +36,7 @@ model User {
   panNumber              String?
   password               String
   personalEmailId        String?
-  project                Project?       @relation(fields: [projectId], references: [id])
-  projectId              String?
+  project                Project[]
   roles                  String[]
   skillSets              SkillSet[]
   toPerson               Award[]        @relation(name: "AwardToPersonUserToPerson")
