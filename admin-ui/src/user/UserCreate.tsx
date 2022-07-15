@@ -111,14 +111,9 @@ export const UserCreate = (props: CreateProps): React.ReactElement => {
           source="personalEmailId"
           type="email"
         />
-        <ReferenceArrayInput
-          source="project"
-          reference="Project"
-          parse={(value: any) => value && value.map((v: any) => ({ id: v }))}
-          format={(value: any) => value && value.map((v: any) => v.id)}
-        >
-          <SelectArrayInput optionText={ProjectTitle} />
-        </ReferenceArrayInput>
+        <ReferenceInput source="project.id" reference="Project" label="Project">
+          <SelectInput optionText={ProjectTitle} />
+        </ReferenceInput>
         <SelectArrayInput
           source="roles"
           choices={ROLES_OPTIONS}

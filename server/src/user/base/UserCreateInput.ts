@@ -26,7 +26,7 @@ import { CommunityWhereUniqueInput } from "../../community/base/CommunityWhereUn
 import { EnumUserGender } from "./EnumUserGender";
 import { InterviewCreateNestedManyWithoutUsersInput } from "./InterviewCreateNestedManyWithoutUsersInput";
 import { OpportunityCreateNestedManyWithoutUsersInput } from "./OpportunityCreateNestedManyWithoutUsersInput";
-import { ProjectCreateNestedManyWithoutUsersInput } from "./ProjectCreateNestedManyWithoutUsersInput";
+import { ProjectWhereUniqueInput } from "../../project/base/ProjectWhereUniqueInput";
 import { SkillSetCreateNestedManyWithoutUsersInput } from "./SkillSetCreateNestedManyWithoutUsersInput";
 @InputType()
 class UserCreateInput {
@@ -301,15 +301,15 @@ class UserCreateInput {
 
   @ApiProperty({
     required: false,
-    type: () => ProjectCreateNestedManyWithoutUsersInput,
+    type: () => ProjectWhereUniqueInput,
   })
   @ValidateNested()
-  @Type(() => ProjectCreateNestedManyWithoutUsersInput)
+  @Type(() => ProjectWhereUniqueInput)
   @IsOptional()
-  @Field(() => ProjectCreateNestedManyWithoutUsersInput, {
+  @Field(() => ProjectWhereUniqueInput, {
     nullable: true,
   })
-  project?: ProjectCreateNestedManyWithoutUsersInput;
+  project?: ProjectWhereUniqueInput | null;
 
   @ApiProperty({
     required: true,
