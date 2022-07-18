@@ -18,7 +18,6 @@ import * as gqlACGuard from "../../auth/gqlAC.guard";
 import { isRecordNotFoundError } from "../../prisma.util";
 import { MetaQueryPayload } from "../../util/MetaQueryPayload";
 import { Public } from "../../decorators/public.decorator";
-import { AclFilterResponseInterceptor } from "../../interceptors/aclFilterResponse.interceptor";
 import { CreateUserArgs } from "./CreateUserArgs";
 import { UpdateUserArgs } from "./UpdateUserArgs";
 import { DeleteUserArgs } from "./DeleteUserArgs";
@@ -137,13 +136,8 @@ export class UserResolverBase {
     }
   }
 
-  @common.UseInterceptors(AclFilterResponseInterceptor)
+  @Public()
   @graphql.ResolveField(() => [Award])
-  @nestAccessControl.UseRoles({
-    resource: "Award",
-    action: "read",
-    possession: "any",
-  })
   async awards(
     @graphql.Parent() parent: User,
     @graphql.Args() args: AwardFindManyArgs
@@ -247,13 +241,8 @@ export class UserResolverBase {
     return results;
   }
 
-  @common.UseInterceptors(AclFilterResponseInterceptor)
+  @Public()
   @graphql.ResolveField(() => [Award])
-  @nestAccessControl.UseRoles({
-    resource: "Award",
-    action: "read",
-    possession: "any",
-  })
   async toPerson(
     @graphql.Parent() parent: User,
     @graphql.Args() args: AwardFindManyArgs

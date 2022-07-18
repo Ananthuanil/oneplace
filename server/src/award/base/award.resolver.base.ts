@@ -17,8 +17,6 @@ import { GqlDefaultAuthGuard } from "../../auth/gqlDefaultAuth.guard";
 import * as gqlACGuard from "../../auth/gqlAC.guard";
 import { isRecordNotFoundError } from "../../prisma.util";
 import { MetaQueryPayload } from "../../util/MetaQueryPayload";
-import { AclFilterResponseInterceptor } from "../../interceptors/aclFilterResponse.interceptor";
-import { AclValidateRequestInterceptor } from "../../interceptors/aclValidateRequest.interceptor";
 import { Public } from "../../decorators/public.decorator";
 import { CreateAwardArgs } from "./CreateAwardArgs";
 import { UpdateAwardArgs } from "./UpdateAwardArgs";
@@ -37,12 +35,8 @@ export class AwardResolverBase {
     protected readonly rolesBuilder: nestAccessControl.RolesBuilder
   ) {}
 
+  @Public()
   @graphql.Query(() => MetaQueryPayload)
-  @nestAccessControl.UseRoles({
-    resource: "Award",
-    action: "read",
-    possession: "any",
-  })
   async _awardsMeta(
     @graphql.Args() args: AwardFindManyArgs
   ): Promise<MetaQueryPayload> {
@@ -56,24 +50,14 @@ export class AwardResolverBase {
     };
   }
 
-  @common.UseInterceptors(AclFilterResponseInterceptor)
+  @Public()
   @graphql.Query(() => [Award])
-  @nestAccessControl.UseRoles({
-    resource: "Award",
-    action: "read",
-    possession: "any",
-  })
   async awards(@graphql.Args() args: AwardFindManyArgs): Promise<Award[]> {
     return this.service.findMany(args);
   }
 
-  @common.UseInterceptors(AclFilterResponseInterceptor)
+  @Public()
   @graphql.Query(() => Award, { nullable: true })
-  @nestAccessControl.UseRoles({
-    resource: "Award",
-    action: "read",
-    possession: "own",
-  })
   async award(
     @graphql.Args() args: AwardFindUniqueArgs
   ): Promise<Award | null> {
@@ -84,13 +68,8 @@ export class AwardResolverBase {
     return result;
   }
 
-  @common.UseInterceptors(AclValidateRequestInterceptor)
+  @Public()
   @graphql.Mutation(() => Award)
-  @nestAccessControl.UseRoles({
-    resource: "Award",
-    action: "create",
-    possession: "any",
-  })
   async createAward(@graphql.Args() args: CreateAwardArgs): Promise<Award> {
     return await this.service.create({
       ...args,
@@ -112,13 +91,8 @@ export class AwardResolverBase {
     });
   }
 
-  @common.UseInterceptors(AclValidateRequestInterceptor)
+  @Public()
   @graphql.Mutation(() => Award)
-  @nestAccessControl.UseRoles({
-    resource: "Award",
-    action: "update",
-    possession: "any",
-  })
   async updateAward(
     @graphql.Args() args: UpdateAwardArgs
   ): Promise<Award | null> {
@@ -151,12 +125,8 @@ export class AwardResolverBase {
     }
   }
 
+  @Public()
   @graphql.Mutation(() => Award)
-  @nestAccessControl.UseRoles({
-    resource: "Award",
-    action: "delete",
-    possession: "any",
-  })
   async deleteAward(
     @graphql.Args() args: DeleteAwardArgs
   ): Promise<Award | null> {
