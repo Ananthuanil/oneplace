@@ -48,6 +48,7 @@ export const CandidateShow = (props: ShowProps): React.ReactElement => {
         >
           <TextField source={USER_TITLE_FIELD} />
         </ReferenceField>
+        <TextField label="Resume" source="resume" />
         <TextField label="source" source="source" />
         <TextField label="Total Experience" source="totalExperience" />
         <DateField source="updatedAt" label="Updated At" />

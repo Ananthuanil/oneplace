@@ -20,6 +20,7 @@ export type CandidateCreateInput = {
   name: string;
   noticePeriodTime?: number | null;
   referalEmployee?: UserWhereUniqueInput | null;
+  resume?: string | null;
   skills?: SkillCreateNestedManyWithoutCandidatesInput;
   skillSets?: SkillSetCreateNestedManyWithoutCandidatesInput;
   source: "Internal" | "Referral" | "ExternalRecruitmentPartner";

@@ -219,6 +219,17 @@ class CandidateWhereInput {
 
   @ApiProperty({
     required: false,
+    type: StringNullableFilter,
+  })
+  @Type(() => StringNullableFilter)
+  @IsOptional()
+  @Field(() => StringNullableFilter, {
+    nullable: true,
+  })
+  resume?: StringNullableFilter;
+
+  @ApiProperty({
+    required: false,
     type: () => SkillListRelationFilter,
   })
   @ValidateNested()

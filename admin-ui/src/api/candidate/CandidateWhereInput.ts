@@ -27,6 +27,7 @@ export type CandidateWhereInput = {
   name?: StringFilter;
   noticePeriodTime?: FloatNullableFilter;
   referalEmployee?: UserWhereUniqueInput;
+  resume?: StringNullableFilter;
   skills?: SkillListRelationFilter;
   skillSets?: SkillSetListRelationFilter;
   source?: "Internal" | "Referral" | "ExternalRecruitmentPartner";

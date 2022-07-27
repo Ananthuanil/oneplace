@@ -212,6 +212,17 @@ class Candidate {
 
   @ApiProperty({
     required: false,
+    type: String,
+  })
+  @IsString()
+  @IsOptional()
+  @Field(() => String, {
+    nullable: true,
+  })
+  resume!: string | null;
+
+  @ApiProperty({
+    required: false,
     type: () => [Skill],
   })
   @ValidateNested()

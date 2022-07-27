@@ -178,6 +178,15 @@ class CandidateOrderByInput {
   @Field(() => SortOrder, {
     nullable: true,
   })
+  resume?: SortOrder;
+
+  @ApiProperty({
+    required: false,
+    enum: ["asc", "desc"],
+  })
+  @Field(() => SortOrder, {
+    nullable: true,
+  })
   source?: SortOrder;
 
   @ApiProperty({

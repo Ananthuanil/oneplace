@@ -79,6 +79,7 @@ export const CandidateEdit = (props: EditProps): React.ReactElement => {
         >
           <SelectInput optionText={UserTitle} />
         </ReferenceInput>
+        <TextInput label="Resume" source="resume" />
         <ReferenceArrayInput
           source="skills"
           reference="Skill"
