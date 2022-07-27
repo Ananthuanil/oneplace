@@ -20,6 +20,7 @@ export type CandidateUpdateInput = {
   name?: string;
   noticePeriodTime?: number | null;
   referalEmployee?: UserWhereUniqueInput | null;
+  resume?: string | null;
   skills?: SkillUpdateManyWithoutCandidatesInput;
   skillSets?: SkillSetUpdateManyWithoutCandidatesInput;
   source?: "Internal" | "Referral" | "ExternalRecruitmentPartner";

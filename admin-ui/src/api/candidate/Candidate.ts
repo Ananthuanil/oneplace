@@ -22,6 +22,7 @@ export type Candidate = {
   name: string;
   noticePeriodTime: number | null;
   referalEmployee?: User | null;
+  resume: string | null;
   skills?: Array<Skill>;
   skillSets?: Array<SkillSet>;
   source?: "Internal" | "Referral" | "ExternalRecruitmentPartner";
