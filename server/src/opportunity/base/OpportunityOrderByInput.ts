@@ -43,6 +43,15 @@ class OpportunityOrderByInput {
   @Field(() => SortOrder, {
     nullable: true,
   })
+  currentStatus?: SortOrder;
+
+  @ApiProperty({
+    required: false,
+    enum: ["asc", "desc"],
+  })
+  @Field(() => SortOrder, {
+    nullable: true,
+  })
   id?: SortOrder;
 
   @ApiProperty({
@@ -89,15 +98,6 @@ class OpportunityOrderByInput {
     nullable: true,
   })
   requirements?: SortOrder;
-
-  @ApiProperty({
-    required: false,
-    enum: ["asc", "desc"],
-  })
-  @Field(() => SortOrder, {
-    nullable: true,
-  })
-  status?: SortOrder;
 
   @ApiProperty({
     required: false,

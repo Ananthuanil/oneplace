@@ -17,9 +17,11 @@ import {
   IsOptional,
   IsBoolean,
   IsDate,
+  IsEnum,
   IsString,
 } from "class-validator";
 import { Type } from "class-transformer";
+import { EnumInterviewCurrentStatus } from "./EnumInterviewCurrentStatus";
 import { InterviewFeedback } from "../../interviewFeedback/base/InterviewFeedback";
 import { User } from "../../user/base/User";
 import { Opportunity } from "../../opportunity/base/Opportunity";
@@ -52,6 +54,23 @@ class Interview {
   @Type(() => Date)
   @Field(() => Date)
   createdAt!: Date;
+
+  @ApiProperty({
+    required: false,
+    enum: EnumInterviewCurrentStatus,
+  })
+  @IsEnum(EnumInterviewCurrentStatus)
+  @IsOptional()
+  @Field(() => EnumInterviewCurrentStatus, {
+    nullable: true,
+  })
+  currentStatus?:
+    | "Scheduled"
+    | "CompletedButAwaitingFeedback"
+    | "Rescheduled"
+    | "Rejected"
+    | "Accepted"
+    | null;
 
   @ApiProperty({
     required: false,

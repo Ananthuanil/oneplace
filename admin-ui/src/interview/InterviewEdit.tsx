@@ -30,6 +30,23 @@ export const InterviewEdit = (props: EditProps): React.ReactElement => {
           <SelectInput optionText={CandidateTitle} />
         </ReferenceInput>
         <BooleanInput label="closed" source="closed" />
+        <SelectInput
+          source="currentStatus"
+          label="Current Status"
+          choices={[
+            { label: "Scheduled", value: "Scheduled" },
+            {
+              label: "CompletedButAwaitingFeedback",
+              value: "CompletedButAwaitingFeedback",
+            },
+            { label: "Rescheduled", value: "Rescheduled" },
+            { label: "Rejected", value: "Rejected" },
+            { label: "Accepted", value: "Accepted" },
+          ]}
+          optionText="label"
+          allowEmpty
+          optionValue="value"
+        />
         <DateTimeInput label="Date" source="date" />
         <ReferenceArrayInput
           source="feedback"

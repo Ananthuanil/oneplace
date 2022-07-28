@@ -108,7 +108,14 @@ class CandidateUpdateInput {
   @Field(() => EnumCandidateCurrentStatus, {
     nullable: true,
   })
-  currentStatus?: "onHold" | "selected" | "rejected";
+  currentStatus?:
+    | "Parked"
+    | "AwaitingInterview"
+    | "InterviewScheduled"
+    | "InterviewSelected"
+    | "OfferReleased"
+    | "Joined"
+    | "OfferRejected";
 
   @ApiProperty({
     required: false,

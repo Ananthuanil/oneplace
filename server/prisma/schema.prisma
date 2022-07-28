@@ -126,39 +126,40 @@ model InterviewFeedback {
 }
 
 model Interview {
-  candidate     Candidate?          @relation(fields: [candidateId], references: [id])
+  candidate     Candidate?                  @relation(fields: [candidateId], references: [id])
   candidateId   String?
   closed        Boolean?
-  createdAt     DateTime            @default(now())
+  createdAt     DateTime                    @default(now())
+  currentStatus EnumInterviewCurrentStatus?
   date          DateTime?
   feedback      InterviewFeedback[]
-  id            String              @id @default(cuid())
-  interviewer   User?               @relation(fields: [interviewerId], references: [id])
+  id            String                      @id @default(cuid())
+  interviewer   User?                       @relation(fields: [interviewerId], references: [id])
   interviewerId String?
   level         String?
   mode          String?
-  opportunity   Opportunity?        @relation(fields: [opportunityId], references: [id])
+  opportunity   Opportunity?                @relation(fields: [opportunityId], references: [id])
   opportunityId String?
   subject       String?
-  updatedAt     DateTime            @updatedAt
+  updatedAt     DateTime                    @updatedAt
 }
 
 model Opportunity {
-  claimedPerson      User?                  @relation(name: "claimedPerson", fields: [claimedPersonId], references: [id])
+  claimedPerson      User?                         @relation(name: "claimedPerson", fields: [claimedPersonId], references: [id])
   claimedPersonId    String?
-  createdAt          DateTime               @default(now())
-  id                 String                 @id @default(cuid())
+  createdAt          DateTime                      @default(now())
+  currentStatus      EnumOpportunityCurrentStatus?
+  id                 String                        @id @default(cuid())
   interviews         Interview[]
-  mappedPerson       User?                  @relation(name: "OpportunityMappedPersonUserMappedPerson", fields: [mappedPersonId], references: [id])
+  mappedPerson       User?                         @relation(name: "OpportunityMappedPersonUserMappedPerson", fields: [mappedPersonId], references: [id])
   mappedPersonId     String?
   name               String?
-  partner            Partner?               @relation(fields: [partnerId], references: [id])
+  partner            Partner?                      @relation(fields: [partnerId], references: [id])
   partnerId          String?
   requiredExperience Int?
   requiredSkillset   SkillSet[]
   requirements       String?
-  status             EnumOpportunityStatus?
-  updatedAt          DateTime               @updatedAt
+  updatedAt          DateTime                      @updatedAt
 }
 
 model Partner {
@@ -217,9 +218,13 @@ enum EnumCandidateCategory {
 }
 
 enum EnumCandidateCurrentStatus {
-  onHold
-  selected
-  rejected
+  Parked
+  AwaitingInterview
+  InterviewScheduled
+  InterviewSelected
+  OfferReleased
+  Joined
+  OfferRejected
 }
 
 enum EnumCandidateSource {
@@ -234,9 +239,22 @@ enum EnumInterviewFeedbackStatus {
   Hold
 }
 
-enum EnumOpportunityStatus {
-  Awarded
-  Mapped
-  OngoingInterview
-  Closed
+enum EnumInterviewCurrentStatus {
+  Scheduled
+  CompletedButAwaitingFeedback
+  Rescheduled
+  Rejected
+  Accepted
+}
+
+enum EnumOpportunityCurrentStatus {
+  Lead
+  OpenOppurtunaty
+  NotQualifiedLead
+  Replacement
+  MappedAndAwaitingInterviewSlot
+  AwaitingInterviewFeedback
+  OnHold
+  Won
+  Failed
 }

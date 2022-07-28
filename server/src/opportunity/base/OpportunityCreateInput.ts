@@ -15,15 +15,15 @@ import { UserWhereUniqueInput } from "../../user/base/UserWhereUniqueInput";
 import {
   ValidateNested,
   IsOptional,
+  IsEnum,
   IsString,
   IsInt,
-  IsEnum,
 } from "class-validator";
 import { Type } from "class-transformer";
+import { EnumOpportunityCurrentStatus } from "./EnumOpportunityCurrentStatus";
 import { InterviewCreateNestedManyWithoutOpportunitiesInput } from "./InterviewCreateNestedManyWithoutOpportunitiesInput";
 import { PartnerWhereUniqueInput } from "../../partner/base/PartnerWhereUniqueInput";
 import { SkillSetCreateNestedManyWithoutOpportunitiesInput } from "./SkillSetCreateNestedManyWithoutOpportunitiesInput";
-import { EnumOpportunityStatus } from "./EnumOpportunityStatus";
 @InputType()
 class OpportunityCreateInput {
   @ApiProperty({
@@ -37,6 +37,27 @@ class OpportunityCreateInput {
     nullable: true,
   })
   claimedPerson?: UserWhereUniqueInput | null;
+
+  @ApiProperty({
+    required: false,
+    enum: EnumOpportunityCurrentStatus,
+  })
+  @IsEnum(EnumOpportunityCurrentStatus)
+  @IsOptional()
+  @Field(() => EnumOpportunityCurrentStatus, {
+    nullable: true,
+  })
+  currentStatus?:
+    | "Lead"
+    | "OpenOppurtunaty"
+    | "NotQualifiedLead"
+    | "Replacement"
+    | "MappedAndAwaitingInterviewSlot"
+    | "AwaitingInterviewFeedback"
+    | "OnHold"
+    | "Won"
+    | "Failed"
+    | null;
 
   @ApiProperty({
     required: false,
@@ -118,16 +139,5 @@ class OpportunityCreateInput {
     nullable: true,
   })
   requirements?: string | null;
-
-  @ApiProperty({
-    required: false,
-    enum: EnumOpportunityStatus,
-  })
-  @IsEnum(EnumOpportunityStatus)
-  @IsOptional()
-  @Field(() => EnumOpportunityStatus, {
-    nullable: true,
-  })
-  status?: "Awarded" | "Mapped" | "OngoingInterview" | "Closed" | null;
 }
 export { OpportunityCreateInput };

@@ -1,5 +1,9 @@
 export enum EnumCandidateCurrentStatus {
-  OnHold = "onHold",
-  Selected = "selected",
-  Rejected = "rejected",
+  Parked = "Parked",
+  AwaitingInterview = "AwaitingInterview",
+  InterviewScheduled = "InterviewScheduled",
+  InterviewSelected = "InterviewSelected",
+  OfferReleased = "OfferReleased",
+  Joined = "Joined",
+  OfferRejected = "OfferRejected",
 }

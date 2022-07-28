@@ -11,16 +11,14 @@ https://docs.amplication.com/docs/how-to/custom-code
   */
 import { registerEnumType } from "@nestjs/graphql";
 
-export enum EnumCandidateCurrentStatus {
-  Parked = "Parked",
-  AwaitingInterview = "AwaitingInterview",
-  InterviewScheduled = "InterviewScheduled",
-  InterviewSelected = "InterviewSelected",
-  OfferReleased = "OfferReleased",
-  Joined = "Joined",
-  OfferRejected = "OfferRejected",
+export enum EnumInterviewCurrentStatus {
+  Scheduled = "Scheduled",
+  CompletedButAwaitingFeedback = "CompletedButAwaitingFeedback",
+  Rescheduled = "Rescheduled",
+  Rejected = "Rejected",
+  Accepted = "Accepted",
 }
 
-registerEnumType(EnumCandidateCurrentStatus, {
-  name: "EnumCandidateCurrentStatus",
+registerEnumType(EnumInterviewCurrentStatus, {
+  name: "EnumInterviewCurrentStatus",
 });

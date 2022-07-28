@@ -14,13 +14,13 @@ import { ApiProperty } from "@nestjs/swagger";
 import { UserWhereUniqueInput } from "../../user/base/UserWhereUniqueInput";
 import { ValidateNested, IsOptional, IsEnum } from "class-validator";
 import { Type } from "class-transformer";
+import { EnumOpportunityCurrentStatus } from "./EnumOpportunityCurrentStatus";
 import { StringFilter } from "../../util/StringFilter";
 import { InterviewListRelationFilter } from "../../interview/base/InterviewListRelationFilter";
 import { StringNullableFilter } from "../../util/StringNullableFilter";
 import { PartnerWhereUniqueInput } from "../../partner/base/PartnerWhereUniqueInput";
 import { IntNullableFilter } from "../../util/IntNullableFilter";
 import { SkillSetListRelationFilter } from "../../skillSet/base/SkillSetListRelationFilter";
-import { EnumOpportunityStatus } from "./EnumOpportunityStatus";
 @InputType()
 class OpportunityWhereInput {
   @ApiProperty({
@@ -34,6 +34,26 @@ class OpportunityWhereInput {
     nullable: true,
   })
   claimedPerson?: UserWhereUniqueInput;
+
+  @ApiProperty({
+    required: false,
+    enum: EnumOpportunityCurrentStatus,
+  })
+  @IsEnum(EnumOpportunityCurrentStatus)
+  @IsOptional()
+  @Field(() => EnumOpportunityCurrentStatus, {
+    nullable: true,
+  })
+  currentStatus?:
+    | "Lead"
+    | "OpenOppurtunaty"
+    | "NotQualifiedLead"
+    | "Replacement"
+    | "MappedAndAwaitingInterviewSlot"
+    | "AwaitingInterviewFeedback"
+    | "OnHold"
+    | "Won"
+    | "Failed";
 
   @ApiProperty({
     required: false,
@@ -126,16 +146,5 @@ class OpportunityWhereInput {
     nullable: true,
   })
   requirements?: StringNullableFilter;
-
-  @ApiProperty({
-    required: false,
-    enum: EnumOpportunityStatus,
-  })
-  @IsEnum(EnumOpportunityStatus)
-  @IsOptional()
-  @Field(() => EnumOpportunityStatus, {
-    nullable: true,
-  })
-  status?: "Awarded" | "Mapped" | "OngoingInterview" | "Closed";
 }
 export { OpportunityWhereInput };

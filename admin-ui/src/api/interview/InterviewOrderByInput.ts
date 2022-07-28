@@ -4,6 +4,7 @@ export type InterviewOrderByInput = {
   candidateId?: SortOrder;
   closed?: SortOrder;
   createdAt?: SortOrder;
+  currentStatus?: SortOrder;
   date?: SortOrder;
   id?: SortOrder;
   interviewerId?: SortOrder;

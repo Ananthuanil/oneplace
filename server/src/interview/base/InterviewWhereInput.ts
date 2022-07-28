@@ -12,9 +12,10 @@ https://docs.amplication.com/docs/how-to/custom-code
 import { InputType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
 import { CandidateWhereUniqueInput } from "../../candidate/base/CandidateWhereUniqueInput";
-import { ValidateNested, IsOptional } from "class-validator";
+import { ValidateNested, IsOptional, IsEnum } from "class-validator";
 import { Type } from "class-transformer";
 import { BooleanNullableFilter } from "../../util/BooleanNullableFilter";
+import { EnumInterviewCurrentStatus } from "./EnumInterviewCurrentStatus";
 import { DateTimeNullableFilter } from "../../util/DateTimeNullableFilter";
 import { InterviewFeedbackListRelationFilter } from "../../interviewFeedback/base/InterviewFeedbackListRelationFilter";
 import { StringFilter } from "../../util/StringFilter";
@@ -45,6 +46,22 @@ class InterviewWhereInput {
     nullable: true,
   })
   closed?: BooleanNullableFilter;
+
+  @ApiProperty({
+    required: false,
+    enum: EnumInterviewCurrentStatus,
+  })
+  @IsEnum(EnumInterviewCurrentStatus)
+  @IsOptional()
+  @Field(() => EnumInterviewCurrentStatus, {
+    nullable: true,
+  })
+  currentStatus?:
+    | "Scheduled"
+    | "CompletedButAwaitingFeedback"
+    | "Rescheduled"
+    | "Rejected"
+    | "Accepted";
 
   @ApiProperty({
     required: false,
