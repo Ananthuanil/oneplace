@@ -52,6 +52,15 @@ class InterviewOrderByInput {
   @Field(() => SortOrder, {
     nullable: true,
   })
+  currentStatus?: SortOrder;
+
+  @ApiProperty({
+    required: false,
+    enum: ["asc", "desc"],
+  })
+  @Field(() => SortOrder, {
+    nullable: true,
+  })
   date?: SortOrder;
 
   @ApiProperty({

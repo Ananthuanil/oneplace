@@ -8,6 +8,16 @@ import { SkillSetListRelationFilter } from "../skillSet/SkillSetListRelationFilt
 
 export type OpportunityWhereInput = {
   claimedPerson?: UserWhereUniqueInput;
+  currentStatus?:
+    | "Lead"
+    | "OpenOppurtunaty"
+    | "NotQualifiedLead"
+    | "Replacement"
+    | "MappedAndAwaitingInterviewSlot"
+    | "AwaitingInterviewFeedback"
+    | "OnHold"
+    | "Won"
+    | "Failed";
   id?: StringFilter;
   interviews?: InterviewListRelationFilter;
   mappedPerson?: UserWhereUniqueInput;
@@ -16,5 +26,4 @@ export type OpportunityWhereInput = {
   requiredExperience?: IntNullableFilter;
   requiredSkillset?: SkillSetListRelationFilter;
   requirements?: StringNullableFilter;
-  status?: "Awarded" | "Mapped" | "OngoingInterview" | "Closed";
 };

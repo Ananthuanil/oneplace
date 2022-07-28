@@ -37,6 +37,7 @@ export const PartnerShow = (props: ShowProps): React.ReactElement => {
               <TextField source={USER_TITLE_FIELD} />
             </ReferenceField>
             <DateField source="createdAt" label="Created At" />
+            <TextField label="Current Status" source="currentStatus" />
             <TextField label="ID" source="id" />
             <ReferenceField
               label="Mapped Person"
@@ -58,7 +59,6 @@ export const PartnerShow = (props: ShowProps): React.ReactElement => {
               source="requiredExperience"
             />
             <TextField label="Requirements" source="requirements" />
-            <TextField label="Status" source="status" />
             <DateField source="updatedAt" label="Updated At" />
           </Datagrid>
         </ReferenceManyField>

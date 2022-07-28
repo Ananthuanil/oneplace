@@ -16,15 +16,15 @@ import {
   ValidateNested,
   IsOptional,
   IsDate,
+  IsEnum,
   IsString,
   IsInt,
-  IsEnum,
 } from "class-validator";
 import { Type } from "class-transformer";
+import { EnumOpportunityCurrentStatus } from "./EnumOpportunityCurrentStatus";
 import { Interview } from "../../interview/base/Interview";
 import { Partner } from "../../partner/base/Partner";
 import { SkillSet } from "../../skillSet/base/SkillSet";
-import { EnumOpportunityStatus } from "./EnumOpportunityStatus";
 @ObjectType()
 class Opportunity {
   @ApiProperty({
@@ -43,6 +43,27 @@ class Opportunity {
   @Type(() => Date)
   @Field(() => Date)
   createdAt!: Date;
+
+  @ApiProperty({
+    required: false,
+    enum: EnumOpportunityCurrentStatus,
+  })
+  @IsEnum(EnumOpportunityCurrentStatus)
+  @IsOptional()
+  @Field(() => EnumOpportunityCurrentStatus, {
+    nullable: true,
+  })
+  currentStatus?:
+    | "Lead"
+    | "OpenOppurtunaty"
+    | "NotQualifiedLead"
+    | "Replacement"
+    | "MappedAndAwaitingInterviewSlot"
+    | "AwaitingInterviewFeedback"
+    | "OnHold"
+    | "Won"
+    | "Failed"
+    | null;
 
   @ApiProperty({
     required: true,
@@ -120,17 +141,6 @@ class Opportunity {
     nullable: true,
   })
   requirements!: string | null;
-
-  @ApiProperty({
-    required: false,
-    enum: EnumOpportunityStatus,
-  })
-  @IsEnum(EnumOpportunityStatus)
-  @IsOptional()
-  @Field(() => EnumOpportunityStatus, {
-    nullable: true,
-  })
-  status?: "Awarded" | "Mapped" | "OngoingInterview" | "Closed" | null;
 
   @ApiProperty({
     required: true,

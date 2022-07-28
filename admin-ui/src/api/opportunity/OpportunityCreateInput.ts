@@ -5,6 +5,17 @@ import { SkillSetCreateNestedManyWithoutOpportunitiesInput } from "./SkillSetCre
 
 export type OpportunityCreateInput = {
   claimedPerson?: UserWhereUniqueInput | null;
+  currentStatus?:
+    | "Lead"
+    | "OpenOppurtunaty"
+    | "NotQualifiedLead"
+    | "Replacement"
+    | "MappedAndAwaitingInterviewSlot"
+    | "AwaitingInterviewFeedback"
+    | "OnHold"
+    | "Won"
+    | "Failed"
+    | null;
   interviews?: InterviewCreateNestedManyWithoutOpportunitiesInput;
   mappedPerson?: UserWhereUniqueInput | null;
   name?: string | null;
@@ -12,5 +23,4 @@ export type OpportunityCreateInput = {
   requiredExperience?: number | null;
   requiredSkillset?: SkillSetCreateNestedManyWithoutOpportunitiesInput;
   requirements?: string | null;
-  status?: "Awarded" | "Mapped" | "OngoingInterview" | "Closed" | null;
 };

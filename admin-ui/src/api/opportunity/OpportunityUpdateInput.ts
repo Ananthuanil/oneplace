@@ -5,6 +5,17 @@ import { SkillSetUpdateManyWithoutOpportunitiesInput } from "./SkillSetUpdateMan
 
 export type OpportunityUpdateInput = {
   claimedPerson?: UserWhereUniqueInput | null;
+  currentStatus?:
+    | "Lead"
+    | "OpenOppurtunaty"
+    | "NotQualifiedLead"
+    | "Replacement"
+    | "MappedAndAwaitingInterviewSlot"
+    | "AwaitingInterviewFeedback"
+    | "OnHold"
+    | "Won"
+    | "Failed"
+    | null;
   interviews?: InterviewUpdateManyWithoutOpportunitiesInput;
   mappedPerson?: UserWhereUniqueInput | null;
   name?: string | null;
@@ -12,5 +23,4 @@ export type OpportunityUpdateInput = {
   requiredExperience?: number | null;
   requiredSkillset?: SkillSetUpdateManyWithoutOpportunitiesInput;
   requirements?: string | null;
-  status?: "Awarded" | "Mapped" | "OngoingInterview" | "Closed" | null;
 };

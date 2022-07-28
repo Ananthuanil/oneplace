@@ -31,6 +31,7 @@ export const OpportunityShow = (props: ShowProps): React.ReactElement => {
           <TextField source={USER_TITLE_FIELD} />
         </ReferenceField>
         <DateField source="createdAt" label="Created At" />
+        <TextField label="Current Status" source="currentStatus" />
         <TextField label="ID" source="id" />
         <ReferenceField label="Mapped Person" source="user.id" reference="User">
           <TextField source={USER_TITLE_FIELD} />
@@ -41,7 +42,6 @@ export const OpportunityShow = (props: ShowProps): React.ReactElement => {
         </ReferenceField>
         <TextField label="Required Experience" source="requiredExperience" />
         <TextField label="Requirements" source="requirements" />
-        <TextField label="Status" source="status" />
         <DateField source="updatedAt" label="Updated At" />
         <ReferenceManyField
           reference="Interview"
@@ -58,6 +58,7 @@ export const OpportunityShow = (props: ShowProps): React.ReactElement => {
             </ReferenceField>
             <BooleanField label="closed" source="closed" />
             <DateField source="createdAt" label="Created At" />
+            <TextField label="Current Status" source="currentStatus" />
             <TextField label="Date" source="date" />
             <TextField label="ID" source="id" />
             <ReferenceField

@@ -10,6 +10,12 @@ import { OpportunityWhereUniqueInput } from "../opportunity/OpportunityWhereUniq
 export type InterviewWhereInput = {
   candidate?: CandidateWhereUniqueInput;
   closed?: BooleanNullableFilter;
+  currentStatus?:
+    | "Scheduled"
+    | "CompletedButAwaitingFeedback"
+    | "Rescheduled"
+    | "Rejected"
+    | "Accepted";
   date?: DateTimeNullableFilter;
   feedback?: InterviewFeedbackListRelationFilter;
   id?: StringFilter;

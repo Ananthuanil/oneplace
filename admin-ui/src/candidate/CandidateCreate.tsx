@@ -47,9 +47,13 @@ export const CandidateCreate = (props: CreateProps): React.ReactElement => {
           source="currentStatus"
           label="Current Status"
           choices={[
-            { label: "On Hold", value: "onHold" },
-            { label: "Selected", value: "selected" },
-            { label: "Rejected", value: "rejected" },
+            { label: "Parked", value: "Parked" },
+            { label: "Awaiting Interview", value: "AwaitingInterview" },
+            { label: "Interview Scheduled", value: "InterviewScheduled" },
+            { label: "Interview Selected", value: "InterviewSelected" },
+            { label: "Offer Released", value: "OfferReleased" },
+            { label: "Joined", value: "Joined" },
+            { label: "Offer Rejected", value: "OfferRejected" },
           ]}
           optionText="label"
           optionValue="value"

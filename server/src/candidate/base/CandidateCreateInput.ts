@@ -102,7 +102,14 @@ class CandidateCreateInput {
   })
   @IsEnum(EnumCandidateCurrentStatus)
   @Field(() => EnumCandidateCurrentStatus)
-  currentStatus!: "onHold" | "selected" | "rejected";
+  currentStatus!:
+    | "Parked"
+    | "AwaitingInterview"
+    | "InterviewScheduled"
+    | "InterviewSelected"
+    | "OfferReleased"
+    | "Joined"
+    | "OfferRejected";
 
   @ApiProperty({
     required: true,

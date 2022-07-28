@@ -28,6 +28,30 @@ export const OpportunityCreate = (props: CreateProps): React.ReactElement => {
         >
           <SelectInput optionText={UserTitle} />
         </ReferenceInput>
+        <SelectInput
+          source="currentStatus"
+          label="Current Status"
+          choices={[
+            { label: "Lead", value: "Lead" },
+            { label: "OpenOppurtunaty", value: "OpenOppurtunaty" },
+            { label: "NotQualifiedLead", value: "NotQualifiedLead" },
+            { label: "Replacement", value: "Replacement" },
+            {
+              label: "MappedAndAwaitingInterviewSlot",
+              value: "MappedAndAwaitingInterviewSlot",
+            },
+            {
+              label: "AwaitingInterviewFeedback",
+              value: "AwaitingInterviewFeedback",
+            },
+            { label: "OnHold", value: "OnHold" },
+            { label: "Won", value: "Won" },
+            { label: "Failed", value: "Failed" },
+          ]}
+          optionText="label"
+          allowEmpty
+          optionValue="value"
+        />
         <ReferenceArrayInput
           source="interviews"
           reference="Interview"
@@ -57,19 +81,6 @@ export const OpportunityCreate = (props: CreateProps): React.ReactElement => {
           <SelectArrayInput optionText={SkillSetTitle} />
         </ReferenceArrayInput>
         <TextInput label="Requirements" multiline source="requirements" />
-        <SelectInput
-          source="status"
-          label="Status"
-          choices={[
-            { label: "Awarded", value: "Awarded" },
-            { label: "Mapped", value: "Mapped" },
-            { label: "Ongoing Interview", value: "OngoingInterview" },
-            { label: "Closed", value: "Closed" },
-          ]}
-          optionText="label"
-          allowEmpty
-          optionValue="value"
-        />
       </SimpleForm>
     </Create>
   );

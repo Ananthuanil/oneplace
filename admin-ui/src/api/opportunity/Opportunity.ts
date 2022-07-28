@@ -6,6 +6,17 @@ import { SkillSet } from "../skillSet/SkillSet";
 export type Opportunity = {
   claimedPerson?: User | null;
   createdAt: Date;
+  currentStatus?:
+    | "Lead"
+    | "OpenOppurtunaty"
+    | "NotQualifiedLead"
+    | "Replacement"
+    | "MappedAndAwaitingInterviewSlot"
+    | "AwaitingInterviewFeedback"
+    | "OnHold"
+    | "Won"
+    | "Failed"
+    | null;
   id: string;
   interviews?: Array<Interview>;
   mappedPerson?: User | null;
@@ -14,6 +25,5 @@ export type Opportunity = {
   requiredExperience: number | null;
   requiredSkillset?: Array<SkillSet>;
   requirements: string | null;
-  status?: "Awarded" | "Mapped" | "OngoingInterview" | "Closed" | null;
   updatedAt: Date;
 };

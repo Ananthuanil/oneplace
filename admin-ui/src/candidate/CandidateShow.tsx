@@ -67,6 +67,7 @@ export const CandidateShow = (props: ShowProps): React.ReactElement => {
             </ReferenceField>
             <BooleanField label="closed" source="closed" />
             <DateField source="createdAt" label="Created At" />
+            <TextField label="Current Status" source="currentStatus" />
             <TextField label="Date" source="date" />
             <TextField label="ID" source="id" />
             <ReferenceField
