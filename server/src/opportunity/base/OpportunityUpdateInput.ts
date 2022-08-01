@@ -22,8 +22,10 @@ import {
 import { Type } from "class-transformer";
 import { EnumOpportunityCurrentStatus } from "./EnumOpportunityCurrentStatus";
 import { InterviewUpdateManyWithoutOpportunitiesInput } from "./InterviewUpdateManyWithoutOpportunitiesInput";
+import { SkillUpdateManyWithoutOpportunitiesInput } from "./SkillUpdateManyWithoutOpportunitiesInput";
 import { PartnerWhereUniqueInput } from "../../partner/base/PartnerWhereUniqueInput";
 import { SkillSetUpdateManyWithoutOpportunitiesInput } from "./SkillSetUpdateManyWithoutOpportunitiesInput";
+import { EnumOpportunitySource } from "./EnumOpportunitySource";
 @InputType()
 class OpportunityUpdateInput {
   @ApiProperty({
@@ -96,6 +98,18 @@ class OpportunityUpdateInput {
 
   @ApiProperty({
     required: false,
+    type: () => SkillUpdateManyWithoutOpportunitiesInput,
+  })
+  @ValidateNested()
+  @Type(() => SkillUpdateManyWithoutOpportunitiesInput)
+  @IsOptional()
+  @Field(() => SkillUpdateManyWithoutOpportunitiesInput, {
+    nullable: true,
+  })
+  optionalSkillset?: SkillUpdateManyWithoutOpportunitiesInput;
+
+  @ApiProperty({
+    required: false,
     type: () => PartnerWhereUniqueInput,
   })
   @ValidateNested()
@@ -139,5 +153,27 @@ class OpportunityUpdateInput {
     nullable: true,
   })
   requirements?: string | null;
+
+  @ApiProperty({
+    required: false,
+    enum: EnumOpportunitySource,
+  })
+  @IsEnum(EnumOpportunitySource)
+  @IsOptional()
+  @Field(() => EnumOpportunitySource, {
+    nullable: true,
+  })
+  source?: "New" | "BackFill" | null;
+
+  @ApiProperty({
+    required: false,
+    type: Number,
+  })
+  @IsInt()
+  @IsOptional()
+  @Field(() => Number, {
+    nullable: true,
+  })
+  winOdds?: number | null;
 }
 export { OpportunityUpdateInput };

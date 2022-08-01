@@ -5,5 +5,6 @@ export type SkillOrderByInput = {
   createdAt?: SortOrder;
   id?: SortOrder;
   name?: SortOrder;
+  opportunityId?: SortOrder;
   updatedAt?: SortOrder;
 };

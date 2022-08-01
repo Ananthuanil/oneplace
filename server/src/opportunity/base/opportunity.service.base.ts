@@ -14,6 +14,7 @@ import {
   Prisma,
   Opportunity,
   Interview,
+  Skill,
   SkillSet,
   User,
   Partner,
@@ -63,6 +64,17 @@ export class OpportunityServiceBase {
         where: { id: parentId },
       })
       .interviews(args);
+  }
+
+  async findOptionalSkillset(
+    parentId: string,
+    args: Prisma.SkillFindManyArgs
+  ): Promise<Skill[]> {
+    return this.prisma.opportunity
+      .findUnique({
+        where: { id: parentId },
+      })
+      .optionalSkillset(args);
   }
 
   async findRequiredSkillset(

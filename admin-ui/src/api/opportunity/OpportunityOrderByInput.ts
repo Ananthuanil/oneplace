@@ -10,5 +10,7 @@ export type OpportunityOrderByInput = {
   partnerId?: SortOrder;
   requiredExperience?: SortOrder;
   requirements?: SortOrder;
+  source?: SortOrder;
   updatedAt?: SortOrder;
+  winOdds?: SortOrder;
 };

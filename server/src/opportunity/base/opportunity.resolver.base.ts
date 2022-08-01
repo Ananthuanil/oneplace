@@ -26,6 +26,8 @@ import { OpportunityFindUniqueArgs } from "./OpportunityFindUniqueArgs";
 import { Opportunity } from "./Opportunity";
 import { InterviewFindManyArgs } from "../../interview/base/InterviewFindManyArgs";
 import { Interview } from "../../interview/base/Interview";
+import { SkillFindManyArgs } from "../../skill/base/SkillFindManyArgs";
+import { Skill } from "../../skill/base/Skill";
 import { SkillSetFindManyArgs } from "../../skillSet/base/SkillSetFindManyArgs";
 import { SkillSet } from "../../skillSet/base/SkillSet";
 import { User } from "../../user/base/User";
@@ -170,6 +172,21 @@ export class OpportunityResolverBase {
     @graphql.Args() args: InterviewFindManyArgs
   ): Promise<Interview[]> {
     const results = await this.service.findInterviews(parent.id, args);
+
+    if (!results) {
+      return [];
+    }
+
+    return results;
+  }
+
+  @Public()
+  @graphql.ResolveField(() => [Skill])
+  async optionalSkillset(
+    @graphql.Parent() parent: Opportunity,
+    @graphql.Args() args: SkillFindManyArgs
+  ): Promise<Skill[]> {
+    const results = await this.service.findOptionalSkillset(parent.id, args);
 
     if (!results) {
       return [];

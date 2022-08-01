@@ -55,13 +55,15 @@ model Community {
 }
 
 model Skill {
-  candidate   Candidate? @relation(fields: [candidateId], references: [id])
-  candidateId String?
-  createdAt   DateTime   @default(now())
-  id          String     @id @default(cuid())
-  name        String?
-  skillSets   SkillSet[]
-  updatedAt   DateTime?  @updatedAt
+  candidate     Candidate?   @relation(fields: [candidateId], references: [id])
+  candidateId   String?
+  createdAt     DateTime     @default(now())
+  id            String       @id @default(cuid())
+  name          String?
+  opportunity   Opportunity? @relation(fields: [opportunityId], references: [id])
+  opportunityId String?
+  skillSets     SkillSet[]
+  updatedAt     DateTime?    @updatedAt
 }
 
 model SkillSet {
@@ -154,12 +156,15 @@ model Opportunity {
   mappedPerson       User?                         @relation(name: "OpportunityMappedPersonUserMappedPerson", fields: [mappedPersonId], references: [id])
   mappedPersonId     String?
   name               String?
+  optionalSkillset   Skill[]
   partner            Partner?                      @relation(fields: [partnerId], references: [id])
   partnerId          String?
   requiredExperience Int?
   requiredSkillset   SkillSet[]
   requirements       String?
+  source             EnumOpportunitySource?
   updatedAt          DateTime                      @updatedAt
+  winOdds            Int?
 }
 
 model Partner {
@@ -257,4 +262,9 @@ enum EnumOpportunityCurrentStatus {
   OnHold
   Won
   Failed
+}
+
+enum EnumOpportunitySource {
+  New
+  BackFill
 }

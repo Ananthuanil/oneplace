@@ -1,5 +1,6 @@
 import { UserWhereUniqueInput } from "../user/UserWhereUniqueInput";
 import { InterviewUpdateManyWithoutOpportunitiesInput } from "./InterviewUpdateManyWithoutOpportunitiesInput";
+import { SkillUpdateManyWithoutOpportunitiesInput } from "./SkillUpdateManyWithoutOpportunitiesInput";
 import { PartnerWhereUniqueInput } from "../partner/PartnerWhereUniqueInput";
 import { SkillSetUpdateManyWithoutOpportunitiesInput } from "./SkillSetUpdateManyWithoutOpportunitiesInput";
 
@@ -19,8 +20,11 @@ export type OpportunityUpdateInput = {
   interviews?: InterviewUpdateManyWithoutOpportunitiesInput;
   mappedPerson?: UserWhereUniqueInput | null;
   name?: string | null;
+  optionalSkillset?: SkillUpdateManyWithoutOpportunitiesInput;
   partner?: PartnerWhereUniqueInput | null;
   requiredExperience?: number | null;
   requiredSkillset?: SkillSetUpdateManyWithoutOpportunitiesInput;
   requirements?: string | null;
+  source?: "New" | "BackFill" | null;
+  winOdds?: number | null;
 };

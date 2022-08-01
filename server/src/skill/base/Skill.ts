@@ -14,6 +14,7 @@ import { ApiProperty } from "@nestjs/swagger";
 import { Candidate } from "../../candidate/base/Candidate";
 import { ValidateNested, IsOptional, IsDate, IsString } from "class-validator";
 import { Type } from "class-transformer";
+import { Opportunity } from "../../opportunity/base/Opportunity";
 import { SkillSet } from "../../skillSet/base/SkillSet";
 @ObjectType()
 class Skill {
@@ -52,6 +53,15 @@ class Skill {
     nullable: true,
   })
   name!: string | null;
+
+  @ApiProperty({
+    required: false,
+    type: () => Opportunity,
+  })
+  @ValidateNested()
+  @Type(() => Opportunity)
+  @IsOptional()
+  opportunity?: Opportunity | null;
 
   @ApiProperty({
     required: false,

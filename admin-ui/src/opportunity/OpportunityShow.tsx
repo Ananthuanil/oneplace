@@ -42,7 +42,9 @@ export const OpportunityShow = (props: ShowProps): React.ReactElement => {
         </ReferenceField>
         <TextField label="Required Experience" source="requiredExperience" />
         <TextField label="Requirements" source="requirements" />
+        <TextField label="Source" source="source" />
         <DateField source="updatedAt" label="Updated At" />
+        <TextField label="Win Odds" source="winOdds" />
         <ReferenceManyField
           reference="Interview"
           target="OpportunityId"
@@ -78,6 +80,32 @@ export const OpportunityShow = (props: ShowProps): React.ReactElement => {
               <TextField source={OPPORTUNITY_TITLE_FIELD} />
             </ReferenceField>
             <TextField label="subject" source="subject" />
+            <DateField source="updatedAt" label="Updated At" />
+          </Datagrid>
+        </ReferenceManyField>
+        <ReferenceManyField
+          reference="Skill"
+          target="OpportunityId"
+          label="Skills"
+        >
+          <Datagrid rowClick="show">
+            <ReferenceField
+              label="Candidate"
+              source="candidate.id"
+              reference="Candidate"
+            >
+              <TextField source={CANDIDATE_TITLE_FIELD} />
+            </ReferenceField>
+            <DateField source="createdAt" label="Created At" />
+            <TextField label="ID" source="id" />
+            <TextField label="Name" source="name" />
+            <ReferenceField
+              label="Opportunity"
+              source="opportunity.id"
+              reference="Opportunity"
+            >
+              <TextField source={OPPORTUNITY_TITLE_FIELD} />
+            </ReferenceField>
             <DateField source="updatedAt" label="Updated At" />
           </Datagrid>
         </ReferenceManyField>

@@ -27,6 +27,7 @@ import { Skill } from "./Skill";
 import { SkillSetFindManyArgs } from "../../skillSet/base/SkillSetFindManyArgs";
 import { SkillSet } from "../../skillSet/base/SkillSet";
 import { Candidate } from "../../candidate/base/Candidate";
+import { Opportunity } from "../../opportunity/base/Opportunity";
 import { SkillService } from "../skill.service";
 
 @graphql.Resolver(() => Skill)
@@ -83,6 +84,12 @@ export class SkillResolverBase {
               connect: args.data.candidate,
             }
           : undefined,
+
+        opportunity: args.data.opportunity
+          ? {
+              connect: args.data.opportunity,
+            }
+          : undefined,
       },
     });
   }
@@ -101,6 +108,12 @@ export class SkillResolverBase {
           candidate: args.data.candidate
             ? {
                 connect: args.data.candidate,
+              }
+            : undefined,
+
+          opportunity: args.data.opportunity
+            ? {
+                connect: args.data.opportunity,
               }
             : undefined,
         },
@@ -151,6 +164,19 @@ export class SkillResolverBase {
   @graphql.ResolveField(() => Candidate, { nullable: true })
   async candidate(@graphql.Parent() parent: Skill): Promise<Candidate | null> {
     const result = await this.service.getCandidate(parent.id);
+
+    if (!result) {
+      return null;
+    }
+    return result;
+  }
+
+  @Public()
+  @graphql.ResolveField(() => Opportunity, { nullable: true })
+  async opportunity(
+    @graphql.Parent() parent: Skill
+  ): Promise<Opportunity | null> {
+    const result = await this.service.getOpportunity(parent.id);
 
     if (!result) {
       return null;

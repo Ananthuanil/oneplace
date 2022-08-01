@@ -16,6 +16,7 @@ import { ValidateNested, IsOptional } from "class-validator";
 import { Type } from "class-transformer";
 import { StringFilter } from "../../util/StringFilter";
 import { StringNullableFilter } from "../../util/StringNullableFilter";
+import { OpportunityWhereUniqueInput } from "../../opportunity/base/OpportunityWhereUniqueInput";
 import { SkillSetListRelationFilter } from "../../skillSet/base/SkillSetListRelationFilter";
 @InputType()
 class SkillWhereInput {
@@ -52,6 +53,18 @@ class SkillWhereInput {
     nullable: true,
   })
   name?: StringNullableFilter;
+
+  @ApiProperty({
+    required: false,
+    type: () => OpportunityWhereUniqueInput,
+  })
+  @ValidateNested()
+  @Type(() => OpportunityWhereUniqueInput)
+  @IsOptional()
+  @Field(() => OpportunityWhereUniqueInput, {
+    nullable: true,
+  })
+  opportunity?: OpportunityWhereUniqueInput;
 
   @ApiProperty({
     required: false,
