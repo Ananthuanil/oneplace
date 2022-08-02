@@ -27,7 +27,7 @@ model User {
   firstName              String
   folderLink             String?
   fwExperience           String?
-  gender                 EnumUserGender
+  gender                 EnumUserGender?
   id                     String               @id @default(cuid())
   image                  String?
   interviews             Interview[]

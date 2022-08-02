@@ -26,7 +26,7 @@ export type User = {
   firstName: string;
   folderLink: string | null;
   fwExperience: string | null;
-  gender?: "male" | "female" | "others";
+  gender?: "male" | "female" | "others" | null;
   id: string;
   image: string | null;
   interviews?: Array<Interview>;

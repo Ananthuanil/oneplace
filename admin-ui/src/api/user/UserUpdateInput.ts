@@ -25,7 +25,7 @@ export type UserUpdateInput = {
   firstName?: string;
   folderLink?: string | null;
   fwExperience?: string | null;
-  gender?: "male" | "female" | "others";
+  gender?: "male" | "female" | "others" | null;
   image?: string | null;
   interviews?: InterviewUpdateManyWithoutUsersInput;
   lastName?: string;
