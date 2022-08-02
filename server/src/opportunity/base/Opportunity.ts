@@ -23,8 +23,9 @@ import {
 import { Type } from "class-transformer";
 import { EnumOpportunityCurrentStatus } from "./EnumOpportunityCurrentStatus";
 import { Interview } from "../../interview/base/Interview";
+import { Skill } from "../../skill/base/Skill";
 import { Partner } from "../../partner/base/Partner";
-import { SkillSet } from "../../skillSet/base/SkillSet";
+import { EnumOpportunitySource } from "./EnumOpportunitySource";
 @ObjectType()
 class Opportunity {
   @ApiProperty({
@@ -104,6 +105,15 @@ class Opportunity {
 
   @ApiProperty({
     required: false,
+    type: () => [Skill],
+  })
+  @ValidateNested()
+  @Type(() => Skill)
+  @IsOptional()
+  optionalSkillset?: Array<Skill>;
+
+  @ApiProperty({
+    required: false,
     type: () => Partner,
   })
   @ValidateNested()
@@ -124,12 +134,12 @@ class Opportunity {
 
   @ApiProperty({
     required: false,
-    type: () => [SkillSet],
+    type: () => [Skill],
   })
   @ValidateNested()
-  @Type(() => SkillSet)
+  @Type(() => Skill)
   @IsOptional()
-  requiredSkillset?: Array<SkillSet>;
+  requiredSkills?: Array<Skill>;
 
   @ApiProperty({
     required: false,
@@ -143,11 +153,44 @@ class Opportunity {
   requirements!: string | null;
 
   @ApiProperty({
+    required: false,
+    type: String,
+  })
+  @IsString()
+  @IsOptional()
+  @Field(() => String, {
+    nullable: true,
+  })
+  resumeId!: string | null;
+
+  @ApiProperty({
+    required: false,
+    enum: EnumOpportunitySource,
+  })
+  @IsEnum(EnumOpportunitySource)
+  @IsOptional()
+  @Field(() => EnumOpportunitySource, {
+    nullable: true,
+  })
+  source?: "New" | "BackFill" | null;
+
+  @ApiProperty({
     required: true,
   })
   @IsDate()
   @Type(() => Date)
   @Field(() => Date)
   updatedAt!: Date;
+
+  @ApiProperty({
+    required: false,
+    type: Number,
+  })
+  @IsInt()
+  @IsOptional()
+  @Field(() => Number, {
+    nullable: true,
+  })
+  winOdds!: number | null;
 }
 export { Opportunity };

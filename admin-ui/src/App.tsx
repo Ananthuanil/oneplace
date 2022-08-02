@@ -53,6 +53,10 @@ import { AwardList } from "./award/AwardList";
 import { AwardCreate } from "./award/AwardCreate";
 import { AwardEdit } from "./award/AwardEdit";
 import { AwardShow } from "./award/AwardShow";
+import { ProjectInvolvementList } from "./projectInvolvement/ProjectInvolvementList";
+import { ProjectInvolvementCreate } from "./projectInvolvement/ProjectInvolvementCreate";
+import { ProjectInvolvementEdit } from "./projectInvolvement/ProjectInvolvementEdit";
+import { ProjectInvolvementShow } from "./projectInvolvement/ProjectInvolvementShow";
 import { jwtAuthProvider } from "./auth-provider/ra-auth-jwt";
 
 const App = (): React.ReactElement => {
@@ -162,6 +166,13 @@ const App = (): React.ReactElement => {
           edit={AwardEdit}
           create={AwardCreate}
           show={AwardShow}
+        />
+        <Resource
+          name="ProjectInvolvement"
+          list={ProjectInvolvementList}
+          edit={ProjectInvolvementEdit}
+          create={ProjectInvolvementCreate}
+          show={ProjectInvolvementShow}
         />
       </Admin>
     </div>

@@ -18,7 +18,6 @@ import { UserListRelationFilter } from "../../user/base/UserListRelationFilter";
 import { IntNullableFilter } from "../../util/IntNullableFilter";
 import { StringFilter } from "../../util/StringFilter";
 import { InterviewFeedbackWhereUniqueInput } from "../../interviewFeedback/base/InterviewFeedbackWhereUniqueInput";
-import { OpportunityWhereUniqueInput } from "../../opportunity/base/OpportunityWhereUniqueInput";
 import { SkillWhereUniqueInput } from "../../skill/base/SkillWhereUniqueInput";
 @InputType()
 class SkillSetWhereInput {
@@ -79,18 +78,6 @@ class SkillSetWhereInput {
     nullable: true,
   })
   interviewFeedback?: InterviewFeedbackWhereUniqueInput;
-
-  @ApiProperty({
-    required: false,
-    type: () => OpportunityWhereUniqueInput,
-  })
-  @ValidateNested()
-  @Type(() => OpportunityWhereUniqueInput)
-  @IsOptional()
-  @Field(() => OpportunityWhereUniqueInput, {
-    nullable: true,
-  })
-  opportunity?: OpportunityWhereUniqueInput;
 
   @ApiProperty({
     required: false,

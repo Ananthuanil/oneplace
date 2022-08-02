@@ -20,6 +20,7 @@ import { CommunityTitle } from "../community/CommunityTitle";
 import { InterviewTitle } from "../interview/InterviewTitle";
 import { OpportunityTitle } from "../opportunity/OpportunityTitle";
 import { ProjectTitle } from "../project/ProjectTitle";
+import { ProjectInvolvementTitle } from "../projectInvolvement/ProjectInvolvementTitle";
 import { SkillSetTitle } from "../skillSet/SkillSetTitle";
 import { ROLES_OPTIONS } from "../user/RolesOptions";
 
@@ -66,6 +67,7 @@ export const UserEdit = (props: EditProps): React.ReactElement => {
           source="emergencyContactNumber"
         />
         <TextInput label="First Name" source="firstName" />
+        <TextInput label="Folder Link" source="folderLink" />
         <TextInput label="Fw Experience" source="fwExperience" />
         <SelectInput
           source="gender"
@@ -119,6 +121,15 @@ export const UserEdit = (props: EditProps): React.ReactElement => {
         >
           <SelectArrayInput optionText={ProjectTitle} />
         </ReferenceArrayInput>
+        <ReferenceArrayInput
+          source="projectInvolved"
+          reference="ProjectInvolvement"
+          parse={(value: any) => value && value.map((v: any) => ({ id: v }))}
+          format={(value: any) => value && value.map((v: any) => v.id)}
+        >
+          <SelectArrayInput optionText={ProjectInvolvementTitle} />
+        </ReferenceArrayInput>
+        <TextInput label="Resume Link" source="resumeLink" />
         <SelectArrayInput
           source="roles"
           choices={ROLES_OPTIONS}

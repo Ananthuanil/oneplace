@@ -43,6 +43,7 @@ export const UserList = (props: ListProps): React.ReactElement => {
           source="emergencyContactNumber"
         />
         <TextField label="First Name" source="firstName" />
+        <TextField label="Folder Link" source="folderLink" />
         <TextField label="Fw Experience" source="fwExperience" />
         <TextField label="Gender" source="gender" />
         <TextField label="ID" source="id" />
@@ -50,6 +51,7 @@ export const UserList = (props: ListProps): React.ReactElement => {
         <TextField label="Last Name" source="lastName" />
         <TextField label="Pan Number" source="panNumber" />
         <TextField label="Personal Email ID" source="personalEmailId" />
+        <TextField label="Resume Link" source="resumeLink" />
         <TextField label="Roles" source="roles" />
         <TextField label="Total Experience" source="totalExperience" />
         <DateField source="updatedAt" label="Updated At" />

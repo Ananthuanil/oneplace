@@ -24,6 +24,7 @@ import { EnumUserGender } from "./EnumUserGender";
 import { InterviewListRelationFilter } from "../../interview/base/InterviewListRelationFilter";
 import { OpportunityListRelationFilter } from "../../opportunity/base/OpportunityListRelationFilter";
 import { ProjectListRelationFilter } from "../../project/base/ProjectListRelationFilter";
+import { ProjectInvolvementListRelationFilter } from "../../projectInvolvement/base/ProjectInvolvementListRelationFilter";
 import { SkillSetListRelationFilter } from "../../skillSet/base/SkillSetListRelationFilter";
 @InputType()
 class UserWhereInput {
@@ -204,6 +205,17 @@ class UserWhereInput {
   @Field(() => StringNullableFilter, {
     nullable: true,
   })
+  folderLink?: StringNullableFilter;
+
+  @ApiProperty({
+    required: false,
+    type: StringNullableFilter,
+  })
+  @Type(() => StringNullableFilter)
+  @IsOptional()
+  @Field(() => StringNullableFilter, {
+    nullable: true,
+  })
   fwExperience?: StringNullableFilter;
 
   @ApiProperty({
@@ -319,6 +331,29 @@ class UserWhereInput {
     nullable: true,
   })
   project?: ProjectListRelationFilter;
+
+  @ApiProperty({
+    required: false,
+    type: () => ProjectInvolvementListRelationFilter,
+  })
+  @ValidateNested()
+  @Type(() => ProjectInvolvementListRelationFilter)
+  @IsOptional()
+  @Field(() => ProjectInvolvementListRelationFilter, {
+    nullable: true,
+  })
+  projectInvolved?: ProjectInvolvementListRelationFilter;
+
+  @ApiProperty({
+    required: false,
+    type: StringNullableFilter,
+  })
+  @Type(() => StringNullableFilter)
+  @IsOptional()
+  @Field(() => StringNullableFilter, {
+    nullable: true,
+  })
+  resumeLink?: StringNullableFilter;
 
   @ApiProperty({
     required: false,

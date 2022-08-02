@@ -16,6 +16,7 @@ import { Type } from "class-transformer";
 import { IsOptional, ValidateNested } from "class-validator";
 import { StringNullableFilter } from "../../util/StringNullableFilter";
 import { PartnerWhereUniqueInput } from "../../partner/base/PartnerWhereUniqueInput";
+import { ProjectInvolvementListRelationFilter } from "../../projectInvolvement/base/ProjectInvolvementListRelationFilter";
 import { DateTimeNullableFilter } from "../../util/DateTimeNullableFilter";
 import { UserListRelationFilter } from "../../user/base/UserListRelationFilter";
 @InputType()
@@ -53,6 +54,18 @@ class ProjectWhereInput {
     nullable: true,
   })
   partner?: PartnerWhereUniqueInput;
+
+  @ApiProperty({
+    required: false,
+    type: () => ProjectInvolvementListRelationFilter,
+  })
+  @ValidateNested()
+  @Type(() => ProjectInvolvementListRelationFilter)
+  @IsOptional()
+  @Field(() => ProjectInvolvementListRelationFilter, {
+    nullable: true,
+  })
+  projectInvolvements?: ProjectInvolvementListRelationFilter;
 
   @ApiProperty({
     required: false,

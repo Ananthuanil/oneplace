@@ -13,8 +13,8 @@ import {
 
 import { CANDIDATE_TITLE_FIELD } from "../candidate/CandidateTitle";
 import { INTERVIEWFEEDBACK_TITLE_FIELD } from "../interviewFeedback/InterviewFeedbackTitle";
-import { OPPORTUNITY_TITLE_FIELD } from "../opportunity/OpportunityTitle";
 import { SKILL_TITLE_FIELD } from "./SkillTitle";
+import { OPPORTUNITY_TITLE_FIELD } from "../opportunity/OpportunityTitle";
 
 export const SkillShow = (props: ShowProps): React.ReactElement => {
   return (
@@ -30,6 +30,20 @@ export const SkillShow = (props: ShowProps): React.ReactElement => {
         <DateField source="createdAt" label="Created At" />
         <TextField label="ID" source="id" />
         <TextField label="Name" source="name" />
+        <ReferenceField
+          label="Opportunity"
+          source="opportunity.id"
+          reference="Opportunity"
+        >
+          <TextField source={OPPORTUNITY_TITLE_FIELD} />
+        </ReferenceField>
+        <ReferenceField
+          label="OppurtunatyRequiredSkills"
+          source="opportunity.id"
+          reference="Opportunity"
+        >
+          <TextField source={OPPORTUNITY_TITLE_FIELD} />
+        </ReferenceField>
         <DateField source="updatedAt" label="Updated At" />
         <ReferenceManyField
           reference="SkillSet"
@@ -53,13 +67,6 @@ export const SkillShow = (props: ShowProps): React.ReactElement => {
               reference="InterviewFeedback"
             >
               <TextField source={INTERVIEWFEEDBACK_TITLE_FIELD} />
-            </ReferenceField>
-            <ReferenceField
-              label="Opportunity"
-              source="opportunity.id"
-              reference="Opportunity"
-            >
-              <TextField source={OPPORTUNITY_TITLE_FIELD} />
             </ReferenceField>
             <ReferenceField label="Skill" source="skill.id" reference="Skill">
               <TextField source={SKILL_TITLE_FIELD} />

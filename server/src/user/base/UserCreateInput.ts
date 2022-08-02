@@ -27,6 +27,7 @@ import { EnumUserGender } from "./EnumUserGender";
 import { InterviewCreateNestedManyWithoutUsersInput } from "./InterviewCreateNestedManyWithoutUsersInput";
 import { OpportunityCreateNestedManyWithoutUsersInput } from "./OpportunityCreateNestedManyWithoutUsersInput";
 import { ProjectCreateNestedManyWithoutUsersInput } from "./ProjectCreateNestedManyWithoutUsersInput";
+import { ProjectInvolvementCreateNestedManyWithoutUsersInput } from "./ProjectInvolvementCreateNestedManyWithoutUsersInput";
 import { SkillSetCreateNestedManyWithoutUsersInput } from "./SkillSetCreateNestedManyWithoutUsersInput";
 @InputType()
 class UserCreateInput {
@@ -204,6 +205,17 @@ class UserCreateInput {
   @Field(() => String, {
     nullable: true,
   })
+  folderLink?: string | null;
+
+  @ApiProperty({
+    required: false,
+    type: String,
+  })
+  @IsString()
+  @IsOptional()
+  @Field(() => String, {
+    nullable: true,
+  })
   fwExperience?: string | null;
 
   @ApiProperty({
@@ -310,6 +322,29 @@ class UserCreateInput {
     nullable: true,
   })
   project?: ProjectCreateNestedManyWithoutUsersInput;
+
+  @ApiProperty({
+    required: false,
+    type: () => ProjectInvolvementCreateNestedManyWithoutUsersInput,
+  })
+  @ValidateNested()
+  @Type(() => ProjectInvolvementCreateNestedManyWithoutUsersInput)
+  @IsOptional()
+  @Field(() => ProjectInvolvementCreateNestedManyWithoutUsersInput, {
+    nullable: true,
+  })
+  projectInvolved?: ProjectInvolvementCreateNestedManyWithoutUsersInput;
+
+  @ApiProperty({
+    required: false,
+    type: String,
+  })
+  @IsString()
+  @IsOptional()
+  @Field(() => String, {
+    nullable: true,
+  })
+  resumeLink?: string | null;
 
   @ApiProperty({
     required: true,

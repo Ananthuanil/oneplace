@@ -28,7 +28,6 @@ import { UserFindManyArgs } from "../../user/base/UserFindManyArgs";
 import { User } from "../../user/base/User";
 import { Candidate } from "../../candidate/base/Candidate";
 import { InterviewFeedback } from "../../interviewFeedback/base/InterviewFeedback";
-import { Opportunity } from "../../opportunity/base/Opportunity";
 import { Skill } from "../../skill/base/Skill";
 import { SkillSetService } from "../skillSet.service";
 
@@ -97,12 +96,6 @@ export class SkillSetResolverBase {
             }
           : undefined,
 
-        opportunity: args.data.opportunity
-          ? {
-              connect: args.data.opportunity,
-            }
-          : undefined,
-
         skill: args.data.skill
           ? {
               connect: args.data.skill,
@@ -132,12 +125,6 @@ export class SkillSetResolverBase {
           interviewFeedback: args.data.interviewFeedback
             ? {
                 connect: args.data.interviewFeedback,
-              }
-            : undefined,
-
-          opportunity: args.data.opportunity
-            ? {
-                connect: args.data.opportunity,
               }
             : undefined,
 
@@ -209,19 +196,6 @@ export class SkillSetResolverBase {
     @graphql.Parent() parent: SkillSet
   ): Promise<InterviewFeedback | null> {
     const result = await this.service.getInterviewFeedback(parent.id);
-
-    if (!result) {
-      return null;
-    }
-    return result;
-  }
-
-  @Public()
-  @graphql.ResolveField(() => Opportunity, { nullable: true })
-  async opportunity(
-    @graphql.Parent() parent: SkillSet
-  ): Promise<Opportunity | null> {
-    const result = await this.service.getOpportunity(parent.id);
 
     if (!result) {
       return null;
