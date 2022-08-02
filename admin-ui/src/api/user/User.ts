@@ -16,7 +16,7 @@ export type User = {
   careerOutDate: Date | null;
   careerStartDate: Date | null;
   community?: Community | null;
-  contactNumber: string | null;
+  contactNumber: number | null;
   createdAt: Date;
   dateOfJoining: Date | null;
   designation: string | null;

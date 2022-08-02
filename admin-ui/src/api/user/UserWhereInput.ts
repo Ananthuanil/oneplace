@@ -20,7 +20,7 @@ export type UserWhereInput = {
   careerOutDate?: DateTimeNullableFilter;
   careerStartDate?: DateTimeNullableFilter;
   community?: CommunityWhereUniqueInput;
-  contactNumber?: StringNullableFilter;
+  contactNumber?: IntNullableFilter;
   dateOfJoining?: DateTimeNullableFilter;
   designation?: StringNullableFilter;
   dob?: DateTimeNullableFilter;
