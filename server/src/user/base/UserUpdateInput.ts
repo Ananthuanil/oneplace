@@ -230,7 +230,7 @@ class UserUpdateInput {
   @Field(() => EnumUserGender, {
     nullable: true,
   })
-  gender?: "male" | "female" | "others";
+  gender?: "male" | "female" | "others" | null;
 
   @ApiProperty({
     required: false,

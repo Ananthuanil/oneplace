@@ -219,12 +219,15 @@ class UserCreateInput {
   fwExperience?: string | null;
 
   @ApiProperty({
-    required: true,
+    required: false,
     enum: EnumUserGender,
   })
   @IsEnum(EnumUserGender)
-  @Field(() => EnumUserGender)
-  gender!: "male" | "female" | "others";
+  @IsOptional()
+  @Field(() => EnumUserGender, {
+    nullable: true,
+  })
+  gender?: "male" | "female" | "others" | null;
 
   @ApiProperty({
     required: false,

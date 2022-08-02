@@ -78,6 +78,7 @@ export const UserCreate = (props: CreateProps): React.ReactElement => {
             { label: "Others", value: "others" },
           ]}
           optionText="label"
+          allowEmpty
           optionValue="value"
         />
         <TextInput label="Image" source="image" />
