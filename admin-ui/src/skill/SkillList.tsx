@@ -9,6 +9,7 @@ import {
 } from "react-admin";
 import Pagination from "../Components/Pagination";
 import { CANDIDATE_TITLE_FIELD } from "../candidate/CandidateTitle";
+import { OPPORTUNITY_TITLE_FIELD } from "../opportunity/OpportunityTitle";
 
 export const SkillList = (props: ListProps): React.ReactElement => {
   return (
@@ -30,6 +31,20 @@ export const SkillList = (props: ListProps): React.ReactElement => {
         <DateField source="createdAt" label="Created At" />
         <TextField label="ID" source="id" />
         <TextField label="Name" source="name" />
+        <ReferenceField
+          label="Opportunity"
+          source="opportunity.id"
+          reference="Opportunity"
+        >
+          <TextField source={OPPORTUNITY_TITLE_FIELD} />
+        </ReferenceField>
+        <ReferenceField
+          label="OppurtunatyRequiredSkills"
+          source="opportunity.id"
+          reference="Opportunity"
+        >
+          <TextField source={OPPORTUNITY_TITLE_FIELD} />
+        </ReferenceField>
         <DateField source="updatedAt" label="Updated At" />
       </Datagrid>
     </List>

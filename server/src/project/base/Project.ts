@@ -14,6 +14,7 @@ import { ApiProperty } from "@nestjs/swagger";
 import { IsDate, IsString, IsOptional, ValidateNested } from "class-validator";
 import { Type } from "class-transformer";
 import { Partner } from "../../partner/base/Partner";
+import { ProjectInvolvement } from "../../projectInvolvement/base/ProjectInvolvement";
 import { User } from "../../user/base/User";
 @ObjectType()
 class Project {
@@ -52,6 +53,15 @@ class Project {
   @Type(() => Partner)
   @IsOptional()
   partner?: Partner | null;
+
+  @ApiProperty({
+    required: false,
+    type: () => [ProjectInvolvement],
+  })
+  @ValidateNested()
+  @Type(() => ProjectInvolvement)
+  @IsOptional()
+  projectInvolvements?: Array<ProjectInvolvement>;
 
   @ApiProperty({
     required: false,

@@ -27,6 +27,7 @@ import { EnumUserGender } from "./EnumUserGender";
 import { InterviewUpdateManyWithoutUsersInput } from "./InterviewUpdateManyWithoutUsersInput";
 import { OpportunityUpdateManyWithoutUsersInput } from "./OpportunityUpdateManyWithoutUsersInput";
 import { ProjectUpdateManyWithoutUsersInput } from "./ProjectUpdateManyWithoutUsersInput";
+import { ProjectInvolvementUpdateManyWithoutUsersInput } from "./ProjectInvolvementUpdateManyWithoutUsersInput";
 import { SkillSetUpdateManyWithoutUsersInput } from "./SkillSetUpdateManyWithoutUsersInput";
 @InputType()
 class UserUpdateInput {
@@ -322,6 +323,18 @@ class UserUpdateInput {
     nullable: true,
   })
   project?: ProjectUpdateManyWithoutUsersInput;
+
+  @ApiProperty({
+    required: false,
+    type: () => ProjectInvolvementUpdateManyWithoutUsersInput,
+  })
+  @ValidateNested()
+  @Type(() => ProjectInvolvementUpdateManyWithoutUsersInput)
+  @IsOptional()
+  @Field(() => ProjectInvolvementUpdateManyWithoutUsersInput, {
+    nullable: true,
+  })
+  projectInvolved?: ProjectInvolvementUpdateManyWithoutUsersInput;
 
   @ApiProperty({
     required: false,

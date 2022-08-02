@@ -14,6 +14,7 @@ import { ApiProperty } from "@nestjs/swagger";
 import { IsString, IsOptional, ValidateNested, IsDate } from "class-validator";
 import { PartnerWhereUniqueInput } from "../../partner/base/PartnerWhereUniqueInput";
 import { Type } from "class-transformer";
+import { ProjectInvolvementCreateNestedManyWithoutProjectsInput } from "./ProjectInvolvementCreateNestedManyWithoutProjectsInput";
 import { UserCreateNestedManyWithoutProjectsInput } from "./UserCreateNestedManyWithoutProjectsInput";
 @InputType()
 class ProjectCreateInput {
@@ -39,6 +40,18 @@ class ProjectCreateInput {
     nullable: true,
   })
   partner?: PartnerWhereUniqueInput | null;
+
+  @ApiProperty({
+    required: false,
+    type: () => ProjectInvolvementCreateNestedManyWithoutProjectsInput,
+  })
+  @ValidateNested()
+  @Type(() => ProjectInvolvementCreateNestedManyWithoutProjectsInput)
+  @IsOptional()
+  @Field(() => ProjectInvolvementCreateNestedManyWithoutProjectsInput, {
+    nullable: true,
+  })
+  projectInvolvements?: ProjectInvolvementCreateNestedManyWithoutProjectsInput;
 
   @ApiProperty({
     required: false,

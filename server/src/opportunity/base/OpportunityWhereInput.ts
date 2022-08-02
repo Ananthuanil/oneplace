@@ -18,9 +18,10 @@ import { EnumOpportunityCurrentStatus } from "./EnumOpportunityCurrentStatus";
 import { StringFilter } from "../../util/StringFilter";
 import { InterviewListRelationFilter } from "../../interview/base/InterviewListRelationFilter";
 import { StringNullableFilter } from "../../util/StringNullableFilter";
+import { SkillListRelationFilter } from "../../skill/base/SkillListRelationFilter";
 import { PartnerWhereUniqueInput } from "../../partner/base/PartnerWhereUniqueInput";
 import { IntNullableFilter } from "../../util/IntNullableFilter";
-import { SkillSetListRelationFilter } from "../../skillSet/base/SkillSetListRelationFilter";
+import { EnumOpportunitySource } from "./EnumOpportunitySource";
 @InputType()
 class OpportunityWhereInput {
   @ApiProperty({
@@ -103,6 +104,18 @@ class OpportunityWhereInput {
 
   @ApiProperty({
     required: false,
+    type: () => SkillListRelationFilter,
+  })
+  @ValidateNested()
+  @Type(() => SkillListRelationFilter)
+  @IsOptional()
+  @Field(() => SkillListRelationFilter, {
+    nullable: true,
+  })
+  optionalSkillset?: SkillListRelationFilter;
+
+  @ApiProperty({
+    required: false,
     type: () => PartnerWhereUniqueInput,
   })
   @ValidateNested()
@@ -126,15 +139,15 @@ class OpportunityWhereInput {
 
   @ApiProperty({
     required: false,
-    type: () => SkillSetListRelationFilter,
+    type: () => SkillListRelationFilter,
   })
   @ValidateNested()
-  @Type(() => SkillSetListRelationFilter)
+  @Type(() => SkillListRelationFilter)
   @IsOptional()
-  @Field(() => SkillSetListRelationFilter, {
+  @Field(() => SkillListRelationFilter, {
     nullable: true,
   })
-  requiredSkillset?: SkillSetListRelationFilter;
+  requiredSkills?: SkillListRelationFilter;
 
   @ApiProperty({
     required: false,
@@ -146,5 +159,38 @@ class OpportunityWhereInput {
     nullable: true,
   })
   requirements?: StringNullableFilter;
+
+  @ApiProperty({
+    required: false,
+    type: StringNullableFilter,
+  })
+  @Type(() => StringNullableFilter)
+  @IsOptional()
+  @Field(() => StringNullableFilter, {
+    nullable: true,
+  })
+  resumeId?: StringNullableFilter;
+
+  @ApiProperty({
+    required: false,
+    enum: EnumOpportunitySource,
+  })
+  @IsEnum(EnumOpportunitySource)
+  @IsOptional()
+  @Field(() => EnumOpportunitySource, {
+    nullable: true,
+  })
+  source?: "New" | "BackFill";
+
+  @ApiProperty({
+    required: false,
+    type: IntNullableFilter,
+  })
+  @Type(() => IntNullableFilter)
+  @IsOptional()
+  @Field(() => IntNullableFilter, {
+    nullable: true,
+  })
+  winOdds?: IntNullableFilter;
 }
 export { OpportunityWhereInput };

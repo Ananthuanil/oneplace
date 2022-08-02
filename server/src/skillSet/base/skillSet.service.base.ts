@@ -16,7 +16,6 @@ import {
   User,
   Candidate,
   InterviewFeedback,
-  Opportunity,
   Skill,
 } from "@prisma/client";
 
@@ -82,14 +81,6 @@ export class SkillSetServiceBase {
         where: { id: parentId },
       })
       .interviewFeedback();
-  }
-
-  async getOpportunity(parentId: string): Promise<Opportunity | null> {
-    return this.prisma.skillSet
-      .findUnique({
-        where: { id: parentId },
-      })
-      .opportunity();
   }
 
   async getSkill(parentId: string): Promise<Skill | null> {

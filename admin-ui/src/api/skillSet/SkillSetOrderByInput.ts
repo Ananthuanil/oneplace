@@ -6,7 +6,6 @@ export type SkillSetOrderByInput = {
   expertiseLevel?: SortOrder;
   id?: SortOrder;
   interviewFeedbackId?: SortOrder;
-  opportunityId?: SortOrder;
   skillId?: SortOrder;
   updatedAt?: SortOrder;
 };

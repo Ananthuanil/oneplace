@@ -1,1 +1,62 @@
-[]
+[
+  {
+    "role": "user",
+    "resource": "ProjectInvolvement",
+    "action": "read:own",
+    "attributes": "*"
+  },
+  {
+    "role": "communityLead",
+    "resource": "ProjectInvolvement",
+    "action": "read:own",
+    "attributes": "*"
+  },
+  {
+    "role": "user",
+    "resource": "ProjectInvolvement",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "communityLead",
+    "resource": "ProjectInvolvement",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "user",
+    "resource": "ProjectInvolvement",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "communityLead",
+    "resource": "ProjectInvolvement",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "user",
+    "resource": "ProjectInvolvement",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "communityLead",
+    "resource": "ProjectInvolvement",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "user",
+    "resource": "ProjectInvolvement",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "communityLead",
+    "resource": "ProjectInvolvement",
+    "action": "read:any",
+    "attributes": "*"
+  }
+]

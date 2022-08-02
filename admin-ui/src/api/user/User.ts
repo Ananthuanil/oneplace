@@ -4,6 +4,7 @@ import { Community } from "../community/Community";
 import { Interview } from "../interview/Interview";
 import { Opportunity } from "../opportunity/Opportunity";
 import { Project } from "../project/Project";
+import { ProjectInvolvement } from "../projectInvolvement/ProjectInvolvement";
 import { SkillSet } from "../skillSet/SkillSet";
 
 export type User = {
@@ -34,6 +35,7 @@ export type User = {
   panNumber: string | null;
   personalEmailId: string | null;
   project?: Array<Project>;
+  projectInvolved?: Array<ProjectInvolvement>;
   roles: Array<string>;
   skillSets?: Array<SkillSet>;
   toPerson?: Array<Award>;

@@ -19,6 +19,7 @@ import {
   Interview,
   Opportunity,
   Project,
+  ProjectInvolvement,
   SkillSet,
   Community,
 } from "@prisma/client";
@@ -148,6 +149,17 @@ export class UserServiceBase {
         where: { id: parentId },
       })
       .project(args);
+  }
+
+  async findProjectInvolved(
+    parentId: string,
+    args: Prisma.ProjectInvolvementFindManyArgs
+  ): Promise<ProjectInvolvement[]> {
+    return this.prisma.user
+      .findUnique({
+        where: { id: parentId },
+      })
+      .projectInvolved(args);
   }
 
   async findSkillSets(
