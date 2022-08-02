@@ -1,7 +1,6 @@
 import { Candidate } from "../candidate/Candidate";
 import { User } from "../user/User";
 import { InterviewFeedback } from "../interviewFeedback/InterviewFeedback";
-import { Opportunity } from "../opportunity/Opportunity";
 import { Skill } from "../skill/Skill";
 
 export type SkillSet = {
@@ -11,7 +10,6 @@ export type SkillSet = {
   expertiseLevel: number | null;
   id: string;
   interviewFeedback?: InterviewFeedback | null;
-  opportunity?: Opportunity | null;
   skill?: Skill | null;
   updatedAt: Date;
 };

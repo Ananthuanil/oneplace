@@ -1,7 +1,7 @@
 import { UserWhereUniqueInput } from "../user/UserWhereUniqueInput";
 import { InterviewCreateNestedManyWithoutOpportunitiesInput } from "./InterviewCreateNestedManyWithoutOpportunitiesInput";
+import { SkillCreateNestedManyWithoutOpportunitiesInput } from "./SkillCreateNestedManyWithoutOpportunitiesInput";
 import { PartnerWhereUniqueInput } from "../partner/PartnerWhereUniqueInput";
-import { SkillSetCreateNestedManyWithoutOpportunitiesInput } from "./SkillSetCreateNestedManyWithoutOpportunitiesInput";
 
 export type OpportunityCreateInput = {
   claimedPerson?: UserWhereUniqueInput | null;
@@ -19,8 +19,12 @@ export type OpportunityCreateInput = {
   interviews?: InterviewCreateNestedManyWithoutOpportunitiesInput;
   mappedPerson?: UserWhereUniqueInput | null;
   name?: string | null;
+  optionalSkillset?: SkillCreateNestedManyWithoutOpportunitiesInput;
   partner?: PartnerWhereUniqueInput | null;
   requiredExperience?: number | null;
-  requiredSkillset?: SkillSetCreateNestedManyWithoutOpportunitiesInput;
+  requiredSkills?: SkillCreateNestedManyWithoutOpportunitiesInput;
   requirements?: string | null;
+  resumeId?: string | null;
+  source?: "New" | "BackFill" | null;
+  winOdds?: number | null;
 };

@@ -15,8 +15,6 @@ import {
 import { CANDIDATE_TITLE_FIELD } from "../candidate/CandidateTitle";
 import { USER_TITLE_FIELD } from "../user/UserTitle";
 import { OPPORTUNITY_TITLE_FIELD } from "./OpportunityTitle";
-import { INTERVIEWFEEDBACK_TITLE_FIELD } from "../interviewFeedback/InterviewFeedbackTitle";
-import { SKILL_TITLE_FIELD } from "../skill/SkillTitle";
 import { PARTNER_TITLE_FIELD } from "../partner/PartnerTitle";
 
 export const OpportunityShow = (props: ShowProps): React.ReactElement => {
@@ -42,7 +40,10 @@ export const OpportunityShow = (props: ShowProps): React.ReactElement => {
         </ReferenceField>
         <TextField label="Required Experience" source="requiredExperience" />
         <TextField label="Requirements" source="requirements" />
+        <TextField label="Resume ID" source="resumeId" />
+        <TextField label="Source" source="source" />
         <DateField source="updatedAt" label="Updated At" />
+        <TextField label="Win Odds" source="winOdds" />
         <ReferenceManyField
           reference="Interview"
           target="OpportunityId"
@@ -82,9 +83,9 @@ export const OpportunityShow = (props: ShowProps): React.ReactElement => {
           </Datagrid>
         </ReferenceManyField>
         <ReferenceManyField
-          reference="SkillSet"
+          reference="Skill"
           target="OpportunityId"
-          label="Skill Set"
+          label="Skills"
         >
           <Datagrid rowClick="show">
             <ReferenceField
@@ -95,15 +96,8 @@ export const OpportunityShow = (props: ShowProps): React.ReactElement => {
               <TextField source={CANDIDATE_TITLE_FIELD} />
             </ReferenceField>
             <DateField source="createdAt" label="Created At" />
-            <TextField label="Expertise Level" source="expertiseLevel" />
             <TextField label="ID" source="id" />
-            <ReferenceField
-              label="Interview Feedback"
-              source="interviewfeedback.id"
-              reference="InterviewFeedback"
-            >
-              <TextField source={INTERVIEWFEEDBACK_TITLE_FIELD} />
-            </ReferenceField>
+            <TextField label="Name" source="name" />
             <ReferenceField
               label="Opportunity"
               source="opportunity.id"
@@ -111,8 +105,45 @@ export const OpportunityShow = (props: ShowProps): React.ReactElement => {
             >
               <TextField source={OPPORTUNITY_TITLE_FIELD} />
             </ReferenceField>
-            <ReferenceField label="Skill" source="skill.id" reference="Skill">
-              <TextField source={SKILL_TITLE_FIELD} />
+            <ReferenceField
+              label="OppurtunatyRequiredSkills"
+              source="opportunity.id"
+              reference="Opportunity"
+            >
+              <TextField source={OPPORTUNITY_TITLE_FIELD} />
+            </ReferenceField>
+            <DateField source="updatedAt" label="Updated At" />
+          </Datagrid>
+        </ReferenceManyField>
+        <ReferenceManyField
+          reference="Skill"
+          target="OpportunityId"
+          label="Skills"
+        >
+          <Datagrid rowClick="show">
+            <ReferenceField
+              label="Candidate"
+              source="candidate.id"
+              reference="Candidate"
+            >
+              <TextField source={CANDIDATE_TITLE_FIELD} />
+            </ReferenceField>
+            <DateField source="createdAt" label="Created At" />
+            <TextField label="ID" source="id" />
+            <TextField label="Name" source="name" />
+            <ReferenceField
+              label="Opportunity"
+              source="opportunity.id"
+              reference="Opportunity"
+            >
+              <TextField source={OPPORTUNITY_TITLE_FIELD} />
+            </ReferenceField>
+            <ReferenceField
+              label="OppurtunatyRequiredSkills"
+              source="opportunity.id"
+              reference="Opportunity"
+            >
+              <TextField source={OPPORTUNITY_TITLE_FIELD} />
             </ReferenceField>
             <DateField source="updatedAt" label="Updated At" />
           </Datagrid>

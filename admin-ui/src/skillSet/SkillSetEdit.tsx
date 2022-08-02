@@ -14,7 +14,6 @@ import {
 import { CandidateTitle } from "../candidate/CandidateTitle";
 import { UserTitle } from "../user/UserTitle";
 import { InterviewFeedbackTitle } from "../interviewFeedback/InterviewFeedbackTitle";
-import { OpportunityTitle } from "../opportunity/OpportunityTitle";
 import { SkillTitle } from "../skill/SkillTitle";
 
 export const SkillSetEdit = (props: EditProps): React.ReactElement => {
@@ -43,13 +42,6 @@ export const SkillSetEdit = (props: EditProps): React.ReactElement => {
           label="Interview Feedback"
         >
           <SelectInput optionText={InterviewFeedbackTitle} />
-        </ReferenceInput>
-        <ReferenceInput
-          source="opportunity.id"
-          reference="Opportunity"
-          label="Opportunity"
-        >
-          <SelectInput optionText={OpportunityTitle} />
         </ReferenceInput>
         <ReferenceInput source="skill.id" reference="Skill" label="Skill">
           <SelectInput optionText={SkillTitle} />

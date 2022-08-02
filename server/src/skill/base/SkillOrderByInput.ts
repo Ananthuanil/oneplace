@@ -61,6 +61,24 @@ class SkillOrderByInput {
   @Field(() => SortOrder, {
     nullable: true,
   })
+  opportunityId?: SortOrder;
+
+  @ApiProperty({
+    required: false,
+    enum: ["asc", "desc"],
+  })
+  @Field(() => SortOrder, {
+    nullable: true,
+  })
+  oppurtunatyRequiredSkillsId?: SortOrder;
+
+  @ApiProperty({
+    required: false,
+    enum: ["asc", "desc"],
+  })
+  @Field(() => SortOrder, {
+    nullable: true,
+  })
   updatedAt?: SortOrder;
 }
 

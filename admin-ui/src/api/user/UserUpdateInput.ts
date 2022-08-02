@@ -4,6 +4,7 @@ import { CommunityWhereUniqueInput } from "../community/CommunityWhereUniqueInpu
 import { InterviewUpdateManyWithoutUsersInput } from "./InterviewUpdateManyWithoutUsersInput";
 import { OpportunityUpdateManyWithoutUsersInput } from "./OpportunityUpdateManyWithoutUsersInput";
 import { ProjectUpdateManyWithoutUsersInput } from "./ProjectUpdateManyWithoutUsersInput";
+import { ProjectInvolvementUpdateManyWithoutUsersInput } from "./ProjectInvolvementUpdateManyWithoutUsersInput";
 import { SkillSetUpdateManyWithoutUsersInput } from "./SkillSetUpdateManyWithoutUsersInput";
 
 export type UserUpdateInput = {
@@ -22,6 +23,7 @@ export type UserUpdateInput = {
   email?: string | null;
   emergencyContactNumber?: number | null;
   firstName?: string;
+  folderLink?: string | null;
   fwExperience?: string | null;
   gender?: "male" | "female" | "others";
   image?: string | null;
@@ -33,6 +35,8 @@ export type UserUpdateInput = {
   password?: string;
   personalEmailId?: string | null;
   project?: ProjectUpdateManyWithoutUsersInput;
+  projectInvolved?: ProjectInvolvementUpdateManyWithoutUsersInput;
+  resumeLink?: string | null;
   roles?: Array<string>;
   skillSets?: SkillSetUpdateManyWithoutUsersInput;
   toPerson?: AwardUpdateManyWithoutUsersInput;

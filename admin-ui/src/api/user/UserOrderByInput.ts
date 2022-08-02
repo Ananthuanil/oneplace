@@ -15,6 +15,7 @@ export type UserOrderByInput = {
   email?: SortOrder;
   emergencyContactNumber?: SortOrder;
   firstName?: SortOrder;
+  folderLink?: SortOrder;
   fwExperience?: SortOrder;
   gender?: SortOrder;
   id?: SortOrder;
@@ -23,6 +24,7 @@ export type UserOrderByInput = {
   panNumber?: SortOrder;
   password?: SortOrder;
   personalEmailId?: SortOrder;
+  resumeLink?: SortOrder;
   roles?: SortOrder;
   totalExperience?: SortOrder;
   updatedAt?: SortOrder;

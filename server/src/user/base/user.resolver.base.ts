@@ -18,6 +18,7 @@ import * as gqlACGuard from "../../auth/gqlAC.guard";
 import { isRecordNotFoundError } from "../../prisma.util";
 import { MetaQueryPayload } from "../../util/MetaQueryPayload";
 import { Public } from "../../decorators/public.decorator";
+import { AclFilterResponseInterceptor } from "../../interceptors/aclFilterResponse.interceptor";
 import { CreateUserArgs } from "./CreateUserArgs";
 import { UpdateUserArgs } from "./UpdateUserArgs";
 import { DeleteUserArgs } from "./DeleteUserArgs";
@@ -34,6 +35,8 @@ import { OpportunityFindManyArgs } from "../../opportunity/base/OpportunityFindM
 import { Opportunity } from "../../opportunity/base/Opportunity";
 import { ProjectFindManyArgs } from "../../project/base/ProjectFindManyArgs";
 import { Project } from "../../project/base/Project";
+import { ProjectInvolvementFindManyArgs } from "../../projectInvolvement/base/ProjectInvolvementFindManyArgs";
+import { ProjectInvolvement } from "../../projectInvolvement/base/ProjectInvolvement";
 import { SkillSetFindManyArgs } from "../../skillSet/base/SkillSetFindManyArgs";
 import { SkillSet } from "../../skillSet/base/SkillSet";
 import { Community } from "../../community/base/Community";
@@ -218,6 +221,26 @@ export class UserResolverBase {
     @graphql.Args() args: ProjectFindManyArgs
   ): Promise<Project[]> {
     const results = await this.service.findProject(parent.id, args);
+
+    if (!results) {
+      return [];
+    }
+
+    return results;
+  }
+
+  @common.UseInterceptors(AclFilterResponseInterceptor)
+  @graphql.ResolveField(() => [ProjectInvolvement])
+  @nestAccessControl.UseRoles({
+    resource: "ProjectInvolvement",
+    action: "read",
+    possession: "any",
+  })
+  async projectInvolved(
+    @graphql.Parent() parent: User,
+    @graphql.Args() args: ProjectInvolvementFindManyArgs
+  ): Promise<ProjectInvolvement[]> {
+    const results = await this.service.findProjectInvolved(parent.id, args);
 
     if (!results) {
       return [];

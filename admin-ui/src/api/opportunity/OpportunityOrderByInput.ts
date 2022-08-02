@@ -10,5 +10,8 @@ export type OpportunityOrderByInput = {
   partnerId?: SortOrder;
   requiredExperience?: SortOrder;
   requirements?: SortOrder;
+  resumeId?: SortOrder;
+  source?: SortOrder;
   updatedAt?: SortOrder;
+  winOdds?: SortOrder;
 };

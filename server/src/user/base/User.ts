@@ -27,6 +27,7 @@ import { EnumUserGender } from "./EnumUserGender";
 import { Interview } from "../../interview/base/Interview";
 import { Opportunity } from "../../opportunity/base/Opportunity";
 import { Project } from "../../project/base/Project";
+import { ProjectInvolvement } from "../../projectInvolvement/base/ProjectInvolvement";
 import { SkillSet } from "../../skillSet/base/SkillSet";
 @ObjectType()
 class User {
@@ -203,6 +204,17 @@ class User {
   @Field(() => String, {
     nullable: true,
   })
+  folderLink!: string | null;
+
+  @ApiProperty({
+    required: false,
+    type: String,
+  })
+  @IsString()
+  @IsOptional()
+  @Field(() => String, {
+    nullable: true,
+  })
   fwExperience!: string | null;
 
   @ApiProperty({
@@ -299,6 +311,26 @@ class User {
   @Type(() => Project)
   @IsOptional()
   project?: Array<Project>;
+
+  @ApiProperty({
+    required: false,
+    type: () => [ProjectInvolvement],
+  })
+  @ValidateNested()
+  @Type(() => ProjectInvolvement)
+  @IsOptional()
+  projectInvolved?: Array<ProjectInvolvement>;
+
+  @ApiProperty({
+    required: false,
+    type: String,
+  })
+  @IsString()
+  @IsOptional()
+  @Field(() => String, {
+    nullable: true,
+  })
+  resumeLink!: string | null;
 
   @ApiProperty({
     required: true,

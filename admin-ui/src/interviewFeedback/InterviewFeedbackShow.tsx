@@ -13,7 +13,6 @@ import {
 
 import { CANDIDATE_TITLE_FIELD } from "../candidate/CandidateTitle";
 import { INTERVIEWFEEDBACK_TITLE_FIELD } from "./InterviewFeedbackTitle";
-import { OPPORTUNITY_TITLE_FIELD } from "../opportunity/OpportunityTitle";
 import { SKILL_TITLE_FIELD } from "../skill/SkillTitle";
 import { COMMUNICATIONFEEDBACK_TITLE_FIELD } from "../communicationFeedback/CommunicationFeedbackTitle";
 import { INTERVIEW_TITLE_FIELD } from "../interview/InterviewTitle";
@@ -70,13 +69,6 @@ export const InterviewFeedbackShow = (props: ShowProps): React.ReactElement => {
               reference="InterviewFeedback"
             >
               <TextField source={INTERVIEWFEEDBACK_TITLE_FIELD} />
-            </ReferenceField>
-            <ReferenceField
-              label="Opportunity"
-              source="opportunity.id"
-              reference="Opportunity"
-            >
-              <TextField source={OPPORTUNITY_TITLE_FIELD} />
             </ReferenceField>
             <ReferenceField label="Skill" source="skill.id" reference="Skill">
               <TextField source={SKILL_TITLE_FIELD} />

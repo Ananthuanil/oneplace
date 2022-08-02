@@ -40,7 +40,10 @@ export const OpportunityList = (props: ListProps): React.ReactElement => {
         </ReferenceField>
         <TextField label="Required Experience" source="requiredExperience" />
         <TextField label="Requirements" source="requirements" />
+        <TextField label="Resume ID" source="resumeId" />
+        <TextField label="Source" source="source" />
         <DateField source="updatedAt" label="Updated At" />
+        <TextField label="Win Odds" source="winOdds" />
       </Datagrid>
     </List>
   );

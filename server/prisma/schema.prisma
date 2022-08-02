@@ -10,39 +10,42 @@ generator client {
 model User {
   aadarNumber            String?
   address                String?
-  awards                 Award[]        @relation(name: "awards")
+  awards                 Award[]              @relation(name: "awards")
   bloodGroup             String?
   candidates             Candidate[]
   careerOutDate          DateTime?
   careerStartDate        DateTime?
-  community              Community?     @relation(fields: [communityId], references: [id])
+  community              Community?           @relation(fields: [communityId], references: [id])
   communityId            String?
   contactNumber          Int?
-  createdAt              DateTime       @default(now())
+  createdAt              DateTime             @default(now())
   dateOfJoining          DateTime?
   designation            String?
   dob                    DateTime?
   email                  String?
   emergencyContactNumber Int?
   firstName              String
+  folderLink             String?
   fwExperience           String?
   gender                 EnumUserGender
-  id                     String         @id @default(cuid())
+  id                     String               @id @default(cuid())
   image                  String?
   interviews             Interview[]
   lastName               String
-  mappedPerson           Opportunity[]  @relation(name: "OpportunityMappedPersonUserMappedPerson")
-  opportunities          Opportunity[]  @relation(name: "claimedPerson")
+  mappedPerson           Opportunity[]        @relation(name: "OpportunityMappedPersonUserMappedPerson")
+  opportunities          Opportunity[]        @relation(name: "claimedPerson")
   panNumber              String?
   password               String
   personalEmailId        String?
   project                Project[]
+  projectInvolved        ProjectInvolvement[]
+  resumeLink             String?
   roles                  String[]
   skillSets              SkillSet[]
-  toPerson               Award[]        @relation(name: "AwardToPersonUserToPerson")
+  toPerson               Award[]              @relation(name: "AwardToPersonUserToPerson")
   totalExperience        String
-  updatedAt              DateTime       @updatedAt
-  username               String         @unique
+  updatedAt              DateTime             @updatedAt
+  username               String               @unique
 }
 
 model Community {
@@ -55,13 +58,17 @@ model Community {
 }
 
 model Skill {
-  candidate   Candidate? @relation(fields: [candidateId], references: [id])
-  candidateId String?
-  createdAt   DateTime   @default(now())
-  id          String     @id @default(cuid())
-  name        String?
-  skillSets   SkillSet[]
-  updatedAt   DateTime?  @updatedAt
+  candidate                   Candidate?   @relation(fields: [candidateId], references: [id])
+  candidateId                 String?
+  createdAt                   DateTime     @default(now())
+  id                          String       @id @default(cuid())
+  name                        String?
+  opportunity                 Opportunity? @relation(name: "optionalSkillset", fields: [opportunityId], references: [id])
+  opportunityId               String?
+  oppurtunatyRequiredSkills   Opportunity? @relation(name: "oppurtunatyRequiredSkills", fields: [oppurtunatyRequiredSkillsId], references: [id])
+  oppurtunatyRequiredSkillsId String?
+  skillSets                   SkillSet[]
+  updatedAt                   DateTime?    @updatedAt
 }
 
 model SkillSet {
@@ -73,8 +80,6 @@ model SkillSet {
   id                  String             @id @default(cuid())
   interviewFeedback   InterviewFeedback? @relation(fields: [interviewFeedbackId], references: [id])
   interviewFeedbackId String?
-  opportunity         Opportunity?       @relation(fields: [opportunityId], references: [id])
-  opportunityId       String?
   skill               Skill?             @relation(fields: [skillId], references: [id])
   skillId             String?
   updatedAt           DateTime           @updatedAt
@@ -154,12 +159,16 @@ model Opportunity {
   mappedPerson       User?                         @relation(name: "OpportunityMappedPersonUserMappedPerson", fields: [mappedPersonId], references: [id])
   mappedPersonId     String?
   name               String?
+  optionalSkillset   Skill[]                       @relation(name: "optionalSkillset")
   partner            Partner?                      @relation(fields: [partnerId], references: [id])
   partnerId          String?
   requiredExperience Int?
-  requiredSkillset   SkillSet[]
+  requiredSkills     Skill[]                       @relation(name: "oppurtunatyRequiredSkills")
   requirements       String?
+  resumeId           String?
+  source             EnumOpportunitySource?
   updatedAt          DateTime                      @updatedAt
+  winOdds            Int?
 }
 
 model Partner {
@@ -173,14 +182,15 @@ model Partner {
 }
 
 model Project {
-  createdAt DateTime  @default(now())
-  id        String    @id @default(cuid())
-  name      String?
-  partner   Partner?  @relation(fields: [partnerId], references: [id])
-  partnerId String?
-  startDate DateTime?
-  updatedAt DateTime  @updatedAt
-  users     User[]
+  createdAt           DateTime             @default(now())
+  id                  String               @id @default(cuid())
+  name                String?
+  partner             Partner?             @relation(fields: [partnerId], references: [id])
+  partnerId           String?
+  projectInvolvements ProjectInvolvement[]
+  startDate           DateTime?
+  updatedAt           DateTime             @updatedAt
+  users               User[]
 }
 
 model CommunicationFeedback {
@@ -203,6 +213,17 @@ model Award {
   toPerson     User?    @relation(name: "AwardToPersonUserToPerson", fields: [toPersonId], references: [id])
   toPersonId   String?
   updatedAt    DateTime @updatedAt
+}
+
+model ProjectInvolvement {
+  createdAt             DateTime @default(now())
+  id                    String   @id @default(cuid())
+  involvementPercentage Int?
+  project               Project? @relation(fields: [projectId], references: [id])
+  projectId             String?
+  updatedAt             DateTime @updatedAt
+  user                  User?    @relation(fields: [userId], references: [id])
+  userId                String?
 }
 
 enum EnumUserGender {
@@ -257,4 +278,9 @@ enum EnumOpportunityCurrentStatus {
   OnHold
   Won
   Failed
+}
+
+enum EnumOpportunitySource {
+  New
+  BackFill
 }

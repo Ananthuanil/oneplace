@@ -28,7 +28,7 @@ COPY . .
 RUN npm run build
 
 # Expose the port the client listens to
-EXPOSE 8080
+EXPOSE 3001
 
 # Run admin-ui
 

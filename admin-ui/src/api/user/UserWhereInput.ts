@@ -8,6 +8,7 @@ import { StringFilter } from "../../util/StringFilter";
 import { InterviewListRelationFilter } from "../interview/InterviewListRelationFilter";
 import { OpportunityListRelationFilter } from "../opportunity/OpportunityListRelationFilter";
 import { ProjectListRelationFilter } from "../project/ProjectListRelationFilter";
+import { ProjectInvolvementListRelationFilter } from "../projectInvolvement/ProjectInvolvementListRelationFilter";
 import { SkillSetListRelationFilter } from "../skillSet/SkillSetListRelationFilter";
 
 export type UserWhereInput = {
@@ -26,6 +27,7 @@ export type UserWhereInput = {
   email?: StringNullableFilter;
   emergencyContactNumber?: IntNullableFilter;
   firstName?: StringFilter;
+  folderLink?: StringNullableFilter;
   fwExperience?: StringNullableFilter;
   gender?: "male" | "female" | "others";
   id?: StringFilter;
@@ -37,6 +39,8 @@ export type UserWhereInput = {
   panNumber?: StringNullableFilter;
   personalEmailId?: StringNullableFilter;
   project?: ProjectListRelationFilter;
+  projectInvolved?: ProjectInvolvementListRelationFilter;
+  resumeLink?: StringNullableFilter;
   skillSets?: SkillSetListRelationFilter;
   toPerson?: AwardListRelationFilter;
   totalExperience?: StringFilter;
