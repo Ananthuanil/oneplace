@@ -16,7 +16,7 @@ export type UserCreateInput = {
   careerOutDate?: Date | null;
   careerStartDate?: Date | null;
   community?: CommunityWhereUniqueInput | null;
-  contactNumber?: number | null;
+  contactNumber?: string | null;
   dateOfJoining?: Date | null;
   designation?: string | null;
   dob?: Date | null;
