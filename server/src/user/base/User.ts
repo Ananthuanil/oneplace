@@ -27,6 +27,7 @@ import { EnumUserGender } from "./EnumUserGender";
 import { Interview } from "../../interview/base/Interview";
 import { Opportunity } from "../../opportunity/base/Opportunity";
 import { Project } from "../../project/base/Project";
+import { ProjectInvolvement } from "../../projectInvolvement/base/ProjectInvolvement";
 import { SkillSet } from "../../skillSet/base/SkillSet";
 @ObjectType()
 class User {
@@ -299,6 +300,15 @@ class User {
   @Type(() => Project)
   @IsOptional()
   project?: Array<Project>;
+
+  @ApiProperty({
+    required: false,
+    type: () => [ProjectInvolvement],
+  })
+  @ValidateNested()
+  @Type(() => ProjectInvolvement)
+  @IsOptional()
+  projectInvolved?: Array<ProjectInvolvement>;
 
   @ApiProperty({
     required: true,

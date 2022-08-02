@@ -16,6 +16,7 @@ import { USER_TITLE_FIELD } from "./UserTitle";
 import { CANDIDATE_TITLE_FIELD } from "../candidate/CandidateTitle";
 import { OPPORTUNITY_TITLE_FIELD } from "../opportunity/OpportunityTitle";
 import { PARTNER_TITLE_FIELD } from "../partner/PartnerTitle";
+import { PROJECT_TITLE_FIELD } from "../project/ProjectTitle";
 import { COMMUNITY_TITLE_FIELD } from "../community/CommunityTitle";
 
 export const UserShow = (props: ShowProps): React.ReactElement => {
@@ -196,7 +197,9 @@ export const UserShow = (props: ShowProps): React.ReactElement => {
               source="requiredExperience"
             />
             <TextField label="Requirements" source="requirements" />
+            <TextField label="Source" source="source" />
             <DateField source="updatedAt" label="Updated At" />
+            <TextField label="Win Odds" source="winOdds" />
           </Datagrid>
         </ReferenceManyField>
         <ReferenceManyField
@@ -235,7 +238,34 @@ export const UserShow = (props: ShowProps): React.ReactElement => {
               source="requiredExperience"
             />
             <TextField label="Requirements" source="requirements" />
+            <TextField label="Source" source="source" />
             <DateField source="updatedAt" label="Updated At" />
+            <TextField label="Win Odds" source="winOdds" />
+          </Datagrid>
+        </ReferenceManyField>
+        <ReferenceManyField
+          reference="ProjectInvolvement"
+          target="UserId"
+          label="ProjectInvolvements"
+        >
+          <Datagrid rowClick="show">
+            <DateField source="createdAt" label="Created At" />
+            <TextField label="ID" source="id" />
+            <TextField
+              label="involvementPercentage"
+              source="involvementPercentage"
+            />
+            <ReferenceField
+              label="project"
+              source="project.id"
+              reference="Project"
+            >
+              <TextField source={PROJECT_TITLE_FIELD} />
+            </ReferenceField>
+            <DateField source="updatedAt" label="Updated At" />
+            <ReferenceField label="Employees" source="user.id" reference="User">
+              <TextField source={USER_TITLE_FIELD} />
+            </ReferenceField>
           </Datagrid>
         </ReferenceManyField>
         <ReferenceManyField reference="Award" target="UserId" label="Awards">

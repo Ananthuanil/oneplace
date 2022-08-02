@@ -14,6 +14,7 @@ import { ApiProperty } from "@nestjs/swagger";
 import { IsString, IsOptional, ValidateNested, IsDate } from "class-validator";
 import { PartnerWhereUniqueInput } from "../../partner/base/PartnerWhereUniqueInput";
 import { Type } from "class-transformer";
+import { ProjectInvolvementUpdateManyWithoutProjectsInput } from "./ProjectInvolvementUpdateManyWithoutProjectsInput";
 import { UserUpdateManyWithoutProjectsInput } from "./UserUpdateManyWithoutProjectsInput";
 @InputType()
 class ProjectUpdateInput {
@@ -39,6 +40,18 @@ class ProjectUpdateInput {
     nullable: true,
   })
   partner?: PartnerWhereUniqueInput | null;
+
+  @ApiProperty({
+    required: false,
+    type: () => ProjectInvolvementUpdateManyWithoutProjectsInput,
+  })
+  @ValidateNested()
+  @Type(() => ProjectInvolvementUpdateManyWithoutProjectsInput)
+  @IsOptional()
+  @Field(() => ProjectInvolvementUpdateManyWithoutProjectsInput, {
+    nullable: true,
+  })
+  projectInvolvements?: ProjectInvolvementUpdateManyWithoutProjectsInput;
 
   @ApiProperty({
     required: false,

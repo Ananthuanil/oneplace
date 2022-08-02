@@ -22,8 +22,9 @@ import {
 import { Type } from "class-transformer";
 import { EnumOpportunityCurrentStatus } from "./EnumOpportunityCurrentStatus";
 import { InterviewCreateNestedManyWithoutOpportunitiesInput } from "./InterviewCreateNestedManyWithoutOpportunitiesInput";
+import { SkillCreateNestedManyWithoutOpportunitiesInput } from "./SkillCreateNestedManyWithoutOpportunitiesInput";
 import { PartnerWhereUniqueInput } from "../../partner/base/PartnerWhereUniqueInput";
-import { SkillSetCreateNestedManyWithoutOpportunitiesInput } from "./SkillSetCreateNestedManyWithoutOpportunitiesInput";
+import { EnumOpportunitySource } from "./EnumOpportunitySource";
 @InputType()
 class OpportunityCreateInput {
   @ApiProperty({
@@ -96,6 +97,18 @@ class OpportunityCreateInput {
 
   @ApiProperty({
     required: false,
+    type: () => SkillCreateNestedManyWithoutOpportunitiesInput,
+  })
+  @ValidateNested()
+  @Type(() => SkillCreateNestedManyWithoutOpportunitiesInput)
+  @IsOptional()
+  @Field(() => SkillCreateNestedManyWithoutOpportunitiesInput, {
+    nullable: true,
+  })
+  optionalSkillset?: SkillCreateNestedManyWithoutOpportunitiesInput;
+
+  @ApiProperty({
+    required: false,
     type: () => PartnerWhereUniqueInput,
   })
   @ValidateNested()
@@ -119,15 +132,15 @@ class OpportunityCreateInput {
 
   @ApiProperty({
     required: false,
-    type: () => SkillSetCreateNestedManyWithoutOpportunitiesInput,
+    type: () => SkillCreateNestedManyWithoutOpportunitiesInput,
   })
   @ValidateNested()
-  @Type(() => SkillSetCreateNestedManyWithoutOpportunitiesInput)
+  @Type(() => SkillCreateNestedManyWithoutOpportunitiesInput)
   @IsOptional()
-  @Field(() => SkillSetCreateNestedManyWithoutOpportunitiesInput, {
+  @Field(() => SkillCreateNestedManyWithoutOpportunitiesInput, {
     nullable: true,
   })
-  requiredSkillset?: SkillSetCreateNestedManyWithoutOpportunitiesInput;
+  requiredSkills?: SkillCreateNestedManyWithoutOpportunitiesInput;
 
   @ApiProperty({
     required: false,
@@ -139,5 +152,27 @@ class OpportunityCreateInput {
     nullable: true,
   })
   requirements?: string | null;
+
+  @ApiProperty({
+    required: false,
+    enum: EnumOpportunitySource,
+  })
+  @IsEnum(EnumOpportunitySource)
+  @IsOptional()
+  @Field(() => EnumOpportunitySource, {
+    nullable: true,
+  })
+  source?: "New" | "BackFill" | null;
+
+  @ApiProperty({
+    required: false,
+    type: Number,
+  })
+  @IsInt()
+  @IsOptional()
+  @Field(() => Number, {
+    nullable: true,
+  })
+  winOdds?: number | null;
 }
 export { OpportunityCreateInput };

@@ -12,6 +12,7 @@ import {
 } from "react-admin";
 
 import { CandidateTitle } from "../candidate/CandidateTitle";
+import { OpportunityTitle } from "../opportunity/OpportunityTitle";
 import { SkillSetTitle } from "../skillSet/SkillSetTitle";
 
 export const SkillEdit = (props: EditProps): React.ReactElement => {
@@ -26,6 +27,20 @@ export const SkillEdit = (props: EditProps): React.ReactElement => {
           <SelectInput optionText={CandidateTitle} />
         </ReferenceInput>
         <TextInput label="Name" source="name" />
+        <ReferenceInput
+          source="opportunity.id"
+          reference="Opportunity"
+          label="Opportunity"
+        >
+          <SelectInput optionText={OpportunityTitle} />
+        </ReferenceInput>
+        <ReferenceInput
+          source="opportunity.id"
+          reference="Opportunity"
+          label="OppurtunatyRequiredSkills"
+        >
+          <SelectInput optionText={OpportunityTitle} />
+        </ReferenceInput>
         <ReferenceArrayInput
           source="skillSets"
           reference="SkillSet"

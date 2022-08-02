@@ -4,6 +4,7 @@ import { CommunityWhereUniqueInput } from "../community/CommunityWhereUniqueInpu
 import { InterviewCreateNestedManyWithoutUsersInput } from "./InterviewCreateNestedManyWithoutUsersInput";
 import { OpportunityCreateNestedManyWithoutUsersInput } from "./OpportunityCreateNestedManyWithoutUsersInput";
 import { ProjectCreateNestedManyWithoutUsersInput } from "./ProjectCreateNestedManyWithoutUsersInput";
+import { ProjectInvolvementCreateNestedManyWithoutUsersInput } from "./ProjectInvolvementCreateNestedManyWithoutUsersInput";
 import { SkillSetCreateNestedManyWithoutUsersInput } from "./SkillSetCreateNestedManyWithoutUsersInput";
 
 export type UserCreateInput = {
@@ -33,6 +34,7 @@ export type UserCreateInput = {
   password: string;
   personalEmailId?: string | null;
   project?: ProjectCreateNestedManyWithoutUsersInput;
+  projectInvolved?: ProjectInvolvementCreateNestedManyWithoutUsersInput;
   roles: Array<string>;
   skillSets?: SkillSetCreateNestedManyWithoutUsersInput;
   toPerson?: AwardCreateNestedManyWithoutUsersInput;

@@ -20,6 +20,7 @@ import { CommunityTitle } from "../community/CommunityTitle";
 import { InterviewTitle } from "../interview/InterviewTitle";
 import { OpportunityTitle } from "../opportunity/OpportunityTitle";
 import { ProjectTitle } from "../project/ProjectTitle";
+import { ProjectInvolvementTitle } from "../projectInvolvement/ProjectInvolvementTitle";
 import { SkillSetTitle } from "../skillSet/SkillSetTitle";
 import { ROLES_OPTIONS } from "../user/RolesOptions";
 
@@ -118,6 +119,14 @@ export const UserCreate = (props: CreateProps): React.ReactElement => {
           format={(value: any) => value && value.map((v: any) => v.id)}
         >
           <SelectArrayInput optionText={ProjectTitle} />
+        </ReferenceArrayInput>
+        <ReferenceArrayInput
+          source="projectInvolved"
+          reference="ProjectInvolvement"
+          parse={(value: any) => value && value.map((v: any) => ({ id: v }))}
+          format={(value: any) => value && value.map((v: any) => v.id)}
+        >
+          <SelectArrayInput optionText={ProjectInvolvementTitle} />
         </ReferenceArrayInput>
         <SelectArrayInput
           source="roles"

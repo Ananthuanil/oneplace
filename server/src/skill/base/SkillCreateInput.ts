@@ -14,6 +14,7 @@ import { ApiProperty } from "@nestjs/swagger";
 import { CandidateWhereUniqueInput } from "../../candidate/base/CandidateWhereUniqueInput";
 import { ValidateNested, IsOptional, IsString } from "class-validator";
 import { Type } from "class-transformer";
+import { OpportunityWhereUniqueInput } from "../../opportunity/base/OpportunityWhereUniqueInput";
 import { SkillSetCreateNestedManyWithoutSkillsInput } from "./SkillSetCreateNestedManyWithoutSkillsInput";
 @InputType()
 class SkillCreateInput {
@@ -39,6 +40,30 @@ class SkillCreateInput {
     nullable: true,
   })
   name?: string | null;
+
+  @ApiProperty({
+    required: false,
+    type: () => OpportunityWhereUniqueInput,
+  })
+  @ValidateNested()
+  @Type(() => OpportunityWhereUniqueInput)
+  @IsOptional()
+  @Field(() => OpportunityWhereUniqueInput, {
+    nullable: true,
+  })
+  opportunity?: OpportunityWhereUniqueInput | null;
+
+  @ApiProperty({
+    required: false,
+    type: () => OpportunityWhereUniqueInput,
+  })
+  @ValidateNested()
+  @Type(() => OpportunityWhereUniqueInput)
+  @IsOptional()
+  @Field(() => OpportunityWhereUniqueInput, {
+    nullable: true,
+  })
+  oppurtunatyRequiredSkills?: OpportunityWhereUniqueInput | null;
 
   @ApiProperty({
     required: false,

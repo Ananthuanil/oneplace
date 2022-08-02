@@ -24,6 +24,7 @@ import { EnumUserGender } from "./EnumUserGender";
 import { InterviewListRelationFilter } from "../../interview/base/InterviewListRelationFilter";
 import { OpportunityListRelationFilter } from "../../opportunity/base/OpportunityListRelationFilter";
 import { ProjectListRelationFilter } from "../../project/base/ProjectListRelationFilter";
+import { ProjectInvolvementListRelationFilter } from "../../projectInvolvement/base/ProjectInvolvementListRelationFilter";
 import { SkillSetListRelationFilter } from "../../skillSet/base/SkillSetListRelationFilter";
 @InputType()
 class UserWhereInput {
@@ -319,6 +320,18 @@ class UserWhereInput {
     nullable: true,
   })
   project?: ProjectListRelationFilter;
+
+  @ApiProperty({
+    required: false,
+    type: () => ProjectInvolvementListRelationFilter,
+  })
+  @ValidateNested()
+  @Type(() => ProjectInvolvementListRelationFilter)
+  @IsOptional()
+  @Field(() => ProjectInvolvementListRelationFilter, {
+    nullable: true,
+  })
+  projectInvolved?: ProjectInvolvementListRelationFilter;
 
   @ApiProperty({
     required: false,

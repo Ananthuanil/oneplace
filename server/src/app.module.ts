@@ -13,6 +13,7 @@ import { PartnerModule } from "./partner/partner.module";
 import { ProjectModule } from "./project/project.module";
 import { CommunicationFeedbackModule } from "./communicationFeedback/communicationFeedback.module";
 import { AwardModule } from "./award/award.module";
+import { ProjectInvolvementModule } from "./projectInvolvement/projectInvolvement.module";
 import { ACLModule } from "./auth/acl.module";
 import { AuthModule } from "./auth/auth.module";
 import { HealthModule } from "./health/health.module";
@@ -37,6 +38,7 @@ import { GraphQLModule } from "@nestjs/graphql";
     ProjectModule,
     CommunicationFeedbackModule,
     AwardModule,
+    ProjectInvolvementModule,
     ACLModule,
     AuthModule,
     HealthModule,

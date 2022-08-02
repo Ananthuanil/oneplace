@@ -16,7 +16,6 @@ import { ValidateNested, IsOptional, IsInt } from "class-validator";
 import { Type } from "class-transformer";
 import { UserUpdateManyWithoutSkillSetsInput } from "./UserUpdateManyWithoutSkillSetsInput";
 import { InterviewFeedbackWhereUniqueInput } from "../../interviewFeedback/base/InterviewFeedbackWhereUniqueInput";
-import { OpportunityWhereUniqueInput } from "../../opportunity/base/OpportunityWhereUniqueInput";
 import { SkillWhereUniqueInput } from "../../skill/base/SkillWhereUniqueInput";
 @InputType()
 class SkillSetUpdateInput {
@@ -66,18 +65,6 @@ class SkillSetUpdateInput {
     nullable: true,
   })
   interviewFeedback?: InterviewFeedbackWhereUniqueInput | null;
-
-  @ApiProperty({
-    required: false,
-    type: () => OpportunityWhereUniqueInput,
-  })
-  @ValidateNested()
-  @Type(() => OpportunityWhereUniqueInput)
-  @IsOptional()
-  @Field(() => OpportunityWhereUniqueInput, {
-    nullable: true,
-  })
-  opportunity?: OpportunityWhereUniqueInput | null;
 
   @ApiProperty({
     required: false,
