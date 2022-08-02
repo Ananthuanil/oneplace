@@ -121,14 +121,14 @@ class UserWhereInput {
 
   @ApiProperty({
     required: false,
-    type: IntNullableFilter,
+    type: StringNullableFilter,
   })
-  @Type(() => IntNullableFilter)
+  @Type(() => StringNullableFilter)
   @IsOptional()
-  @Field(() => IntNullableFilter, {
+  @Field(() => StringNullableFilter, {
     nullable: true,
   })
-  contactNumber?: IntNullableFilter;
+  contactNumber?: StringNullableFilter;
 
   @ApiProperty({
     required: false,

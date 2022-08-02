@@ -17,7 +17,7 @@ model User {
   careerStartDate        DateTime?
   community              Community?           @relation(fields: [communityId], references: [id])
   communityId            String?
-  contactNumber          Int?
+  contactNumber          String?
   createdAt              DateTime             @default(now())
   dateOfJoining          DateTime?
   designation            String?
