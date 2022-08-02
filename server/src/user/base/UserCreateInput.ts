@@ -242,6 +242,17 @@ class UserCreateInput {
 
   @ApiProperty({
     required: false,
+    type: String,
+  })
+  @IsString()
+  @IsOptional()
+  @Field(() => String, {
+    nullable: true,
+  })
+  imageLink?: string | null;
+
+  @ApiProperty({
+    required: false,
     type: () => InterviewCreateNestedManyWithoutUsersInput,
   })
   @ValidateNested()

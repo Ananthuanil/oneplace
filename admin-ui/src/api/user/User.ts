@@ -29,6 +29,7 @@ export type User = {
   gender?: "male" | "female" | "others" | null;
   id: string;
   image: string | null;
+  imageLink: string | null;
   interviews?: Array<Interview>;
   lastName: string;
   mappedPerson?: Array<Opportunity>;

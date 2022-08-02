@@ -82,6 +82,7 @@ export const UserCreate = (props: CreateProps): React.ReactElement => {
           optionValue="value"
         />
         <TextInput label="Image" source="image" />
+        <TextInput label="Image Link" source="imageLink" />
         <ReferenceArrayInput
           source="interviews"
           reference="Interview"

@@ -27,6 +27,7 @@ export type UserCreateInput = {
   fwExperience?: string | null;
   gender?: "male" | "female" | "others" | null;
   image?: string | null;
+  imageLink?: string | null;
   interviews?: InterviewCreateNestedManyWithoutUsersInput;
   lastName: string;
   mappedPerson?: OpportunityCreateNestedManyWithoutUsersInput;
