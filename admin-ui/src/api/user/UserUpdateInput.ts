@@ -27,6 +27,7 @@ export type UserUpdateInput = {
   fwExperience?: string | null;
   gender?: "male" | "female" | "others" | null;
   image?: string | null;
+  imageLink?: string | null;
   interviews?: InterviewUpdateManyWithoutUsersInput;
   lastName?: string;
   mappedPerson?: OpportunityUpdateManyWithoutUsersInput;

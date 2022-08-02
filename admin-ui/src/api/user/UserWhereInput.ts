@@ -32,6 +32,7 @@ export type UserWhereInput = {
   gender?: "male" | "female" | "others";
   id?: StringFilter;
   image?: StringNullableFilter;
+  imageLink?: StringNullableFilter;
   interviews?: InterviewListRelationFilter;
   lastName?: StringFilter;
   mappedPerson?: OpportunityListRelationFilter;

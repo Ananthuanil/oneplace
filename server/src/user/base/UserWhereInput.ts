@@ -253,6 +253,17 @@ class UserWhereInput {
 
   @ApiProperty({
     required: false,
+    type: StringNullableFilter,
+  })
+  @Type(() => StringNullableFilter)
+  @IsOptional()
+  @Field(() => StringNullableFilter, {
+    nullable: true,
+  })
+  imageLink?: StringNullableFilter;
+
+  @ApiProperty({
+    required: false,
     type: () => InterviewListRelationFilter,
   })
   @ValidateNested()

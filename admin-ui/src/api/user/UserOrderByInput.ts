@@ -20,6 +20,7 @@ export type UserOrderByInput = {
   gender?: SortOrder;
   id?: SortOrder;
   image?: SortOrder;
+  imageLink?: SortOrder;
   lastName?: SortOrder;
   panNumber?: SortOrder;
   password?: SortOrder;

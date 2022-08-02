@@ -30,6 +30,7 @@ model User {
   gender                 EnumUserGender?
   id                     String               @id @default(cuid())
   image                  String?
+  imageLink              String?
   interviews             Interview[]
   lastName               String
   mappedPerson           Opportunity[]        @relation(name: "OpportunityMappedPersonUserMappedPerson")

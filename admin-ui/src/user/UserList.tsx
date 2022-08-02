@@ -48,6 +48,7 @@ export const UserList = (props: ListProps): React.ReactElement => {
         <TextField label="Gender" source="gender" />
         <TextField label="ID" source="id" />
         <TextField label="Image" source="image" />
+        <TextField label="Image Link" source="imageLink" />
         <TextField label="Last Name" source="lastName" />
         <TextField label="Pan Number" source="panNumber" />
         <TextField label="Personal Email ID" source="personalEmailId" />
