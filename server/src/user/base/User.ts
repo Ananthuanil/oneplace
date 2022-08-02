@@ -115,14 +115,14 @@ class User {
 
   @ApiProperty({
     required: false,
-    type: String,
+    type: Number,
   })
-  @IsString()
+  @IsInt()
   @IsOptional()
-  @Field(() => String, {
+  @Field(() => Number, {
     nullable: true,
   })
-  contactNumber!: string | null;
+  contactNumber!: number | null;
 
   @ApiProperty({
     required: true,
