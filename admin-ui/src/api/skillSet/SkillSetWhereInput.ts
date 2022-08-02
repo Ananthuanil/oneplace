@@ -3,7 +3,6 @@ import { UserListRelationFilter } from "../user/UserListRelationFilter";
 import { IntNullableFilter } from "../../util/IntNullableFilter";
 import { StringFilter } from "../../util/StringFilter";
 import { InterviewFeedbackWhereUniqueInput } from "../interviewFeedback/InterviewFeedbackWhereUniqueInput";
-import { OpportunityWhereUniqueInput } from "../opportunity/OpportunityWhereUniqueInput";
 import { SkillWhereUniqueInput } from "../skill/SkillWhereUniqueInput";
 
 export type SkillSetWhereInput = {
@@ -12,6 +11,5 @@ export type SkillSetWhereInput = {
   expertiseLevel?: IntNullableFilter;
   id?: StringFilter;
   interviewFeedback?: InterviewFeedbackWhereUniqueInput;
-  opportunity?: OpportunityWhereUniqueInput;
   skill?: SkillWhereUniqueInput;
 };
