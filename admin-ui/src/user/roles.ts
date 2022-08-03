@@ -4,6 +4,10 @@ export const ROLES = [
     displayName: "User",
   },
   {
+    name: "accountOwner",
+    displayName: "Account_Owner",
+  },
+  {
     name: "superAdmin",
     displayName: "SuperAdmin",
   },
