@@ -1,5 +1,11 @@
 [
   {
+    "role": "superAdmin",
+    "resource": "User",
+    "action": "read:own",
+    "attributes": "*"
+  },
+  {
     "role": "user",
     "resource": "ProjectInvolvement",
     "action": "read:own",
