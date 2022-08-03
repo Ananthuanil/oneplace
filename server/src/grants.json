@@ -1,17 +1,5 @@
 [
   {
-    "role": "superAdmin",
-    "resource": "User",
-    "action": "create:any",
-    "attributes": "*"
-  },
-  {
-    "role": "user",
-    "resource": "User",
-    "action": "create:any",
-    "attributes": "*"
-  },
-  {
     "role": "user",
     "resource": "ProjectInvolvement",
     "action": "read:own",
@@ -48,7 +36,7 @@
     "attributes": "*"
   },
   {
-    "role": "new",
+    "role": "tagMember",
     "resource": "ProjectInvolvement",
     "action": "read:own",
     "attributes": "*"
@@ -90,7 +78,7 @@
     "attributes": "*"
   },
   {
-    "role": "new",
+    "role": "tagMember",
     "resource": "ProjectInvolvement",
     "action": "create:any",
     "attributes": "*"
@@ -132,7 +120,7 @@
     "attributes": "*"
   },
   {
-    "role": "new",
+    "role": "tagMember",
     "resource": "ProjectInvolvement",
     "action": "update:any",
     "attributes": "*"
@@ -174,7 +162,7 @@
     "attributes": "*"
   },
   {
-    "role": "new",
+    "role": "tagMember",
     "resource": "ProjectInvolvement",
     "action": "delete:any",
     "attributes": "*"
@@ -216,7 +204,7 @@
     "attributes": "*"
   },
   {
-    "role": "new",
+    "role": "tagMember",
     "resource": "ProjectInvolvement",
     "action": "read:any",
     "attributes": "*"
