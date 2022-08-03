@@ -1,41 +1,5 @@
 [
   {
-    "role": "accountOwner",
-    "resource": "User",
-    "action": "read:own",
-    "attributes": "*"
-  },
-  {
-    "role": "associate",
-    "resource": "User",
-    "action": "read:own",
-    "attributes": "*"
-  },
-  {
-    "role": "hr",
-    "resource": "User",
-    "action": "read:own",
-    "attributes": "*"
-  },
-  {
-    "role": "superAdmin",
-    "resource": "User",
-    "action": "read:own",
-    "attributes": "*"
-  },
-  {
-    "role": "communityLead",
-    "resource": "User",
-    "action": "read:own",
-    "attributes": "*"
-  },
-  {
-    "role": "user",
-    "resource": "User",
-    "action": "read:own",
-    "attributes": "*"
-  },
-  {
     "role": "user",
     "resource": "ProjectInvolvement",
     "action": "read:own",
@@ -67,6 +31,12 @@
   },
   {
     "role": "communityLead",
+    "resource": "ProjectInvolvement",
+    "action": "read:own",
+    "attributes": "*"
+  },
+  {
+    "role": "new",
     "resource": "ProjectInvolvement",
     "action": "read:own",
     "attributes": "*"
@@ -108,6 +78,12 @@
     "attributes": "*"
   },
   {
+    "role": "new",
+    "resource": "ProjectInvolvement",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
     "role": "user",
     "resource": "ProjectInvolvement",
     "action": "update:any",
@@ -144,6 +120,12 @@
     "attributes": "*"
   },
   {
+    "role": "new",
+    "resource": "ProjectInvolvement",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
     "role": "user",
     "resource": "ProjectInvolvement",
     "action": "delete:any",
@@ -175,6 +157,12 @@
   },
   {
     "role": "communityLead",
+    "resource": "ProjectInvolvement",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "new",
     "resource": "ProjectInvolvement",
     "action": "delete:any",
     "attributes": "*"
@@ -211,6 +199,12 @@
   },
   {
     "role": "communityLead",
+    "resource": "ProjectInvolvement",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "new",
     "resource": "ProjectInvolvement",
     "action": "read:any",
     "attributes": "*"

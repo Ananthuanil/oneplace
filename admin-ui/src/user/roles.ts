@@ -23,4 +23,8 @@ export const ROLES = [
     name: "communityLead",
     displayName: "Community_Lead",
   },
+  {
+    name: "new",
+    displayName: "new",
+  },
 ];
