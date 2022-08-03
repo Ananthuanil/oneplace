@@ -18,7 +18,6 @@ import * as gqlACGuard from "../../auth/gqlAC.guard";
 import { isRecordNotFoundError } from "../../prisma.util";
 import { MetaQueryPayload } from "../../util/MetaQueryPayload";
 import { Public } from "../../decorators/public.decorator";
-import { AclFilterResponseInterceptor } from "../../interceptors/aclFilterResponse.interceptor";
 import { CreateAwardArgs } from "./CreateAwardArgs";
 import { UpdateAwardArgs } from "./UpdateAwardArgs";
 import { DeleteAwardArgs } from "./DeleteAwardArgs";
@@ -143,13 +142,8 @@ export class AwardResolverBase {
     }
   }
 
-  @common.UseInterceptors(AclFilterResponseInterceptor)
+  @Public()
   @graphql.ResolveField(() => User, { nullable: true })
-  @nestAccessControl.UseRoles({
-    resource: "User",
-    action: "read",
-    possession: "any",
-  })
   async fromPerson(@graphql.Parent() parent: Award): Promise<User | null> {
     const result = await this.service.getFromPerson(parent.id);
 
@@ -159,13 +153,8 @@ export class AwardResolverBase {
     return result;
   }
 
-  @common.UseInterceptors(AclFilterResponseInterceptor)
+  @Public()
   @graphql.ResolveField(() => User, { nullable: true })
-  @nestAccessControl.UseRoles({
-    resource: "User",
-    action: "read",
-    possession: "any",
-  })
   async toPerson(@graphql.Parent() parent: Award): Promise<User | null> {
     const result = await this.service.getToPerson(parent.id);
 
