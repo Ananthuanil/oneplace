@@ -18,6 +18,7 @@ import * as gqlACGuard from "../../auth/gqlAC.guard";
 import { isRecordNotFoundError } from "../../prisma.util";
 import { MetaQueryPayload } from "../../util/MetaQueryPayload";
 import { Public } from "../../decorators/public.decorator";
+import { AclFilterResponseInterceptor } from "../../interceptors/aclFilterResponse.interceptor";
 import { CreateOpportunityArgs } from "./CreateOpportunityArgs";
 import { UpdateOpportunityArgs } from "./UpdateOpportunityArgs";
 import { DeleteOpportunityArgs } from "./DeleteOpportunityArgs";
@@ -208,8 +209,13 @@ export class OpportunityResolverBase {
     return results;
   }
 
-  @Public()
+  @common.UseInterceptors(AclFilterResponseInterceptor)
   @graphql.ResolveField(() => User, { nullable: true })
+  @nestAccessControl.UseRoles({
+    resource: "User",
+    action: "read",
+    possession: "any",
+  })
   async claimedPerson(
     @graphql.Parent() parent: Opportunity
   ): Promise<User | null> {
@@ -221,8 +227,13 @@ export class OpportunityResolverBase {
     return result;
   }
 
-  @Public()
+  @common.UseInterceptors(AclFilterResponseInterceptor)
   @graphql.ResolveField(() => User, { nullable: true })
+  @nestAccessControl.UseRoles({
+    resource: "User",
+    action: "read",
+    possession: "any",
+  })
   async mappedPerson(
     @graphql.Parent() parent: Opportunity
   ): Promise<User | null> {

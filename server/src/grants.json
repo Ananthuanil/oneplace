@@ -1,6 +1,48 @@
 [
   {
+    "role": "accountOwner",
+    "resource": "User",
+    "action": "read:own",
+    "attributes": "*"
+  },
+  {
+    "role": "associate",
+    "resource": "User",
+    "action": "read:own",
+    "attributes": "*"
+  },
+  {
+    "role": "hr",
+    "resource": "User",
+    "action": "read:own",
+    "attributes": "*"
+  },
+  {
+    "role": "superAdmin",
+    "resource": "User",
+    "action": "read:own",
+    "attributes": "*"
+  },
+  {
+    "role": "communityLead",
+    "resource": "User",
+    "action": "read:own",
+    "attributes": "*"
+  },
+  {
     "role": "user",
+    "resource": "User",
+    "action": "read:own",
+    "attributes": "*"
+  },
+  {
+    "role": "user",
+    "resource": "ProjectInvolvement",
+    "action": "read:own",
+    "attributes": "*"
+  },
+  {
+    "role": "accountOwner",
     "resource": "ProjectInvolvement",
     "action": "read:own",
     "attributes": "*"
@@ -36,6 +78,12 @@
     "attributes": "*"
   },
   {
+    "role": "accountOwner",
+    "resource": "ProjectInvolvement",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
     "role": "superAdmin",
     "resource": "ProjectInvolvement",
     "action": "create:any",
@@ -66,6 +114,12 @@
     "attributes": "*"
   },
   {
+    "role": "accountOwner",
+    "resource": "ProjectInvolvement",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
     "role": "superAdmin",
     "resource": "ProjectInvolvement",
     "action": "update:any",
@@ -96,6 +150,12 @@
     "attributes": "*"
   },
   {
+    "role": "accountOwner",
+    "resource": "ProjectInvolvement",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
     "role": "superAdmin",
     "resource": "ProjectInvolvement",
     "action": "delete:any",
@@ -121,6 +181,12 @@
   },
   {
     "role": "user",
+    "resource": "ProjectInvolvement",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "accountOwner",
     "resource": "ProjectInvolvement",
     "action": "read:any",
     "attributes": "*"
