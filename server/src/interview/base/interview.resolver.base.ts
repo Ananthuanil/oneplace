@@ -18,7 +18,6 @@ import * as gqlACGuard from "../../auth/gqlAC.guard";
 import { isRecordNotFoundError } from "../../prisma.util";
 import { MetaQueryPayload } from "../../util/MetaQueryPayload";
 import { Public } from "../../decorators/public.decorator";
-import { AclFilterResponseInterceptor } from "../../interceptors/aclFilterResponse.interceptor";
 import { CreateInterviewArgs } from "./CreateInterviewArgs";
 import { UpdateInterviewArgs } from "./UpdateInterviewArgs";
 import { DeleteInterviewArgs } from "./DeleteInterviewArgs";
@@ -191,13 +190,8 @@ export class InterviewResolverBase {
     return result;
   }
 
-  @common.UseInterceptors(AclFilterResponseInterceptor)
+  @Public()
   @graphql.ResolveField(() => User, { nullable: true })
-  @nestAccessControl.UseRoles({
-    resource: "User",
-    action: "read",
-    possession: "any",
-  })
   async interviewer(@graphql.Parent() parent: Interview): Promise<User | null> {
     const result = await this.service.getInterviewer(parent.id);
 

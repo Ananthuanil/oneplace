@@ -5,4 +5,5 @@ export enum EnumRoles {
   Associate = "associate",
   Hr = "hr",
   CommunityLead = "communityLead",
+  New = "new",
 }
