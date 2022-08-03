@@ -17,13 +17,13 @@ model User {
   careerStartDate        DateTime?
   community              Community?           @relation(fields: [communityId], references: [id])
   communityId            String?
-  contactNumber          Int?
+  contactNumber          String?
   createdAt              DateTime             @default(now())
   dateOfJoining          DateTime?
   designation            String?
   dob                    DateTime?
   email                  String?
-  emergencyContactNumber Int?
+  emergencyContactNumber String?
   firstName              String
   folderLink             String?
   fwExperience           String?
