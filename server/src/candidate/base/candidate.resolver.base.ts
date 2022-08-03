@@ -18,7 +18,6 @@ import * as gqlACGuard from "../../auth/gqlAC.guard";
 import { isRecordNotFoundError } from "../../prisma.util";
 import { MetaQueryPayload } from "../../util/MetaQueryPayload";
 import { Public } from "../../decorators/public.decorator";
-import { AclFilterResponseInterceptor } from "../../interceptors/aclFilterResponse.interceptor";
 import { CreateCandidateArgs } from "./CreateCandidateArgs";
 import { UpdateCandidateArgs } from "./UpdateCandidateArgs";
 import { DeleteCandidateArgs } from "./DeleteCandidateArgs";
@@ -186,13 +185,8 @@ export class CandidateResolverBase {
     return results;
   }
 
-  @common.UseInterceptors(AclFilterResponseInterceptor)
+  @Public()
   @graphql.ResolveField(() => User, { nullable: true })
-  @nestAccessControl.UseRoles({
-    resource: "User",
-    action: "read",
-    possession: "any",
-  })
   async referalEmployee(
     @graphql.Parent() parent: Candidate
   ): Promise<User | null> {

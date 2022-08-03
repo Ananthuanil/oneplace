@@ -18,7 +18,6 @@ import * as gqlACGuard from "../../auth/gqlAC.guard";
 import { isRecordNotFoundError } from "../../prisma.util";
 import { MetaQueryPayload } from "../../util/MetaQueryPayload";
 import { Public } from "../../decorators/public.decorator";
-import { AclFilterResponseInterceptor } from "../../interceptors/aclFilterResponse.interceptor";
 import { CreateCommunityArgs } from "./CreateCommunityArgs";
 import { UpdateCommunityArgs } from "./UpdateCommunityArgs";
 import { DeleteCommunityArgs } from "./DeleteCommunityArgs";
@@ -120,13 +119,8 @@ export class CommunityResolverBase {
     }
   }
 
-  @common.UseInterceptors(AclFilterResponseInterceptor)
+  @Public()
   @graphql.ResolveField(() => [User])
-  @nestAccessControl.UseRoles({
-    resource: "User",
-    action: "read",
-    possession: "any",
-  })
   async users(
     @graphql.Parent() parent: Community,
     @graphql.Args() args: UserFindManyArgs
