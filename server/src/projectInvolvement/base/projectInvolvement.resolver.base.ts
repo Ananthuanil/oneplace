@@ -190,8 +190,13 @@ export class ProjectInvolvementResolverBase {
     return result;
   }
 
-  @Public()
+  @common.UseInterceptors(AclFilterResponseInterceptor)
   @graphql.ResolveField(() => User, { nullable: true })
+  @nestAccessControl.UseRoles({
+    resource: "User",
+    action: "read",
+    possession: "any",
+  })
   async user(
     @graphql.Parent() parent: ProjectInvolvement
   ): Promise<User | null> {

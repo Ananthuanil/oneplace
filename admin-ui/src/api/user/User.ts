@@ -16,13 +16,13 @@ export type User = {
   careerOutDate: Date | null;
   careerStartDate: Date | null;
   community?: Community | null;
-  contactNumber: number | null;
+  contactNumber: string | null;
   createdAt: Date;
   dateOfJoining: Date | null;
   designation: string | null;
   dob: Date | null;
   email: string | null;
-  emergencyContactNumber: number | null;
+  emergencyContactNumber: string | null;
   firstName: string;
   folderLink: string | null;
   fwExperience: string | null;

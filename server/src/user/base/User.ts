@@ -16,7 +16,6 @@ import {
   IsOptional,
   ValidateNested,
   IsDate,
-  IsInt,
   IsEnum,
 } from "class-validator";
 import { Award } from "../../award/base/Award";
@@ -115,14 +114,14 @@ class User {
 
   @ApiProperty({
     required: false,
-    type: Number,
+    type: String,
   })
-  @IsInt()
+  @IsString()
   @IsOptional()
-  @Field(() => Number, {
+  @Field(() => String, {
     nullable: true,
   })
-  contactNumber!: number | null;
+  contactNumber!: string | null;
 
   @ApiProperty({
     required: true,
@@ -178,14 +177,14 @@ class User {
 
   @ApiProperty({
     required: false,
-    type: Number,
+    type: String,
   })
-  @IsInt()
+  @IsString()
   @IsOptional()
-  @Field(() => Number, {
+  @Field(() => String, {
     nullable: true,
   })
-  emergencyContactNumber!: number | null;
+  emergencyContactNumber!: string | null;
 
   @ApiProperty({
     required: true,

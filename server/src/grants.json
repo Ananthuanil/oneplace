@@ -1,6 +1,126 @@
 [
   {
+    "role": "associate",
+    "resource": "User",
+    "action": "read:own",
+    "attributes": "*"
+  },
+  {
+    "role": "hr",
+    "resource": "User",
+    "action": "read:own",
+    "attributes": "*"
+  },
+  {
+    "role": "superAdmin",
+    "resource": "User",
+    "action": "read:own",
+    "attributes": "*"
+  },
+  {
     "role": "user",
+    "resource": "User",
+    "action": "read:own",
+    "attributes": "*"
+  },
+  {
+    "role": "hr",
+    "resource": "User",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "superAdmin",
+    "resource": "User",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "user",
+    "resource": "User",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "hr",
+    "resource": "User",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "superAdmin",
+    "resource": "User",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "user",
+    "resource": "User",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "superAdmin",
+    "resource": "User",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "user",
+    "resource": "User",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "associate",
+    "resource": "User",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "hr",
+    "resource": "User",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "superAdmin",
+    "resource": "User",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "communityLead",
+    "resource": "User",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "user",
+    "resource": "User",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "user",
+    "resource": "ProjectInvolvement",
+    "action": "read:own",
+    "attributes": "*"
+  },
+  {
+    "role": "superAdmin",
+    "resource": "ProjectInvolvement",
+    "action": "read:own",
+    "attributes": "*"
+  },
+  {
+    "role": "associate",
+    "resource": "ProjectInvolvement",
+    "action": "read:own",
+    "attributes": "*"
+  },
+  {
+    "role": "hr",
     "resource": "ProjectInvolvement",
     "action": "read:own",
     "attributes": "*"
@@ -18,6 +138,24 @@
     "attributes": "*"
   },
   {
+    "role": "superAdmin",
+    "resource": "ProjectInvolvement",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "associate",
+    "resource": "ProjectInvolvement",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "hr",
+    "resource": "ProjectInvolvement",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
     "role": "communityLead",
     "resource": "ProjectInvolvement",
     "action": "create:any",
@@ -30,6 +168,24 @@
     "attributes": "*"
   },
   {
+    "role": "superAdmin",
+    "resource": "ProjectInvolvement",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "associate",
+    "resource": "ProjectInvolvement",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "hr",
+    "resource": "ProjectInvolvement",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
     "role": "communityLead",
     "resource": "ProjectInvolvement",
     "action": "update:any",
@@ -42,6 +198,24 @@
     "attributes": "*"
   },
   {
+    "role": "superAdmin",
+    "resource": "ProjectInvolvement",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "associate",
+    "resource": "ProjectInvolvement",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "hr",
+    "resource": "ProjectInvolvement",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
     "role": "communityLead",
     "resource": "ProjectInvolvement",
     "action": "delete:any",
@@ -49,6 +223,24 @@
   },
   {
     "role": "user",
+    "resource": "ProjectInvolvement",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "superAdmin",
+    "resource": "ProjectInvolvement",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "associate",
+    "resource": "ProjectInvolvement",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "hr",
     "resource": "ProjectInvolvement",
     "action": "read:any",
     "attributes": "*"

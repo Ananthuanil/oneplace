@@ -10,7 +10,6 @@ import {
   DateInput,
   ReferenceInput,
   SelectInput,
-  NumberInput,
   PasswordInput,
 } from "react-admin";
 
@@ -56,13 +55,12 @@ export const UserCreate = (props: CreateProps): React.ReactElement => {
         >
           <SelectInput optionText={CommunityTitle} />
         </ReferenceInput>
-        <NumberInput step={1} label="Contact Number" source="contactNumber" />
+        <TextInput label="Contact Number" source="contactNumber" />
         <DateInput label="Date of Joining" source="dateOfJoining" />
         <TextInput label="Designation" source="designation" />
         <DateInput label="DOB" source="dob" />
         <TextInput label="Email" source="email" type="email" />
-        <NumberInput
-          step={1}
+        <TextInput
           label="Emergency Contact Number"
           source="emergencyContactNumber"
         />

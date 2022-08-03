@@ -18,7 +18,6 @@ import { AwardListRelationFilter } from "../../award/base/AwardListRelationFilte
 import { CandidateListRelationFilter } from "../../candidate/base/CandidateListRelationFilter";
 import { DateTimeNullableFilter } from "../../util/DateTimeNullableFilter";
 import { CommunityWhereUniqueInput } from "../../community/base/CommunityWhereUniqueInput";
-import { IntNullableFilter } from "../../util/IntNullableFilter";
 import { StringFilter } from "../../util/StringFilter";
 import { EnumUserGender } from "./EnumUserGender";
 import { InterviewListRelationFilter } from "../../interview/base/InterviewListRelationFilter";
@@ -121,14 +120,14 @@ class UserWhereInput {
 
   @ApiProperty({
     required: false,
-    type: IntNullableFilter,
+    type: StringNullableFilter,
   })
-  @Type(() => IntNullableFilter)
+  @Type(() => StringNullableFilter)
   @IsOptional()
-  @Field(() => IntNullableFilter, {
+  @Field(() => StringNullableFilter, {
     nullable: true,
   })
-  contactNumber?: IntNullableFilter;
+  contactNumber?: StringNullableFilter;
 
   @ApiProperty({
     required: false,
@@ -176,14 +175,14 @@ class UserWhereInput {
 
   @ApiProperty({
     required: false,
-    type: IntNullableFilter,
+    type: StringNullableFilter,
   })
-  @Type(() => IntNullableFilter)
+  @Type(() => StringNullableFilter)
   @IsOptional()
-  @Field(() => IntNullableFilter, {
+  @Field(() => StringNullableFilter, {
     nullable: true,
   })
-  emergencyContactNumber?: IntNullableFilter;
+  emergencyContactNumber?: StringNullableFilter;
 
   @ApiProperty({
     required: false,
