@@ -19,7 +19,6 @@ import { isRecordNotFoundError } from "../../prisma.util";
 import { MetaQueryPayload } from "../../util/MetaQueryPayload";
 import { Public } from "../../decorators/public.decorator";
 import { AclFilterResponseInterceptor } from "../../interceptors/aclFilterResponse.interceptor";
-import { AclValidateRequestInterceptor } from "../../interceptors/aclValidateRequest.interceptor";
 import { CreateUserArgs } from "./CreateUserArgs";
 import { UpdateUserArgs } from "./UpdateUserArgs";
 import { DeleteUserArgs } from "./DeleteUserArgs";
@@ -72,13 +71,8 @@ export class UserResolverBase {
     return this.service.findMany(args);
   }
 
-  @common.UseInterceptors(AclFilterResponseInterceptor)
+  @Public()
   @graphql.Query(() => User, { nullable: true })
-  @nestAccessControl.UseRoles({
-    resource: "User",
-    action: "read",
-    possession: "own",
-  })
   async user(@graphql.Args() args: UserFindUniqueArgs): Promise<User | null> {
     const result = await this.service.findOne(args);
     if (result === null) {
@@ -87,13 +81,8 @@ export class UserResolverBase {
     return result;
   }
 
-  @common.UseInterceptors(AclValidateRequestInterceptor)
+  @Public()
   @graphql.Mutation(() => User)
-  @nestAccessControl.UseRoles({
-    resource: "User",
-    action: "create",
-    possession: "any",
-  })
   async createUser(@graphql.Args() args: CreateUserArgs): Promise<User> {
     return await this.service.create({
       ...args,
@@ -109,13 +98,8 @@ export class UserResolverBase {
     });
   }
 
-  @common.UseInterceptors(AclValidateRequestInterceptor)
+  @Public()
   @graphql.Mutation(() => User)
-  @nestAccessControl.UseRoles({
-    resource: "User",
-    action: "update",
-    possession: "any",
-  })
   async updateUser(@graphql.Args() args: UpdateUserArgs): Promise<User | null> {
     try {
       return await this.service.update({
@@ -140,12 +124,8 @@ export class UserResolverBase {
     }
   }
 
+  @Public()
   @graphql.Mutation(() => User)
-  @nestAccessControl.UseRoles({
-    resource: "User",
-    action: "delete",
-    possession: "any",
-  })
   async deleteUser(@graphql.Args() args: DeleteUserArgs): Promise<User | null> {
     try {
       return await this.service.delete(args);
