@@ -159,8 +159,13 @@ export class ProjectResolverBase {
     return results;
   }
 
-  @Public()
+  @common.UseInterceptors(AclFilterResponseInterceptor)
   @graphql.ResolveField(() => [User])
+  @nestAccessControl.UseRoles({
+    resource: "User",
+    action: "read",
+    possession: "any",
+  })
   async users(
     @graphql.Parent() parent: Project,
     @graphql.Args() args: UserFindManyArgs

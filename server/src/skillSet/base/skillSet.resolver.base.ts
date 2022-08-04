@@ -18,6 +18,7 @@ import * as gqlACGuard from "../../auth/gqlAC.guard";
 import { isRecordNotFoundError } from "../../prisma.util";
 import { MetaQueryPayload } from "../../util/MetaQueryPayload";
 import { Public } from "../../decorators/public.decorator";
+import { AclFilterResponseInterceptor } from "../../interceptors/aclFilterResponse.interceptor";
 import { CreateSkillSetArgs } from "./CreateSkillSetArgs";
 import { UpdateSkillSetArgs } from "./UpdateSkillSetArgs";
 import { DeleteSkillSetArgs } from "./DeleteSkillSetArgs";
@@ -162,8 +163,13 @@ export class SkillSetResolverBase {
     }
   }
 
-  @Public()
+  @common.UseInterceptors(AclFilterResponseInterceptor)
   @graphql.ResolveField(() => [User])
+  @nestAccessControl.UseRoles({
+    resource: "User",
+    action: "read",
+    possession: "any",
+  })
   async employees(
     @graphql.Parent() parent: SkillSet,
     @graphql.Args() args: UserFindManyArgs
