@@ -54,24 +54,6 @@
     "attributes": "*"
   },
   {
-    "role": "hr",
-    "resource": "User",
-    "action": "read:any",
-    "attributes": "*"
-  },
-  {
-    "role": "superAdmin",
-    "resource": "User",
-    "action": "read:any",
-    "attributes": "*"
-  },
-  {
-    "role": "user",
-    "resource": "User",
-    "action": "read:any",
-    "attributes": "*"
-  },
-  {
     "role": "user",
     "resource": "ProjectInvolvement",
     "action": "read:own",
