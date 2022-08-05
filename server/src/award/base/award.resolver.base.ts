@@ -18,6 +18,7 @@ import * as gqlACGuard from "../../auth/gqlAC.guard";
 import { isRecordNotFoundError } from "../../prisma.util";
 import { MetaQueryPayload } from "../../util/MetaQueryPayload";
 import { Public } from "../../decorators/public.decorator";
+import { AclFilterResponseInterceptor } from "../../interceptors/aclFilterResponse.interceptor";
 import { CreateAwardArgs } from "./CreateAwardArgs";
 import { UpdateAwardArgs } from "./UpdateAwardArgs";
 import { DeleteAwardArgs } from "./DeleteAwardArgs";
@@ -56,8 +57,13 @@ export class AwardResolverBase {
     return this.service.findMany(args);
   }
 
-  @Public()
+  @common.UseInterceptors(AclFilterResponseInterceptor)
   @graphql.Query(() => Award, { nullable: true })
+  @nestAccessControl.UseRoles({
+    resource: "Award",
+    action: "read",
+    possession: "own",
+  })
   async award(
     @graphql.Args() args: AwardFindUniqueArgs
   ): Promise<Award | null> {

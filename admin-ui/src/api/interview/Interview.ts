@@ -2,6 +2,7 @@ import { Candidate } from "../candidate/Candidate";
 import { InterviewFeedback } from "../interviewFeedback/InterviewFeedback";
 import { User } from "../user/User";
 import { Opportunity } from "../opportunity/Opportunity";
+import { SkillLevel } from "../skillLevel/SkillLevel";
 
 export type Interview = {
   candidate?: Candidate | null;
@@ -21,6 +22,7 @@ export type Interview = {
   level: string | null;
   mode: string | null;
   opportunity?: Opportunity | null;
+  skillMatrix?: Array<SkillLevel>;
   subject: string | null;
   updatedAt: Date;
 };

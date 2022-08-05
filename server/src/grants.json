@@ -208,5 +208,215 @@
     "resource": "ProjectInvolvement",
     "action": "read:any",
     "attributes": "*"
+  },
+  {
+    "role": "user",
+    "resource": "SkillLevel",
+    "action": "read:own",
+    "attributes": "*"
+  },
+  {
+    "role": "accountOwner",
+    "resource": "SkillLevel",
+    "action": "read:own",
+    "attributes": "*"
+  },
+  {
+    "role": "superAdmin",
+    "resource": "SkillLevel",
+    "action": "read:own",
+    "attributes": "*"
+  },
+  {
+    "role": "associate",
+    "resource": "SkillLevel",
+    "action": "read:own",
+    "attributes": "*"
+  },
+  {
+    "role": "hr",
+    "resource": "SkillLevel",
+    "action": "read:own",
+    "attributes": "*"
+  },
+  {
+    "role": "communityLead",
+    "resource": "SkillLevel",
+    "action": "read:own",
+    "attributes": "*"
+  },
+  {
+    "role": "tagMember",
+    "resource": "SkillLevel",
+    "action": "read:own",
+    "attributes": "*"
+  },
+  {
+    "role": "user",
+    "resource": "SkillLevel",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "accountOwner",
+    "resource": "SkillLevel",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "superAdmin",
+    "resource": "SkillLevel",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "associate",
+    "resource": "SkillLevel",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "hr",
+    "resource": "SkillLevel",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "communityLead",
+    "resource": "SkillLevel",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "tagMember",
+    "resource": "SkillLevel",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "user",
+    "resource": "SkillLevel",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "accountOwner",
+    "resource": "SkillLevel",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "superAdmin",
+    "resource": "SkillLevel",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "associate",
+    "resource": "SkillLevel",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "hr",
+    "resource": "SkillLevel",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "communityLead",
+    "resource": "SkillLevel",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "tagMember",
+    "resource": "SkillLevel",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "user",
+    "resource": "SkillLevel",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "accountOwner",
+    "resource": "SkillLevel",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "superAdmin",
+    "resource": "SkillLevel",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "associate",
+    "resource": "SkillLevel",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "hr",
+    "resource": "SkillLevel",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "communityLead",
+    "resource": "SkillLevel",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "tagMember",
+    "resource": "SkillLevel",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "user",
+    "resource": "SkillLevel",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "accountOwner",
+    "resource": "SkillLevel",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "superAdmin",
+    "resource": "SkillLevel",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "associate",
+    "resource": "SkillLevel",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "hr",
+    "resource": "SkillLevel",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "communityLead",
+    "resource": "SkillLevel",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "tagMember",
+    "resource": "SkillLevel",
+    "action": "read:any",
+    "attributes": "*"
   }
 ]

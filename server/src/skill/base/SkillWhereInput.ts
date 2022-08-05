@@ -17,6 +17,7 @@ import { Type } from "class-transformer";
 import { StringFilter } from "../../util/StringFilter";
 import { StringNullableFilter } from "../../util/StringNullableFilter";
 import { OpportunityWhereUniqueInput } from "../../opportunity/base/OpportunityWhereUniqueInput";
+import { SkillLevelListRelationFilter } from "../../skillLevel/base/SkillLevelListRelationFilter";
 import { SkillSetListRelationFilter } from "../../skillSet/base/SkillSetListRelationFilter";
 @InputType()
 class SkillWhereInput {
@@ -77,6 +78,18 @@ class SkillWhereInput {
     nullable: true,
   })
   oppurtunatyRequiredSkills?: OpportunityWhereUniqueInput;
+
+  @ApiProperty({
+    required: false,
+    type: () => SkillLevelListRelationFilter,
+  })
+  @ValidateNested()
+  @Type(() => SkillLevelListRelationFilter)
+  @IsOptional()
+  @Field(() => SkillLevelListRelationFilter, {
+    nullable: true,
+  })
+  skillMatrices?: SkillLevelListRelationFilter;
 
   @ApiProperty({
     required: false,

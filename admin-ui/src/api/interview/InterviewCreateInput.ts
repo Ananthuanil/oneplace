@@ -2,6 +2,7 @@ import { CandidateWhereUniqueInput } from "../candidate/CandidateWhereUniqueInpu
 import { InterviewFeedbackCreateNestedManyWithoutInterviewsInput } from "./InterviewFeedbackCreateNestedManyWithoutInterviewsInput";
 import { UserWhereUniqueInput } from "../user/UserWhereUniqueInput";
 import { OpportunityWhereUniqueInput } from "../opportunity/OpportunityWhereUniqueInput";
+import { SkillLevelCreateNestedManyWithoutInterviewsInput } from "./SkillLevelCreateNestedManyWithoutInterviewsInput";
 
 export type InterviewCreateInput = {
   candidate?: CandidateWhereUniqueInput | null;
@@ -19,5 +20,6 @@ export type InterviewCreateInput = {
   level?: string | null;
   mode?: string | null;
   opportunity?: OpportunityWhereUniqueInput | null;
+  skillMatrix?: SkillLevelCreateNestedManyWithoutInterviewsInput;
   subject?: string | null;
 };

@@ -13,6 +13,7 @@ import {
 
 import { CandidateTitle } from "../candidate/CandidateTitle";
 import { OpportunityTitle } from "../opportunity/OpportunityTitle";
+import { SkillLevelTitle } from "../skillLevel/SkillLevelTitle";
 import { SkillSetTitle } from "../skillSet/SkillSetTitle";
 
 export const SkillCreate = (props: CreateProps): React.ReactElement => {
@@ -41,6 +42,14 @@ export const SkillCreate = (props: CreateProps): React.ReactElement => {
         >
           <SelectInput optionText={OpportunityTitle} />
         </ReferenceInput>
+        <ReferenceArrayInput
+          source="skillMatrices"
+          reference="SkillLevel"
+          parse={(value: any) => value && value.map((v: any) => ({ id: v }))}
+          format={(value: any) => value && value.map((v: any) => v.id)}
+        >
+          <SelectArrayInput optionText={SkillLevelTitle} />
+        </ReferenceArrayInput>
         <ReferenceArrayInput
           source="skillSets"
           reference="SkillSet"
