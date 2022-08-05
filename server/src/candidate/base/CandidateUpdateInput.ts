@@ -115,7 +115,9 @@ class CandidateUpdateInput {
     | "InterviewSelected"
     | "OfferReleased"
     | "Joined"
-    | "OfferRejected";
+    | "OfferRejected"
+    | "InterviewRejected"
+    | "OnHold";
 
   @ApiProperty({
     required: false,

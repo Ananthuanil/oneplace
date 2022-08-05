@@ -18,7 +18,9 @@ export type Candidate = {
     | "InterviewSelected"
     | "OfferReleased"
     | "Joined"
-    | "OfferRejected";
+    | "OfferRejected"
+    | "InterviewRejected"
+    | "OnHold";
   email: string;
   expectedCtc: number | null;
   externalRecruitmentPartner: string | null;

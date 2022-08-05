@@ -19,6 +19,8 @@ export enum EnumCandidateCurrentStatus {
   OfferReleased = "OfferReleased",
   Joined = "Joined",
   OfferRejected = "OfferRejected",
+  InterviewRejected = "InterviewRejected",
+  OnHold = "OnHold",
 }
 
 registerEnumType(EnumCandidateCurrentStatus, {
