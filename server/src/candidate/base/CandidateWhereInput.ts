@@ -112,7 +112,8 @@ class CandidateWhereInput {
     | "Joined"
     | "OfferRejected"
     | "InterviewRejected"
-    | "OnHold";
+    | "OnHold"
+    | "AwaitingFeedback";
 
   @ApiProperty({
     required: false,

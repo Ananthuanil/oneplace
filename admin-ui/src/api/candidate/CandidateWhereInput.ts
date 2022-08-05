@@ -25,7 +25,8 @@ export type CandidateWhereInput = {
     | "Joined"
     | "OfferRejected"
     | "InterviewRejected"
-    | "OnHold";
+    | "OnHold"
+    | "AwaitingFeedback";
   email?: StringFilter;
   expectedCtc?: FloatNullableFilter;
   externalRecruitmentPartner?: StringNullableFilter;

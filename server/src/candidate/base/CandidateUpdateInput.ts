@@ -117,7 +117,8 @@ class CandidateUpdateInput {
     | "Joined"
     | "OfferRejected"
     | "InterviewRejected"
-    | "OnHold";
+    | "OnHold"
+    | "AwaitingFeedback";
 
   @ApiProperty({
     required: false,

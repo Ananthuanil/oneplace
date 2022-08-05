@@ -123,7 +123,8 @@ class Candidate {
     | "Joined"
     | "OfferRejected"
     | "InterviewRejected"
-    | "OnHold";
+    | "OnHold"
+    | "AwaitingFeedback";
 
   @ApiProperty({
     required: true,

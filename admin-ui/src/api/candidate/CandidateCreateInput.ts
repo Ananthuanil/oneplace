@@ -19,7 +19,8 @@ export type CandidateCreateInput = {
     | "Joined"
     | "OfferRejected"
     | "InterviewRejected"
-    | "OnHold";
+    | "OnHold"
+    | "AwaitingFeedback";
   email: string;
   expectedCtc?: number | null;
   externalRecruitmentPartner?: string | null;

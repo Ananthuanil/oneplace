@@ -8,4 +8,5 @@ export enum EnumCandidateCurrentStatus {
   OfferRejected = "OfferRejected",
   InterviewRejected = "InterviewRejected",
   OnHold = "OnHold",
+  AwaitingFeedback = "AwaitingFeedback",
 }
