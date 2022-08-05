@@ -18,12 +18,15 @@ import * as gqlACGuard from "../../auth/gqlAC.guard";
 import { isRecordNotFoundError } from "../../prisma.util";
 import { MetaQueryPayload } from "../../util/MetaQueryPayload";
 import { Public } from "../../decorators/public.decorator";
+import { AclFilterResponseInterceptor } from "../../interceptors/aclFilterResponse.interceptor";
 import { CreateSkillArgs } from "./CreateSkillArgs";
 import { UpdateSkillArgs } from "./UpdateSkillArgs";
 import { DeleteSkillArgs } from "./DeleteSkillArgs";
 import { SkillFindManyArgs } from "./SkillFindManyArgs";
 import { SkillFindUniqueArgs } from "./SkillFindUniqueArgs";
 import { Skill } from "./Skill";
+import { SkillLevelFindManyArgs } from "../../skillLevel/base/SkillLevelFindManyArgs";
+import { SkillLevel } from "../../skillLevel/base/SkillLevel";
 import { SkillSetFindManyArgs } from "../../skillSet/base/SkillSetFindManyArgs";
 import { SkillSet } from "../../skillSet/base/SkillSet";
 import { Candidate } from "../../candidate/base/Candidate";
@@ -155,6 +158,26 @@ export class SkillResolverBase {
       }
       throw error;
     }
+  }
+
+  @common.UseInterceptors(AclFilterResponseInterceptor)
+  @graphql.ResolveField(() => [SkillLevel])
+  @nestAccessControl.UseRoles({
+    resource: "SkillLevel",
+    action: "read",
+    possession: "any",
+  })
+  async skillMatrices(
+    @graphql.Parent() parent: Skill,
+    @graphql.Args() args: SkillLevelFindManyArgs
+  ): Promise<SkillLevel[]> {
+    const results = await this.service.findSkillMatrices(parent.id, args);
+
+    if (!results) {
+      return [];
+    }
+
+    return results;
   }
 
   @Public()

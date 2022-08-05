@@ -25,6 +25,7 @@ import { EnumInterviewCurrentStatus } from "./EnumInterviewCurrentStatus";
 import { InterviewFeedbackUpdateManyWithoutInterviewsInput } from "./InterviewFeedbackUpdateManyWithoutInterviewsInput";
 import { UserWhereUniqueInput } from "../../user/base/UserWhereUniqueInput";
 import { OpportunityWhereUniqueInput } from "../../opportunity/base/OpportunityWhereUniqueInput";
+import { SkillLevelUpdateManyWithoutInterviewsInput } from "./SkillLevelUpdateManyWithoutInterviewsInput";
 @InputType()
 class InterviewUpdateInput {
   @ApiProperty({
@@ -135,6 +136,18 @@ class InterviewUpdateInput {
     nullable: true,
   })
   opportunity?: OpportunityWhereUniqueInput | null;
+
+  @ApiProperty({
+    required: false,
+    type: () => SkillLevelUpdateManyWithoutInterviewsInput,
+  })
+  @ValidateNested()
+  @Type(() => SkillLevelUpdateManyWithoutInterviewsInput)
+  @IsOptional()
+  @Field(() => SkillLevelUpdateManyWithoutInterviewsInput, {
+    nullable: true,
+  })
+  skillMatrix?: SkillLevelUpdateManyWithoutInterviewsInput;
 
   @ApiProperty({
     required: false,

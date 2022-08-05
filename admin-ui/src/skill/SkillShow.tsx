@@ -11,9 +11,10 @@ import {
   Datagrid,
 } from "react-admin";
 
+import { INTERVIEW_TITLE_FIELD } from "../interview/InterviewTitle";
+import { SKILL_TITLE_FIELD } from "./SkillTitle";
 import { CANDIDATE_TITLE_FIELD } from "../candidate/CandidateTitle";
 import { INTERVIEWFEEDBACK_TITLE_FIELD } from "../interviewFeedback/InterviewFeedbackTitle";
-import { SKILL_TITLE_FIELD } from "./SkillTitle";
 import { OPPORTUNITY_TITLE_FIELD } from "../opportunity/OpportunityTitle";
 
 export const SkillShow = (props: ShowProps): React.ReactElement => {
@@ -45,6 +46,28 @@ export const SkillShow = (props: ShowProps): React.ReactElement => {
           <TextField source={OPPORTUNITY_TITLE_FIELD} />
         </ReferenceField>
         <DateField source="updatedAt" label="Updated At" />
+        <ReferenceManyField
+          reference="SkillLevel"
+          target="SkillId"
+          label="skillMatrices"
+        >
+          <Datagrid rowClick="show">
+            <DateField source="createdAt" label="Created At" />
+            <TextField label="ID" source="id" />
+            <ReferenceField
+              label="Interview"
+              source="interview.id"
+              reference="Interview"
+            >
+              <TextField source={INTERVIEW_TITLE_FIELD} />
+            </ReferenceField>
+            <TextField label="level" source="level" />
+            <ReferenceField label="skill" source="skill.id" reference="Skill">
+              <TextField source={SKILL_TITLE_FIELD} />
+            </ReferenceField>
+            <DateField source="updatedAt" label="Updated At" />
+          </Datagrid>
+        </ReferenceManyField>
         <ReferenceManyField
           reference="SkillSet"
           target="SkillId"

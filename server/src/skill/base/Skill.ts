@@ -15,6 +15,7 @@ import { Candidate } from "../../candidate/base/Candidate";
 import { ValidateNested, IsOptional, IsDate, IsString } from "class-validator";
 import { Type } from "class-transformer";
 import { Opportunity } from "../../opportunity/base/Opportunity";
+import { SkillLevel } from "../../skillLevel/base/SkillLevel";
 import { SkillSet } from "../../skillSet/base/SkillSet";
 @ObjectType()
 class Skill {
@@ -71,6 +72,15 @@ class Skill {
   @Type(() => Opportunity)
   @IsOptional()
   oppurtunatyRequiredSkills?: Opportunity | null;
+
+  @ApiProperty({
+    required: false,
+    type: () => [SkillLevel],
+  })
+  @ValidateNested()
+  @Type(() => SkillLevel)
+  @IsOptional()
+  skillMatrices?: Array<SkillLevel>;
 
   @ApiProperty({
     required: false,

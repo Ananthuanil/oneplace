@@ -57,6 +57,10 @@ import { ProjectInvolvementList } from "./projectInvolvement/ProjectInvolvementL
 import { ProjectInvolvementCreate } from "./projectInvolvement/ProjectInvolvementCreate";
 import { ProjectInvolvementEdit } from "./projectInvolvement/ProjectInvolvementEdit";
 import { ProjectInvolvementShow } from "./projectInvolvement/ProjectInvolvementShow";
+import { SkillLevelList } from "./skillLevel/SkillLevelList";
+import { SkillLevelCreate } from "./skillLevel/SkillLevelCreate";
+import { SkillLevelEdit } from "./skillLevel/SkillLevelEdit";
+import { SkillLevelShow } from "./skillLevel/SkillLevelShow";
 import { jwtAuthProvider } from "./auth-provider/ra-auth-jwt";
 
 const App = (): React.ReactElement => {
@@ -173,6 +177,13 @@ const App = (): React.ReactElement => {
           edit={ProjectInvolvementEdit}
           create={ProjectInvolvementCreate}
           show={ProjectInvolvementShow}
+        />
+        <Resource
+          name="SkillLevel"
+          list={SkillLevelList}
+          edit={SkillLevelEdit}
+          create={SkillLevelCreate}
+          show={SkillLevelShow}
         />
       </Admin>
     </div>

@@ -15,6 +15,7 @@ import { CandidateWhereUniqueInput } from "../../candidate/base/CandidateWhereUn
 import { ValidateNested, IsOptional, IsString } from "class-validator";
 import { Type } from "class-transformer";
 import { OpportunityWhereUniqueInput } from "../../opportunity/base/OpportunityWhereUniqueInput";
+import { SkillLevelCreateNestedManyWithoutSkillsInput } from "./SkillLevelCreateNestedManyWithoutSkillsInput";
 import { SkillSetCreateNestedManyWithoutSkillsInput } from "./SkillSetCreateNestedManyWithoutSkillsInput";
 @InputType()
 class SkillCreateInput {
@@ -64,6 +65,18 @@ class SkillCreateInput {
     nullable: true,
   })
   oppurtunatyRequiredSkills?: OpportunityWhereUniqueInput | null;
+
+  @ApiProperty({
+    required: false,
+    type: () => SkillLevelCreateNestedManyWithoutSkillsInput,
+  })
+  @ValidateNested()
+  @Type(() => SkillLevelCreateNestedManyWithoutSkillsInput)
+  @IsOptional()
+  @Field(() => SkillLevelCreateNestedManyWithoutSkillsInput, {
+    nullable: true,
+  })
+  skillMatrices?: SkillLevelCreateNestedManyWithoutSkillsInput;
 
   @ApiProperty({
     required: false,

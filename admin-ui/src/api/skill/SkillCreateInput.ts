@@ -1,5 +1,6 @@
 import { CandidateWhereUniqueInput } from "../candidate/CandidateWhereUniqueInput";
 import { OpportunityWhereUniqueInput } from "../opportunity/OpportunityWhereUniqueInput";
+import { SkillLevelCreateNestedManyWithoutSkillsInput } from "./SkillLevelCreateNestedManyWithoutSkillsInput";
 import { SkillSetCreateNestedManyWithoutSkillsInput } from "./SkillSetCreateNestedManyWithoutSkillsInput";
 
 export type SkillCreateInput = {
@@ -7,5 +8,6 @@ export type SkillCreateInput = {
   name?: string | null;
   opportunity?: OpportunityWhereUniqueInput | null;
   oppurtunatyRequiredSkills?: OpportunityWhereUniqueInput | null;
+  skillMatrices?: SkillLevelCreateNestedManyWithoutSkillsInput;
   skillSets?: SkillSetCreateNestedManyWithoutSkillsInput;
 };

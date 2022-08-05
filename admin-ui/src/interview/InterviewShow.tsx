@@ -14,6 +14,7 @@ import {
 
 import { COMMUNICATIONFEEDBACK_TITLE_FIELD } from "../communicationFeedback/CommunicationFeedbackTitle";
 import { INTERVIEW_TITLE_FIELD } from "./InterviewTitle";
+import { SKILL_TITLE_FIELD } from "../skill/SkillTitle";
 import { CANDIDATE_TITLE_FIELD } from "../candidate/CandidateTitle";
 import { USER_TITLE_FIELD } from "../user/UserTitle";
 import { OPPORTUNITY_TITLE_FIELD } from "../opportunity/OpportunityTitle";
@@ -79,6 +80,28 @@ export const InterviewShow = (props: ShowProps): React.ReactElement => {
               source="relevantTechFeedback"
             />
             <TextField label="status" source="status" />
+            <DateField source="updatedAt" label="Updated At" />
+          </Datagrid>
+        </ReferenceManyField>
+        <ReferenceManyField
+          reference="SkillLevel"
+          target="InterviewId"
+          label="skillMatrices"
+        >
+          <Datagrid rowClick="show">
+            <DateField source="createdAt" label="Created At" />
+            <TextField label="ID" source="id" />
+            <ReferenceField
+              label="Interview"
+              source="interview.id"
+              reference="Interview"
+            >
+              <TextField source={INTERVIEW_TITLE_FIELD} />
+            </ReferenceField>
+            <TextField label="level" source="level" />
+            <ReferenceField label="skill" source="skill.id" reference="Skill">
+              <TextField source={SKILL_TITLE_FIELD} />
+            </ReferenceField>
             <DateField source="updatedAt" label="Updated At" />
           </Datagrid>
         </ReferenceManyField>
