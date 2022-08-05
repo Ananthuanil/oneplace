@@ -23,7 +23,9 @@ export type CandidateWhereInput = {
     | "InterviewSelected"
     | "OfferReleased"
     | "Joined"
-    | "OfferRejected";
+    | "OfferRejected"
+    | "InterviewRejected"
+    | "OnHold";
   email?: StringFilter;
   expectedCtc?: FloatNullableFilter;
   externalRecruitmentPartner?: StringNullableFilter;

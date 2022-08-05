@@ -247,6 +247,8 @@ enum EnumCandidateCurrentStatus {
   OfferReleased
   Joined
   OfferRejected
+  InterviewRejected
+  OnHold
 }
 
 enum EnumCandidateSource {

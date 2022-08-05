@@ -54,6 +54,8 @@ export const CandidateEdit = (props: EditProps): React.ReactElement => {
             { label: "Offer Released", value: "OfferReleased" },
             { label: "Joined", value: "Joined" },
             { label: "Offer Rejected", value: "OfferRejected" },
+            { label: "Interview Rejected", value: "InterviewRejected" },
+            { label: "On Hold", value: "OnHold" },
           ]}
           optionText="label"
           optionValue="value"
