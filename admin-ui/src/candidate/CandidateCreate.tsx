@@ -56,6 +56,7 @@ export const CandidateCreate = (props: CreateProps): React.ReactElement => {
             { label: "Offer Rejected", value: "OfferRejected" },
             { label: "Interview Rejected", value: "InterviewRejected" },
             { label: "On Hold", value: "OnHold" },
+            { label: "Awaiting Feedback", value: "AwaitingFeedback" },
           ]}
           optionText="label"
           optionValue="value"

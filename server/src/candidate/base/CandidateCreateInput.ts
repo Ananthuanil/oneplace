@@ -111,7 +111,8 @@ class CandidateCreateInput {
     | "Joined"
     | "OfferRejected"
     | "InterviewRejected"
-    | "OnHold";
+    | "OnHold"
+    | "AwaitingFeedback";
 
   @ApiProperty({
     required: true,
