@@ -30,6 +30,7 @@ import { SkillFindManyArgs } from "../../skill/base/SkillFindManyArgs";
 import { Skill } from "../../skill/base/Skill";
 import { User } from "../../user/base/User";
 import { Partner } from "../../partner/base/Partner";
+import { Project } from "../../project/base/Project";
 import { OpportunityService } from "../opportunity.service";
 
 @graphql.Resolver(() => Opportunity)
@@ -102,6 +103,12 @@ export class OpportunityResolverBase {
               connect: args.data.partner,
             }
           : undefined,
+
+        project: args.data.project
+          ? {
+              connect: args.data.project,
+            }
+          : undefined,
       },
     });
   }
@@ -132,6 +139,12 @@ export class OpportunityResolverBase {
           partner: args.data.partner
             ? {
                 connect: args.data.partner,
+              }
+            : undefined,
+
+          project: args.data.project
+            ? {
+                connect: args.data.project,
               }
             : undefined,
         },
@@ -240,6 +253,19 @@ export class OpportunityResolverBase {
     @graphql.Parent() parent: Opportunity
   ): Promise<Partner | null> {
     const result = await this.service.getPartner(parent.id);
+
+    if (!result) {
+      return null;
+    }
+    return result;
+  }
+
+  @Public()
+  @graphql.ResolveField(() => Project, { nullable: true })
+  async project(
+    @graphql.Parent() parent: Opportunity
+  ): Promise<Project | null> {
+    const result = await this.service.getProject(parent.id);
 
     if (!result) {
       return null;

@@ -13,6 +13,7 @@ import {
 
 import { USER_TITLE_FIELD } from "../user/UserTitle";
 import { PARTNER_TITLE_FIELD } from "./PartnerTitle";
+import { PROJECT_TITLE_FIELD } from "../project/ProjectTitle";
 
 export const PartnerShow = (props: ShowProps): React.ReactElement => {
   return (
@@ -53,6 +54,14 @@ export const PartnerShow = (props: ShowProps): React.ReactElement => {
               reference="Partner"
             >
               <TextField source={PARTNER_TITLE_FIELD} />
+            </ReferenceField>
+            <TextField label="Procurement Status" source="procurementStatus" />
+            <ReferenceField
+              label="Project"
+              source="project.id"
+              reference="Project"
+            >
+              <TextField source={PROJECT_TITLE_FIELD} />
             </ReferenceField>
             <TextField
               label="Required Experience"

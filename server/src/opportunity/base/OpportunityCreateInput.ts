@@ -24,6 +24,8 @@ import { EnumOpportunityCurrentStatus } from "./EnumOpportunityCurrentStatus";
 import { InterviewCreateNestedManyWithoutOpportunitiesInput } from "./InterviewCreateNestedManyWithoutOpportunitiesInput";
 import { SkillCreateNestedManyWithoutOpportunitiesInput } from "./SkillCreateNestedManyWithoutOpportunitiesInput";
 import { PartnerWhereUniqueInput } from "../../partner/base/PartnerWhereUniqueInput";
+import { EnumOpportunityProcurementStatus } from "./EnumOpportunityProcurementStatus";
+import { ProjectWhereUniqueInput } from "../../project/base/ProjectWhereUniqueInput";
 import { EnumOpportunitySource } from "./EnumOpportunitySource";
 @InputType()
 class OpportunityCreateInput {
@@ -118,6 +120,29 @@ class OpportunityCreateInput {
     nullable: true,
   })
   partner?: PartnerWhereUniqueInput | null;
+
+  @ApiProperty({
+    required: false,
+    enum: EnumOpportunityProcurementStatus,
+  })
+  @IsEnum(EnumOpportunityProcurementStatus)
+  @IsOptional()
+  @Field(() => EnumOpportunityProcurementStatus, {
+    nullable: true,
+  })
+  procurementStatus?: "new" | "replacement" | null;
+
+  @ApiProperty({
+    required: false,
+    type: () => ProjectWhereUniqueInput,
+  })
+  @ValidateNested()
+  @Type(() => ProjectWhereUniqueInput)
+  @IsOptional()
+  @Field(() => ProjectWhereUniqueInput, {
+    nullable: true,
+  })
+  project?: ProjectWhereUniqueInput | null;
 
   @ApiProperty({
     required: false,

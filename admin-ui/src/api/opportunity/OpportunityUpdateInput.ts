@@ -2,6 +2,7 @@ import { UserWhereUniqueInput } from "../user/UserWhereUniqueInput";
 import { InterviewUpdateManyWithoutOpportunitiesInput } from "./InterviewUpdateManyWithoutOpportunitiesInput";
 import { SkillUpdateManyWithoutOpportunitiesInput } from "./SkillUpdateManyWithoutOpportunitiesInput";
 import { PartnerWhereUniqueInput } from "../partner/PartnerWhereUniqueInput";
+import { ProjectWhereUniqueInput } from "../project/ProjectWhereUniqueInput";
 
 export type OpportunityUpdateInput = {
   claimedPerson?: UserWhereUniqueInput | null;
@@ -21,6 +22,8 @@ export type OpportunityUpdateInput = {
   name?: string | null;
   optionalSkillset?: SkillUpdateManyWithoutOpportunitiesInput;
   partner?: PartnerWhereUniqueInput | null;
+  procurementStatus?: "new" | "replacement" | null;
+  project?: ProjectWhereUniqueInput | null;
   requiredExperience?: number | null;
   requiredSkills?: SkillUpdateManyWithoutOpportunitiesInput;
   requirements?: string | null;

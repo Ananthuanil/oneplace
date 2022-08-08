@@ -13,6 +13,7 @@ import { ObjectType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
 import { IsDate, IsString, IsOptional, ValidateNested } from "class-validator";
 import { Type } from "class-transformer";
+import { Opportunity } from "../../opportunity/base/Opportunity";
 import { Partner } from "../../partner/base/Partner";
 import { ProjectInvolvement } from "../../projectInvolvement/base/ProjectInvolvement";
 import { User } from "../../user/base/User";
@@ -44,6 +45,15 @@ class Project {
     nullable: true,
   })
   name!: string | null;
+
+  @ApiProperty({
+    required: false,
+    type: () => [Opportunity],
+  })
+  @ValidateNested()
+  @Type(() => Opportunity)
+  @IsOptional()
+  opportunities?: Array<Opportunity>;
 
   @ApiProperty({
     required: false,

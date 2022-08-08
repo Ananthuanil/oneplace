@@ -1,7 +1,19 @@
 export const ROLES = [
   {
-    name: "user",
-    displayName: "User",
+    name: "hr",
+    displayName: "HR",
+  },
+  {
+    name: "communityLead",
+    displayName: "Community_Lead",
+  },
+  {
+    name: "tagMember",
+    displayName: "TAG_Member",
+  },
+  {
+    name: "learningDevelopmentHead",
+    displayName: "Learning_Development_Head",
   },
   {
     name: "accountOwner",
@@ -16,15 +28,7 @@ export const ROLES = [
     displayName: "Associate",
   },
   {
-    name: "hr",
-    displayName: "HR",
-  },
-  {
-    name: "communityLead",
-    displayName: "Community_Lead",
-  },
-  {
-    name: "tagMember",
-    displayName: "TAG_Member",
+    name: "user",
+    displayName: "User",
   },
 ];

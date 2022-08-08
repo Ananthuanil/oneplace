@@ -2,6 +2,7 @@ import { UserWhereUniqueInput } from "../user/UserWhereUniqueInput";
 import { InterviewCreateNestedManyWithoutOpportunitiesInput } from "./InterviewCreateNestedManyWithoutOpportunitiesInput";
 import { SkillCreateNestedManyWithoutOpportunitiesInput } from "./SkillCreateNestedManyWithoutOpportunitiesInput";
 import { PartnerWhereUniqueInput } from "../partner/PartnerWhereUniqueInput";
+import { ProjectWhereUniqueInput } from "../project/ProjectWhereUniqueInput";
 
 export type OpportunityCreateInput = {
   claimedPerson?: UserWhereUniqueInput | null;
@@ -21,6 +22,8 @@ export type OpportunityCreateInput = {
   name?: string | null;
   optionalSkillset?: SkillCreateNestedManyWithoutOpportunitiesInput;
   partner?: PartnerWhereUniqueInput | null;
+  procurementStatus?: "new" | "replacement" | null;
+  project?: ProjectWhereUniqueInput | null;
   requiredExperience?: number | null;
   requiredSkills?: SkillCreateNestedManyWithoutOpportunitiesInput;
   requirements?: string | null;

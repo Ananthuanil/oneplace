@@ -5,13 +5,14 @@ import {
   SimpleForm,
   EditProps,
   TextInput,
-  ReferenceInput,
-  SelectInput,
   ReferenceArrayInput,
   SelectArrayInput,
+  ReferenceInput,
+  SelectInput,
   DateTimeInput,
 } from "react-admin";
 
+import { OpportunityTitle } from "../opportunity/OpportunityTitle";
 import { PartnerTitle } from "../partner/PartnerTitle";
 import { ProjectInvolvementTitle } from "../projectInvolvement/ProjectInvolvementTitle";
 import { UserTitle } from "../user/UserTitle";
@@ -21,6 +22,14 @@ export const ProjectEdit = (props: EditProps): React.ReactElement => {
     <Edit {...props}>
       <SimpleForm>
         <TextInput label="Name" source="name" />
+        <ReferenceArrayInput
+          source="opportunities"
+          reference="Opportunity"
+          parse={(value: any) => value && value.map((v: any) => ({ id: v }))}
+          format={(value: any) => value && value.map((v: any) => v.id)}
+        >
+          <SelectArrayInput optionText={OpportunityTitle} />
+        </ReferenceArrayInput>
         <ReferenceInput source="partner.id" reference="Partner" label="Partner">
           <SelectInput optionText={PartnerTitle} />
         </ReferenceInput>

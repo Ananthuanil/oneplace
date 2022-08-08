@@ -25,6 +25,8 @@ import { EnumOpportunityCurrentStatus } from "./EnumOpportunityCurrentStatus";
 import { Interview } from "../../interview/base/Interview";
 import { Skill } from "../../skill/base/Skill";
 import { Partner } from "../../partner/base/Partner";
+import { EnumOpportunityProcurementStatus } from "./EnumOpportunityProcurementStatus";
+import { Project } from "../../project/base/Project";
 import { EnumOpportunitySource } from "./EnumOpportunitySource";
 @ObjectType()
 class Opportunity {
@@ -120,6 +122,26 @@ class Opportunity {
   @Type(() => Partner)
   @IsOptional()
   partner?: Partner | null;
+
+  @ApiProperty({
+    required: false,
+    enum: EnumOpportunityProcurementStatus,
+  })
+  @IsEnum(EnumOpportunityProcurementStatus)
+  @IsOptional()
+  @Field(() => EnumOpportunityProcurementStatus, {
+    nullable: true,
+  })
+  procurementStatus?: "new" | "replacement" | null;
+
+  @ApiProperty({
+    required: false,
+    type: () => Project,
+  })
+  @ValidateNested()
+  @Type(() => Project)
+  @IsOptional()
+  project?: Project | null;
 
   @ApiProperty({
     required: false,

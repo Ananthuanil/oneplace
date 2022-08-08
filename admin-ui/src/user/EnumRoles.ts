@@ -1,9 +1,10 @@
 export enum EnumRoles {
-  User = "user",
-  AccountOwner = "accountOwner",
-  SuperAdmin = "superAdmin",
-  Associate = "associate",
   Hr = "hr",
   CommunityLead = "communityLead",
   TagMember = "tagMember",
+  LearningDevelopmentHead = "learningDevelopmentHead",
+  AccountOwner = "accountOwner",
+  SuperAdmin = "superAdmin",
+  Associate = "associate",
+  User = "user",
 }

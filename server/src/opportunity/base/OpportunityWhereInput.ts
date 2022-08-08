@@ -20,6 +20,8 @@ import { InterviewListRelationFilter } from "../../interview/base/InterviewListR
 import { StringNullableFilter } from "../../util/StringNullableFilter";
 import { SkillListRelationFilter } from "../../skill/base/SkillListRelationFilter";
 import { PartnerWhereUniqueInput } from "../../partner/base/PartnerWhereUniqueInput";
+import { EnumOpportunityProcurementStatus } from "./EnumOpportunityProcurementStatus";
+import { ProjectWhereUniqueInput } from "../../project/base/ProjectWhereUniqueInput";
 import { IntNullableFilter } from "../../util/IntNullableFilter";
 import { EnumOpportunitySource } from "./EnumOpportunitySource";
 @InputType()
@@ -125,6 +127,29 @@ class OpportunityWhereInput {
     nullable: true,
   })
   partner?: PartnerWhereUniqueInput;
+
+  @ApiProperty({
+    required: false,
+    enum: EnumOpportunityProcurementStatus,
+  })
+  @IsEnum(EnumOpportunityProcurementStatus)
+  @IsOptional()
+  @Field(() => EnumOpportunityProcurementStatus, {
+    nullable: true,
+  })
+  procurementStatus?: "new" | "replacement";
+
+  @ApiProperty({
+    required: false,
+    type: () => ProjectWhereUniqueInput,
+  })
+  @ValidateNested()
+  @Type(() => ProjectWhereUniqueInput)
+  @IsOptional()
+  @Field(() => ProjectWhereUniqueInput, {
+    nullable: true,
+  })
+  project?: ProjectWhereUniqueInput;
 
   @ApiProperty({
     required: false,

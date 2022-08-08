@@ -12,8 +12,9 @@ https://docs.amplication.com/docs/how-to/custom-code
 import { InputType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
 import { IsString, IsOptional, ValidateNested, IsDate } from "class-validator";
-import { PartnerWhereUniqueInput } from "../../partner/base/PartnerWhereUniqueInput";
+import { OpportunityUpdateManyWithoutProjectsInput } from "./OpportunityUpdateManyWithoutProjectsInput";
 import { Type } from "class-transformer";
+import { PartnerWhereUniqueInput } from "../../partner/base/PartnerWhereUniqueInput";
 import { ProjectInvolvementUpdateManyWithoutProjectsInput } from "./ProjectInvolvementUpdateManyWithoutProjectsInput";
 import { UserUpdateManyWithoutProjectsInput } from "./UserUpdateManyWithoutProjectsInput";
 @InputType()
@@ -28,6 +29,18 @@ class ProjectUpdateInput {
     nullable: true,
   })
   name?: string | null;
+
+  @ApiProperty({
+    required: false,
+    type: () => OpportunityUpdateManyWithoutProjectsInput,
+  })
+  @ValidateNested()
+  @Type(() => OpportunityUpdateManyWithoutProjectsInput)
+  @IsOptional()
+  @Field(() => OpportunityUpdateManyWithoutProjectsInput, {
+    nullable: true,
+  })
+  opportunities?: OpportunityUpdateManyWithoutProjectsInput;
 
   @ApiProperty({
     required: false,

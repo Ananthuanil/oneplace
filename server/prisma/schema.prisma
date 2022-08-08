@@ -153,24 +153,27 @@ model Interview {
 }
 
 model Opportunity {
-  claimedPerson      User?                         @relation(name: "claimedPerson", fields: [claimedPersonId], references: [id])
+  claimedPerson      User?                             @relation(name: "claimedPerson", fields: [claimedPersonId], references: [id])
   claimedPersonId    String?
-  createdAt          DateTime                      @default(now())
+  createdAt          DateTime                          @default(now())
   currentStatus      EnumOpportunityCurrentStatus?
-  id                 String                        @id @default(cuid())
+  id                 String                            @id @default(cuid())
   interviews         Interview[]
-  mappedPerson       User?                         @relation(name: "OpportunityMappedPersonUserMappedPerson", fields: [mappedPersonId], references: [id])
+  mappedPerson       User?                             @relation(name: "OpportunityMappedPersonUserMappedPerson", fields: [mappedPersonId], references: [id])
   mappedPersonId     String?
   name               String?
-  optionalSkillset   Skill[]                       @relation(name: "optionalSkillset")
-  partner            Partner?                      @relation(fields: [partnerId], references: [id])
+  optionalSkillset   Skill[]                           @relation(name: "optionalSkillset")
+  partner            Partner?                          @relation(fields: [partnerId], references: [id])
   partnerId          String?
+  procurementStatus  EnumOpportunityProcurementStatus?
+  project            Project?                          @relation(fields: [projectId], references: [id])
+  projectId          String?
   requiredExperience Int?
-  requiredSkills     Skill[]                       @relation(name: "oppurtunatyRequiredSkills")
+  requiredSkills     Skill[]                           @relation(name: "oppurtunatyRequiredSkills")
   requirements       String?
   resumeId           String?
   source             EnumOpportunitySource?
-  updatedAt          DateTime                      @updatedAt
+  updatedAt          DateTime                          @updatedAt
   winOdds            Int?
 }
 
@@ -188,6 +191,7 @@ model Project {
   createdAt           DateTime             @default(now())
   id                  String               @id @default(cuid())
   name                String?
+  opportunities       Opportunity[]
   partner             Partner?             @relation(fields: [partnerId], references: [id])
   partnerId           String?
   projectInvolvements ProjectInvolvement[]
@@ -295,6 +299,11 @@ enum EnumOpportunityCurrentStatus {
   OnHold
   Won
   Failed
+}
+
+enum EnumOpportunityProcurementStatus {
+  new
+  replacement
 }
 
 enum EnumOpportunitySource {

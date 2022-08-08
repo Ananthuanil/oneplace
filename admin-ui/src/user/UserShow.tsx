@@ -195,6 +195,14 @@ export const UserShow = (props: ShowProps): React.ReactElement => {
             >
               <TextField source={PARTNER_TITLE_FIELD} />
             </ReferenceField>
+            <TextField label="Procurement Status" source="procurementStatus" />
+            <ReferenceField
+              label="Project"
+              source="project.id"
+              reference="Project"
+            >
+              <TextField source={PROJECT_TITLE_FIELD} />
+            </ReferenceField>
             <TextField
               label="Required Experience"
               source="requiredExperience"
@@ -236,6 +244,14 @@ export const UserShow = (props: ShowProps): React.ReactElement => {
               reference="Partner"
             >
               <TextField source={PARTNER_TITLE_FIELD} />
+            </ReferenceField>
+            <TextField label="Procurement Status" source="procurementStatus" />
+            <ReferenceField
+              label="Project"
+              source="project.id"
+              reference="Project"
+            >
+              <TextField source={PROJECT_TITLE_FIELD} />
             </ReferenceField>
             <TextField
               label="Required Experience"

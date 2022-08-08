@@ -8,6 +8,8 @@ export type OpportunityOrderByInput = {
   mappedPersonId?: SortOrder;
   name?: SortOrder;
   partnerId?: SortOrder;
+  procurementStatus?: SortOrder;
+  projectId?: SortOrder;
   requiredExperience?: SortOrder;
   requirements?: SortOrder;
   resumeId?: SortOrder;
