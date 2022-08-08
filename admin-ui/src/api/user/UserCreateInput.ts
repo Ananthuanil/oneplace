@@ -18,7 +18,7 @@ export type UserCreateInput = {
   community?: CommunityWhereUniqueInput | null;
   contactNumber?: string | null;
   dateOfJoining?: Date | null;
-  designation?:
+  designation?: Array<
     | "joe"
     | "engineer"
     | "seniorEngineer"
@@ -27,7 +27,7 @@ export type UserCreateInput = {
     | "principalConsultant"
     | "director"
     | "cxo"
-    | null;
+  >;
   dob?: Date | null;
   email?: string | null;
   emergencyContactNumber?: string | null;
