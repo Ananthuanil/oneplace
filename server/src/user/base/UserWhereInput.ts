@@ -18,7 +18,6 @@ import { AwardListRelationFilter } from "../../award/base/AwardListRelationFilte
 import { CandidateListRelationFilter } from "../../candidate/base/CandidateListRelationFilter";
 import { DateTimeNullableFilter } from "../../util/DateTimeNullableFilter";
 import { CommunityWhereUniqueInput } from "../../community/base/CommunityWhereUniqueInput";
-import { EnumUserDesignation } from "./EnumUserDesignation";
 import { StringFilter } from "../../util/StringFilter";
 import { EnumUserGender } from "./EnumUserGender";
 import { InterviewListRelationFilter } from "../../interview/base/InterviewListRelationFilter";
@@ -140,25 +139,6 @@ class UserWhereInput {
     nullable: true,
   })
   dateOfJoining?: DateTimeNullableFilter;
-
-  @ApiProperty({
-    required: false,
-    enum: EnumUserDesignation,
-  })
-  @IsEnum(EnumUserDesignation)
-  @IsOptional()
-  @Field(() => EnumUserDesignation, {
-    nullable: true,
-  })
-  designation?:
-    | "joe"
-    | "engineer"
-    | "seniorEngineer"
-    | "consultant"
-    | "seniorConsultant"
-    | "principalConsultant"
-    | "director"
-    | "cxo";
 
   @ApiProperty({
     required: false,

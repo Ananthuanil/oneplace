@@ -10,17 +10,17 @@ generator client {
 model User {
   aadarNumber            String?
   address                String?
-  awards                 Award[]              @relation(name: "awards")
+  awards                 Award[]               @relation(name: "awards")
   bloodGroup             String?
   candidates             Candidate[]
   careerOutDate          DateTime?
   careerStartDate        DateTime?
-  community              Community?           @relation(fields: [communityId], references: [id])
+  community              Community?            @relation(fields: [communityId], references: [id])
   communityId            String?
   contactNumber          String?
-  createdAt              DateTime             @default(now())
+  createdAt              DateTime              @default(now())
   dateOfJoining          DateTime?
-  designation            EnumUserDesignation?
+  designation            EnumUserDesignation[]
   dob                    DateTime?
   email                  String?
   emergencyContactNumber String?
@@ -28,13 +28,13 @@ model User {
   folderLink             String?
   fwExperience           String?
   gender                 EnumUserGender?
-  id                     String               @id @default(cuid())
+  id                     String                @id @default(cuid())
   image                  String?
   imageLink              String?
   interviews             Interview[]
   lastName               String
-  mappedPerson           Opportunity[]        @relation(name: "OpportunityMappedPersonUserMappedPerson")
-  opportunities          Opportunity[]        @relation(name: "claimedPerson")
+  mappedPerson           Opportunity[]         @relation(name: "OpportunityMappedPersonUserMappedPerson")
+  opportunities          Opportunity[]         @relation(name: "claimedPerson")
   panNumber              String?
   password               String
   personalEmailId        String?
@@ -43,10 +43,10 @@ model User {
   resumeLink             String?
   roles                  String[]
   skillSets              SkillSet[]
-  toPerson               Award[]              @relation(name: "AwardToPersonUserToPerson")
+  toPerson               Award[]               @relation(name: "AwardToPersonUserToPerson")
   totalExperience        String
-  updatedAt              DateTime             @updatedAt
-  username               String               @unique
+  updatedAt              DateTime              @updatedAt
+  username               String                @unique
 }
 
 model Community {
