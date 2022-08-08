@@ -57,7 +57,23 @@ export const UserCreate = (props: CreateProps): React.ReactElement => {
         </ReferenceInput>
         <TextInput label="Contact Number" source="contactNumber" />
         <DateInput label="Date of Joining" source="dateOfJoining" />
-        <TextInput label="Designation" source="designation" />
+        <SelectInput
+          source="designation"
+          label="Designation"
+          choices={[
+            { label: "JOE", value: "joe" },
+            { label: "Engineer", value: "engineer" },
+            { label: "Senior Engineer", value: "seniorEngineer" },
+            { label: "Consultant", value: "consultant" },
+            { label: "Senior Consultant", value: "seniorConsultant" },
+            { label: "Principal Consultant", value: "principalConsultant" },
+            { label: "Director", value: "director" },
+            { label: "CXO", value: "cxo" },
+          ]}
+          optionText="label"
+          allowEmpty
+          optionValue="value"
+        />
         <DateInput label="DOB" source="dob" />
         <TextInput label="Email" source="email" type="email" />
         <TextInput

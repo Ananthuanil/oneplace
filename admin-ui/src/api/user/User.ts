@@ -19,7 +19,16 @@ export type User = {
   contactNumber: string | null;
   createdAt: Date;
   dateOfJoining: Date | null;
-  designation: string | null;
+  designation?:
+    | "joe"
+    | "engineer"
+    | "seniorEngineer"
+    | "consultant"
+    | "seniorConsultant"
+    | "principalConsultant"
+    | "director"
+    | "cxo"
+    | null;
   dob: Date | null;
   email: string | null;
   emergencyContactNumber: string | null;

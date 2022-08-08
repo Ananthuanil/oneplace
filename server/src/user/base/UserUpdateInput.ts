@@ -22,6 +22,7 @@ import { AwardUpdateManyWithoutUsersInput } from "./AwardUpdateManyWithoutUsersI
 import { Type } from "class-transformer";
 import { CandidateUpdateManyWithoutUsersInput } from "./CandidateUpdateManyWithoutUsersInput";
 import { CommunityWhereUniqueInput } from "../../community/base/CommunityWhereUniqueInput";
+import { EnumUserDesignation } from "./EnumUserDesignation";
 import { EnumUserGender } from "./EnumUserGender";
 import { InterviewUpdateManyWithoutUsersInput } from "./InterviewUpdateManyWithoutUsersInput";
 import { OpportunityUpdateManyWithoutUsersInput } from "./OpportunityUpdateManyWithoutUsersInput";
@@ -145,14 +146,23 @@ class UserUpdateInput {
 
   @ApiProperty({
     required: false,
-    type: String,
+    enum: EnumUserDesignation,
   })
-  @IsString()
+  @IsEnum(EnumUserDesignation)
   @IsOptional()
-  @Field(() => String, {
+  @Field(() => EnumUserDesignation, {
     nullable: true,
   })
-  designation?: string | null;
+  designation?:
+    | "joe"
+    | "engineer"
+    | "seniorEngineer"
+    | "consultant"
+    | "seniorConsultant"
+    | "principalConsultant"
+    | "director"
+    | "cxo"
+    | null;
 
   @ApiProperty({
     required: false,

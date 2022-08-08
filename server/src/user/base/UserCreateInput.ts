@@ -22,6 +22,7 @@ import { AwardCreateNestedManyWithoutUsersInput } from "./AwardCreateNestedManyW
 import { Type } from "class-transformer";
 import { CandidateCreateNestedManyWithoutUsersInput } from "./CandidateCreateNestedManyWithoutUsersInput";
 import { CommunityWhereUniqueInput } from "../../community/base/CommunityWhereUniqueInput";
+import { EnumUserDesignation } from "./EnumUserDesignation";
 import { EnumUserGender } from "./EnumUserGender";
 import { InterviewCreateNestedManyWithoutUsersInput } from "./InterviewCreateNestedManyWithoutUsersInput";
 import { OpportunityCreateNestedManyWithoutUsersInput } from "./OpportunityCreateNestedManyWithoutUsersInput";
@@ -145,14 +146,23 @@ class UserCreateInput {
 
   @ApiProperty({
     required: false,
-    type: String,
+    enum: EnumUserDesignation,
   })
-  @IsString()
+  @IsEnum(EnumUserDesignation)
   @IsOptional()
-  @Field(() => String, {
+  @Field(() => EnumUserDesignation, {
     nullable: true,
   })
-  designation?: string | null;
+  designation?:
+    | "joe"
+    | "engineer"
+    | "seniorEngineer"
+    | "consultant"
+    | "seniorConsultant"
+    | "principalConsultant"
+    | "director"
+    | "cxo"
+    | null;
 
   @ApiProperty({
     required: false,
