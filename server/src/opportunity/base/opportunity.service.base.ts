@@ -17,6 +17,7 @@ import {
   Skill,
   User,
   Partner,
+  Project,
 } from "@prisma/client";
 
 export class OpportunityServiceBase {
@@ -109,5 +110,13 @@ export class OpportunityServiceBase {
         where: { id: parentId },
       })
       .partner();
+  }
+
+  async getProject(parentId: string): Promise<Project | null> {
+    return this.prisma.opportunity
+      .findUnique({
+        where: { id: parentId },
+      })
+      .project();
   }
 }

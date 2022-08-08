@@ -16,6 +16,7 @@ import { UserTitle } from "../user/UserTitle";
 import { InterviewTitle } from "../interview/InterviewTitle";
 import { SkillTitle } from "../skill/SkillTitle";
 import { PartnerTitle } from "../partner/PartnerTitle";
+import { ProjectTitle } from "../project/ProjectTitle";
 
 export const OpportunityCreate = (props: CreateProps): React.ReactElement => {
   return (
@@ -74,6 +75,20 @@ export const OpportunityCreate = (props: CreateProps): React.ReactElement => {
         </ReferenceArrayInput>
         <ReferenceInput source="partner.id" reference="Partner" label="Partner">
           <SelectInput optionText={PartnerTitle} />
+        </ReferenceInput>
+        <SelectInput
+          source="procurementStatus"
+          label="Procurement Status"
+          choices={[
+            { label: "New", value: "new" },
+            { label: "Replacement", value: "replacement" },
+          ]}
+          optionText="label"
+          allowEmpty
+          optionValue="value"
+        />
+        <ReferenceInput source="project.id" reference="Project" label="Project">
+          <SelectInput optionText={ProjectTitle} />
         </ReferenceInput>
         <NumberInput
           step={1}

@@ -4,6 +4,7 @@ import { InterviewListRelationFilter } from "../interview/InterviewListRelationF
 import { StringNullableFilter } from "../../util/StringNullableFilter";
 import { SkillListRelationFilter } from "../skill/SkillListRelationFilter";
 import { PartnerWhereUniqueInput } from "../partner/PartnerWhereUniqueInput";
+import { ProjectWhereUniqueInput } from "../project/ProjectWhereUniqueInput";
 import { IntNullableFilter } from "../../util/IntNullableFilter";
 
 export type OpportunityWhereInput = {
@@ -24,6 +25,8 @@ export type OpportunityWhereInput = {
   name?: StringNullableFilter;
   optionalSkillset?: SkillListRelationFilter;
   partner?: PartnerWhereUniqueInput;
+  procurementStatus?: "new" | "replacement";
+  project?: ProjectWhereUniqueInput;
   requiredExperience?: IntNullableFilter;
   requiredSkills?: SkillListRelationFilter;
   requirements?: StringNullableFilter;

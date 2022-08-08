@@ -13,6 +13,7 @@ import { PrismaService } from "nestjs-prisma";
 import {
   Prisma,
   Project,
+  Opportunity,
   ProjectInvolvement,
   User,
   Partner,
@@ -51,6 +52,17 @@ export class ProjectServiceBase {
     args: Prisma.SelectSubset<T, Prisma.ProjectDeleteArgs>
   ): Promise<Project> {
     return this.prisma.project.delete(args);
+  }
+
+  async findOpportunities(
+    parentId: string,
+    args: Prisma.OpportunityFindManyArgs
+  ): Promise<Opportunity[]> {
+    return this.prisma.project
+      .findUnique({
+        where: { id: parentId },
+      })
+      .opportunities(args);
   }
 
   async findProjectInvolvements(

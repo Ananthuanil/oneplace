@@ -25,6 +25,8 @@ import { DeleteProjectArgs } from "./DeleteProjectArgs";
 import { ProjectFindManyArgs } from "./ProjectFindManyArgs";
 import { ProjectFindUniqueArgs } from "./ProjectFindUniqueArgs";
 import { Project } from "./Project";
+import { OpportunityFindManyArgs } from "../../opportunity/base/OpportunityFindManyArgs";
+import { Opportunity } from "../../opportunity/base/Opportunity";
 import { ProjectInvolvementFindManyArgs } from "../../projectInvolvement/base/ProjectInvolvementFindManyArgs";
 import { ProjectInvolvement } from "../../projectInvolvement/base/ProjectInvolvement";
 import { UserFindManyArgs } from "../../user/base/UserFindManyArgs";
@@ -137,6 +139,21 @@ export class ProjectResolverBase {
       }
       throw error;
     }
+  }
+
+  @Public()
+  @graphql.ResolveField(() => [Opportunity])
+  async opportunities(
+    @graphql.Parent() parent: Project,
+    @graphql.Args() args: OpportunityFindManyArgs
+  ): Promise<Opportunity[]> {
+    const results = await this.service.findOpportunities(parent.id, args);
+
+    if (!results) {
+      return [];
+    }
+
+    return results;
   }
 
   @common.UseInterceptors(AclFilterResponseInterceptor)
