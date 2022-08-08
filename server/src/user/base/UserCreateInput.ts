@@ -145,7 +145,7 @@ class UserCreateInput {
   dateOfJoining?: Date | null;
 
   @ApiProperty({
-    required: false,
+    required: true,
     enum: EnumUserDesignation,
     isArray: true,
   })
