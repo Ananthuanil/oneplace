@@ -22,6 +22,7 @@ import { Award } from "../../award/base/Award";
 import { Type } from "class-transformer";
 import { Candidate } from "../../candidate/base/Candidate";
 import { Community } from "../../community/base/Community";
+import { EnumUserDesignation } from "./EnumUserDesignation";
 import { EnumUserGender } from "./EnumUserGender";
 import { Interview } from "../../interview/base/Interview";
 import { Opportunity } from "../../opportunity/base/Opportunity";
@@ -144,14 +145,23 @@ class User {
 
   @ApiProperty({
     required: false,
-    type: String,
+    enum: EnumUserDesignation,
   })
-  @IsString()
+  @IsEnum(EnumUserDesignation)
   @IsOptional()
-  @Field(() => String, {
+  @Field(() => EnumUserDesignation, {
     nullable: true,
   })
-  designation!: string | null;
+  designation?:
+    | "joe"
+    | "engineer"
+    | "seniorEngineer"
+    | "consultant"
+    | "seniorConsultant"
+    | "principalConsultant"
+    | "director"
+    | "cxo"
+    | null;
 
   @ApiProperty({
     required: false,

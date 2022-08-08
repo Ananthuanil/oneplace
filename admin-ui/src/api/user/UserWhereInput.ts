@@ -21,7 +21,15 @@ export type UserWhereInput = {
   community?: CommunityWhereUniqueInput;
   contactNumber?: StringNullableFilter;
   dateOfJoining?: DateTimeNullableFilter;
-  designation?: StringNullableFilter;
+  designation?:
+    | "joe"
+    | "engineer"
+    | "seniorEngineer"
+    | "consultant"
+    | "seniorConsultant"
+    | "principalConsultant"
+    | "director"
+    | "cxo";
   dob?: DateTimeNullableFilter;
   email?: StringNullableFilter;
   emergencyContactNumber?: StringNullableFilter;

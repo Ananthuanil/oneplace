@@ -20,7 +20,7 @@ model User {
   contactNumber          String?
   createdAt              DateTime             @default(now())
   dateOfJoining          DateTime?
-  designation            String?
+  designation            EnumUserDesignation?
   dob                    DateTime?
   email                  String?
   emergencyContactNumber String?
@@ -242,6 +242,17 @@ model SkillLevel {
   skill       Skill?     @relation(fields: [skillId], references: [id])
   skillId     String?
   updatedAt   DateTime   @updatedAt
+}
+
+enum EnumUserDesignation {
+  joe
+  engineer
+  seniorEngineer
+  consultant
+  seniorConsultant
+  principalConsultant
+  director
+  cxo
 }
 
 enum EnumUserGender {
