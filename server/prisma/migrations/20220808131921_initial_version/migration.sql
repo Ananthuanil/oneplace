@@ -9,4 +9,4 @@ CREATE TYPE "EnumUserDesignation" AS ENUM ('joe', 'engineer', 'seniorEngineer', 
 
 -- AlterTable
 ALTER TABLE "User" DROP COLUMN "designation",
-ADD COLUMN     "designation" "EnumUserDesignation";
+ADD COLUMN     "designation" "EnumUserDesignation"[];
