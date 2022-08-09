@@ -28,7 +28,7 @@ async function seed(bcryptSalt: Salt) {
   const data = {
     username: "admin",
     password: await hash("admin", bcryptSalt),
-    roles: ["user"],
+    roles: ["superAdmin"],
     designation: [],
     firstName: "",
     lastName: "",
