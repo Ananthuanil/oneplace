@@ -156,14 +156,14 @@ class User {
     nullable: true,
   })
   designation?: Array<
-    | "joe"
-    | "engineer"
-    | "seniorEngineer"
-    | "consultant"
-    | "seniorConsultant"
-    | "principalConsultant"
-    | "director"
-    | "cxo"
+    | "Joe"
+    | "Engineer"
+    | "SeniorEngineer"
+    | "Consultant"
+    | "SeniorConsultant"
+    | "PrincipalConsultant"
+    | "Director"
+    | "Cxo"
   >;
 
   @ApiProperty({

@@ -20,14 +20,14 @@ export type User = {
   createdAt: Date;
   dateOfJoining: Date | null;
   designation?: Array<
-    | "joe"
-    | "engineer"
-    | "seniorEngineer"
-    | "consultant"
-    | "seniorConsultant"
-    | "principalConsultant"
-    | "director"
-    | "cxo"
+    | "Joe"
+    | "Engineer"
+    | "SeniorEngineer"
+    | "Consultant"
+    | "SeniorConsultant"
+    | "PrincipalConsultant"
+    | "Director"
+    | "Cxo"
   >;
   dob: Date | null;
   email: string | null;

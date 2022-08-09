@@ -12,14 +12,14 @@ https://docs.amplication.com/docs/how-to/custom-code
 import { registerEnumType } from "@nestjs/graphql";
 
 export enum EnumUserDesignation {
-  Joe = "joe",
-  Engineer = "engineer",
-  SeniorEngineer = "seniorEngineer",
-  Consultant = "consultant",
-  SeniorConsultant = "seniorConsultant",
-  PrincipalConsultant = "principalConsultant",
-  Director = "director",
-  Cxo = "cxo",
+  Joe = "Joe",
+  Engineer = "Engineer",
+  SeniorEngineer = "SeniorEngineer",
+  Consultant = "Consultant",
+  SeniorConsultant = "SeniorConsultant",
+  PrincipalConsultant = "PrincipalConsultant",
+  Director = "Director",
+  Cxo = "Cxo",
 }
 
 registerEnumType(EnumUserDesignation, {
