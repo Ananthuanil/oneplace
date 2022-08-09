@@ -215,7 +215,7 @@ class UserWhereInput {
   @Field(() => EnumUserGender, {
     nullable: true,
   })
-  gender?: "male" | "female" | "others";
+  gender?: "Male" | "Female" | "Others";
 
   @ApiProperty({
     required: false,

@@ -27,7 +27,7 @@ export type UserWhereInput = {
   firstName?: StringFilter;
   folderLink?: StringNullableFilter;
   fwExperience?: StringNullableFilter;
-  gender?: "male" | "female" | "others";
+  gender?: "Male" | "Female" | "Others";
   id?: StringFilter;
   image?: StringNullableFilter;
   imageLink?: StringNullableFilter;

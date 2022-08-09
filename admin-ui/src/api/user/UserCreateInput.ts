@@ -34,7 +34,7 @@ export type UserCreateInput = {
   firstName: string;
   folderLink?: string | null;
   fwExperience?: string | null;
-  gender?: "male" | "female" | "others" | null;
+  gender?: "Male" | "Female" | "Others" | null;
   image?: string | null;
   imageLink?: string | null;
   interviews?: InterviewCreateNestedManyWithoutUsersInput;
