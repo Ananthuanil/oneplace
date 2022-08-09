@@ -245,14 +245,14 @@ model SkillLevel {
 }
 
 enum EnumUserDesignation {
-  joe
-  engineer
-  seniorEngineer
-  consultant
-  seniorConsultant
-  principalConsultant
-  director
-  cxo
+  Joe
+  Engineer
+  SeniorEngineer
+  Consultant
+  SeniorConsultant
+  PrincipalConsultant
+  Director
+  Cxo
 }
 
 enum EnumUserGender {

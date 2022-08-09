@@ -61,14 +61,14 @@ export const UserCreate = (props: CreateProps): React.ReactElement => {
           label="Designation"
           source="designation"
           choices={[
-            { label: "JOE", value: "joe" },
-            { label: "Engineer", value: "engineer" },
-            { label: "Senior Engineer", value: "seniorEngineer" },
-            { label: "Consultant", value: "consultant" },
-            { label: "Senior Consultant", value: "seniorConsultant" },
-            { label: "Principal Consultant", value: "principalConsultant" },
-            { label: "Director", value: "director" },
-            { label: "CXO", value: "cxo" },
+            { label: "JOE", value: "Joe" },
+            { label: "Engineer", value: "Engineer" },
+            { label: "Senior Engineer", value: "SeniorEngineer" },
+            { label: "Consultant", value: "Consultant" },
+            { label: "Senior Consultant", value: "SeniorConsultant" },
+            { label: "Principal Consultant", value: "PrincipalConsultant" },
+            { label: "Director", value: "Director" },
+            { label: "CXO", value: "Cxo" },
           ]}
           optionText="label"
           optionValue="value"
