@@ -86,9 +86,9 @@ export const UserCreate = (props: CreateProps): React.ReactElement => {
           source="gender"
           label="Gender"
           choices={[
-            { label: "Male", value: "male" },
-            { label: "Female", value: "female" },
-            { label: "Others", value: "others" },
+            { label: "Male", value: "Male" },
+            { label: "Female", value: "Female" },
+            { label: "Others", value: "Others" },
           ]}
           optionText="label"
           allowEmpty

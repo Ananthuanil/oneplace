@@ -256,9 +256,9 @@ enum EnumUserDesignation {
 }
 
 enum EnumUserGender {
-  male
-  female
-  others
+  Male
+  Female
+  Others
 }
 
 enum EnumCandidateCategory {

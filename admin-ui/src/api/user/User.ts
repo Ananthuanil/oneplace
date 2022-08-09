@@ -35,7 +35,7 @@ export type User = {
   firstName: string;
   folderLink: string | null;
   fwExperience: string | null;
-  gender?: "male" | "female" | "others" | null;
+  gender?: "Male" | "Female" | "Others" | null;
   id: string;
   image: string | null;
   imageLink: string | null;

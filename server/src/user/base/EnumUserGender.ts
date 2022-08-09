@@ -12,9 +12,9 @@ https://docs.amplication.com/docs/how-to/custom-code
 import { registerEnumType } from "@nestjs/graphql";
 
 export enum EnumUserGender {
-  Male = "male",
-  Female = "female",
-  Others = "others",
+  Male = "Male",
+  Female = "Female",
+  Others = "Others",
 }
 
 registerEnumType(EnumUserGender, {

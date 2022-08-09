@@ -239,7 +239,7 @@ class UserCreateInput {
   @Field(() => EnumUserGender, {
     nullable: true,
   })
-  gender?: "male" | "female" | "others" | null;
+  gender?: "Male" | "Female" | "Others" | null;
 
   @ApiProperty({
     required: false,
