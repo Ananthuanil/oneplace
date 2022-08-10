@@ -17,8 +17,6 @@ import { GqlDefaultAuthGuard } from "../../auth/gqlDefaultAuth.guard";
 import * as gqlACGuard from "../../auth/gqlAC.guard";
 import { isRecordNotFoundError } from "../../prisma.util";
 import { MetaQueryPayload } from "../../util/MetaQueryPayload";
-import { AclFilterResponseInterceptor } from "../../interceptors/aclFilterResponse.interceptor";
-import { AclValidateRequestInterceptor } from "../../interceptors/aclValidateRequest.interceptor";
 import { Public } from "../../decorators/public.decorator";
 import { CreateSkillLevelArgs } from "./CreateSkillLevelArgs";
 import { UpdateSkillLevelArgs } from "./UpdateSkillLevelArgs";
@@ -38,12 +36,8 @@ export class SkillLevelResolverBase {
     protected readonly rolesBuilder: nestAccessControl.RolesBuilder
   ) {}
 
+  @Public()
   @graphql.Query(() => MetaQueryPayload)
-  @nestAccessControl.UseRoles({
-    resource: "SkillLevel",
-    action: "read",
-    possession: "any",
-  })
   async _skillLevelsMeta(
     @graphql.Args() args: SkillLevelFindManyArgs
   ): Promise<MetaQueryPayload> {
@@ -57,26 +51,16 @@ export class SkillLevelResolverBase {
     };
   }
 
-  @common.UseInterceptors(AclFilterResponseInterceptor)
+  @Public()
   @graphql.Query(() => [SkillLevel])
-  @nestAccessControl.UseRoles({
-    resource: "SkillLevel",
-    action: "read",
-    possession: "any",
-  })
   async skillLevels(
     @graphql.Args() args: SkillLevelFindManyArgs
   ): Promise<SkillLevel[]> {
     return this.service.findMany(args);
   }
 
-  @common.UseInterceptors(AclFilterResponseInterceptor)
+  @Public()
   @graphql.Query(() => SkillLevel, { nullable: true })
-  @nestAccessControl.UseRoles({
-    resource: "SkillLevel",
-    action: "read",
-    possession: "own",
-  })
   async skillLevel(
     @graphql.Args() args: SkillLevelFindUniqueArgs
   ): Promise<SkillLevel | null> {
@@ -87,13 +71,8 @@ export class SkillLevelResolverBase {
     return result;
   }
 
-  @common.UseInterceptors(AclValidateRequestInterceptor)
+  @Public()
   @graphql.Mutation(() => SkillLevel)
-  @nestAccessControl.UseRoles({
-    resource: "SkillLevel",
-    action: "create",
-    possession: "any",
-  })
   async createSkillLevel(
     @graphql.Args() args: CreateSkillLevelArgs
   ): Promise<SkillLevel> {
@@ -117,13 +96,8 @@ export class SkillLevelResolverBase {
     });
   }
 
-  @common.UseInterceptors(AclValidateRequestInterceptor)
+  @Public()
   @graphql.Mutation(() => SkillLevel)
-  @nestAccessControl.UseRoles({
-    resource: "SkillLevel",
-    action: "update",
-    possession: "any",
-  })
   async updateSkillLevel(
     @graphql.Args() args: UpdateSkillLevelArgs
   ): Promise<SkillLevel | null> {
@@ -156,12 +130,8 @@ export class SkillLevelResolverBase {
     }
   }
 
+  @Public()
   @graphql.Mutation(() => SkillLevel)
-  @nestAccessControl.UseRoles({
-    resource: "SkillLevel",
-    action: "delete",
-    possession: "any",
-  })
   async deleteSkillLevel(
     @graphql.Args() args: DeleteSkillLevelArgs
   ): Promise<SkillLevel | null> {
