@@ -142,6 +142,17 @@ class UserUpdateInput {
   @Field(() => Date, {
     nullable: true,
   })
+  courseOutDate?: Date | null;
+
+  @ApiProperty({
+    required: false,
+  })
+  @IsDate()
+  @Type(() => Date)
+  @IsOptional()
+  @Field(() => Date, {
+    nullable: true,
+  })
   dateOfJoining?: Date | null;
 
   @ApiProperty({

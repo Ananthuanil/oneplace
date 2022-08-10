@@ -56,6 +56,7 @@ export const UserEdit = (props: EditProps): React.ReactElement => {
           <SelectInput optionText={CommunityTitle} />
         </ReferenceInput>
         <TextInput label="Contact Number" source="contactNumber" />
+        <DateInput label="Course Out Date" source="courseOutDate" />
         <DateInput label="Date of Joining" source="dateOfJoining" />
         <SelectArrayInput
           label="Designation"

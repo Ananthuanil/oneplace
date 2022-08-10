@@ -18,6 +18,7 @@ model User {
   community              Community?            @relation(fields: [communityId], references: [id])
   communityId            String?
   contactNumber          String?
+  courseOutDate          DateTime?
   createdAt              DateTime              @default(now())
   dateOfJoining          DateTime?
   designation            EnumUserDesignation[]

@@ -8,6 +8,7 @@ export type UserOrderByInput = {
   careerStartDate?: SortOrder;
   communityId?: SortOrder;
   contactNumber?: SortOrder;
+  courseOutDate?: SortOrder;
   createdAt?: SortOrder;
   dateOfJoining?: SortOrder;
   designation?: SortOrder;
