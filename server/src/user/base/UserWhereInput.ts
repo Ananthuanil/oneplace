@@ -138,6 +138,17 @@ class UserWhereInput {
   @Field(() => DateTimeNullableFilter, {
     nullable: true,
   })
+  courseOutDate?: DateTimeNullableFilter;
+
+  @ApiProperty({
+    required: false,
+    type: DateTimeNullableFilter,
+  })
+  @Type(() => DateTimeNullableFilter)
+  @IsOptional()
+  @Field(() => DateTimeNullableFilter, {
+    nullable: true,
+  })
   dateOfJoining?: DateTimeNullableFilter;
 
   @ApiProperty({

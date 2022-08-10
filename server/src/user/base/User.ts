@@ -125,6 +125,17 @@ class User {
   contactNumber!: string | null;
 
   @ApiProperty({
+    required: false,
+  })
+  @IsDate()
+  @Type(() => Date)
+  @IsOptional()
+  @Field(() => Date, {
+    nullable: true,
+  })
+  courseOutDate!: Date | null;
+
+  @ApiProperty({
     required: true,
   })
   @IsDate()

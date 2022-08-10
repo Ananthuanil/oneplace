@@ -37,6 +37,7 @@ export const CommunityShow = (props: ShowProps): React.ReactElement => {
               <TextField source={COMMUNITY_TITLE_FIELD} />
             </ReferenceField>
             <TextField label="Contact Number" source="contactNumber" />
+            <TextField label="Course Out Date" source="courseOutDate" />
             <DateField source="createdAt" label="Created At" />
             <TextField label="Date of Joining" source="dateOfJoining" />
             <TextField label="Designation" source="designation" />
