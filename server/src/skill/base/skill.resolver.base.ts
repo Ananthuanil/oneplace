@@ -18,7 +18,6 @@ import * as gqlACGuard from "../../auth/gqlAC.guard";
 import { isRecordNotFoundError } from "../../prisma.util";
 import { MetaQueryPayload } from "../../util/MetaQueryPayload";
 import { Public } from "../../decorators/public.decorator";
-import { AclFilterResponseInterceptor } from "../../interceptors/aclFilterResponse.interceptor";
 import { CreateSkillArgs } from "./CreateSkillArgs";
 import { UpdateSkillArgs } from "./UpdateSkillArgs";
 import { DeleteSkillArgs } from "./DeleteSkillArgs";
@@ -160,13 +159,8 @@ export class SkillResolverBase {
     }
   }
 
-  @common.UseInterceptors(AclFilterResponseInterceptor)
+  @Public()
   @graphql.ResolveField(() => [SkillLevel])
-  @nestAccessControl.UseRoles({
-    resource: "SkillLevel",
-    action: "read",
-    possession: "any",
-  })
   async skillMatrices(
     @graphql.Parent() parent: Skill,
     @graphql.Args() args: SkillLevelFindManyArgs
