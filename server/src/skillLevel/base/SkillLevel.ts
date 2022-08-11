@@ -19,7 +19,7 @@ import {
   IsInt,
 } from "class-validator";
 import { Type } from "class-transformer";
-import { Interview } from "../../interview/base/Interview";
+import { InterviewFeedback } from "../../interviewFeedback/base/InterviewFeedback";
 import { Skill } from "../../skill/base/Skill";
 @ObjectType()
 class SkillLevel {
@@ -41,12 +41,12 @@ class SkillLevel {
 
   @ApiProperty({
     required: false,
-    type: () => Interview,
+    type: () => InterviewFeedback,
   })
   @ValidateNested()
-  @Type(() => Interview)
+  @Type(() => InterviewFeedback)
   @IsOptional()
-  interview?: Interview | null;
+  interviewFeedback?: InterviewFeedback | null;
 
   @ApiProperty({
     required: false,

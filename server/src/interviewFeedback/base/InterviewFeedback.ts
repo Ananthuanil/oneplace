@@ -21,6 +21,7 @@ import {
 import { CommunicationFeedback } from "../../communicationFeedback/base/CommunicationFeedback";
 import { Type } from "class-transformer";
 import { Interview } from "../../interview/base/Interview";
+import { SkillLevel } from "../../skillLevel/base/SkillLevel";
 import { SkillSet } from "../../skillSet/base/SkillSet";
 import { EnumInterviewFeedbackStatus } from "./EnumInterviewFeedbackStatus";
 @ObjectType()
@@ -110,6 +111,15 @@ class InterviewFeedback {
     nullable: true,
   })
   relevantTechFeedback!: string | null;
+
+  @ApiProperty({
+    required: false,
+    type: () => [SkillLevel],
+  })
+  @ValidateNested()
+  @Type(() => SkillLevel)
+  @IsOptional()
+  skillMatrices?: Array<SkillLevel>;
 
   @ApiProperty({
     required: false,

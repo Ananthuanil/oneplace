@@ -15,6 +15,7 @@ import { IsString, IsOptional, ValidateNested, IsEnum } from "class-validator";
 import { CommunicationFeedbackWhereUniqueInput } from "../../communicationFeedback/base/CommunicationFeedbackWhereUniqueInput";
 import { Type } from "class-transformer";
 import { InterviewWhereUniqueInput } from "../../interview/base/InterviewWhereUniqueInput";
+import { SkillLevelCreateNestedManyWithoutInterviewFeedbacksInput } from "./SkillLevelCreateNestedManyWithoutInterviewFeedbacksInput";
 import { SkillSetCreateNestedManyWithoutInterviewFeedbacksInput } from "./SkillSetCreateNestedManyWithoutInterviewFeedbacksInput";
 import { EnumInterviewFeedbackStatus } from "./EnumInterviewFeedbackStatus";
 @InputType()
@@ -94,6 +95,18 @@ class InterviewFeedbackCreateInput {
     nullable: true,
   })
   relevantTechFeedback?: string | null;
+
+  @ApiProperty({
+    required: false,
+    type: () => SkillLevelCreateNestedManyWithoutInterviewFeedbacksInput,
+  })
+  @ValidateNested()
+  @Type(() => SkillLevelCreateNestedManyWithoutInterviewFeedbacksInput)
+  @IsOptional()
+  @Field(() => SkillLevelCreateNestedManyWithoutInterviewFeedbacksInput, {
+    nullable: true,
+  })
+  skillMatrices?: SkillLevelCreateNestedManyWithoutInterviewFeedbacksInput;
 
   @ApiProperty({
     required: false,

@@ -25,7 +25,6 @@ import { EnumInterviewCurrentStatus } from "./EnumInterviewCurrentStatus";
 import { InterviewFeedback } from "../../interviewFeedback/base/InterviewFeedback";
 import { User } from "../../user/base/User";
 import { Opportunity } from "../../opportunity/base/Opportunity";
-import { SkillLevel } from "../../skillLevel/base/SkillLevel";
 @ObjectType()
 class Interview {
   @ApiProperty({
@@ -140,15 +139,6 @@ class Interview {
   @Type(() => Opportunity)
   @IsOptional()
   opportunity?: Opportunity | null;
-
-  @ApiProperty({
-    required: false,
-    type: () => [SkillLevel],
-  })
-  @ValidateNested()
-  @Type(() => SkillLevel)
-  @IsOptional()
-  skillMatrix?: Array<SkillLevel>;
 
   @ApiProperty({
     required: false,

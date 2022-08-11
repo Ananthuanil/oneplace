@@ -6,7 +6,6 @@ import { StringFilter } from "../../util/StringFilter";
 import { UserWhereUniqueInput } from "../user/UserWhereUniqueInput";
 import { StringNullableFilter } from "../../util/StringNullableFilter";
 import { OpportunityWhereUniqueInput } from "../opportunity/OpportunityWhereUniqueInput";
-import { SkillLevelListRelationFilter } from "../skillLevel/SkillLevelListRelationFilter";
 
 export type InterviewWhereInput = {
   candidate?: CandidateWhereUniqueInput;
@@ -24,6 +23,5 @@ export type InterviewWhereInput = {
   level?: StringNullableFilter;
   mode?: StringNullableFilter;
   opportunity?: OpportunityWhereUniqueInput;
-  skillMatrix?: SkillLevelListRelationFilter;
   subject?: StringNullableFilter;
 };

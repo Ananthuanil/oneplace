@@ -13,6 +13,7 @@ import {
 
 import { CommunicationFeedbackTitle } from "../communicationFeedback/CommunicationFeedbackTitle";
 import { InterviewTitle } from "../interview/InterviewTitle";
+import { SkillLevelTitle } from "../skillLevel/SkillLevelTitle";
 import { SkillSetTitle } from "../skillSet/SkillSetTitle";
 
 export const InterviewFeedbackEdit = (props: EditProps): React.ReactElement => {
@@ -41,6 +42,14 @@ export const InterviewFeedbackEdit = (props: EditProps): React.ReactElement => {
           label="relevant_tech_feedback"
           source="relevantTechFeedback"
         />
+        <ReferenceArrayInput
+          source="skillMatrices"
+          reference="SkillLevel"
+          parse={(value: any) => value && value.map((v: any) => ({ id: v }))}
+          format={(value: any) => value && value.map((v: any) => v.id)}
+        >
+          <SelectArrayInput optionText={SkillLevelTitle} />
+        </ReferenceArrayInput>
         <ReferenceArrayInput
           source="skillSets"
           reference="SkillSet"

@@ -14,7 +14,7 @@ import { ApiProperty } from "@nestjs/swagger";
 import { StringFilter } from "../../util/StringFilter";
 import { Type } from "class-transformer";
 import { IsOptional, ValidateNested } from "class-validator";
-import { InterviewWhereUniqueInput } from "../../interview/base/InterviewWhereUniqueInput";
+import { InterviewFeedbackWhereUniqueInput } from "../../interviewFeedback/base/InterviewFeedbackWhereUniqueInput";
 import { IntNullableFilter } from "../../util/IntNullableFilter";
 import { SkillWhereUniqueInput } from "../../skill/base/SkillWhereUniqueInput";
 @InputType()
@@ -32,15 +32,15 @@ class SkillLevelWhereInput {
 
   @ApiProperty({
     required: false,
-    type: () => InterviewWhereUniqueInput,
+    type: () => InterviewFeedbackWhereUniqueInput,
   })
   @ValidateNested()
-  @Type(() => InterviewWhereUniqueInput)
+  @Type(() => InterviewFeedbackWhereUniqueInput)
   @IsOptional()
-  @Field(() => InterviewWhereUniqueInput, {
+  @Field(() => InterviewFeedbackWhereUniqueInput, {
     nullable: true,
   })
-  interview?: InterviewWhereUniqueInput;
+  interviewFeedback?: InterviewFeedbackWhereUniqueInput;
 
   @ApiProperty({
     required: false,

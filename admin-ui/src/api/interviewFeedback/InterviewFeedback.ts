@@ -1,5 +1,6 @@
 import { CommunicationFeedback } from "../communicationFeedback/CommunicationFeedback";
 import { Interview } from "../interview/Interview";
+import { SkillLevel } from "../skillLevel/SkillLevel";
 import { SkillSet } from "../skillSet/SkillSet";
 
 export type InterviewFeedback = {
@@ -12,6 +13,7 @@ export type InterviewFeedback = {
   interview?: Interview | null;
   logicFeedback: string | null;
   relevantTechFeedback: string | null;
+  skillMatrices?: Array<SkillLevel>;
   skillSets?: Array<SkillSet>;
   status?: "Passed" | "NotPassed" | "Hold" | null;
   updatedAt: Date;

@@ -24,7 +24,7 @@ import { DeleteSkillLevelArgs } from "./DeleteSkillLevelArgs";
 import { SkillLevelFindManyArgs } from "./SkillLevelFindManyArgs";
 import { SkillLevelFindUniqueArgs } from "./SkillLevelFindUniqueArgs";
 import { SkillLevel } from "./SkillLevel";
-import { Interview } from "../../interview/base/Interview";
+import { InterviewFeedback } from "../../interviewFeedback/base/InterviewFeedback";
 import { Skill } from "../../skill/base/Skill";
 import { SkillLevelService } from "../skillLevel.service";
 
@@ -81,9 +81,9 @@ export class SkillLevelResolverBase {
       data: {
         ...args.data,
 
-        interview: args.data.interview
+        interviewFeedback: args.data.interviewFeedback
           ? {
-              connect: args.data.interview,
+              connect: args.data.interviewFeedback,
             }
           : undefined,
 
@@ -107,9 +107,9 @@ export class SkillLevelResolverBase {
         data: {
           ...args.data,
 
-          interview: args.data.interview
+          interviewFeedback: args.data.interviewFeedback
             ? {
-                connect: args.data.interview,
+                connect: args.data.interviewFeedback,
               }
             : undefined,
 
@@ -148,11 +148,11 @@ export class SkillLevelResolverBase {
   }
 
   @Public()
-  @graphql.ResolveField(() => Interview, { nullable: true })
-  async interview(
+  @graphql.ResolveField(() => InterviewFeedback, { nullable: true })
+  async interviewFeedback(
     @graphql.Parent() parent: SkillLevel
-  ): Promise<Interview | null> {
-    const result = await this.service.getInterview(parent.id);
+  ): Promise<InterviewFeedback | null> {
+    const result = await this.service.getInterviewFeedback(parent.id);
 
     if (!result) {
       return null;
