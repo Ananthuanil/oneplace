@@ -17,8 +17,6 @@ import { GqlDefaultAuthGuard } from "../../auth/gqlDefaultAuth.guard";
 import * as gqlACGuard from "../../auth/gqlAC.guard";
 import { isRecordNotFoundError } from "../../prisma.util";
 import { MetaQueryPayload } from "../../util/MetaQueryPayload";
-import { AclFilterResponseInterceptor } from "../../interceptors/aclFilterResponse.interceptor";
-import { AclValidateRequestInterceptor } from "../../interceptors/aclValidateRequest.interceptor";
 import { Public } from "../../decorators/public.decorator";
 import { CreateProjectInvolvementArgs } from "./CreateProjectInvolvementArgs";
 import { UpdateProjectInvolvementArgs } from "./UpdateProjectInvolvementArgs";
@@ -38,12 +36,8 @@ export class ProjectInvolvementResolverBase {
     protected readonly rolesBuilder: nestAccessControl.RolesBuilder
   ) {}
 
+  @Public()
   @graphql.Query(() => MetaQueryPayload)
-  @nestAccessControl.UseRoles({
-    resource: "ProjectInvolvement",
-    action: "read",
-    possession: "any",
-  })
   async _projectInvolvementsMeta(
     @graphql.Args() args: ProjectInvolvementFindManyArgs
   ): Promise<MetaQueryPayload> {
@@ -57,26 +51,16 @@ export class ProjectInvolvementResolverBase {
     };
   }
 
-  @common.UseInterceptors(AclFilterResponseInterceptor)
+  @Public()
   @graphql.Query(() => [ProjectInvolvement])
-  @nestAccessControl.UseRoles({
-    resource: "ProjectInvolvement",
-    action: "read",
-    possession: "any",
-  })
   async projectInvolvements(
     @graphql.Args() args: ProjectInvolvementFindManyArgs
   ): Promise<ProjectInvolvement[]> {
     return this.service.findMany(args);
   }
 
-  @common.UseInterceptors(AclFilterResponseInterceptor)
+  @Public()
   @graphql.Query(() => ProjectInvolvement, { nullable: true })
-  @nestAccessControl.UseRoles({
-    resource: "ProjectInvolvement",
-    action: "read",
-    possession: "own",
-  })
   async projectInvolvement(
     @graphql.Args() args: ProjectInvolvementFindUniqueArgs
   ): Promise<ProjectInvolvement | null> {
@@ -87,13 +71,8 @@ export class ProjectInvolvementResolverBase {
     return result;
   }
 
-  @common.UseInterceptors(AclValidateRequestInterceptor)
+  @Public()
   @graphql.Mutation(() => ProjectInvolvement)
-  @nestAccessControl.UseRoles({
-    resource: "ProjectInvolvement",
-    action: "create",
-    possession: "any",
-  })
   async createProjectInvolvement(
     @graphql.Args() args: CreateProjectInvolvementArgs
   ): Promise<ProjectInvolvement> {
@@ -117,13 +96,8 @@ export class ProjectInvolvementResolverBase {
     });
   }
 
-  @common.UseInterceptors(AclValidateRequestInterceptor)
+  @Public()
   @graphql.Mutation(() => ProjectInvolvement)
-  @nestAccessControl.UseRoles({
-    resource: "ProjectInvolvement",
-    action: "update",
-    possession: "any",
-  })
   async updateProjectInvolvement(
     @graphql.Args() args: UpdateProjectInvolvementArgs
   ): Promise<ProjectInvolvement | null> {
@@ -156,12 +130,8 @@ export class ProjectInvolvementResolverBase {
     }
   }
 
+  @Public()
   @graphql.Mutation(() => ProjectInvolvement)
-  @nestAccessControl.UseRoles({
-    resource: "ProjectInvolvement",
-    action: "delete",
-    possession: "any",
-  })
   async deleteProjectInvolvement(
     @graphql.Args() args: DeleteProjectInvolvementArgs
   ): Promise<ProjectInvolvement | null> {
