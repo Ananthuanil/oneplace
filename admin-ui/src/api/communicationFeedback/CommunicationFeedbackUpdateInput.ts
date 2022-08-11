@@ -1,8 +1,8 @@
-import { InterviewFeedbackUpdateManyWithoutCommunicationFeedbacksInput } from "./InterviewFeedbackUpdateManyWithoutCommunicationFeedbacksInput";
+import { InterviewFeedbackWhereUniqueInput } from "../interviewFeedback/InterviewFeedbackWhereUniqueInput";
 
 export type CommunicationFeedbackUpdateInput = {
   abilityToArticulate?: string | null;
   confidenceLevel?: string | null;
   englishSpeakingSkills?: string | null;
-  interviewFeedbacks?: InterviewFeedbackUpdateManyWithoutCommunicationFeedbacksInput;
+  interviewFeedbacks?: InterviewFeedbackWhereUniqueInput | null;
 };

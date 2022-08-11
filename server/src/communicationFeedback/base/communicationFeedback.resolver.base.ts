@@ -24,7 +24,6 @@ import { DeleteCommunicationFeedbackArgs } from "./DeleteCommunicationFeedbackAr
 import { CommunicationFeedbackFindManyArgs } from "./CommunicationFeedbackFindManyArgs";
 import { CommunicationFeedbackFindUniqueArgs } from "./CommunicationFeedbackFindUniqueArgs";
 import { CommunicationFeedback } from "./CommunicationFeedback";
-import { InterviewFeedbackFindManyArgs } from "../../interviewFeedback/base/InterviewFeedbackFindManyArgs";
 import { InterviewFeedback } from "../../interviewFeedback/base/InterviewFeedback";
 import { CommunicationFeedbackService } from "../communicationFeedback.service";
 
@@ -78,7 +77,15 @@ export class CommunicationFeedbackResolverBase {
   ): Promise<CommunicationFeedback> {
     return await this.service.create({
       ...args,
-      data: args.data,
+      data: {
+        ...args.data,
+
+        interviewFeedbacks: args.data.interviewFeedbacks
+          ? {
+              connect: args.data.interviewFeedbacks,
+            }
+          : undefined,
+      },
     });
   }
 
@@ -90,7 +97,15 @@ export class CommunicationFeedbackResolverBase {
     try {
       return await this.service.update({
         ...args,
-        data: args.data,
+        data: {
+          ...args.data,
+
+          interviewFeedbacks: args.data.interviewFeedbacks
+            ? {
+                connect: args.data.interviewFeedbacks,
+              }
+            : undefined,
+        },
       });
     } catch (error) {
       if (isRecordNotFoundError(error)) {
@@ -120,17 +135,15 @@ export class CommunicationFeedbackResolverBase {
   }
 
   @Public()
-  @graphql.ResolveField(() => [InterviewFeedback])
+  @graphql.ResolveField(() => InterviewFeedback, { nullable: true })
   async interviewFeedbacks(
-    @graphql.Parent() parent: CommunicationFeedback,
-    @graphql.Args() args: InterviewFeedbackFindManyArgs
-  ): Promise<InterviewFeedback[]> {
-    const results = await this.service.findInterviewFeedbacks(parent.id, args);
+    @graphql.Parent() parent: CommunicationFeedback
+  ): Promise<InterviewFeedback | null> {
+    const result = await this.service.getInterviewFeedbacks(parent.id);
 
-    if (!results) {
-      return [];
+    if (!result) {
+      return null;
     }
-
-    return results;
+    return result;
   }
 }

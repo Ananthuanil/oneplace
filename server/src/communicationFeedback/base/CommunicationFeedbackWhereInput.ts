@@ -15,7 +15,7 @@ import { StringNullableFilter } from "../../util/StringNullableFilter";
 import { Type } from "class-transformer";
 import { IsOptional, ValidateNested } from "class-validator";
 import { StringFilter } from "../../util/StringFilter";
-import { InterviewFeedbackListRelationFilter } from "../../interviewFeedback/base/InterviewFeedbackListRelationFilter";
+import { InterviewFeedbackWhereUniqueInput } from "../../interviewFeedback/base/InterviewFeedbackWhereUniqueInput";
 @InputType()
 class CommunicationFeedbackWhereInput {
   @ApiProperty({
@@ -64,14 +64,14 @@ class CommunicationFeedbackWhereInput {
 
   @ApiProperty({
     required: false,
-    type: () => InterviewFeedbackListRelationFilter,
+    type: () => InterviewFeedbackWhereUniqueInput,
   })
   @ValidateNested()
-  @Type(() => InterviewFeedbackListRelationFilter)
+  @Type(() => InterviewFeedbackWhereUniqueInput)
   @IsOptional()
-  @Field(() => InterviewFeedbackListRelationFilter, {
+  @Field(() => InterviewFeedbackWhereUniqueInput, {
     nullable: true,
   })
-  interviewFeedbacks?: InterviewFeedbackListRelationFilter;
+  interviewFeedbacks?: InterviewFeedbackWhereUniqueInput;
 }
 export { CommunicationFeedbackWhereInput };

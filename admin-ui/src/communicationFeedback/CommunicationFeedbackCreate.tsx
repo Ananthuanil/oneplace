@@ -1,14 +1,12 @@
 import * as React from "react";
-
 import {
   Create,
   SimpleForm,
   CreateProps,
   TextInput,
-  ReferenceArrayInput,
-  SelectArrayInput,
+  ReferenceInput,
+  SelectInput,
 } from "react-admin";
-
 import { InterviewFeedbackTitle } from "../interviewFeedback/InterviewFeedbackTitle";
 
 export const CommunicationFeedbackCreate = (
@@ -23,14 +21,13 @@ export const CommunicationFeedbackCreate = (
           label="english_speaking_skills"
           source="englishSpeakingSkills"
         />
-        <ReferenceArrayInput
-          source="interviewFeedbacks"
+        <ReferenceInput
+          source="interviewfeedback.id"
           reference="InterviewFeedback"
-          parse={(value: any) => value && value.map((v: any) => ({ id: v }))}
-          format={(value: any) => value && value.map((v: any) => v.id)}
+          label="Interview Feedbacks"
         >
-          <SelectArrayInput optionText={InterviewFeedbackTitle} />
-        </ReferenceArrayInput>
+          <SelectInput optionText={InterviewFeedbackTitle} />
+        </ReferenceInput>
       </SimpleForm>
     </Create>
   );
