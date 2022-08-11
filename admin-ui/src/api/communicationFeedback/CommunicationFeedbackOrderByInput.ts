@@ -6,5 +6,6 @@ export type CommunicationFeedbackOrderByInput = {
   createdAt?: SortOrder;
   englishSpeakingSkills?: SortOrder;
   id?: SortOrder;
+  interviewFeedbacksId?: SortOrder;
   updatedAt?: SortOrder;
 };

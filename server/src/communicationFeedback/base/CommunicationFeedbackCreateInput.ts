@@ -12,7 +12,7 @@ https://docs.amplication.com/docs/how-to/custom-code
 import { InputType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
 import { IsString, IsOptional, ValidateNested } from "class-validator";
-import { InterviewFeedbackCreateNestedManyWithoutCommunicationFeedbacksInput } from "./InterviewFeedbackCreateNestedManyWithoutCommunicationFeedbacksInput";
+import { InterviewFeedbackWhereUniqueInput } from "../../interviewFeedback/base/InterviewFeedbackWhereUniqueInput";
 import { Type } from "class-transformer";
 @InputType()
 class CommunicationFeedbackCreateInput {
@@ -51,20 +51,14 @@ class CommunicationFeedbackCreateInput {
 
   @ApiProperty({
     required: false,
-    type: () =>
-      InterviewFeedbackCreateNestedManyWithoutCommunicationFeedbacksInput,
+    type: () => InterviewFeedbackWhereUniqueInput,
   })
   @ValidateNested()
-  @Type(
-    () => InterviewFeedbackCreateNestedManyWithoutCommunicationFeedbacksInput
-  )
+  @Type(() => InterviewFeedbackWhereUniqueInput)
   @IsOptional()
-  @Field(
-    () => InterviewFeedbackCreateNestedManyWithoutCommunicationFeedbacksInput,
-    {
-      nullable: true,
-    }
-  )
-  interviewFeedbacks?: InterviewFeedbackCreateNestedManyWithoutCommunicationFeedbacksInput;
+  @Field(() => InterviewFeedbackWhereUniqueInput, {
+    nullable: true,
+  })
+  interviewFeedbacks?: InterviewFeedbackWhereUniqueInput | null;
 }
 export { CommunicationFeedbackCreateInput };

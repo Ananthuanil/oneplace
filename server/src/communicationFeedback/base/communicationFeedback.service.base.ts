@@ -51,14 +51,13 @@ export class CommunicationFeedbackServiceBase {
     return this.prisma.communicationFeedback.delete(args);
   }
 
-  async findInterviewFeedbacks(
-    parentId: string,
-    args: Prisma.InterviewFeedbackFindManyArgs
-  ): Promise<InterviewFeedback[]> {
+  async getInterviewFeedbacks(
+    parentId: string
+  ): Promise<InterviewFeedback | null> {
     return this.prisma.communicationFeedback
       .findUnique({
         where: { id: parentId },
       })
-      .interviewFeedbacks(args);
+      .interviewFeedbacks();
   }
 }

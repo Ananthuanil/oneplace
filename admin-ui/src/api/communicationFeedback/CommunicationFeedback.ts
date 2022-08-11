@@ -6,6 +6,6 @@ export type CommunicationFeedback = {
   createdAt: Date;
   englishSpeakingSkills: string | null;
   id: string;
-  interviewFeedbacks?: Array<InterviewFeedback>;
+  interviewFeedbacks?: InterviewFeedback | null;
   updatedAt: Date;
 };

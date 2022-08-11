@@ -1,6 +1,14 @@
 import * as React from "react";
-import { List, Datagrid, ListProps, TextField, DateField } from "react-admin";
+import {
+  List,
+  Datagrid,
+  ListProps,
+  TextField,
+  DateField,
+  ReferenceField,
+} from "react-admin";
 import Pagination from "../Components/Pagination";
+import { INTERVIEWFEEDBACK_TITLE_FIELD } from "../interviewFeedback/InterviewFeedbackTitle";
 
 export const CommunicationFeedbackList = (
   props: ListProps
@@ -22,6 +30,13 @@ export const CommunicationFeedbackList = (
           source="englishSpeakingSkills"
         />
         <TextField label="ID" source="id" />
+        <ReferenceField
+          label="Interview Feedbacks"
+          source="interviewfeedback.id"
+          reference="InterviewFeedback"
+        >
+          <TextField source={INTERVIEWFEEDBACK_TITLE_FIELD} />
+        </ReferenceField>
         <DateField source="updatedAt" label="Updated At" />
       </Datagrid>
     </List>
