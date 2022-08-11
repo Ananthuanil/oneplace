@@ -17,6 +17,7 @@ import { IsOptional, ValidateNested, IsEnum } from "class-validator";
 import { CommunicationFeedbackWhereUniqueInput } from "../../communicationFeedback/base/CommunicationFeedbackWhereUniqueInput";
 import { StringFilter } from "../../util/StringFilter";
 import { InterviewWhereUniqueInput } from "../../interview/base/InterviewWhereUniqueInput";
+import { SkillLevelListRelationFilter } from "../../skillLevel/base/SkillLevelListRelationFilter";
 import { SkillSetListRelationFilter } from "../../skillSet/base/SkillSetListRelationFilter";
 import { EnumInterviewFeedbackStatus } from "./EnumInterviewFeedbackStatus";
 @InputType()
@@ -110,6 +111,18 @@ class InterviewFeedbackWhereInput {
     nullable: true,
   })
   relevantTechFeedback?: StringNullableFilter;
+
+  @ApiProperty({
+    required: false,
+    type: () => SkillLevelListRelationFilter,
+  })
+  @ValidateNested()
+  @Type(() => SkillLevelListRelationFilter)
+  @IsOptional()
+  @Field(() => SkillLevelListRelationFilter, {
+    nullable: true,
+  })
+  skillMatrices?: SkillLevelListRelationFilter;
 
   @ApiProperty({
     required: false,

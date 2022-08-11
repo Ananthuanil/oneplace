@@ -17,7 +17,6 @@ import { CandidateTitle } from "../candidate/CandidateTitle";
 import { InterviewFeedbackTitle } from "../interviewFeedback/InterviewFeedbackTitle";
 import { UserTitle } from "../user/UserTitle";
 import { OpportunityTitle } from "../opportunity/OpportunityTitle";
-import { SkillLevelTitle } from "../skillLevel/SkillLevelTitle";
 
 export const InterviewEdit = (props: EditProps): React.ReactElement => {
   return (
@@ -69,14 +68,6 @@ export const InterviewEdit = (props: EditProps): React.ReactElement => {
         >
           <SelectInput optionText={OpportunityTitle} />
         </ReferenceInput>
-        <ReferenceArrayInput
-          source="skillMatrix"
-          reference="SkillLevel"
-          parse={(value: any) => value && value.map((v: any) => ({ id: v }))}
-          format={(value: any) => value && value.map((v: any) => v.id)}
-        >
-          <SelectArrayInput optionText={SkillLevelTitle} />
-        </ReferenceArrayInput>
         <TextInput label="subject" source="subject" />
       </SimpleForm>
     </Edit>

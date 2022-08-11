@@ -11,10 +11,9 @@ import {
   Datagrid,
 } from "react-admin";
 
-import { INTERVIEW_TITLE_FIELD } from "../interview/InterviewTitle";
+import { INTERVIEWFEEDBACK_TITLE_FIELD } from "../interviewFeedback/InterviewFeedbackTitle";
 import { SKILL_TITLE_FIELD } from "./SkillTitle";
 import { CANDIDATE_TITLE_FIELD } from "../candidate/CandidateTitle";
-import { INTERVIEWFEEDBACK_TITLE_FIELD } from "../interviewFeedback/InterviewFeedbackTitle";
 import { OPPORTUNITY_TITLE_FIELD } from "../opportunity/OpportunityTitle";
 
 export const SkillShow = (props: ShowProps): React.ReactElement => {
@@ -55,11 +54,11 @@ export const SkillShow = (props: ShowProps): React.ReactElement => {
             <DateField source="createdAt" label="Created At" />
             <TextField label="ID" source="id" />
             <ReferenceField
-              label="Interview"
-              source="interview.id"
-              reference="Interview"
+              label="InterviewFeedback"
+              source="interviewfeedback.id"
+              reference="InterviewFeedback"
             >
-              <TextField source={INTERVIEW_TITLE_FIELD} />
+              <TextField source={INTERVIEWFEEDBACK_TITLE_FIELD} />
             </ReferenceField>
             <TextField label="level" source="level" />
             <ReferenceField label="skill" source="skill.id" reference="Skill">

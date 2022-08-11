@@ -1,5 +1,6 @@
 import { CommunicationFeedbackWhereUniqueInput } from "../communicationFeedback/CommunicationFeedbackWhereUniqueInput";
 import { InterviewWhereUniqueInput } from "../interview/InterviewWhereUniqueInput";
+import { SkillLevelUpdateManyWithoutInterviewFeedbacksInput } from "./SkillLevelUpdateManyWithoutInterviewFeedbacksInput";
 import { SkillSetUpdateManyWithoutInterviewFeedbacksInput } from "./SkillSetUpdateManyWithoutInterviewFeedbacksInput";
 
 export type InterviewFeedbackUpdateInput = {
@@ -10,6 +11,7 @@ export type InterviewFeedbackUpdateInput = {
   interview?: InterviewWhereUniqueInput | null;
   logicFeedback?: string | null;
   relevantTechFeedback?: string | null;
+  skillMatrices?: SkillLevelUpdateManyWithoutInterviewFeedbacksInput;
   skillSets?: SkillSetUpdateManyWithoutInterviewFeedbacksInput;
   status?: "Passed" | "NotPassed" | "Hold" | null;
 };

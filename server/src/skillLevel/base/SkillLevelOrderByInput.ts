@@ -43,7 +43,7 @@ class SkillLevelOrderByInput {
   @Field(() => SortOrder, {
     nullable: true,
   })
-  interviewId?: SortOrder;
+  interviewFeedbackId?: SortOrder;
 
   @ApiProperty({
     required: false,

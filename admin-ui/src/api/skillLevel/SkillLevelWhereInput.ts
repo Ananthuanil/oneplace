@@ -1,11 +1,11 @@
 import { StringFilter } from "../../util/StringFilter";
-import { InterviewWhereUniqueInput } from "../interview/InterviewWhereUniqueInput";
+import { InterviewFeedbackWhereUniqueInput } from "../interviewFeedback/InterviewFeedbackWhereUniqueInput";
 import { IntNullableFilter } from "../../util/IntNullableFilter";
 import { SkillWhereUniqueInput } from "../skill/SkillWhereUniqueInput";
 
 export type SkillLevelWhereInput = {
   id?: StringFilter;
-  interview?: InterviewWhereUniqueInput;
+  interviewFeedback?: InterviewFeedbackWhereUniqueInput;
   level?: IntNullableFilter;
   skill?: SkillWhereUniqueInput;
 };

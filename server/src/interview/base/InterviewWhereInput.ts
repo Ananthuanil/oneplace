@@ -22,7 +22,6 @@ import { StringFilter } from "../../util/StringFilter";
 import { UserWhereUniqueInput } from "../../user/base/UserWhereUniqueInput";
 import { StringNullableFilter } from "../../util/StringNullableFilter";
 import { OpportunityWhereUniqueInput } from "../../opportunity/base/OpportunityWhereUniqueInput";
-import { SkillLevelListRelationFilter } from "../../skillLevel/base/SkillLevelListRelationFilter";
 @InputType()
 class InterviewWhereInput {
   @ApiProperty({
@@ -143,18 +142,6 @@ class InterviewWhereInput {
     nullable: true,
   })
   opportunity?: OpportunityWhereUniqueInput;
-
-  @ApiProperty({
-    required: false,
-    type: () => SkillLevelListRelationFilter,
-  })
-  @ValidateNested()
-  @Type(() => SkillLevelListRelationFilter)
-  @IsOptional()
-  @Field(() => SkillLevelListRelationFilter, {
-    nullable: true,
-  })
-  skillMatrix?: SkillLevelListRelationFilter;
 
   @ApiProperty({
     required: false,

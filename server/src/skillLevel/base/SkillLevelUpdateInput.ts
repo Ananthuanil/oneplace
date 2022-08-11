@@ -11,7 +11,7 @@ https://docs.amplication.com/docs/how-to/custom-code
   */
 import { InputType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
-import { InterviewWhereUniqueInput } from "../../interview/base/InterviewWhereUniqueInput";
+import { InterviewFeedbackWhereUniqueInput } from "../../interviewFeedback/base/InterviewFeedbackWhereUniqueInput";
 import { ValidateNested, IsOptional, IsInt } from "class-validator";
 import { Type } from "class-transformer";
 import { SkillWhereUniqueInput } from "../../skill/base/SkillWhereUniqueInput";
@@ -19,15 +19,15 @@ import { SkillWhereUniqueInput } from "../../skill/base/SkillWhereUniqueInput";
 class SkillLevelUpdateInput {
   @ApiProperty({
     required: false,
-    type: () => InterviewWhereUniqueInput,
+    type: () => InterviewFeedbackWhereUniqueInput,
   })
   @ValidateNested()
-  @Type(() => InterviewWhereUniqueInput)
+  @Type(() => InterviewFeedbackWhereUniqueInput)
   @IsOptional()
-  @Field(() => InterviewWhereUniqueInput, {
+  @Field(() => InterviewFeedbackWhereUniqueInput, {
     nullable: true,
   })
-  interview?: InterviewWhereUniqueInput | null;
+  interviewFeedback?: InterviewFeedbackWhereUniqueInput | null;
 
   @ApiProperty({
     required: false,

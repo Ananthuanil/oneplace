@@ -128,6 +128,7 @@ model InterviewFeedback {
   interviewId          String?
   logicFeedback        String?
   relevantTechFeedback String?
+  skillMatrices        SkillLevel[]
   skillSets            SkillSet[]
   status               EnumInterviewFeedbackStatus?
   updatedAt            DateTime                     @updatedAt
@@ -148,7 +149,6 @@ model Interview {
   mode          String?
   opportunity   Opportunity?                @relation(fields: [opportunityId], references: [id])
   opportunityId String?
-  skillMatrix   SkillLevel[]
   subject       String?
   updatedAt     DateTime                    @updatedAt
 }
@@ -235,14 +235,14 @@ model ProjectInvolvement {
 }
 
 model SkillLevel {
-  createdAt   DateTime   @default(now())
-  id          String     @id @default(cuid())
-  interview   Interview? @relation(fields: [interviewId], references: [id])
-  interviewId String?
-  level       Int?
-  skill       Skill?     @relation(fields: [skillId], references: [id])
-  skillId     String?
-  updatedAt   DateTime   @updatedAt
+  createdAt           DateTime           @default(now())
+  id                  String             @id @default(cuid())
+  interviewFeedback   InterviewFeedback? @relation(fields: [interviewFeedbackId], references: [id])
+  interviewFeedbackId String?
+  level               Int?
+  skill               Skill?             @relation(fields: [skillId], references: [id])
+  skillId             String?
+  updatedAt           DateTime           @updatedAt
 }
 
 enum EnumUserDesignation {

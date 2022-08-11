@@ -7,7 +7,7 @@ import {
   SelectInput,
   NumberInput,
 } from "react-admin";
-import { InterviewTitle } from "../interview/InterviewTitle";
+import { InterviewFeedbackTitle } from "../interviewFeedback/InterviewFeedbackTitle";
 import { SkillTitle } from "../skill/SkillTitle";
 
 export const SkillLevelCreate = (props: CreateProps): React.ReactElement => {
@@ -15,11 +15,11 @@ export const SkillLevelCreate = (props: CreateProps): React.ReactElement => {
     <Create {...props}>
       <SimpleForm>
         <ReferenceInput
-          source="interview.id"
-          reference="Interview"
-          label="Interview"
+          source="interviewfeedback.id"
+          reference="InterviewFeedback"
+          label="InterviewFeedback"
         >
-          <SelectInput optionText={InterviewTitle} />
+          <SelectInput optionText={InterviewFeedbackTitle} />
         </ReferenceInput>
         <NumberInput step={1} label="level" source="level" />
         <ReferenceInput source="skill.id" reference="Skill" label="skill">

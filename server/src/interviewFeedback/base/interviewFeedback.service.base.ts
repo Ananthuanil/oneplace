@@ -10,9 +10,11 @@ https://docs.amplication.com/docs/how-to/custom-code
 ------------------------------------------------------------------------------
   */
 import { PrismaService } from "nestjs-prisma";
+
 import {
   Prisma,
   InterviewFeedback,
+  SkillLevel,
   SkillSet,
   CommunicationFeedback,
   Interview,
@@ -51,6 +53,17 @@ export class InterviewFeedbackServiceBase {
     args: Prisma.SelectSubset<T, Prisma.InterviewFeedbackDeleteArgs>
   ): Promise<InterviewFeedback> {
     return this.prisma.interviewFeedback.delete(args);
+  }
+
+  async findSkillMatrices(
+    parentId: string,
+    args: Prisma.SkillLevelFindManyArgs
+  ): Promise<SkillLevel[]> {
+    return this.prisma.interviewFeedback
+      .findUnique({
+        where: { id: parentId },
+      })
+      .skillMatrices(args);
   }
 
   async findSkillSets(

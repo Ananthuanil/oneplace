@@ -24,6 +24,8 @@ import { DeleteInterviewFeedbackArgs } from "./DeleteInterviewFeedbackArgs";
 import { InterviewFeedbackFindManyArgs } from "./InterviewFeedbackFindManyArgs";
 import { InterviewFeedbackFindUniqueArgs } from "./InterviewFeedbackFindUniqueArgs";
 import { InterviewFeedback } from "./InterviewFeedback";
+import { SkillLevelFindManyArgs } from "../../skillLevel/base/SkillLevelFindManyArgs";
+import { SkillLevel } from "../../skillLevel/base/SkillLevel";
 import { SkillSetFindManyArgs } from "../../skillSet/base/SkillSetFindManyArgs";
 import { SkillSet } from "../../skillSet/base/SkillSet";
 import { CommunicationFeedback } from "../../communicationFeedback/base/CommunicationFeedback";
@@ -147,6 +149,21 @@ export class InterviewFeedbackResolverBase {
       }
       throw error;
     }
+  }
+
+  @Public()
+  @graphql.ResolveField(() => [SkillLevel])
+  async skillMatrices(
+    @graphql.Parent() parent: InterviewFeedback,
+    @graphql.Args() args: SkillLevelFindManyArgs
+  ): Promise<SkillLevel[]> {
+    const results = await this.service.findSkillMatrices(parent.id, args);
+
+    if (!results) {
+      return [];
+    }
+
+    return results;
   }
 
   @Public()
