@@ -46,7 +46,6 @@ export const UserCreate = (props: CreateProps): React.ReactElement => {
         >
           <SelectArrayInput optionText={CandidateTitle} />
         </ReferenceArrayInput>
-        <DateInput label="Career Out Date" source="careerOutDate" />
         <DateInput label="Career Start Date" source="careerStartDate" />
         <ReferenceInput
           source="community.id"
@@ -129,6 +128,10 @@ export const UserCreate = (props: CreateProps): React.ReactElement => {
           label="Personal Email ID"
           source="personalEmailId"
           type="email"
+        />
+        <DateInput
+          label="Previous Firm Out Date"
+          source="previousFirmOutDate"
         />
         <ReferenceArrayInput
           source="project"

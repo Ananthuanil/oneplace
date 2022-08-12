@@ -52,15 +52,6 @@ class UserOrderByInput {
   @Field(() => SortOrder, {
     nullable: true,
   })
-  careerOutDate?: SortOrder;
-
-  @ApiProperty({
-    required: false,
-    enum: ["asc", "desc"],
-  })
-  @Field(() => SortOrder, {
-    nullable: true,
-  })
   careerStartDate?: SortOrder;
 
   @ApiProperty({
@@ -242,6 +233,15 @@ class UserOrderByInput {
     nullable: true,
   })
   personalEmailId?: SortOrder;
+
+  @ApiProperty({
+    required: false,
+    enum: ["asc", "desc"],
+  })
+  @Field(() => SortOrder, {
+    nullable: true,
+  })
+  previousFirmOutDate?: SortOrder;
 
   @ApiProperty({
     required: false,

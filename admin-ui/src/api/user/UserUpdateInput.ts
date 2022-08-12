@@ -13,7 +13,6 @@ export type UserUpdateInput = {
   awards?: AwardUpdateManyWithoutUsersInput;
   bloodGroup?: string | null;
   candidates?: CandidateUpdateManyWithoutUsersInput;
-  careerOutDate?: Date | null;
   careerStartDate?: Date | null;
   community?: CommunityWhereUniqueInput | null;
   contactNumber?: string | null;
@@ -45,6 +44,7 @@ export type UserUpdateInput = {
   panNumber?: string | null;
   password?: string;
   personalEmailId?: string | null;
+  previousFirmOutDate?: Date | null;
   project?: ProjectUpdateManyWithoutUsersInput;
   projectInvolved?: ProjectInvolvementUpdateManyWithoutUsersInput;
   resumeLink?: string | null;
