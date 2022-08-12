@@ -27,8 +27,8 @@ async function seed(bcryptSalt: Salt) {
   const client = new PrismaClient();
   const data = {
     username: "admin",
-    password: await hash("admin", bcryptSalt),
-    roles: ["user"],
+    password: await hash("Fact@1234", bcryptSalt),
+    roles: ["superAdmin"],
     firstName: "",
     lastName: "",
     totalExperience: "",
