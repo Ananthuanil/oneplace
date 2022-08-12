@@ -8,7 +8,7 @@
 -- AlterEnum
 BEGIN;
 CREATE TYPE "EnumUserDesignation_new" AS ENUM ('Joe', 'Engineer', 'SeniorEngineer', 'Consultant', 'SeniorConsultant', 'PrincipalConsultant', 'Director', 'Cxo');
-ALTER TABLE "User" ALTER COLUMN "designation" TYPE "EnumUserDesignation_new"[] USING ("designation"::text::"EnumUserDesignation_new"[]);
+ALTER TABLE "User" ALTER COLUMN "designation" TYPE "EnumUserDesignation_new" USING ("designation"::text::"EnumUserDesignation_new");
 ALTER TYPE "EnumUserDesignation" RENAME TO "EnumUserDesignation_old";
 ALTER TYPE "EnumUserDesignation_new" RENAME TO "EnumUserDesignation";
 DROP TYPE "EnumUserDesignation_old";
@@ -22,3 +22,7 @@ ALTER TYPE "EnumUserGender" RENAME TO "EnumUserGender_old";
 ALTER TYPE "EnumUserGender_new" RENAME TO "EnumUserGender";
 DROP TYPE "EnumUserGender_old";
 COMMIT;
+
+-- AlterTable
+ALTER TABLE "User" ALTER COLUMN "designation" DROP NOT NULL,
+ALTER COLUMN "designation" SET DATA TYPE "EnumUserDesignation";
