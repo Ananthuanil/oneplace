@@ -97,17 +97,6 @@ class UserUpdateInput {
   @Field(() => Date, {
     nullable: true,
   })
-  careerOutDate?: Date | null;
-
-  @ApiProperty({
-    required: false,
-  })
-  @IsDate()
-  @Type(() => Date)
-  @IsOptional()
-  @Field(() => Date, {
-    nullable: true,
-  })
   careerStartDate?: Date | null;
 
   @ApiProperty({
@@ -353,6 +342,17 @@ class UserUpdateInput {
     nullable: true,
   })
   personalEmailId?: string | null;
+
+  @ApiProperty({
+    required: false,
+  })
+  @IsDate()
+  @Type(() => Date)
+  @IsOptional()
+  @Field(() => Date, {
+    nullable: true,
+  })
+  previousFirmOutDate?: Date | null;
 
   @ApiProperty({
     required: false,

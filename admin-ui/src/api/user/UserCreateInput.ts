@@ -13,7 +13,6 @@ export type UserCreateInput = {
   awards?: AwardCreateNestedManyWithoutUsersInput;
   bloodGroup?: string | null;
   candidates?: CandidateCreateNestedManyWithoutUsersInput;
-  careerOutDate?: Date | null;
   careerStartDate?: Date | null;
   community?: CommunityWhereUniqueInput | null;
   contactNumber?: string | null;
@@ -45,6 +44,7 @@ export type UserCreateInput = {
   panNumber?: string | null;
   password: string;
   personalEmailId?: string | null;
+  previousFirmOutDate?: Date | null;
   project?: ProjectCreateNestedManyWithoutUsersInput;
   projectInvolved?: ProjectInvolvementCreateNestedManyWithoutUsersInput;
   resumeLink?: string | null;

@@ -16,7 +16,6 @@ export type UserWhereInput = {
   awards?: AwardListRelationFilter;
   bloodGroup?: StringNullableFilter;
   candidates?: CandidateListRelationFilter;
-  careerOutDate?: DateTimeNullableFilter;
   careerStartDate?: DateTimeNullableFilter;
   community?: CommunityWhereUniqueInput;
   contactNumber?: StringNullableFilter;
@@ -47,6 +46,7 @@ export type UserWhereInput = {
   opportunities?: OpportunityListRelationFilter;
   panNumber?: StringNullableFilter;
   personalEmailId?: StringNullableFilter;
+  previousFirmOutDate?: DateTimeNullableFilter;
   project?: ProjectListRelationFilter;
   projectInvolved?: ProjectInvolvementListRelationFilter;
   resumeLink?: StringNullableFilter;

@@ -23,7 +23,6 @@ export const UserList = (props: ListProps): React.ReactElement => {
         <TextField label="Aadar Number" source="aadarNumber" />
         <TextField label="Address" source="address" />
         <TextField label="Blood Group" source="bloodGroup" />
-        <TextField label="Career Out Date" source="careerOutDate" />
         <TextField label="Career Start Date" source="careerStartDate" />
         <ReferenceField
           label="Community"
@@ -53,6 +52,10 @@ export const UserList = (props: ListProps): React.ReactElement => {
         <TextField label="Last Name" source="lastName" />
         <TextField label="Pan Number" source="panNumber" />
         <TextField label="Personal Email ID" source="personalEmailId" />
+        <TextField
+          label="Previous Firm Out Date"
+          source="previousFirmOutDate"
+        />
         <TextField label="Resume Link" source="resumeLink" />
         <TextField label="Roles" source="roles" />
         <TextField label="Total Experience" source="totalExperience" />

@@ -4,7 +4,6 @@ export type UserOrderByInput = {
   aadarNumber?: SortOrder;
   address?: SortOrder;
   bloodGroup?: SortOrder;
-  careerOutDate?: SortOrder;
   careerStartDate?: SortOrder;
   communityId?: SortOrder;
   contactNumber?: SortOrder;
@@ -26,6 +25,7 @@ export type UserOrderByInput = {
   panNumber?: SortOrder;
   password?: SortOrder;
   personalEmailId?: SortOrder;
+  previousFirmOutDate?: SortOrder;
   resumeLink?: SortOrder;
   roles?: SortOrder;
   totalExperience?: SortOrder;

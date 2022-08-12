@@ -13,7 +13,6 @@ model User {
   awards                 Award[]              @relation(name: "awards")
   bloodGroup             String?
   candidates             Candidate[]
-  careerOutDate          DateTime?
   careerStartDate        DateTime?
   community              Community?           @relation(fields: [communityId], references: [id])
   communityId            String?
@@ -39,6 +38,7 @@ model User {
   panNumber              String?
   password               String
   personalEmailId        String?
+  previousFirmOutDate    DateTime?
   project                Project[]
   projectInvolved        ProjectInvolvement[]
   resumeLink             String?

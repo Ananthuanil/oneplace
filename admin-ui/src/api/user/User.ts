@@ -13,7 +13,6 @@ export type User = {
   awards?: Array<Award>;
   bloodGroup: string | null;
   candidates?: Array<Candidate>;
-  careerOutDate: Date | null;
   careerStartDate: Date | null;
   community?: Community | null;
   contactNumber: string | null;
@@ -46,6 +45,7 @@ export type User = {
   opportunities?: Array<Opportunity>;
   panNumber: string | null;
   personalEmailId: string | null;
+  previousFirmOutDate: Date | null;
   project?: Array<Project>;
   projectInvolved?: Array<ProjectInvolvement>;
   resumeLink: string | null;

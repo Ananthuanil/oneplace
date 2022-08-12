@@ -94,17 +94,6 @@ class UserWhereInput {
   @Field(() => DateTimeNullableFilter, {
     nullable: true,
   })
-  careerOutDate?: DateTimeNullableFilter;
-
-  @ApiProperty({
-    required: false,
-    type: DateTimeNullableFilter,
-  })
-  @Type(() => DateTimeNullableFilter)
-  @IsOptional()
-  @Field(() => DateTimeNullableFilter, {
-    nullable: true,
-  })
   careerStartDate?: DateTimeNullableFilter;
 
   @ApiProperty({
@@ -349,6 +338,17 @@ class UserWhereInput {
     nullable: true,
   })
   personalEmailId?: StringNullableFilter;
+
+  @ApiProperty({
+    required: false,
+    type: DateTimeNullableFilter,
+  })
+  @Type(() => DateTimeNullableFilter)
+  @IsOptional()
+  @Field(() => DateTimeNullableFilter, {
+    nullable: true,
+  })
+  previousFirmOutDate?: DateTimeNullableFilter;
 
   @ApiProperty({
     required: false,
