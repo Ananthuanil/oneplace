@@ -15,6 +15,7 @@ import { InterviewFeedbackWhereUniqueInput } from "../../interviewFeedback/base/
 import { ValidateNested, IsOptional, IsInt } from "class-validator";
 import { Type } from "class-transformer";
 import { SkillWhereUniqueInput } from "../../skill/base/SkillWhereUniqueInput";
+import { UserCreateNestedManyWithoutSkillLevelsInput } from "./UserCreateNestedManyWithoutSkillLevelsInput";
 @InputType()
 class SkillLevelCreateInput {
   @ApiProperty({
@@ -51,5 +52,17 @@ class SkillLevelCreateInput {
     nullable: true,
   })
   skill?: SkillWhereUniqueInput | null;
+
+  @ApiProperty({
+    required: false,
+    type: () => UserCreateNestedManyWithoutSkillLevelsInput,
+  })
+  @ValidateNested()
+  @Type(() => UserCreateNestedManyWithoutSkillLevelsInput)
+  @IsOptional()
+  @Field(() => UserCreateNestedManyWithoutSkillLevelsInput, {
+    nullable: true,
+  })
+  users?: UserCreateNestedManyWithoutSkillLevelsInput;
 }
 export { SkillLevelCreateInput };

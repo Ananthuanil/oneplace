@@ -25,6 +25,7 @@ import { InterviewListRelationFilter } from "../../interview/base/InterviewListR
 import { OpportunityListRelationFilter } from "../../opportunity/base/OpportunityListRelationFilter";
 import { ProjectListRelationFilter } from "../../project/base/ProjectListRelationFilter";
 import { ProjectInvolvementListRelationFilter } from "../../projectInvolvement/base/ProjectInvolvementListRelationFilter";
+import { SkillLevelWhereUniqueInput } from "../../skillLevel/base/SkillLevelWhereUniqueInput";
 import { SkillSetListRelationFilter } from "../../skillSet/base/SkillSetListRelationFilter";
 @InputType()
 class UserWhereInput {
@@ -384,6 +385,18 @@ class UserWhereInput {
     nullable: true,
   })
   resumeLink?: StringNullableFilter;
+
+  @ApiProperty({
+    required: false,
+    type: () => SkillLevelWhereUniqueInput,
+  })
+  @ValidateNested()
+  @Type(() => SkillLevelWhereUniqueInput)
+  @IsOptional()
+  @Field(() => SkillLevelWhereUniqueInput, {
+    nullable: true,
+  })
+  skillLevel?: SkillLevelWhereUniqueInput;
 
   @ApiProperty({
     required: false,

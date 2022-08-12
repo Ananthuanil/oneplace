@@ -28,6 +28,7 @@ import { InterviewCreateNestedManyWithoutUsersInput } from "./InterviewCreateNes
 import { OpportunityCreateNestedManyWithoutUsersInput } from "./OpportunityCreateNestedManyWithoutUsersInput";
 import { ProjectCreateNestedManyWithoutUsersInput } from "./ProjectCreateNestedManyWithoutUsersInput";
 import { ProjectInvolvementCreateNestedManyWithoutUsersInput } from "./ProjectInvolvementCreateNestedManyWithoutUsersInput";
+import { SkillLevelWhereUniqueInput } from "../../skillLevel/base/SkillLevelWhereUniqueInput";
 import { SkillSetCreateNestedManyWithoutUsersInput } from "./SkillSetCreateNestedManyWithoutUsersInput";
 @InputType()
 class UserCreateInput {
@@ -389,6 +390,18 @@ class UserCreateInput {
   })
   @Field(() => [String])
   roles!: Array<string>;
+
+  @ApiProperty({
+    required: false,
+    type: () => SkillLevelWhereUniqueInput,
+  })
+  @ValidateNested()
+  @Type(() => SkillLevelWhereUniqueInput)
+  @IsOptional()
+  @Field(() => SkillLevelWhereUniqueInput, {
+    nullable: true,
+  })
+  skillLevel?: SkillLevelWhereUniqueInput | null;
 
   @ApiProperty({
     required: false,

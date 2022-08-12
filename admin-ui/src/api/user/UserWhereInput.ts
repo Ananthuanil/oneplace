@@ -8,6 +8,7 @@ import { InterviewListRelationFilter } from "../interview/InterviewListRelationF
 import { OpportunityListRelationFilter } from "../opportunity/OpportunityListRelationFilter";
 import { ProjectListRelationFilter } from "../project/ProjectListRelationFilter";
 import { ProjectInvolvementListRelationFilter } from "../projectInvolvement/ProjectInvolvementListRelationFilter";
+import { SkillLevelWhereUniqueInput } from "../skillLevel/SkillLevelWhereUniqueInput";
 import { SkillSetListRelationFilter } from "../skillSet/SkillSetListRelationFilter";
 
 export type UserWhereInput = {
@@ -50,6 +51,7 @@ export type UserWhereInput = {
   project?: ProjectListRelationFilter;
   projectInvolved?: ProjectInvolvementListRelationFilter;
   resumeLink?: StringNullableFilter;
+  skillLevel?: SkillLevelWhereUniqueInput;
   skillSets?: SkillSetListRelationFilter;
   toPerson?: AwardListRelationFilter;
   totalExperience?: StringFilter;

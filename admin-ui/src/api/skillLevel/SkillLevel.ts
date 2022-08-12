@@ -1,5 +1,6 @@
 import { InterviewFeedback } from "../interviewFeedback/InterviewFeedback";
 import { Skill } from "../skill/Skill";
+import { User } from "../user/User";
 
 export type SkillLevel = {
   createdAt: Date;
@@ -8,4 +9,5 @@ export type SkillLevel = {
   level: number | null;
   skill?: Skill | null;
   updatedAt: Date;
+  users?: Array<User>;
 };

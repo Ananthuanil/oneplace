@@ -21,6 +21,7 @@ import {
 import { Type } from "class-transformer";
 import { InterviewFeedback } from "../../interviewFeedback/base/InterviewFeedback";
 import { Skill } from "../../skill/base/Skill";
+import { User } from "../../user/base/User";
 @ObjectType()
 class SkillLevel {
   @ApiProperty({
@@ -75,5 +76,14 @@ class SkillLevel {
   @Type(() => Date)
   @Field(() => Date)
   updatedAt!: Date;
+
+  @ApiProperty({
+    required: false,
+    type: () => [User],
+  })
+  @ValidateNested()
+  @Type(() => User)
+  @IsOptional()
+  users?: Array<User>;
 }
 export { SkillLevel };

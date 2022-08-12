@@ -24,6 +24,8 @@ import { DeleteSkillLevelArgs } from "./DeleteSkillLevelArgs";
 import { SkillLevelFindManyArgs } from "./SkillLevelFindManyArgs";
 import { SkillLevelFindUniqueArgs } from "./SkillLevelFindUniqueArgs";
 import { SkillLevel } from "./SkillLevel";
+import { UserFindManyArgs } from "../../user/base/UserFindManyArgs";
+import { User } from "../../user/base/User";
 import { InterviewFeedback } from "../../interviewFeedback/base/InterviewFeedback";
 import { Skill } from "../../skill/base/Skill";
 import { SkillLevelService } from "../skillLevel.service";
@@ -145,6 +147,21 @@ export class SkillLevelResolverBase {
       }
       throw error;
     }
+  }
+
+  @Public()
+  @graphql.ResolveField(() => [User])
+  async users(
+    @graphql.Parent() parent: SkillLevel,
+    @graphql.Args() args: UserFindManyArgs
+  ): Promise<User[]> {
+    const results = await this.service.findUsers(parent.id, args);
+
+    if (!results) {
+      return [];
+    }
+
+    return results;
   }
 
   @Public()

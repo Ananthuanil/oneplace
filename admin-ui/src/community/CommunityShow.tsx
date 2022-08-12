@@ -12,6 +12,7 @@ import {
 } from "react-admin";
 
 import { COMMUNITY_TITLE_FIELD } from "./CommunityTitle";
+import { SKILLLEVEL_TITLE_FIELD } from "../skillLevel/SkillLevelTitle";
 
 export const CommunityShow = (props: ShowProps): React.ReactElement => {
   return (
@@ -62,6 +63,13 @@ export const CommunityShow = (props: ShowProps): React.ReactElement => {
             />
             <TextField label="Resume Link" source="resumeLink" />
             <TextField label="Roles" source="roles" />
+            <ReferenceField
+              label="Skill Level"
+              source="skilllevel.id"
+              reference="SkillLevel"
+            >
+              <TextField source={SKILLLEVEL_TITLE_FIELD} />
+            </ReferenceField>
             <TextField label="Total Experience" source="totalExperience" />
             <DateField source="updatedAt" label="Updated At" />
             <TextField label="Username" source="username" />

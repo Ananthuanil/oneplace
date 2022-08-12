@@ -20,6 +20,7 @@ import { InterviewTitle } from "../interview/InterviewTitle";
 import { OpportunityTitle } from "../opportunity/OpportunityTitle";
 import { ProjectTitle } from "../project/ProjectTitle";
 import { ProjectInvolvementTitle } from "../projectInvolvement/ProjectInvolvementTitle";
+import { SkillLevelTitle } from "../skillLevel/SkillLevelTitle";
 import { SkillSetTitle } from "../skillSet/SkillSetTitle";
 import { ROLES_OPTIONS } from "../user/RolesOptions";
 
@@ -156,6 +157,13 @@ export const UserCreate = (props: CreateProps): React.ReactElement => {
           optionText="label"
           optionValue="value"
         />
+        <ReferenceInput
+          source="skilllevel.id"
+          reference="SkillLevel"
+          label="Skill Level"
+        >
+          <SelectInput optionText={SkillLevelTitle} />
+        </ReferenceInput>
         <ReferenceArrayInput
           source="skillSets"
           reference="SkillSet"

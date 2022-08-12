@@ -28,6 +28,7 @@ import { Interview } from "../../interview/base/Interview";
 import { Opportunity } from "../../opportunity/base/Opportunity";
 import { Project } from "../../project/base/Project";
 import { ProjectInvolvement } from "../../projectInvolvement/base/ProjectInvolvement";
+import { SkillLevel } from "../../skillLevel/base/SkillLevel";
 import { SkillSet } from "../../skillSet/base/SkillSet";
 @ObjectType()
 class User {
@@ -373,6 +374,15 @@ class User {
   })
   @Field(() => [String])
   roles!: Array<string>;
+
+  @ApiProperty({
+    required: false,
+    type: () => SkillLevel,
+  })
+  @ValidateNested()
+  @Type(() => SkillLevel)
+  @IsOptional()
+  skillLevel?: SkillLevel | null;
 
   @ApiProperty({
     required: false,

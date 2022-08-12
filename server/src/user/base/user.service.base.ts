@@ -22,6 +22,7 @@ import {
   ProjectInvolvement,
   SkillSet,
   Community,
+  SkillLevel,
 } from "@prisma/client";
 
 import { PasswordService } from "../../auth/password.service";
@@ -190,5 +191,13 @@ export class UserServiceBase {
         where: { id: parentId },
       })
       .community();
+  }
+
+  async getSkillLevel(parentId: string): Promise<SkillLevel | null> {
+    return this.prisma.user
+      .findUnique({
+        where: { id: parentId },
+      })
+      .skillLevel();
   }
 }
