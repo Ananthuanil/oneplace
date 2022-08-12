@@ -158,16 +158,13 @@ class UserUpdateInput {
   @ApiProperty({
     required: false,
     enum: EnumUserDesignation,
-    isArray: true,
   })
-  @IsEnum(EnumUserDesignation, {
-    each: true,
-  })
+  @IsEnum(EnumUserDesignation)
   @IsOptional()
-  @Field(() => [EnumUserDesignation], {
+  @Field(() => EnumUserDesignation, {
     nullable: true,
   })
-  designation?: Array<
+  designation?:
     | "Joe"
     | "Engineer"
     | "SeniorEngineer"
@@ -176,7 +173,7 @@ class UserUpdateInput {
     | "PrincipalConsultant"
     | "Director"
     | "Cxo"
-  >;
+    | null;
 
   @ApiProperty({
     required: false,

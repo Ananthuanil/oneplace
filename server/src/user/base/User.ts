@@ -155,18 +155,15 @@ class User {
   dateOfJoining!: Date | null;
 
   @ApiProperty({
-    required: true,
+    required: false,
     enum: EnumUserDesignation,
-    isArray: true,
   })
-  @IsEnum(EnumUserDesignation, {
-    each: true,
-  })
+  @IsEnum(EnumUserDesignation)
   @IsOptional()
-  @Field(() => [EnumUserDesignation], {
+  @Field(() => EnumUserDesignation, {
     nullable: true,
   })
-  designation?: Array<
+  designation?:
     | "Joe"
     | "Engineer"
     | "SeniorEngineer"
@@ -175,7 +172,7 @@ class User {
     | "PrincipalConsultant"
     | "Director"
     | "Cxo"
-  >;
+    | null;
 
   @ApiProperty({
     required: false,
