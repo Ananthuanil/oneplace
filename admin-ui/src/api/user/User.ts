@@ -5,6 +5,7 @@ import { Interview } from "../interview/Interview";
 import { Opportunity } from "../opportunity/Opportunity";
 import { Project } from "../project/Project";
 import { ProjectInvolvement } from "../projectInvolvement/ProjectInvolvement";
+import { SkillLevel } from "../skillLevel/SkillLevel";
 import { SkillSet } from "../skillSet/SkillSet";
 
 export type User = {
@@ -50,6 +51,7 @@ export type User = {
   projectInvolved?: Array<ProjectInvolvement>;
   resumeLink: string | null;
   roles: Array<string>;
+  skillLevel?: SkillLevel | null;
   skillSets?: Array<SkillSet>;
   toPerson?: Array<Award>;
   totalExperience: string;

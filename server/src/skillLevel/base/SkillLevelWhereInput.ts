@@ -17,6 +17,7 @@ import { IsOptional, ValidateNested } from "class-validator";
 import { InterviewFeedbackWhereUniqueInput } from "../../interviewFeedback/base/InterviewFeedbackWhereUniqueInput";
 import { IntNullableFilter } from "../../util/IntNullableFilter";
 import { SkillWhereUniqueInput } from "../../skill/base/SkillWhereUniqueInput";
+import { UserListRelationFilter } from "../../user/base/UserListRelationFilter";
 @InputType()
 class SkillLevelWhereInput {
   @ApiProperty({
@@ -64,5 +65,17 @@ class SkillLevelWhereInput {
     nullable: true,
   })
   skill?: SkillWhereUniqueInput;
+
+  @ApiProperty({
+    required: false,
+    type: () => UserListRelationFilter,
+  })
+  @ValidateNested()
+  @Type(() => UserListRelationFilter)
+  @IsOptional()
+  @Field(() => UserListRelationFilter, {
+    nullable: true,
+  })
+  users?: UserListRelationFilter;
 }
 export { SkillLevelWhereInput };

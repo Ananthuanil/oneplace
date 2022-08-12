@@ -39,6 +39,7 @@ import { ProjectInvolvement } from "../../projectInvolvement/base/ProjectInvolve
 import { SkillSetFindManyArgs } from "../../skillSet/base/SkillSetFindManyArgs";
 import { SkillSet } from "../../skillSet/base/SkillSet";
 import { Community } from "../../community/base/Community";
+import { SkillLevel } from "../../skillLevel/base/SkillLevel";
 import { UserService } from "../user.service";
 
 @graphql.Resolver(() => User)
@@ -93,6 +94,12 @@ export class UserResolverBase {
               connect: args.data.community,
             }
           : undefined,
+
+        skillLevel: args.data.skillLevel
+          ? {
+              connect: args.data.skillLevel,
+            }
+          : undefined,
       },
     });
   }
@@ -109,6 +116,12 @@ export class UserResolverBase {
           community: args.data.community
             ? {
                 connect: args.data.community,
+              }
+            : undefined,
+
+          skillLevel: args.data.skillLevel
+            ? {
+                connect: args.data.skillLevel,
               }
             : undefined,
         },
@@ -277,6 +290,17 @@ export class UserResolverBase {
   @graphql.ResolveField(() => Community, { nullable: true })
   async community(@graphql.Parent() parent: User): Promise<Community | null> {
     const result = await this.service.getCommunity(parent.id);
+
+    if (!result) {
+      return null;
+    }
+    return result;
+  }
+
+  @Public()
+  @graphql.ResolveField(() => SkillLevel, { nullable: true })
+  async skillLevel(@graphql.Parent() parent: User): Promise<SkillLevel | null> {
+    const result = await this.service.getSkillLevel(parent.id);
 
     if (!result) {
       return null;

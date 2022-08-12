@@ -28,6 +28,7 @@ import { InterviewUpdateManyWithoutUsersInput } from "./InterviewUpdateManyWitho
 import { OpportunityUpdateManyWithoutUsersInput } from "./OpportunityUpdateManyWithoutUsersInput";
 import { ProjectUpdateManyWithoutUsersInput } from "./ProjectUpdateManyWithoutUsersInput";
 import { ProjectInvolvementUpdateManyWithoutUsersInput } from "./ProjectInvolvementUpdateManyWithoutUsersInput";
+import { SkillLevelWhereUniqueInput } from "../../skillLevel/base/SkillLevelWhereUniqueInput";
 import { SkillSetUpdateManyWithoutUsersInput } from "./SkillSetUpdateManyWithoutUsersInput";
 @InputType()
 class UserUpdateInput {
@@ -401,6 +402,18 @@ class UserUpdateInput {
     nullable: true,
   })
   roles?: Array<string>;
+
+  @ApiProperty({
+    required: false,
+    type: () => SkillLevelWhereUniqueInput,
+  })
+  @ValidateNested()
+  @Type(() => SkillLevelWhereUniqueInput)
+  @IsOptional()
+  @Field(() => SkillLevelWhereUniqueInput, {
+    nullable: true,
+  })
+  skillLevel?: SkillLevelWhereUniqueInput | null;
 
   @ApiProperty({
     required: false,

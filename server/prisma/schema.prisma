@@ -43,6 +43,8 @@ model User {
   projectInvolved        ProjectInvolvement[]
   resumeLink             String?
   roles                  String[]
+  skillLevel             SkillLevel?          @relation(fields: [skillLevelId], references: [id])
+  skillLevelId           String?
   skillSets              SkillSet[]
   toPerson               Award[]              @relation(name: "AwardToPersonUserToPerson")
   totalExperience        String
@@ -243,6 +245,7 @@ model SkillLevel {
   skill               Skill?             @relation(fields: [skillId], references: [id])
   skillId             String?
   updatedAt           DateTime           @updatedAt
+  users               User[]
 }
 
 enum EnumUserDesignation {

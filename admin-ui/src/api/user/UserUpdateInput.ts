@@ -5,6 +5,7 @@ import { InterviewUpdateManyWithoutUsersInput } from "./InterviewUpdateManyWitho
 import { OpportunityUpdateManyWithoutUsersInput } from "./OpportunityUpdateManyWithoutUsersInput";
 import { ProjectUpdateManyWithoutUsersInput } from "./ProjectUpdateManyWithoutUsersInput";
 import { ProjectInvolvementUpdateManyWithoutUsersInput } from "./ProjectInvolvementUpdateManyWithoutUsersInput";
+import { SkillLevelWhereUniqueInput } from "../skillLevel/SkillLevelWhereUniqueInput";
 import { SkillSetUpdateManyWithoutUsersInput } from "./SkillSetUpdateManyWithoutUsersInput";
 
 export type UserUpdateInput = {
@@ -49,6 +50,7 @@ export type UserUpdateInput = {
   projectInvolved?: ProjectInvolvementUpdateManyWithoutUsersInput;
   resumeLink?: string | null;
   roles?: Array<string>;
+  skillLevel?: SkillLevelWhereUniqueInput | null;
   skillSets?: SkillSetUpdateManyWithoutUsersInput;
   toPerson?: AwardUpdateManyWithoutUsersInput;
   totalExperience?: string;
