@@ -58,9 +58,9 @@ export const UserEdit = (props: EditProps): React.ReactElement => {
         <TextInput label="Contact Number" source="contactNumber" />
         <DateInput label="Course Out Date" source="courseOutDate" />
         <DateInput label="Date of Joining" source="dateOfJoining" />
-        <SelectArrayInput
-          label="Designation"
+        <SelectInput
           source="designation"
+          label="Designation"
           choices={[
             { label: "JOE", value: "Joe" },
             { label: "Engineer", value: "Engineer" },
@@ -72,6 +72,7 @@ export const UserEdit = (props: EditProps): React.ReactElement => {
             { label: "CXO", value: "Cxo" },
           ]}
           optionText="label"
+          allowEmpty
           optionValue="value"
         />
         <DateInput label="DOB" source="dob" />

@@ -19,7 +19,7 @@ export type UserUpdateInput = {
   contactNumber?: string | null;
   courseOutDate?: Date | null;
   dateOfJoining?: Date | null;
-  designation?: Array<
+  designation?:
     | "Joe"
     | "Engineer"
     | "SeniorEngineer"
@@ -28,7 +28,7 @@ export type UserUpdateInput = {
     | "PrincipalConsultant"
     | "Director"
     | "Cxo"
-  >;
+    | null;
   dob?: Date | null;
   email?: string | null;
   emergencyContactNumber?: string | null;

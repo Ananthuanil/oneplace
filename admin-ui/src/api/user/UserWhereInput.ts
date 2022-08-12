@@ -22,6 +22,15 @@ export type UserWhereInput = {
   contactNumber?: StringNullableFilter;
   courseOutDate?: DateTimeNullableFilter;
   dateOfJoining?: DateTimeNullableFilter;
+  designation?:
+    | "Joe"
+    | "Engineer"
+    | "SeniorEngineer"
+    | "Consultant"
+    | "SeniorConsultant"
+    | "PrincipalConsultant"
+    | "Director"
+    | "Cxo";
   dob?: DateTimeNullableFilter;
   email?: StringNullableFilter;
   emergencyContactNumber?: StringNullableFilter;
