@@ -14,10 +14,12 @@ export type InterviewUpdateInput = {
     | "Accepted"
     | null;
   date?: Date | null;
+  endDate?: Date | null;
   feedback?: InterviewFeedbackUpdateManyWithoutInterviewsInput;
   interviewer?: UserWhereUniqueInput | null;
   level?: string | null;
   mode?: string | null;
   opportunity?: OpportunityWhereUniqueInput | null;
+  startDate?: Date | null;
   subject?: string | null;
 };

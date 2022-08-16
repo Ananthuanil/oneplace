@@ -17,11 +17,13 @@ export type InterviewWhereInput = {
     | "Rejected"
     | "Accepted";
   date?: DateTimeNullableFilter;
+  endDate?: DateTimeNullableFilter;
   feedback?: InterviewFeedbackListRelationFilter;
   id?: StringFilter;
   interviewer?: UserWhereUniqueInput;
   level?: StringNullableFilter;
   mode?: StringNullableFilter;
   opportunity?: OpportunityWhereUniqueInput;
+  startDate?: DateTimeNullableFilter;
   subject?: StringNullableFilter;
 };

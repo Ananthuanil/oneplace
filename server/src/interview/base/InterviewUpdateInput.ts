@@ -80,6 +80,17 @@ class InterviewUpdateInput {
 
   @ApiProperty({
     required: false,
+  })
+  @IsDate()
+  @Type(() => Date)
+  @IsOptional()
+  @Field(() => Date, {
+    nullable: true,
+  })
+  endDate?: Date | null;
+
+  @ApiProperty({
+    required: false,
     type: () => InterviewFeedbackUpdateManyWithoutInterviewsInput,
   })
   @ValidateNested()
@@ -135,6 +146,17 @@ class InterviewUpdateInput {
     nullable: true,
   })
   opportunity?: OpportunityWhereUniqueInput | null;
+
+  @ApiProperty({
+    required: false,
+  })
+  @IsDate()
+  @Type(() => Date)
+  @IsOptional()
+  @Field(() => Date, {
+    nullable: true,
+  })
+  startDate?: Date | null;
 
   @ApiProperty({
     required: false,
