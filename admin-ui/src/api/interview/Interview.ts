@@ -15,12 +15,14 @@ export type Interview = {
     | "Accepted"
     | null;
   date: Date | null;
+  endDate: Date | null;
   feedback?: Array<InterviewFeedback>;
   id: string;
   interviewer?: User | null;
   level: string | null;
   mode: string | null;
   opportunity?: Opportunity | null;
+  startDate: Date | null;
   subject: string | null;
   updatedAt: Date;
 };

@@ -76,6 +76,17 @@ class InterviewWhereInput {
 
   @ApiProperty({
     required: false,
+    type: DateTimeNullableFilter,
+  })
+  @Type(() => DateTimeNullableFilter)
+  @IsOptional()
+  @Field(() => DateTimeNullableFilter, {
+    nullable: true,
+  })
+  endDate?: DateTimeNullableFilter;
+
+  @ApiProperty({
+    required: false,
     type: () => InterviewFeedbackListRelationFilter,
   })
   @ValidateNested()
@@ -142,6 +153,17 @@ class InterviewWhereInput {
     nullable: true,
   })
   opportunity?: OpportunityWhereUniqueInput;
+
+  @ApiProperty({
+    required: false,
+    type: DateTimeNullableFilter,
+  })
+  @Type(() => DateTimeNullableFilter)
+  @IsOptional()
+  @Field(() => DateTimeNullableFilter, {
+    nullable: true,
+  })
+  startDate?: DateTimeNullableFilter;
 
   @ApiProperty({
     required: false,

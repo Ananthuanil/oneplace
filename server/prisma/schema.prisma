@@ -143,6 +143,7 @@ model Interview {
   createdAt     DateTime                    @default(now())
   currentStatus EnumInterviewCurrentStatus?
   date          DateTime?
+  endDate       DateTime?
   feedback      InterviewFeedback[]
   id            String                      @id @default(cuid())
   interviewer   User?                       @relation(fields: [interviewerId], references: [id])
@@ -151,6 +152,7 @@ model Interview {
   mode          String?
   opportunity   Opportunity?                @relation(fields: [opportunityId], references: [id])
   opportunityId String?
+  startDate     DateTime?
   subject       String?
   updatedAt     DateTime                    @updatedAt
 }

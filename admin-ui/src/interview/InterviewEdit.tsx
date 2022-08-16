@@ -8,6 +8,7 @@ import {
   SelectInput,
   BooleanInput,
   DateTimeInput,
+  DateInput,
   ReferenceArrayInput,
   SelectArrayInput,
   TextInput,
@@ -48,6 +49,7 @@ export const InterviewEdit = (props: EditProps): React.ReactElement => {
           optionValue="value"
         />
         <DateTimeInput label="Date" source="date" />
+        <DateInput label="End Date" source="endDate" />
         <ReferenceArrayInput
           source="feedback"
           reference="InterviewFeedback"
@@ -68,6 +70,7 @@ export const InterviewEdit = (props: EditProps): React.ReactElement => {
         >
           <SelectInput optionText={OpportunityTitle} />
         </ReferenceInput>
+        <DateInput label="Start Date" source="startDate" />
         <TextInput label="subject" source="subject" />
       </SimpleForm>
     </Edit>

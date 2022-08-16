@@ -6,11 +6,13 @@ export type InterviewOrderByInput = {
   createdAt?: SortOrder;
   currentStatus?: SortOrder;
   date?: SortOrder;
+  endDate?: SortOrder;
   id?: SortOrder;
   interviewerId?: SortOrder;
   level?: SortOrder;
   mode?: SortOrder;
   opportunityId?: SortOrder;
+  startDate?: SortOrder;
   subject?: SortOrder;
   updatedAt?: SortOrder;
 };
