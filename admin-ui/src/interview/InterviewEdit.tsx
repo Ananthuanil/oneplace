@@ -4,10 +4,10 @@ import {
   Edit,
   SimpleForm,
   EditProps,
+  TextInput,
   ReferenceInput,
   SelectInput,
   BooleanInput,
-  TextInput,
   DateTimeInput,
   DateInput,
   ReferenceArrayInput,
@@ -23,6 +23,7 @@ export const InterviewEdit = (props: EditProps): React.ReactElement => {
   return (
     <Edit {...props}>
       <SimpleForm>
+        <TextInput label="Calendar Schedule Id" source="calendarScheduleId" />
         <ReferenceInput
           source="candidate.id"
           reference="Candidate"

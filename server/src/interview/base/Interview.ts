@@ -11,20 +11,31 @@ https://docs.amplication.com/docs/how-to/custom-code
   */
 import { ObjectType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
-import { Candidate } from "../../candidate/base/Candidate";
 import {
-  ValidateNested,
+  IsString,
   IsOptional,
+  ValidateNested,
   IsBoolean,
   IsDate,
-  IsString,
 } from "class-validator";
+import { Candidate } from "../../candidate/base/Candidate";
 import { Type } from "class-transformer";
 import { InterviewFeedback } from "../../interviewFeedback/base/InterviewFeedback";
 import { User } from "../../user/base/User";
 import { Opportunity } from "../../opportunity/base/Opportunity";
 @ObjectType()
 class Interview {
+  @ApiProperty({
+    required: false,
+    type: String,
+  })
+  @IsString()
+  @IsOptional()
+  @Field(() => String, {
+    nullable: true,
+  })
+  calendarScheduleId!: string | null;
+
   @ApiProperty({
     required: false,
     type: () => Candidate,

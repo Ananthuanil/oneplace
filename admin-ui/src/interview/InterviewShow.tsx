@@ -4,8 +4,8 @@ import {
   Show,
   SimpleShowLayout,
   ShowProps,
-  ReferenceField,
   TextField,
+  ReferenceField,
   BooleanField,
   DateField,
   ReferenceManyField,
@@ -22,6 +22,7 @@ export const InterviewShow = (props: ShowProps): React.ReactElement => {
   return (
     <Show {...props}>
       <SimpleShowLayout>
+        <TextField label="Calendar Schedule Id" source="calendarScheduleId" />
         <ReferenceField
           label="Candidate"
           source="candidate.id"

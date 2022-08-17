@@ -4,6 +4,7 @@ import { UserWhereUniqueInput } from "../user/UserWhereUniqueInput";
 import { OpportunityWhereUniqueInput } from "../opportunity/OpportunityWhereUniqueInput";
 
 export type InterviewCreateInput = {
+  calendarScheduleId?: string | null;
   candidate?: CandidateWhereUniqueInput | null;
   closed?: boolean | null;
   currentStatus?: string | null;

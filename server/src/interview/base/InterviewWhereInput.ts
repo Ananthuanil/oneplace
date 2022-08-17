@@ -11,11 +11,11 @@ https://docs.amplication.com/docs/how-to/custom-code
   */
 import { InputType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
-import { CandidateWhereUniqueInput } from "../../candidate/base/CandidateWhereUniqueInput";
-import { ValidateNested, IsOptional } from "class-validator";
-import { Type } from "class-transformer";
-import { BooleanNullableFilter } from "../../util/BooleanNullableFilter";
 import { StringNullableFilter } from "../../util/StringNullableFilter";
+import { Type } from "class-transformer";
+import { IsOptional, ValidateNested } from "class-validator";
+import { CandidateWhereUniqueInput } from "../../candidate/base/CandidateWhereUniqueInput";
+import { BooleanNullableFilter } from "../../util/BooleanNullableFilter";
 import { DateTimeNullableFilter } from "../../util/DateTimeNullableFilter";
 import { InterviewFeedbackListRelationFilter } from "../../interviewFeedback/base/InterviewFeedbackListRelationFilter";
 import { StringFilter } from "../../util/StringFilter";
@@ -23,6 +23,17 @@ import { UserWhereUniqueInput } from "../../user/base/UserWhereUniqueInput";
 import { OpportunityWhereUniqueInput } from "../../opportunity/base/OpportunityWhereUniqueInput";
 @InputType()
 class InterviewWhereInput {
+  @ApiProperty({
+    required: false,
+    type: StringNullableFilter,
+  })
+  @Type(() => StringNullableFilter)
+  @IsOptional()
+  @Field(() => StringNullableFilter, {
+    nullable: true,
+  })
+  calendarScheduleId?: StringNullableFilter;
+
   @ApiProperty({
     required: false,
     type: () => CandidateWhereUniqueInput,

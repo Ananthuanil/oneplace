@@ -137,24 +137,25 @@ model InterviewFeedback {
 }
 
 model Interview {
-  candidate     Candidate?          @relation(fields: [candidateId], references: [id])
-  candidateId   String?
-  closed        Boolean?
-  createdAt     DateTime            @default(now())
-  currentStatus String?
-  date          DateTime?
-  endDate       DateTime?
-  feedback      InterviewFeedback[]
-  id            String              @id @default(cuid())
-  interviewer   User?               @relation(fields: [interviewerId], references: [id])
-  interviewerId String?
-  level         String?
-  mode          String?
-  opportunity   Opportunity?        @relation(fields: [opportunityId], references: [id])
-  opportunityId String?
-  startDate     DateTime?
-  subject       String?
-  updatedAt     DateTime            @updatedAt
+  calendarScheduleId String?
+  candidate          Candidate?          @relation(fields: [candidateId], references: [id])
+  candidateId        String?
+  closed             Boolean?
+  createdAt          DateTime            @default(now())
+  currentStatus      String?
+  date               DateTime?
+  endDate            DateTime?
+  feedback           InterviewFeedback[]
+  id                 String              @id @default(cuid())
+  interviewer        User?               @relation(fields: [interviewerId], references: [id])
+  interviewerId      String?
+  level              String?
+  mode               String?
+  opportunity        Opportunity?        @relation(fields: [opportunityId], references: [id])
+  opportunityId      String?
+  startDate          DateTime?
+  subject            String?
+  updatedAt          DateTime            @updatedAt
 }
 
 model Opportunity {

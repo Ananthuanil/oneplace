@@ -4,6 +4,7 @@ import { User } from "../user/User";
 import { Opportunity } from "../opportunity/Opportunity";
 
 export type Interview = {
+  calendarScheduleId: string | null;
   candidate?: Candidate | null;
   closed: boolean | null;
   createdAt: Date;

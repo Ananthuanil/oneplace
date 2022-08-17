@@ -11,20 +11,31 @@ https://docs.amplication.com/docs/how-to/custom-code
   */
 import { InputType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
-import { CandidateWhereUniqueInput } from "../../candidate/base/CandidateWhereUniqueInput";
 import {
-  ValidateNested,
-  IsOptional,
-  IsBoolean,
   IsString,
+  IsOptional,
+  ValidateNested,
+  IsBoolean,
   IsDate,
 } from "class-validator";
+import { CandidateWhereUniqueInput } from "../../candidate/base/CandidateWhereUniqueInput";
 import { Type } from "class-transformer";
 import { InterviewFeedbackUpdateManyWithoutInterviewsInput } from "./InterviewFeedbackUpdateManyWithoutInterviewsInput";
 import { UserWhereUniqueInput } from "../../user/base/UserWhereUniqueInput";
 import { OpportunityWhereUniqueInput } from "../../opportunity/base/OpportunityWhereUniqueInput";
 @InputType()
 class InterviewUpdateInput {
+  @ApiProperty({
+    required: false,
+    type: String,
+  })
+  @IsString()
+  @IsOptional()
+  @Field(() => String, {
+    nullable: true,
+  })
+  calendarScheduleId?: string | null;
+
   @ApiProperty({
     required: false,
     type: () => CandidateWhereUniqueInput,
