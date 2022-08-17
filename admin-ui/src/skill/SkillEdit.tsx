@@ -4,11 +4,11 @@ import {
   Edit,
   SimpleForm,
   EditProps,
-  ReferenceInput,
-  SelectInput,
-  TextInput,
   ReferenceArrayInput,
   SelectArrayInput,
+  TextInput,
+  ReferenceInput,
+  SelectInput,
 } from "react-admin";
 
 import { CandidateTitle } from "../candidate/CandidateTitle";
@@ -20,13 +20,14 @@ export const SkillEdit = (props: EditProps): React.ReactElement => {
   return (
     <Edit {...props}>
       <SimpleForm>
-        <ReferenceInput
-          source="candidate.id"
+        <ReferenceArrayInput
+          source="candidate"
           reference="Candidate"
-          label="Candidate"
+          parse={(value: any) => value && value.map((v: any) => ({ id: v }))}
+          format={(value: any) => value && value.map((v: any) => v.id)}
         >
-          <SelectInput optionText={CandidateTitle} />
-        </ReferenceInput>
+          <SelectArrayInput optionText={CandidateTitle} />
+        </ReferenceArrayInput>
         <TextInput label="Name" source="name" />
         <ReferenceInput
           source="opportunity.id"

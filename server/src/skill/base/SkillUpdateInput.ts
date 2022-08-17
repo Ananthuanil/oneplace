@@ -11,7 +11,7 @@ https://docs.amplication.com/docs/how-to/custom-code
   */
 import { InputType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
-import { CandidateWhereUniqueInput } from "../../candidate/base/CandidateWhereUniqueInput";
+import { CandidateUpdateManyWithoutSkillsInput } from "./CandidateUpdateManyWithoutSkillsInput";
 import { ValidateNested, IsOptional, IsString } from "class-validator";
 import { Type } from "class-transformer";
 import { OpportunityWhereUniqueInput } from "../../opportunity/base/OpportunityWhereUniqueInput";
@@ -21,15 +21,15 @@ import { SkillSetUpdateManyWithoutSkillsInput } from "./SkillSetUpdateManyWithou
 class SkillUpdateInput {
   @ApiProperty({
     required: false,
-    type: () => CandidateWhereUniqueInput,
+    type: () => CandidateUpdateManyWithoutSkillsInput,
   })
   @ValidateNested()
-  @Type(() => CandidateWhereUniqueInput)
+  @Type(() => CandidateUpdateManyWithoutSkillsInput)
   @IsOptional()
-  @Field(() => CandidateWhereUniqueInput, {
+  @Field(() => CandidateUpdateManyWithoutSkillsInput, {
     nullable: true,
   })
-  candidate?: CandidateWhereUniqueInput | null;
+  candidate?: CandidateUpdateManyWithoutSkillsInput;
 
   @ApiProperty({
     required: false,

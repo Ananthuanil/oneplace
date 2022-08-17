@@ -4,9 +4,9 @@ import {
   Show,
   SimpleShowLayout,
   ShowProps,
-  ReferenceField,
-  TextField,
   DateField,
+  TextField,
+  ReferenceField,
   ReferenceManyField,
   Datagrid,
 } from "react-admin";
@@ -20,13 +20,6 @@ export const SkillShow = (props: ShowProps): React.ReactElement => {
   return (
     <Show {...props}>
       <SimpleShowLayout>
-        <ReferenceField
-          label="Candidate"
-          source="candidate.id"
-          reference="Candidate"
-        >
-          <TextField source={CANDIDATE_TITLE_FIELD} />
-        </ReferenceField>
         <DateField source="createdAt" label="Created At" />
         <TextField label="ID" source="id" />
         <TextField label="Name" source="name" />

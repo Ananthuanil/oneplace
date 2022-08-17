@@ -99,13 +99,6 @@ export const OpportunityShow = (props: ShowProps): React.ReactElement => {
           label="Skills"
         >
           <Datagrid rowClick="show">
-            <ReferenceField
-              label="Candidate"
-              source="candidate.id"
-              reference="Candidate"
-            >
-              <TextField source={CANDIDATE_TITLE_FIELD} />
-            </ReferenceField>
             <DateField source="createdAt" label="Created At" />
             <TextField label="ID" source="id" />
             <TextField label="Name" source="name" />
@@ -132,13 +125,6 @@ export const OpportunityShow = (props: ShowProps): React.ReactElement => {
           label="Skills"
         >
           <Datagrid rowClick="show">
-            <ReferenceField
-              label="Candidate"
-              source="candidate.id"
-              reference="Candidate"
-            >
-              <TextField source={CANDIDATE_TITLE_FIELD} />
-            </ReferenceField>
             <DateField source="createdAt" label="Created At" />
             <TextField label="ID" source="id" />
             <TextField label="Name" source="name" />

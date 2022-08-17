@@ -1,10 +1,10 @@
-import { CandidateWhereUniqueInput } from "../candidate/CandidateWhereUniqueInput";
+import { CandidateCreateNestedManyWithoutSkillsInput } from "./CandidateCreateNestedManyWithoutSkillsInput";
 import { OpportunityWhereUniqueInput } from "../opportunity/OpportunityWhereUniqueInput";
 import { SkillLevelCreateNestedManyWithoutSkillsInput } from "./SkillLevelCreateNestedManyWithoutSkillsInput";
 import { SkillSetCreateNestedManyWithoutSkillsInput } from "./SkillSetCreateNestedManyWithoutSkillsInput";
 
 export type SkillCreateInput = {
-  candidate?: CandidateWhereUniqueInput | null;
+  candidate?: CandidateCreateNestedManyWithoutSkillsInput;
   name?: string | null;
   opportunity?: OpportunityWhereUniqueInput | null;
   oppurtunatyRequiredSkills?: OpportunityWhereUniqueInput | null;

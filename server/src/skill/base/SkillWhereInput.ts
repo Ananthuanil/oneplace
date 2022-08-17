@@ -11,7 +11,7 @@ https://docs.amplication.com/docs/how-to/custom-code
   */
 import { InputType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
-import { CandidateWhereUniqueInput } from "../../candidate/base/CandidateWhereUniqueInput";
+import { CandidateListRelationFilter } from "../../candidate/base/CandidateListRelationFilter";
 import { ValidateNested, IsOptional } from "class-validator";
 import { Type } from "class-transformer";
 import { StringFilter } from "../../util/StringFilter";
@@ -23,15 +23,15 @@ import { SkillSetListRelationFilter } from "../../skillSet/base/SkillSetListRela
 class SkillWhereInput {
   @ApiProperty({
     required: false,
-    type: () => CandidateWhereUniqueInput,
+    type: () => CandidateListRelationFilter,
   })
   @ValidateNested()
-  @Type(() => CandidateWhereUniqueInput)
+  @Type(() => CandidateListRelationFilter)
   @IsOptional()
-  @Field(() => CandidateWhereUniqueInput, {
+  @Field(() => CandidateListRelationFilter, {
     nullable: true,
   })
-  candidate?: CandidateWhereUniqueInput;
+  candidate?: CandidateListRelationFilter;
 
   @ApiProperty({
     required: false,

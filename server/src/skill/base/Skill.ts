@@ -21,12 +21,12 @@ import { SkillSet } from "../../skillSet/base/SkillSet";
 class Skill {
   @ApiProperty({
     required: false,
-    type: () => Candidate,
+    type: () => [Candidate],
   })
   @ValidateNested()
   @Type(() => Candidate)
   @IsOptional()
-  candidate?: Candidate | null;
+  candidate?: Array<Candidate>;
 
   @ApiProperty({
     required: true,
