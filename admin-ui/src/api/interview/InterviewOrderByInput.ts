@@ -1,6 +1,7 @@
 import { SortOrder } from "../../util/SortOrder";
 
 export type InterviewOrderByInput = {
+  calendarScheduleId?: SortOrder;
   candidateId?: SortOrder;
   closed?: SortOrder;
   createdAt?: SortOrder;

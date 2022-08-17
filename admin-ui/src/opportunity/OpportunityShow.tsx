@@ -55,6 +55,10 @@ export const OpportunityShow = (props: ShowProps): React.ReactElement => {
           label="Interviews"
         >
           <Datagrid rowClick="show">
+            <TextField
+              label="Calendar Schedule Id"
+              source="calendarScheduleId"
+            />
             <ReferenceField
               label="Candidate"
               source="candidate.id"
