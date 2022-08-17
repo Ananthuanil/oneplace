@@ -1,7 +1,7 @@
 import { UserWhereUniqueInput } from "../user/UserWhereUniqueInput";
+import { StringNullableFilter } from "../../util/StringNullableFilter";
 import { StringFilter } from "../../util/StringFilter";
 import { InterviewListRelationFilter } from "../interview/InterviewListRelationFilter";
-import { StringNullableFilter } from "../../util/StringNullableFilter";
 import { SkillListRelationFilter } from "../skill/SkillListRelationFilter";
 import { PartnerWhereUniqueInput } from "../partner/PartnerWhereUniqueInput";
 import { ProjectWhereUniqueInput } from "../project/ProjectWhereUniqueInput";
@@ -9,16 +9,7 @@ import { IntNullableFilter } from "../../util/IntNullableFilter";
 
 export type OpportunityWhereInput = {
   claimedPerson?: UserWhereUniqueInput;
-  currentStatus?:
-    | "Lead"
-    | "OpenOppurtunaty"
-    | "NotQualifiedLead"
-    | "Replacement"
-    | "MappedAndAwaitingInterviewSlot"
-    | "AwaitingInterviewFeedback"
-    | "OnHold"
-    | "Won"
-    | "Failed";
+  currentStatus?: StringNullableFilter;
   id?: StringFilter;
   interviews?: InterviewListRelationFilter;
   mappedPerson?: UserWhereUniqueInput;

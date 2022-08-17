@@ -1,21 +1,16 @@
 import { CandidateWhereUniqueInput } from "../candidate/CandidateWhereUniqueInput";
 import { BooleanNullableFilter } from "../../util/BooleanNullableFilter";
+import { StringNullableFilter } from "../../util/StringNullableFilter";
 import { DateTimeNullableFilter } from "../../util/DateTimeNullableFilter";
 import { InterviewFeedbackListRelationFilter } from "../interviewFeedback/InterviewFeedbackListRelationFilter";
 import { StringFilter } from "../../util/StringFilter";
 import { UserWhereUniqueInput } from "../user/UserWhereUniqueInput";
-import { StringNullableFilter } from "../../util/StringNullableFilter";
 import { OpportunityWhereUniqueInput } from "../opportunity/OpportunityWhereUniqueInput";
 
 export type InterviewWhereInput = {
   candidate?: CandidateWhereUniqueInput;
   closed?: BooleanNullableFilter;
-  currentStatus?:
-    | "Scheduled"
-    | "CompletedButAwaitingFeedback"
-    | "Rescheduled"
-    | "Rejected"
-    | "Accepted";
+  currentStatus?: StringNullableFilter;
   date?: DateTimeNullableFilter;
   endDate?: DateTimeNullableFilter;
   feedback?: InterviewFeedbackListRelationFilter;

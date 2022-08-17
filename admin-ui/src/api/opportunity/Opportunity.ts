@@ -7,17 +7,7 @@ import { Project } from "../project/Project";
 export type Opportunity = {
   claimedPerson?: User | null;
   createdAt: Date;
-  currentStatus?:
-    | "Lead"
-    | "OpenOppurtunaty"
-    | "NotQualifiedLead"
-    | "Replacement"
-    | "MappedAndAwaitingInterviewSlot"
-    | "AwaitingInterviewFeedback"
-    | "OnHold"
-    | "Won"
-    | "Failed"
-    | null;
+  currentStatus: string | null;
   id: string;
   interviews?: Array<Interview>;
   mappedPerson?: User | null;

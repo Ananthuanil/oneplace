@@ -16,12 +16,10 @@ import {
   ValidateNested,
   IsOptional,
   IsBoolean,
-  IsEnum,
-  IsDate,
   IsString,
+  IsDate,
 } from "class-validator";
 import { Type } from "class-transformer";
-import { EnumInterviewCurrentStatus } from "./EnumInterviewCurrentStatus";
 import { InterviewFeedbackCreateNestedManyWithoutInterviewsInput } from "./InterviewFeedbackCreateNestedManyWithoutInterviewsInput";
 import { UserWhereUniqueInput } from "../../user/base/UserWhereUniqueInput";
 import { OpportunityWhereUniqueInput } from "../../opportunity/base/OpportunityWhereUniqueInput";
@@ -52,20 +50,14 @@ class InterviewCreateInput {
 
   @ApiProperty({
     required: false,
-    enum: EnumInterviewCurrentStatus,
+    type: String,
   })
-  @IsEnum(EnumInterviewCurrentStatus)
+  @IsString()
   @IsOptional()
-  @Field(() => EnumInterviewCurrentStatus, {
+  @Field(() => String, {
     nullable: true,
   })
-  currentStatus?:
-    | "Scheduled"
-    | "CompletedButAwaitingFeedback"
-    | "Rescheduled"
-    | "Rejected"
-    | "Accepted"
-    | null;
+  currentStatus?: string | null;
 
   @ApiProperty({
     required: false,

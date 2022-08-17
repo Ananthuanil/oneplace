@@ -24,7 +24,6 @@ import {
 } from "class-validator";
 
 import { EnumCandidateCategory } from "./EnumCandidateCategory";
-import { EnumCandidateCurrentStatus } from "./EnumCandidateCurrentStatus";
 import { InterviewUpdateManyWithoutCandidatesInput } from "./InterviewUpdateManyWithoutCandidatesInput";
 import { Type } from "class-transformer";
 import { UserWhereUniqueInput } from "../../user/base/UserWhereUniqueInput";
@@ -101,24 +100,14 @@ class CandidateUpdateInput {
 
   @ApiProperty({
     required: false,
-    enum: EnumCandidateCurrentStatus,
+    type: String,
   })
-  @IsEnum(EnumCandidateCurrentStatus)
+  @IsString()
   @IsOptional()
-  @Field(() => EnumCandidateCurrentStatus, {
+  @Field(() => String, {
     nullable: true,
   })
-  currentStatus?:
-    | "Parked"
-    | "AwaitingInterview"
-    | "InterviewScheduled"
-    | "InterviewSelected"
-    | "OfferReleased"
-    | "Joined"
-    | "OfferRejected"
-    | "InterviewRejected"
-    | "OnHold"
-    | "AwaitingFeedback";
+  currentStatus?: string;
 
   @ApiProperty({
     required: false,

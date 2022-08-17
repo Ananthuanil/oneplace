@@ -7,13 +7,7 @@ export type Interview = {
   candidate?: Candidate | null;
   closed: boolean | null;
   createdAt: Date;
-  currentStatus?:
-    | "Scheduled"
-    | "CompletedButAwaitingFeedback"
-    | "Rescheduled"
-    | "Rejected"
-    | "Accepted"
-    | null;
+  currentStatus: string | null;
   date: Date | null;
   endDate: Date | null;
   feedback?: Array<InterviewFeedback>;

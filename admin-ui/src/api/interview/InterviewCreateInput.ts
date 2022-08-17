@@ -6,13 +6,7 @@ import { OpportunityWhereUniqueInput } from "../opportunity/OpportunityWhereUniq
 export type InterviewCreateInput = {
   candidate?: CandidateWhereUniqueInput | null;
   closed?: boolean | null;
-  currentStatus?:
-    | "Scheduled"
-    | "CompletedButAwaitingFeedback"
-    | "Rescheduled"
-    | "Rejected"
-    | "Accepted"
-    | null;
+  currentStatus?: string | null;
   date?: Date | null;
   endDate?: Date | null;
   feedback?: InterviewFeedbackCreateNestedManyWithoutInterviewsInput;

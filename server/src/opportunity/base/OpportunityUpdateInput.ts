@@ -15,12 +15,11 @@ import { UserWhereUniqueInput } from "../../user/base/UserWhereUniqueInput";
 import {
   ValidateNested,
   IsOptional,
-  IsEnum,
   IsString,
+  IsEnum,
   IsInt,
 } from "class-validator";
 import { Type } from "class-transformer";
-import { EnumOpportunityCurrentStatus } from "./EnumOpportunityCurrentStatus";
 import { InterviewUpdateManyWithoutOpportunitiesInput } from "./InterviewUpdateManyWithoutOpportunitiesInput";
 import { SkillUpdateManyWithoutOpportunitiesInput } from "./SkillUpdateManyWithoutOpportunitiesInput";
 import { PartnerWhereUniqueInput } from "../../partner/base/PartnerWhereUniqueInput";
@@ -43,24 +42,14 @@ class OpportunityUpdateInput {
 
   @ApiProperty({
     required: false,
-    enum: EnumOpportunityCurrentStatus,
+    type: String,
   })
-  @IsEnum(EnumOpportunityCurrentStatus)
+  @IsString()
   @IsOptional()
-  @Field(() => EnumOpportunityCurrentStatus, {
+  @Field(() => String, {
     nullable: true,
   })
-  currentStatus?:
-    | "Lead"
-    | "OpenOppurtunaty"
-    | "NotQualifiedLead"
-    | "Replacement"
-    | "MappedAndAwaitingInterviewSlot"
-    | "AwaitingInterviewFeedback"
-    | "OnHold"
-    | "Won"
-    | "Failed"
-    | null;
+  currentStatus?: string | null;
 
   @ApiProperty({
     required: false,

@@ -94,28 +94,28 @@ model Candidate {
   additionalComments         String?
   category                   EnumCandidateCategory
   competitorCtc              Float?
-  createdAt                  DateTime                   @default(now())
+  createdAt                  DateTime              @default(now())
   currentCtc                 Float?
   currentDesignation         String?
   currentFirm                String?
-  currentStatus              EnumCandidateCurrentStatus
+  currentStatus              String
   email                      String
   expectedCtc                Float?
   externalRecruitmentPartner String?
-  id                         String                     @id @default(cuid())
+  id                         String                @id @default(cuid())
   interviews                 Interview[]
   isOnNoticePeriod           Boolean
   lastWorkingDay             DateTime?
   name                       String
   noticePeriodTime           Float?
-  referalEmployee            User?                      @relation(fields: [referalEmployeeId], references: [id])
+  referalEmployee            User?                 @relation(fields: [referalEmployeeId], references: [id])
   referalEmployeeId          String?
   resume                     String?
   skills                     Skill[]
   skillSets                  SkillSet[]
   source                     EnumCandidateSource
   totalExperience            Int
-  updatedAt                  DateTime                   @updatedAt
+  updatedAt                  DateTime              @updatedAt
 }
 
 model InterviewFeedback {
@@ -137,31 +137,31 @@ model InterviewFeedback {
 }
 
 model Interview {
-  candidate     Candidate?                  @relation(fields: [candidateId], references: [id])
+  candidate     Candidate?          @relation(fields: [candidateId], references: [id])
   candidateId   String?
   closed        Boolean?
-  createdAt     DateTime                    @default(now())
-  currentStatus EnumInterviewCurrentStatus?
+  createdAt     DateTime            @default(now())
+  currentStatus String?
   date          DateTime?
   endDate       DateTime?
   feedback      InterviewFeedback[]
-  id            String                      @id @default(cuid())
-  interviewer   User?                       @relation(fields: [interviewerId], references: [id])
+  id            String              @id @default(cuid())
+  interviewer   User?               @relation(fields: [interviewerId], references: [id])
   interviewerId String?
   level         String?
   mode          String?
-  opportunity   Opportunity?                @relation(fields: [opportunityId], references: [id])
+  opportunity   Opportunity?        @relation(fields: [opportunityId], references: [id])
   opportunityId String?
   startDate     DateTime?
   subject       String?
-  updatedAt     DateTime                    @updatedAt
+  updatedAt     DateTime            @updatedAt
 }
 
 model Opportunity {
   claimedPerson      User?                             @relation(name: "claimedPerson", fields: [claimedPersonId], references: [id])
   claimedPersonId    String?
   createdAt          DateTime                          @default(now())
-  currentStatus      EnumOpportunityCurrentStatus?
+  currentStatus      String?
   id                 String                            @id @default(cuid())
   interviews         Interview[]
   mappedPerson       User?                             @relation(name: "OpportunityMappedPersonUserMappedPerson", fields: [mappedPersonId], references: [id])
@@ -273,19 +273,6 @@ enum EnumCandidateCategory {
   P3
 }
 
-enum EnumCandidateCurrentStatus {
-  Parked
-  AwaitingInterview
-  InterviewScheduled
-  InterviewSelected
-  OfferReleased
-  Joined
-  OfferRejected
-  InterviewRejected
-  OnHold
-  AwaitingFeedback
-}
-
 enum EnumCandidateSource {
   Internal
   Referral
@@ -296,26 +283,6 @@ enum EnumInterviewFeedbackStatus {
   Passed
   NotPassed
   Hold
-}
-
-enum EnumInterviewCurrentStatus {
-  Scheduled
-  CompletedButAwaitingFeedback
-  Rescheduled
-  Rejected
-  Accepted
-}
-
-enum EnumOpportunityCurrentStatus {
-  Lead
-  OpenOppurtunaty
-  NotQualifiedLead
-  Replacement
-  MappedAndAwaitingInterviewSlot
-  AwaitingInterviewFeedback
-  OnHold
-  Won
-  Failed
 }
 
 enum EnumOpportunityProcurementStatus {

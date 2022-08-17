@@ -12,15 +12,14 @@ https://docs.amplication.com/docs/how-to/custom-code
 import { InputType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
 import { CandidateWhereUniqueInput } from "../../candidate/base/CandidateWhereUniqueInput";
-import { ValidateNested, IsOptional, IsEnum } from "class-validator";
+import { ValidateNested, IsOptional } from "class-validator";
 import { Type } from "class-transformer";
 import { BooleanNullableFilter } from "../../util/BooleanNullableFilter";
-import { EnumInterviewCurrentStatus } from "./EnumInterviewCurrentStatus";
+import { StringNullableFilter } from "../../util/StringNullableFilter";
 import { DateTimeNullableFilter } from "../../util/DateTimeNullableFilter";
 import { InterviewFeedbackListRelationFilter } from "../../interviewFeedback/base/InterviewFeedbackListRelationFilter";
 import { StringFilter } from "../../util/StringFilter";
 import { UserWhereUniqueInput } from "../../user/base/UserWhereUniqueInput";
-import { StringNullableFilter } from "../../util/StringNullableFilter";
 import { OpportunityWhereUniqueInput } from "../../opportunity/base/OpportunityWhereUniqueInput";
 @InputType()
 class InterviewWhereInput {
@@ -49,19 +48,14 @@ class InterviewWhereInput {
 
   @ApiProperty({
     required: false,
-    enum: EnumInterviewCurrentStatus,
+    type: StringNullableFilter,
   })
-  @IsEnum(EnumInterviewCurrentStatus)
+  @Type(() => StringNullableFilter)
   @IsOptional()
-  @Field(() => EnumInterviewCurrentStatus, {
+  @Field(() => StringNullableFilter, {
     nullable: true,
   })
-  currentStatus?:
-    | "Scheduled"
-    | "CompletedButAwaitingFeedback"
-    | "Rescheduled"
-    | "Rejected"
-    | "Accepted";
+  currentStatus?: StringNullableFilter;
 
   @ApiProperty({
     required: false,
