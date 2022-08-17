@@ -24,11 +24,12 @@ import { DeleteSkillArgs } from "./DeleteSkillArgs";
 import { SkillFindManyArgs } from "./SkillFindManyArgs";
 import { SkillFindUniqueArgs } from "./SkillFindUniqueArgs";
 import { Skill } from "./Skill";
+import { CandidateFindManyArgs } from "../../candidate/base/CandidateFindManyArgs";
+import { Candidate } from "../../candidate/base/Candidate";
 import { SkillLevelFindManyArgs } from "../../skillLevel/base/SkillLevelFindManyArgs";
 import { SkillLevel } from "../../skillLevel/base/SkillLevel";
 import { SkillSetFindManyArgs } from "../../skillSet/base/SkillSetFindManyArgs";
 import { SkillSet } from "../../skillSet/base/SkillSet";
-import { Candidate } from "../../candidate/base/Candidate";
 import { Opportunity } from "../../opportunity/base/Opportunity";
 import { SkillService } from "../skill.service";
 
@@ -81,12 +82,6 @@ export class SkillResolverBase {
       data: {
         ...args.data,
 
-        candidate: args.data.candidate
-          ? {
-              connect: args.data.candidate,
-            }
-          : undefined,
-
         opportunity: args.data.opportunity
           ? {
               connect: args.data.opportunity,
@@ -112,12 +107,6 @@ export class SkillResolverBase {
         ...args,
         data: {
           ...args.data,
-
-          candidate: args.data.candidate
-            ? {
-                connect: args.data.candidate,
-              }
-            : undefined,
 
           opportunity: args.data.opportunity
             ? {
@@ -160,6 +149,21 @@ export class SkillResolverBase {
   }
 
   @Public()
+  @graphql.ResolveField(() => [Candidate])
+  async candidate(
+    @graphql.Parent() parent: Skill,
+    @graphql.Args() args: CandidateFindManyArgs
+  ): Promise<Candidate[]> {
+    const results = await this.service.findCandidate(parent.id, args);
+
+    if (!results) {
+      return [];
+    }
+
+    return results;
+  }
+
+  @Public()
   @graphql.ResolveField(() => [SkillLevel])
   async skillMatrices(
     @graphql.Parent() parent: Skill,
@@ -187,17 +191,6 @@ export class SkillResolverBase {
     }
 
     return results;
-  }
-
-  @Public()
-  @graphql.ResolveField(() => Candidate, { nullable: true })
-  async candidate(@graphql.Parent() parent: Skill): Promise<Candidate | null> {
-    const result = await this.service.getCandidate(parent.id);
-
-    if (!result) {
-      return null;
-    }
-    return result;
   }
 
   @Public()

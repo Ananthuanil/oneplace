@@ -13,9 +13,9 @@ import { PrismaService } from "nestjs-prisma";
 import {
   Prisma,
   Skill,
+  Candidate,
   SkillLevel,
   SkillSet,
-  Candidate,
   Opportunity,
 } from "@prisma/client";
 
@@ -54,6 +54,17 @@ export class SkillServiceBase {
     return this.prisma.skill.delete(args);
   }
 
+  async findCandidate(
+    parentId: string,
+    args: Prisma.CandidateFindManyArgs
+  ): Promise<Candidate[]> {
+    return this.prisma.skill
+      .findUnique({
+        where: { id: parentId },
+      })
+      .candidate(args);
+  }
+
   async findSkillMatrices(
     parentId: string,
     args: Prisma.SkillLevelFindManyArgs
@@ -74,14 +85,6 @@ export class SkillServiceBase {
         where: { id: parentId },
       })
       .skillSets(args);
-  }
-
-  async getCandidate(parentId: string): Promise<Candidate | null> {
-    return this.prisma.skill
-      .findUnique({
-        where: { id: parentId },
-      })
-      .candidate();
   }
 
   async getOpportunity(parentId: string): Promise<Opportunity | null> {

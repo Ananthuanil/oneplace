@@ -62,8 +62,7 @@ model Community {
 }
 
 model Skill {
-  candidate                   Candidate?   @relation(fields: [candidateId], references: [id])
-  candidateId                 String?
+  candidate                   Candidate[]
   createdAt                   DateTime     @default(now())
   id                          String       @id @default(cuid())
   name                        String?

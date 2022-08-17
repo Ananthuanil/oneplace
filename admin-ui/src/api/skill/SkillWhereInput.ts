@@ -1,4 +1,4 @@
-import { CandidateWhereUniqueInput } from "../candidate/CandidateWhereUniqueInput";
+import { CandidateListRelationFilter } from "../candidate/CandidateListRelationFilter";
 import { StringFilter } from "../../util/StringFilter";
 import { StringNullableFilter } from "../../util/StringNullableFilter";
 import { OpportunityWhereUniqueInput } from "../opportunity/OpportunityWhereUniqueInput";
@@ -6,7 +6,7 @@ import { SkillLevelListRelationFilter } from "../skillLevel/SkillLevelListRelati
 import { SkillSetListRelationFilter } from "../skillSet/SkillSetListRelationFilter";
 
 export type SkillWhereInput = {
-  candidate?: CandidateWhereUniqueInput;
+  candidate?: CandidateListRelationFilter;
   id?: StringFilter;
   name?: StringNullableFilter;
   opportunity?: OpportunityWhereUniqueInput;
