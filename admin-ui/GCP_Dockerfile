@@ -9,6 +9,8 @@ ENV NPM_CONFIG_AUDIT=false
 # Hide NPM funding message from install logs
 ENV NPM_CONFIG_FUND=false
 
+ENV REACT_APP_SERVER_URL="https://oneplaceserver-taqsrw6xla-uc.a.run.app/graphql"
+
 # Update npm to version 7
 RUN npm i -g npm@8.1.2
 
@@ -30,5 +32,4 @@ RUN npm run build
 EXPOSE 8080
 
 # Run admin-ui
-
-CMD [ "npm", "start"]
+CMD ["node","server.js"]
