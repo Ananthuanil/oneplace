@@ -15,20 +15,19 @@ RUN npm i -g npm@8.1.2
 # Set the working directory
 WORKDIR /app/admin-ui
 
-# Copy files specifying dependencies
-COPY package.json package-lock.json ./
+# Copy all the files
+COPY . .
 
 # Install dependencies
 RUN npm ci --loglevel=$NPM_LOG_LEVEL;
 
-# Copy all the files
-COPY . .
+RUN npm i react-scripts@4.0.3
 
 # Build code
 RUN npm run build
 
 # Expose the port the client listens to
-EXPOSE 3001
+EXPOSE 8080
 
 # Run admin-ui
 
