@@ -7,11 +7,11 @@ import {
   ReferenceInput,
   SelectInput,
   BooleanInput,
+  TextInput,
   DateTimeInput,
   DateInput,
   ReferenceArrayInput,
   SelectArrayInput,
-  TextInput,
 } from "react-admin";
 
 import { CandidateTitle } from "../candidate/CandidateTitle";
@@ -31,23 +31,7 @@ export const InterviewCreate = (props: CreateProps): React.ReactElement => {
           <SelectInput optionText={CandidateTitle} />
         </ReferenceInput>
         <BooleanInput label="closed" source="closed" />
-        <SelectInput
-          source="currentStatus"
-          label="Current Status"
-          choices={[
-            { label: "Scheduled", value: "Scheduled" },
-            {
-              label: "CompletedButAwaitingFeedback",
-              value: "CompletedButAwaitingFeedback",
-            },
-            { label: "Rescheduled", value: "Rescheduled" },
-            { label: "Rejected", value: "Rejected" },
-            { label: "Accepted", value: "Accepted" },
-          ]}
-          optionText="label"
-          allowEmpty
-          optionValue="value"
-        />
+        <TextInput label="Current Status" source="currentStatus" />
         <DateTimeInput label="Date" source="date" />
         <DateInput label="End Date" source="endDate" />
         <ReferenceArrayInput

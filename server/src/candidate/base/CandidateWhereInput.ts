@@ -16,7 +16,6 @@ import { Type } from "class-transformer";
 import { IsOptional, IsEnum, ValidateNested } from "class-validator";
 import { EnumCandidateCategory } from "./EnumCandidateCategory";
 import { FloatNullableFilter } from "../../util/FloatNullableFilter";
-import { EnumCandidateCurrentStatus } from "./EnumCandidateCurrentStatus";
 import { StringFilter } from "../../util/StringFilter";
 import { InterviewListRelationFilter } from "../../interview/base/InterviewListRelationFilter";
 import { BooleanFilter } from "../../util/BooleanFilter";
@@ -96,24 +95,14 @@ class CandidateWhereInput {
 
   @ApiProperty({
     required: false,
-    enum: EnumCandidateCurrentStatus,
+    type: StringFilter,
   })
-  @IsEnum(EnumCandidateCurrentStatus)
+  @Type(() => StringFilter)
   @IsOptional()
-  @Field(() => EnumCandidateCurrentStatus, {
+  @Field(() => StringFilter, {
     nullable: true,
   })
-  currentStatus?:
-    | "Parked"
-    | "AwaitingInterview"
-    | "InterviewScheduled"
-    | "InterviewSelected"
-    | "OfferReleased"
-    | "Joined"
-    | "OfferRejected"
-    | "InterviewRejected"
-    | "OnHold"
-    | "AwaitingFeedback";
+  currentStatus?: StringFilter;
 
   @ApiProperty({
     required: false,

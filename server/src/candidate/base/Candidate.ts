@@ -25,7 +25,6 @@ import {
 
 import { EnumCandidateCategory } from "./EnumCandidateCategory";
 import { Type } from "class-transformer";
-import { EnumCandidateCurrentStatus } from "./EnumCandidateCurrentStatus";
 import { Interview } from "../../interview/base/Interview";
 import { User } from "../../user/base/User";
 import { Skill } from "../../skill/base/Skill";
@@ -108,23 +107,11 @@ class Candidate {
 
   @ApiProperty({
     required: true,
-    enum: EnumCandidateCurrentStatus,
+    type: String,
   })
-  @IsEnum(EnumCandidateCurrentStatus)
-  @Field(() => EnumCandidateCurrentStatus, {
-    nullable: true,
-  })
-  currentStatus?:
-    | "Parked"
-    | "AwaitingInterview"
-    | "InterviewScheduled"
-    | "InterviewSelected"
-    | "OfferReleased"
-    | "Joined"
-    | "OfferRejected"
-    | "InterviewRejected"
-    | "OnHold"
-    | "AwaitingFeedback";
+  @IsString()
+  @Field(() => String)
+  currentStatus!: string;
 
   @ApiProperty({
     required: true,

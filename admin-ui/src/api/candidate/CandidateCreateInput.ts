@@ -10,17 +10,7 @@ export type CandidateCreateInput = {
   currentCtc?: number | null;
   currentDesignation?: string | null;
   currentFirm?: string | null;
-  currentStatus:
-    | "Parked"
-    | "AwaitingInterview"
-    | "InterviewScheduled"
-    | "InterviewSelected"
-    | "OfferReleased"
-    | "Joined"
-    | "OfferRejected"
-    | "InterviewRejected"
-    | "OnHold"
-    | "AwaitingFeedback";
+  currentStatus: string;
   email: string;
   expectedCtc?: number | null;
   externalRecruitmentPartner?: string | null;

@@ -16,17 +16,7 @@ export type CandidateWhereInput = {
   currentCtc?: FloatNullableFilter;
   currentDesignation?: StringNullableFilter;
   currentFirm?: StringNullableFilter;
-  currentStatus?:
-    | "Parked"
-    | "AwaitingInterview"
-    | "InterviewScheduled"
-    | "InterviewSelected"
-    | "OfferReleased"
-    | "Joined"
-    | "OfferRejected"
-    | "InterviewRejected"
-    | "OnHold"
-    | "AwaitingFeedback";
+  currentStatus?: StringFilter;
   email?: StringFilter;
   expectedCtc?: FloatNullableFilter;
   externalRecruitmentPartner?: StringNullableFilter;

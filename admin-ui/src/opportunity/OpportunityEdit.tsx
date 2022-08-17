@@ -6,9 +6,9 @@ import {
   EditProps,
   ReferenceInput,
   SelectInput,
+  TextInput,
   ReferenceArrayInput,
   SelectArrayInput,
-  TextInput,
   NumberInput,
 } from "react-admin";
 
@@ -29,30 +29,7 @@ export const OpportunityEdit = (props: EditProps): React.ReactElement => {
         >
           <SelectInput optionText={UserTitle} />
         </ReferenceInput>
-        <SelectInput
-          source="currentStatus"
-          label="Current Status"
-          choices={[
-            { label: "Lead", value: "Lead" },
-            { label: "OpenOppurtunaty", value: "OpenOppurtunaty" },
-            { label: "NotQualifiedLead", value: "NotQualifiedLead" },
-            { label: "Replacement", value: "Replacement" },
-            {
-              label: "MappedAndAwaitingInterviewSlot",
-              value: "MappedAndAwaitingInterviewSlot",
-            },
-            {
-              label: "AwaitingInterviewFeedback",
-              value: "AwaitingInterviewFeedback",
-            },
-            { label: "OnHold", value: "OnHold" },
-            { label: "Won", value: "Won" },
-            { label: "Failed", value: "Failed" },
-          ]}
-          optionText="label"
-          allowEmpty
-          optionValue="value"
-        />
+        <TextInput label="Current Status" source="currentStatus" />
         <ReferenceArrayInput
           source="interviews"
           reference="Interview"

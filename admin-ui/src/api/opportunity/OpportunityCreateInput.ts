@@ -6,17 +6,7 @@ import { ProjectWhereUniqueInput } from "../project/ProjectWhereUniqueInput";
 
 export type OpportunityCreateInput = {
   claimedPerson?: UserWhereUniqueInput | null;
-  currentStatus?:
-    | "Lead"
-    | "OpenOppurtunaty"
-    | "NotQualifiedLead"
-    | "Replacement"
-    | "MappedAndAwaitingInterviewSlot"
-    | "AwaitingInterviewFeedback"
-    | "OnHold"
-    | "Won"
-    | "Failed"
-    | null;
+  currentStatus?: string | null;
   interviews?: InterviewCreateNestedManyWithoutOpportunitiesInput;
   mappedPerson?: UserWhereUniqueInput | null;
   name?: string | null;
