@@ -8,7 +8,6 @@ import {
   ReferenceInput,
   SelectInput,
   BooleanInput,
-  DateTimeInput,
   DateInput,
   ReferenceArrayInput,
   SelectArrayInput,
@@ -33,7 +32,7 @@ export const InterviewCreate = (props: CreateProps): React.ReactElement => {
         </ReferenceInput>
         <BooleanInput label="closed" source="closed" />
         <TextInput label="Current Status" source="currentStatus" />
-        <DateTimeInput label="Date" source="date" />
+        <DateInput label="Date" source="date" />
         <DateInput label="End Date" source="endDate" />
         <ReferenceArrayInput
           source="feedback"
