@@ -9,27 +9,29 @@ ENV NPM_CONFIG_AUDIT=false
 # Hide NPM funding message from install logs
 ENV NPM_CONFIG_FUND=false
 
+ENV REACT_APP_SERVER_URL="https://oneplace-prod-server-taqsrw6xla-uc.a.run.app/graphql"
+
 # Update npm to version 7
 RUN npm i -g npm@8.1.2
 
 # Set the working directory
 WORKDIR /app/admin-ui
 
-# Copy files specifying dependencies
-COPY package.json package-lock.json ./
+# Copy all the files
+COPY . .
 
 # Install dependencies
 RUN npm ci --loglevel=$NPM_LOG_LEVEL;
 
-# Copy all the files
-COPY . .
+RUN npm i react-scripts@4.0.3
+
+RUN npm i env-cmd
 
 # Build code
-RUN npm run build
+RUN env-cmd -f .env.development npm run build
 
 # Expose the port the client listens to
-EXPOSE 3001
+EXPOSE 8080
 
 # Run admin-ui
-
-CMD [ "npm", "start"]
+CMD ["node","server.js"]
