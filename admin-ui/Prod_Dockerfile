@@ -25,10 +25,8 @@ RUN npm ci --loglevel=$NPM_LOG_LEVEL;
 
 RUN npm i react-scripts@4.0.3
 
-RUN npm i env-cmd
-
 # Build code
-RUN env-cmd -f .env.production npm run build
+RUN npm run build
 
 # Expose the port the client listens to
 EXPOSE 8080
