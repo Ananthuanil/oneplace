@@ -14,9 +14,9 @@ import {
 
 import { CANDIDATE_TITLE_FIELD } from "./CandidateTitle";
 import { USER_TITLE_FIELD } from "../user/UserTitle";
-import { OPPORTUNITY_TITLE_FIELD } from "../opportunity/OpportunityTitle";
 import { INTERVIEWFEEDBACK_TITLE_FIELD } from "../interviewFeedback/InterviewFeedbackTitle";
 import { SKILL_TITLE_FIELD } from "../skill/SkillTitle";
+import { OPPORTUNITY_TITLE_FIELD } from "../opportunity/OpportunityTitle";
 
 export const CandidateShow = (props: ShowProps): React.ReactElement => {
   return (
@@ -41,6 +41,13 @@ export const CandidateShow = (props: ShowProps): React.ReactElement => {
         <TextField label="Last Working Day" source="lastWorkingDay" />
         <TextField label="Name" source="name" />
         <TextField label="Notice Period Time" source="noticePeriodTime" />
+        <ReferenceField
+          label="opportunity"
+          source="opportunity.id"
+          reference="Opportunity"
+        >
+          <TextField source={OPPORTUNITY_TITLE_FIELD} />
+        </ReferenceField>
         <ReferenceField
           label="referal_employee"
           source="user.id"
@@ -84,13 +91,6 @@ export const CandidateShow = (props: ShowProps): React.ReactElement => {
             </ReferenceField>
             <TextField label="Level" source="level" />
             <TextField label="Mode" source="mode" />
-            <ReferenceField
-              label="Opportunity"
-              source="opportunity.id"
-              reference="Opportunity"
-            >
-              <TextField source={OPPORTUNITY_TITLE_FIELD} />
-            </ReferenceField>
             <TextField label="Start Date" source="startDate" />
             <TextField label="subject" source="subject" />
             <DateField source="updatedAt" label="Updated At" />

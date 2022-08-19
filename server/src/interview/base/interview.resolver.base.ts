@@ -28,7 +28,6 @@ import { InterviewFeedbackFindManyArgs } from "../../interviewFeedback/base/Inte
 import { InterviewFeedback } from "../../interviewFeedback/base/InterviewFeedback";
 import { Candidate } from "../../candidate/base/Candidate";
 import { User } from "../../user/base/User";
-import { Opportunity } from "../../opportunity/base/Opportunity";
 import { InterviewService } from "../interview.service";
 
 @graphql.Resolver(() => Interview)
@@ -95,12 +94,6 @@ export class InterviewResolverBase {
               connect: args.data.interviewer,
             }
           : undefined,
-
-        opportunity: args.data.opportunity
-          ? {
-              connect: args.data.opportunity,
-            }
-          : undefined,
       },
     });
   }
@@ -125,12 +118,6 @@ export class InterviewResolverBase {
           interviewer: args.data.interviewer
             ? {
                 connect: args.data.interviewer,
-              }
-            : undefined,
-
-          opportunity: args.data.opportunity
-            ? {
-                connect: args.data.opportunity,
               }
             : undefined,
         },
@@ -194,19 +181,6 @@ export class InterviewResolverBase {
   @graphql.ResolveField(() => User, { nullable: true })
   async interviewer(@graphql.Parent() parent: Interview): Promise<User | null> {
     const result = await this.service.getInterviewer(parent.id);
-
-    if (!result) {
-      return null;
-    }
-    return result;
-  }
-
-  @Public()
-  @graphql.ResolveField(() => Opportunity, { nullable: true })
-  async opportunity(
-    @graphql.Parent() parent: Interview
-  ): Promise<Opportunity | null> {
-    const result = await this.service.getOpportunity(parent.id);
 
     if (!result) {
       return null;

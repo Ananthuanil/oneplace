@@ -16,6 +16,7 @@ import {
   Interview,
   Skill,
   SkillSet,
+  Opportunity,
   User,
 } from "@prisma/client";
 
@@ -85,6 +86,14 @@ export class CandidateServiceBase {
         where: { id: parentId },
       })
       .skillSets(args);
+  }
+
+  async getOpportunity(parentId: string): Promise<Opportunity | null> {
+    return this.prisma.candidate
+      .findUnique({
+        where: { id: parentId },
+      })
+      .opportunity();
   }
 
   async getReferalEmployee(parentId: string): Promise<User | null> {

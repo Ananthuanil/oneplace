@@ -11,12 +11,12 @@ https://docs.amplication.com/docs/how-to/custom-code
   */
 import { InputType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
-import { UserWhereUniqueInput } from "../../user/base/UserWhereUniqueInput";
+import { CandidateListRelationFilter } from "../../candidate/base/CandidateListRelationFilter";
 import { ValidateNested, IsOptional, IsEnum } from "class-validator";
 import { Type } from "class-transformer";
+import { UserWhereUniqueInput } from "../../user/base/UserWhereUniqueInput";
 import { StringNullableFilter } from "../../util/StringNullableFilter";
 import { StringFilter } from "../../util/StringFilter";
-import { InterviewListRelationFilter } from "../../interview/base/InterviewListRelationFilter";
 import { SkillListRelationFilter } from "../../skill/base/SkillListRelationFilter";
 import { PartnerWhereUniqueInput } from "../../partner/base/PartnerWhereUniqueInput";
 import { EnumOpportunityProcurementStatus } from "./EnumOpportunityProcurementStatus";
@@ -25,6 +25,18 @@ import { IntNullableFilter } from "../../util/IntNullableFilter";
 import { EnumOpportunitySource } from "./EnumOpportunitySource";
 @InputType()
 class OpportunityWhereInput {
+  @ApiProperty({
+    required: false,
+    type: () => CandidateListRelationFilter,
+  })
+  @ValidateNested()
+  @Type(() => CandidateListRelationFilter)
+  @IsOptional()
+  @Field(() => CandidateListRelationFilter, {
+    nullable: true,
+  })
+  candidates?: CandidateListRelationFilter;
+
   @ApiProperty({
     required: false,
     type: () => UserWhereUniqueInput,
@@ -58,18 +70,6 @@ class OpportunityWhereInput {
     nullable: true,
   })
   id?: StringFilter;
-
-  @ApiProperty({
-    required: false,
-    type: () => InterviewListRelationFilter,
-  })
-  @ValidateNested()
-  @Type(() => InterviewListRelationFilter)
-  @IsOptional()
-  @Field(() => InterviewListRelationFilter, {
-    nullable: true,
-  })
-  interviews?: InterviewListRelationFilter;
 
   @ApiProperty({
     required: false,

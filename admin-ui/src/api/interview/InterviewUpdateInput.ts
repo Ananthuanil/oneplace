@@ -1,7 +1,6 @@
 import { CandidateWhereUniqueInput } from "../candidate/CandidateWhereUniqueInput";
 import { InterviewFeedbackUpdateManyWithoutInterviewsInput } from "./InterviewFeedbackUpdateManyWithoutInterviewsInput";
 import { UserWhereUniqueInput } from "../user/UserWhereUniqueInput";
-import { OpportunityWhereUniqueInput } from "../opportunity/OpportunityWhereUniqueInput";
 
 export type InterviewUpdateInput = {
   calendarScheduleId?: string | null;
@@ -14,7 +13,6 @@ export type InterviewUpdateInput = {
   interviewer?: UserWhereUniqueInput | null;
   level?: string | null;
   mode?: string | null;
-  opportunity?: OpportunityWhereUniqueInput | null;
   startDate?: Date | null;
   subject?: string | null;
 };

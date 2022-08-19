@@ -5,7 +5,6 @@ import { DateTimeNullableFilter } from "../../util/DateTimeNullableFilter";
 import { InterviewFeedbackListRelationFilter } from "../interviewFeedback/InterviewFeedbackListRelationFilter";
 import { StringFilter } from "../../util/StringFilter";
 import { UserWhereUniqueInput } from "../user/UserWhereUniqueInput";
-import { OpportunityWhereUniqueInput } from "../opportunity/OpportunityWhereUniqueInput";
 
 export type InterviewWhereInput = {
   calendarScheduleId?: StringNullableFilter;
@@ -19,7 +18,6 @@ export type InterviewWhereInput = {
   interviewer?: UserWhereUniqueInput;
   level?: StringNullableFilter;
   mode?: StringNullableFilter;
-  opportunity?: OpportunityWhereUniqueInput;
   startDate?: DateTimeNullableFilter;
   subject?: StringNullableFilter;
 };

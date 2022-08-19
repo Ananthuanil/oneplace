@@ -12,9 +12,8 @@ import {
   BooleanField,
 } from "react-admin";
 
-import { CANDIDATE_TITLE_FIELD } from "../candidate/CandidateTitle";
-import { USER_TITLE_FIELD } from "../user/UserTitle";
 import { OPPORTUNITY_TITLE_FIELD } from "./OpportunityTitle";
+import { USER_TITLE_FIELD } from "../user/UserTitle";
 import { PARTNER_TITLE_FIELD } from "../partner/PartnerTitle";
 import { PROJECT_TITLE_FIELD } from "../project/ProjectTitle";
 
@@ -50,46 +49,56 @@ export const OpportunityShow = (props: ShowProps): React.ReactElement => {
         <DateField source="updatedAt" label="Updated At" />
         <TextField label="Win Odds" source="winOdds" />
         <ReferenceManyField
-          reference="Interview"
+          reference="Candidate"
           target="OpportunityId"
-          label="Interviews"
+          label="Candidates"
         >
           <Datagrid rowClick="show">
             <TextField
-              label="Calendar Schedule Id"
-              source="calendarScheduleId"
+              label="Additional Comments"
+              source="additionalComments"
             />
-            <ReferenceField
-              label="Candidate"
-              source="candidate.id"
-              reference="Candidate"
-            >
-              <TextField source={CANDIDATE_TITLE_FIELD} />
-            </ReferenceField>
-            <BooleanField label="closed" source="closed" />
+            <TextField label="category" source="category" />
+            <TextField label="competitor_ctc" source="competitorCtc" />
             <DateField source="createdAt" label="Created At" />
+            <TextField label="current_ctc" source="currentCtc" />
+            <TextField
+              label="Current Designation"
+              source="currentDesignation"
+            />
+            <TextField label="Current Firm" source="currentFirm" />
             <TextField label="Current Status" source="currentStatus" />
-            <TextField label="Date" source="date" />
-            <TextField label="End Date" source="endDate" />
+            <TextField label="Email" source="email" />
+            <TextField label="expected_ctc" source="expectedCtc" />
+            <TextField
+              label="external_recruitment_partner"
+              source="externalRecruitmentPartner"
+            />
             <TextField label="ID" source="id" />
+            <BooleanField
+              label="Is On Notice Period"
+              source="isOnNoticePeriod"
+            />
+            <TextField label="Last Working Day" source="lastWorkingDay" />
+            <TextField label="Name" source="name" />
+            <TextField label="Notice Period Time" source="noticePeriodTime" />
             <ReferenceField
-              label="Interviewer"
-              source="user.id"
-              reference="User"
-            >
-              <TextField source={USER_TITLE_FIELD} />
-            </ReferenceField>
-            <TextField label="Level" source="level" />
-            <TextField label="Mode" source="mode" />
-            <ReferenceField
-              label="Opportunity"
+              label="opportunity"
               source="opportunity.id"
               reference="Opportunity"
             >
               <TextField source={OPPORTUNITY_TITLE_FIELD} />
             </ReferenceField>
-            <TextField label="Start Date" source="startDate" />
-            <TextField label="subject" source="subject" />
+            <ReferenceField
+              label="referal_employee"
+              source="user.id"
+              reference="User"
+            >
+              <TextField source={USER_TITLE_FIELD} />
+            </ReferenceField>
+            <TextField label="Resume" source="resume" />
+            <TextField label="source" source="source" />
+            <TextField label="Total Experience" source="totalExperience" />
             <DateField source="updatedAt" label="Updated At" />
           </Datagrid>
         </ReferenceManyField>

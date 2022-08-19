@@ -13,8 +13,8 @@ import {
 } from "react-admin";
 
 import { USER_TITLE_FIELD } from "./UserTitle";
-import { CANDIDATE_TITLE_FIELD } from "../candidate/CandidateTitle";
 import { OPPORTUNITY_TITLE_FIELD } from "../opportunity/OpportunityTitle";
+import { CANDIDATE_TITLE_FIELD } from "../candidate/CandidateTitle";
 import { PARTNER_TITLE_FIELD } from "../partner/PartnerTitle";
 import { PROJECT_TITLE_FIELD } from "../project/ProjectTitle";
 import { COMMUNITY_TITLE_FIELD } from "../community/CommunityTitle";
@@ -126,6 +126,13 @@ export const UserShow = (props: ShowProps): React.ReactElement => {
             <TextField label="Name" source="name" />
             <TextField label="Notice Period Time" source="noticePeriodTime" />
             <ReferenceField
+              label="opportunity"
+              source="opportunity.id"
+              reference="Opportunity"
+            >
+              <TextField source={OPPORTUNITY_TITLE_FIELD} />
+            </ReferenceField>
+            <ReferenceField
               label="referal_employee"
               source="user.id"
               reference="User"
@@ -170,13 +177,6 @@ export const UserShow = (props: ShowProps): React.ReactElement => {
             </ReferenceField>
             <TextField label="Level" source="level" />
             <TextField label="Mode" source="mode" />
-            <ReferenceField
-              label="Opportunity"
-              source="opportunity.id"
-              reference="Opportunity"
-            >
-              <TextField source={OPPORTUNITY_TITLE_FIELD} />
-            </ReferenceField>
             <TextField label="Start Date" source="startDate" />
             <TextField label="subject" source="subject" />
             <DateField source="updatedAt" label="Updated At" />

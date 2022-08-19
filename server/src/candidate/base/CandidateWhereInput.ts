@@ -20,6 +20,7 @@ import { StringFilter } from "../../util/StringFilter";
 import { InterviewListRelationFilter } from "../../interview/base/InterviewListRelationFilter";
 import { BooleanFilter } from "../../util/BooleanFilter";
 import { DateTimeNullableFilter } from "../../util/DateTimeNullableFilter";
+import { OpportunityWhereUniqueInput } from "../../opportunity/base/OpportunityWhereUniqueInput";
 import { UserWhereUniqueInput } from "../../user/base/UserWhereUniqueInput";
 import { SkillListRelationFilter } from "../../skill/base/SkillListRelationFilter";
 import { SkillSetListRelationFilter } from "../../skillSet/base/SkillSetListRelationFilter";
@@ -203,6 +204,18 @@ class CandidateWhereInput {
     nullable: true,
   })
   noticePeriodTime?: FloatNullableFilter;
+
+  @ApiProperty({
+    required: false,
+    type: () => OpportunityWhereUniqueInput,
+  })
+  @ValidateNested()
+  @Type(() => OpportunityWhereUniqueInput)
+  @IsOptional()
+  @Field(() => OpportunityWhereUniqueInput, {
+    nullable: true,
+  })
+  opportunity?: OpportunityWhereUniqueInput;
 
   @ApiProperty({
     required: false,

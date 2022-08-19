@@ -124,15 +124,6 @@ class InterviewOrderByInput {
   @Field(() => SortOrder, {
     nullable: true,
   })
-  opportunityId?: SortOrder;
-
-  @ApiProperty({
-    required: false,
-    enum: ["asc", "desc"],
-  })
-  @Field(() => SortOrder, {
-    nullable: true,
-  })
   startDate?: SortOrder;
 
   @ApiProperty({

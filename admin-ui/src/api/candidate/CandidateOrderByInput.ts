@@ -17,6 +17,7 @@ export type CandidateOrderByInput = {
   lastWorkingDay?: SortOrder;
   name?: SortOrder;
   noticePeriodTime?: SortOrder;
+  opportunityId?: SortOrder;
   referalEmployeeId?: SortOrder;
   resume?: SortOrder;
   source?: SortOrder;

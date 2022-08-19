@@ -26,6 +26,7 @@ import {
 import { EnumCandidateCategory } from "./EnumCandidateCategory";
 import { Type } from "class-transformer";
 import { Interview } from "../../interview/base/Interview";
+import { Opportunity } from "../../opportunity/base/Opportunity";
 import { User } from "../../user/base/User";
 import { Skill } from "../../skill/base/Skill";
 import { SkillSet } from "../../skillSet/base/SkillSet";
@@ -197,6 +198,15 @@ class Candidate {
     nullable: true,
   })
   noticePeriodTime!: number | null;
+
+  @ApiProperty({
+    required: false,
+    type: () => Opportunity,
+  })
+  @ValidateNested()
+  @Type(() => Opportunity)
+  @IsOptional()
+  opportunity?: Opportunity | null;
 
   @ApiProperty({
     required: false,
