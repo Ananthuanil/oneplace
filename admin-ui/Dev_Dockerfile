@@ -25,6 +25,8 @@ RUN npm ci --loglevel=$NPM_LOG_LEVEL;
 
 RUN npm i react-scripts@4.0.3
 
+RUN npm i emojis-list
+
 # Build code
 RUN npm run build
 
