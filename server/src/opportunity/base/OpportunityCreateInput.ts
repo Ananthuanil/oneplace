@@ -11,7 +11,7 @@ https://docs.amplication.com/docs/how-to/custom-code
   */
 import { InputType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
-import { UserWhereUniqueInput } from "../../user/base/UserWhereUniqueInput";
+import { CandidateCreateNestedManyWithoutOpportunitiesInput } from "./CandidateCreateNestedManyWithoutOpportunitiesInput";
 import {
   ValidateNested,
   IsOptional,
@@ -20,7 +20,7 @@ import {
   IsInt,
 } from "class-validator";
 import { Type } from "class-transformer";
-import { InterviewCreateNestedManyWithoutOpportunitiesInput } from "./InterviewCreateNestedManyWithoutOpportunitiesInput";
+import { UserWhereUniqueInput } from "../../user/base/UserWhereUniqueInput";
 import { SkillCreateNestedManyWithoutOpportunitiesInput } from "./SkillCreateNestedManyWithoutOpportunitiesInput";
 import { PartnerWhereUniqueInput } from "../../partner/base/PartnerWhereUniqueInput";
 import { EnumOpportunityProcurementStatus } from "./EnumOpportunityProcurementStatus";
@@ -28,6 +28,18 @@ import { ProjectWhereUniqueInput } from "../../project/base/ProjectWhereUniqueIn
 import { EnumOpportunitySource } from "./EnumOpportunitySource";
 @InputType()
 class OpportunityCreateInput {
+  @ApiProperty({
+    required: false,
+    type: () => CandidateCreateNestedManyWithoutOpportunitiesInput,
+  })
+  @ValidateNested()
+  @Type(() => CandidateCreateNestedManyWithoutOpportunitiesInput)
+  @IsOptional()
+  @Field(() => CandidateCreateNestedManyWithoutOpportunitiesInput, {
+    nullable: true,
+  })
+  candidates?: CandidateCreateNestedManyWithoutOpportunitiesInput;
+
   @ApiProperty({
     required: false,
     type: () => UserWhereUniqueInput,
@@ -50,18 +62,6 @@ class OpportunityCreateInput {
     nullable: true,
   })
   currentStatus?: string | null;
-
-  @ApiProperty({
-    required: false,
-    type: () => InterviewCreateNestedManyWithoutOpportunitiesInput,
-  })
-  @ValidateNested()
-  @Type(() => InterviewCreateNestedManyWithoutOpportunitiesInput)
-  @IsOptional()
-  @Field(() => InterviewCreateNestedManyWithoutOpportunitiesInput, {
-    nullable: true,
-  })
-  interviews?: InterviewCreateNestedManyWithoutOpportunitiesInput;
 
   @ApiProperty({
     required: false,

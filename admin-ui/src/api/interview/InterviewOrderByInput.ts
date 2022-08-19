@@ -12,7 +12,6 @@ export type InterviewOrderByInput = {
   interviewerId?: SortOrder;
   level?: SortOrder;
   mode?: SortOrder;
-  opportunityId?: SortOrder;
   startDate?: SortOrder;
   subject?: SortOrder;
   updatedAt?: SortOrder;

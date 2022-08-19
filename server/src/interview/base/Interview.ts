@@ -22,7 +22,6 @@ import { Candidate } from "../../candidate/base/Candidate";
 import { Type } from "class-transformer";
 import { InterviewFeedback } from "../../interviewFeedback/base/InterviewFeedback";
 import { User } from "../../user/base/User";
-import { Opportunity } from "../../opportunity/base/Opportunity";
 @ObjectType()
 class Interview {
   @ApiProperty({
@@ -144,15 +143,6 @@ class Interview {
     nullable: true,
   })
   mode!: string | null;
-
-  @ApiProperty({
-    required: false,
-    type: () => Opportunity,
-  })
-  @ValidateNested()
-  @Type(() => Opportunity)
-  @IsOptional()
-  opportunity?: Opportunity | null;
 
   @ApiProperty({
     required: false,

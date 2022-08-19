@@ -11,6 +11,7 @@ import {
 } from "react-admin";
 
 import Pagination from "../Components/Pagination";
+import { OPPORTUNITY_TITLE_FIELD } from "../opportunity/OpportunityTitle";
 import { USER_TITLE_FIELD } from "../user/UserTitle";
 
 export const CandidateList = (props: ListProps): React.ReactElement => {
@@ -42,6 +43,13 @@ export const CandidateList = (props: ListProps): React.ReactElement => {
         <TextField label="Last Working Day" source="lastWorkingDay" />
         <TextField label="Name" source="name" />
         <TextField label="Notice Period Time" source="noticePeriodTime" />
+        <ReferenceField
+          label="opportunity"
+          source="opportunity.id"
+          reference="Opportunity"
+        >
+          <TextField source={OPPORTUNITY_TITLE_FIELD} />
+        </ReferenceField>
         <ReferenceField
           label="referal_employee"
           source="user.id"

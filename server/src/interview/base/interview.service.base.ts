@@ -16,7 +16,6 @@ import {
   InterviewFeedback,
   Candidate,
   User,
-  Opportunity,
 } from "@prisma/client";
 
 export class InterviewServiceBase {
@@ -79,13 +78,5 @@ export class InterviewServiceBase {
         where: { id: parentId },
       })
       .interviewer();
-  }
-
-  async getOpportunity(parentId: string): Promise<Opportunity | null> {
-    return this.prisma.interview
-      .findUnique({
-        where: { id: parentId },
-      })
-      .opportunity();
   }
 }

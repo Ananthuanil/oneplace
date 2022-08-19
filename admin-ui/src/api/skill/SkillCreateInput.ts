@@ -5,7 +5,7 @@ import { SkillSetCreateNestedManyWithoutSkillsInput } from "./SkillSetCreateNest
 
 export type SkillCreateInput = {
   candidate?: CandidateCreateNestedManyWithoutSkillsInput;
-  name?: string | null;
+  name: string;
   opportunity?: OpportunityWhereUniqueInput | null;
   oppurtunatyRequiredSkills?: OpportunityWhereUniqueInput | null;
   skillMatrices?: SkillLevelCreateNestedManyWithoutSkillsInput;

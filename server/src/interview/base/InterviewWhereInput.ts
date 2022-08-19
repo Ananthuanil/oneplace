@@ -20,7 +20,6 @@ import { DateTimeNullableFilter } from "../../util/DateTimeNullableFilter";
 import { InterviewFeedbackListRelationFilter } from "../../interviewFeedback/base/InterviewFeedbackListRelationFilter";
 import { StringFilter } from "../../util/StringFilter";
 import { UserWhereUniqueInput } from "../../user/base/UserWhereUniqueInput";
-import { OpportunityWhereUniqueInput } from "../../opportunity/base/OpportunityWhereUniqueInput";
 @InputType()
 class InterviewWhereInput {
   @ApiProperty({
@@ -146,18 +145,6 @@ class InterviewWhereInput {
     nullable: true,
   })
   mode?: StringNullableFilter;
-
-  @ApiProperty({
-    required: false,
-    type: () => OpportunityWhereUniqueInput,
-  })
-  @ValidateNested()
-  @Type(() => OpportunityWhereUniqueInput)
-  @IsOptional()
-  @Field(() => OpportunityWhereUniqueInput, {
-    nullable: true,
-  })
-  opportunity?: OpportunityWhereUniqueInput;
 
   @ApiProperty({
     required: false,

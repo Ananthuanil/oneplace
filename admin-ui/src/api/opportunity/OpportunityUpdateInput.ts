@@ -1,13 +1,13 @@
+import { CandidateUpdateManyWithoutOpportunitiesInput } from "./CandidateUpdateManyWithoutOpportunitiesInput";
 import { UserWhereUniqueInput } from "../user/UserWhereUniqueInput";
-import { InterviewUpdateManyWithoutOpportunitiesInput } from "./InterviewUpdateManyWithoutOpportunitiesInput";
 import { SkillUpdateManyWithoutOpportunitiesInput } from "./SkillUpdateManyWithoutOpportunitiesInput";
 import { PartnerWhereUniqueInput } from "../partner/PartnerWhereUniqueInput";
 import { ProjectWhereUniqueInput } from "../project/ProjectWhereUniqueInput";
 
 export type OpportunityUpdateInput = {
+  candidates?: CandidateUpdateManyWithoutOpportunitiesInput;
   claimedPerson?: UserWhereUniqueInput | null;
   currentStatus?: string | null;
-  interviews?: InterviewUpdateManyWithoutOpportunitiesInput;
   mappedPerson?: UserWhereUniqueInput | null;
   name?: string | null;
   optionalSkillset?: SkillUpdateManyWithoutOpportunitiesInput;

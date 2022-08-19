@@ -4,16 +4,16 @@ import {
   Edit,
   SimpleForm,
   EditProps,
+  ReferenceArrayInput,
+  SelectArrayInput,
   ReferenceInput,
   SelectInput,
   TextInput,
-  ReferenceArrayInput,
-  SelectArrayInput,
   NumberInput,
 } from "react-admin";
 
+import { CandidateTitle } from "../candidate/CandidateTitle";
 import { UserTitle } from "../user/UserTitle";
-import { InterviewTitle } from "../interview/InterviewTitle";
 import { SkillTitle } from "../skill/SkillTitle";
 import { PartnerTitle } from "../partner/PartnerTitle";
 import { ProjectTitle } from "../project/ProjectTitle";
@@ -22,6 +22,14 @@ export const OpportunityEdit = (props: EditProps): React.ReactElement => {
   return (
     <Edit {...props}>
       <SimpleForm>
+        <ReferenceArrayInput
+          source="candidates"
+          reference="Candidate"
+          parse={(value: any) => value && value.map((v: any) => ({ id: v }))}
+          format={(value: any) => value && value.map((v: any) => v.id)}
+        >
+          <SelectArrayInput optionText={CandidateTitle} />
+        </ReferenceArrayInput>
         <ReferenceInput
           source="user.id"
           reference="User"
@@ -30,14 +38,6 @@ export const OpportunityEdit = (props: EditProps): React.ReactElement => {
           <SelectInput optionText={UserTitle} />
         </ReferenceInput>
         <TextInput label="Current Status" source="currentStatus" />
-        <ReferenceArrayInput
-          source="interviews"
-          reference="Interview"
-          parse={(value: any) => value && value.map((v: any) => ({ id: v }))}
-          format={(value: any) => value && value.map((v: any) => v.id)}
-        >
-          <SelectArrayInput optionText={InterviewTitle} />
-        </ReferenceArrayInput>
         <ReferenceInput source="user.id" reference="User" label="Mapped Person">
           <SelectInput optionText={UserTitle} />
         </ReferenceInput>

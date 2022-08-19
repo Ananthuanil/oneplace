@@ -65,7 +65,7 @@ model Skill {
   candidate                   Candidate[]
   createdAt                   DateTime     @default(now())
   id                          String       @id @default(cuid())
-  name                        String?
+  name                        String       @unique
   opportunity                 Opportunity? @relation(name: "optionalSkillset", fields: [opportunityId], references: [id])
   opportunityId               String?
   oppurtunatyRequiredSkills   Opportunity? @relation(name: "oppurtunatyRequiredSkills", fields: [oppurtunatyRequiredSkillsId], references: [id])
@@ -107,6 +107,8 @@ model Candidate {
   lastWorkingDay             DateTime?
   name                       String
   noticePeriodTime           Float?
+  opportunity                Opportunity?          @relation(fields: [opportunityId], references: [id])
+  opportunityId              String?
   referalEmployee            User?                 @relation(fields: [referalEmployeeId], references: [id])
   referalEmployeeId          String?
   resume                     String?
@@ -150,20 +152,18 @@ model Interview {
   interviewerId      String?
   level              String?
   mode               String?
-  opportunity        Opportunity?        @relation(fields: [opportunityId], references: [id])
-  opportunityId      String?
   startDate          DateTime?
   subject            String?
   updatedAt          DateTime            @updatedAt
 }
 
 model Opportunity {
+  candidates         Candidate[]
   claimedPerson      User?                             @relation(name: "claimedPerson", fields: [claimedPersonId], references: [id])
   claimedPersonId    String?
   createdAt          DateTime                          @default(now())
   currentStatus      String?
   id                 String                            @id @default(cuid())
-  interviews         Interview[]
   mappedPerson       User?                             @relation(name: "OpportunityMappedPersonUserMappedPerson", fields: [mappedPersonId], references: [id])
   mappedPersonId     String?
   name               String?

@@ -15,6 +15,7 @@ import {
 } from "react-admin";
 
 import { InterviewTitle } from "../interview/InterviewTitle";
+import { OpportunityTitle } from "../opportunity/OpportunityTitle";
 import { UserTitle } from "../user/UserTitle";
 import { SkillTitle } from "../skill/SkillTitle";
 import { SkillSetTitle } from "../skillSet/SkillSetTitle";
@@ -62,6 +63,13 @@ export const CandidateCreate = (props: CreateProps): React.ReactElement => {
         <DateInput label="Last Working Day" source="lastWorkingDay" />
         <TextInput label="Name" source="name" />
         <NumberInput label="Notice Period Time" source="noticePeriodTime" />
+        <ReferenceInput
+          source="opportunity.id"
+          reference="Opportunity"
+          label="opportunity"
+        >
+          <SelectInput optionText={OpportunityTitle} />
+        </ReferenceInput>
         <ReferenceInput
           source="user.id"
           reference="User"

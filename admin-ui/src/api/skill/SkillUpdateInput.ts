@@ -5,7 +5,7 @@ import { SkillSetUpdateManyWithoutSkillsInput } from "./SkillSetUpdateManyWithou
 
 export type SkillUpdateInput = {
   candidate?: CandidateUpdateManyWithoutSkillsInput;
-  name?: string | null;
+  name?: string;
   opportunity?: OpportunityWhereUniqueInput | null;
   oppurtunatyRequiredSkills?: OpportunityWhereUniqueInput | null;
   skillMatrices?: SkillLevelUpdateManyWithoutSkillsInput;
