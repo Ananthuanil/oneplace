@@ -1,3 +1,4 @@
+import { RecruitmentPartnerWhereUniqueInput } from "../recruitmentPartner/RecruitmentPartnerWhereUniqueInput";
 import { InterviewUpdateManyWithoutCandidatesInput } from "./InterviewUpdateManyWithoutCandidatesInput";
 import { OpportunityWhereUniqueInput } from "../opportunity/OpportunityWhereUniqueInput";
 import { UserWhereUniqueInput } from "../user/UserWhereUniqueInput";
@@ -14,7 +15,7 @@ export type CandidateUpdateInput = {
   currentStatus?: string;
   email?: string;
   expectedCtc?: number | null;
-  externalRecruitmentPartner?: string | null;
+  externalRecruitmentPartner?: RecruitmentPartnerWhereUniqueInput | null;
   interviews?: InterviewUpdateManyWithoutCandidatesInput;
   isOnNoticePeriod?: boolean;
   lastWorkingDay?: Date | null;

@@ -17,6 +17,7 @@ import { IsOptional, IsEnum, ValidateNested } from "class-validator";
 import { EnumCandidateCategory } from "./EnumCandidateCategory";
 import { FloatNullableFilter } from "../../util/FloatNullableFilter";
 import { StringFilter } from "../../util/StringFilter";
+import { RecruitmentPartnerWhereUniqueInput } from "../../recruitmentPartner/base/RecruitmentPartnerWhereUniqueInput";
 import { InterviewListRelationFilter } from "../../interview/base/InterviewListRelationFilter";
 import { BooleanFilter } from "../../util/BooleanFilter";
 import { DateTimeNullableFilter } from "../../util/DateTimeNullableFilter";
@@ -129,14 +130,15 @@ class CandidateWhereInput {
 
   @ApiProperty({
     required: false,
-    type: StringNullableFilter,
+    type: () => RecruitmentPartnerWhereUniqueInput,
   })
-  @Type(() => StringNullableFilter)
+  @ValidateNested()
+  @Type(() => RecruitmentPartnerWhereUniqueInput)
   @IsOptional()
-  @Field(() => StringNullableFilter, {
+  @Field(() => RecruitmentPartnerWhereUniqueInput, {
     nullable: true,
   })
-  externalRecruitmentPartner?: StringNullableFilter;
+  externalRecruitmentPartner?: RecruitmentPartnerWhereUniqueInput;
 
   @ApiProperty({
     required: false,

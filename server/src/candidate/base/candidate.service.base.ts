@@ -10,12 +10,14 @@ https://docs.amplication.com/docs/how-to/custom-code
 ------------------------------------------------------------------------------
   */
 import { PrismaService } from "nestjs-prisma";
+
 import {
   Prisma,
   Candidate,
   Interview,
   Skill,
   SkillSet,
+  RecruitmentPartner,
   Opportunity,
   User,
 } from "@prisma/client";
@@ -86,6 +88,16 @@ export class CandidateServiceBase {
         where: { id: parentId },
       })
       .skillSets(args);
+  }
+
+  async getExternalRecruitmentPartner(
+    parentId: string
+  ): Promise<RecruitmentPartner | null> {
+    return this.prisma.candidate
+      .findUnique({
+        where: { id: parentId },
+      })
+      .externalRecruitmentPartner();
   }
 
   async getOpportunity(parentId: string): Promise<Opportunity | null> {

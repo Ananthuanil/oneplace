@@ -30,6 +30,7 @@ import { SkillFindManyArgs } from "../../skill/base/SkillFindManyArgs";
 import { Skill } from "../../skill/base/Skill";
 import { SkillSetFindManyArgs } from "../../skillSet/base/SkillSetFindManyArgs";
 import { SkillSet } from "../../skillSet/base/SkillSet";
+import { RecruitmentPartner } from "../../recruitmentPartner/base/RecruitmentPartner";
 import { Opportunity } from "../../opportunity/base/Opportunity";
 import { User } from "../../user/base/User";
 import { CandidateService } from "../candidate.service";
@@ -87,6 +88,12 @@ export class CandidateResolverBase {
       data: {
         ...args.data,
 
+        externalRecruitmentPartner: args.data.externalRecruitmentPartner
+          ? {
+              connect: args.data.externalRecruitmentPartner,
+            }
+          : undefined,
+
         opportunity: args.data.opportunity
           ? {
               connect: args.data.opportunity,
@@ -112,6 +119,12 @@ export class CandidateResolverBase {
         ...args,
         data: {
           ...args.data,
+
+          externalRecruitmentPartner: args.data.externalRecruitmentPartner
+            ? {
+                connect: args.data.externalRecruitmentPartner,
+              }
+            : undefined,
 
           opportunity: args.data.opportunity
             ? {
@@ -196,6 +209,19 @@ export class CandidateResolverBase {
     }
 
     return results;
+  }
+
+  @Public()
+  @graphql.ResolveField(() => RecruitmentPartner, { nullable: true })
+  async externalRecruitmentPartner(
+    @graphql.Parent() parent: Candidate
+  ): Promise<RecruitmentPartner | null> {
+    const result = await this.service.getExternalRecruitmentPartner(parent.id);
+
+    if (!result) {
+      return null;
+    }
+    return result;
   }
 
   @Public()

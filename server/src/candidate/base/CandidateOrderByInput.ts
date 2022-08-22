@@ -115,7 +115,7 @@ class CandidateOrderByInput {
   @Field(() => SortOrder, {
     nullable: true,
   })
-  externalRecruitmentPartner?: SortOrder;
+  externalRecruitmentPartnerId?: SortOrder;
 
   @ApiProperty({
     required: false,

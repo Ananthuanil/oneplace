@@ -15,6 +15,7 @@ import { CommunicationFeedbackModule } from "./communicationFeedback/communicati
 import { AwardModule } from "./award/award.module";
 import { ProjectInvolvementModule } from "./projectInvolvement/projectInvolvement.module";
 import { SkillLevelModule } from "./skillLevel/skillLevel.module";
+import { RecruitmentPartnerModule } from "./recruitmentPartner/recruitmentPartner.module";
 import { ACLModule } from "./auth/acl.module";
 import { AuthModule } from "./auth/auth.module";
 import { HealthModule } from "./health/health.module";
@@ -41,6 +42,7 @@ import { GraphQLModule } from "@nestjs/graphql";
     AwardModule,
     ProjectInvolvementModule,
     SkillLevelModule,
+    RecruitmentPartnerModule,
     ACLModule,
     AuthModule,
     HealthModule,

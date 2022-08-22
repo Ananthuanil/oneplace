@@ -25,6 +25,7 @@ import {
 
 import { EnumCandidateCategory } from "./EnumCandidateCategory";
 import { Type } from "class-transformer";
+import { RecruitmentPartner } from "../../recruitmentPartner/base/RecruitmentPartner";
 import { Interview } from "../../interview/base/Interview";
 import { Opportunity } from "../../opportunity/base/Opportunity";
 import { User } from "../../user/base/User";
@@ -135,14 +136,12 @@ class Candidate {
 
   @ApiProperty({
     required: false,
-    type: String,
+    type: () => RecruitmentPartner,
   })
-  @IsString()
+  @ValidateNested()
+  @Type(() => RecruitmentPartner)
   @IsOptional()
-  @Field(() => String, {
-    nullable: true,
-  })
-  externalRecruitmentPartner!: string | null;
+  externalRecruitmentPartner?: RecruitmentPartner | null;
 
   @ApiProperty({
     required: true,
