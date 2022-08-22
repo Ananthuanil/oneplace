@@ -17,8 +17,6 @@ import { GqlDefaultAuthGuard } from "../../auth/gqlDefaultAuth.guard";
 import * as gqlACGuard from "../../auth/gqlAC.guard";
 import { isRecordNotFoundError } from "../../prisma.util";
 import { MetaQueryPayload } from "../../util/MetaQueryPayload";
-import { AclFilterResponseInterceptor } from "../../interceptors/aclFilterResponse.interceptor";
-import { AclValidateRequestInterceptor } from "../../interceptors/aclValidateRequest.interceptor";
 import { Public } from "../../decorators/public.decorator";
 import { CreateRecruitmentPartnerArgs } from "./CreateRecruitmentPartnerArgs";
 import { UpdateRecruitmentPartnerArgs } from "./UpdateRecruitmentPartnerArgs";
@@ -38,12 +36,8 @@ export class RecruitmentPartnerResolverBase {
     protected readonly rolesBuilder: nestAccessControl.RolesBuilder
   ) {}
 
+  @Public()
   @graphql.Query(() => MetaQueryPayload)
-  @nestAccessControl.UseRoles({
-    resource: "RecruitmentPartner",
-    action: "read",
-    possession: "any",
-  })
   async _recruitmentPartnersMeta(
     @graphql.Args() args: RecruitmentPartnerFindManyArgs
   ): Promise<MetaQueryPayload> {
@@ -57,26 +51,16 @@ export class RecruitmentPartnerResolverBase {
     };
   }
 
-  @common.UseInterceptors(AclFilterResponseInterceptor)
+  @Public()
   @graphql.Query(() => [RecruitmentPartner])
-  @nestAccessControl.UseRoles({
-    resource: "RecruitmentPartner",
-    action: "read",
-    possession: "any",
-  })
   async recruitmentPartners(
     @graphql.Args() args: RecruitmentPartnerFindManyArgs
   ): Promise<RecruitmentPartner[]> {
     return this.service.findMany(args);
   }
 
-  @common.UseInterceptors(AclFilterResponseInterceptor)
+  @Public()
   @graphql.Query(() => RecruitmentPartner, { nullable: true })
-  @nestAccessControl.UseRoles({
-    resource: "RecruitmentPartner",
-    action: "read",
-    possession: "own",
-  })
   async recruitmentPartner(
     @graphql.Args() args: RecruitmentPartnerFindUniqueArgs
   ): Promise<RecruitmentPartner | null> {
@@ -87,13 +71,8 @@ export class RecruitmentPartnerResolverBase {
     return result;
   }
 
-  @common.UseInterceptors(AclValidateRequestInterceptor)
+  @Public()
   @graphql.Mutation(() => RecruitmentPartner)
-  @nestAccessControl.UseRoles({
-    resource: "RecruitmentPartner",
-    action: "create",
-    possession: "any",
-  })
   async createRecruitmentPartner(
     @graphql.Args() args: CreateRecruitmentPartnerArgs
   ): Promise<RecruitmentPartner> {
@@ -103,13 +82,8 @@ export class RecruitmentPartnerResolverBase {
     });
   }
 
-  @common.UseInterceptors(AclValidateRequestInterceptor)
+  @Public()
   @graphql.Mutation(() => RecruitmentPartner)
-  @nestAccessControl.UseRoles({
-    resource: "RecruitmentPartner",
-    action: "update",
-    possession: "any",
-  })
   async updateRecruitmentPartner(
     @graphql.Args() args: UpdateRecruitmentPartnerArgs
   ): Promise<RecruitmentPartner | null> {
@@ -128,12 +102,8 @@ export class RecruitmentPartnerResolverBase {
     }
   }
 
+  @Public()
   @graphql.Mutation(() => RecruitmentPartner)
-  @nestAccessControl.UseRoles({
-    resource: "RecruitmentPartner",
-    action: "delete",
-    possession: "any",
-  })
   async deleteRecruitmentPartner(
     @graphql.Args() args: DeleteRecruitmentPartnerArgs
   ): Promise<RecruitmentPartner | null> {
