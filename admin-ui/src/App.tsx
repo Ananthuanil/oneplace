@@ -61,6 +61,10 @@ import { SkillLevelList } from "./skillLevel/SkillLevelList";
 import { SkillLevelCreate } from "./skillLevel/SkillLevelCreate";
 import { SkillLevelEdit } from "./skillLevel/SkillLevelEdit";
 import { SkillLevelShow } from "./skillLevel/SkillLevelShow";
+import { RecruitmentPartnerList } from "./recruitmentPartner/RecruitmentPartnerList";
+import { RecruitmentPartnerCreate } from "./recruitmentPartner/RecruitmentPartnerCreate";
+import { RecruitmentPartnerEdit } from "./recruitmentPartner/RecruitmentPartnerEdit";
+import { RecruitmentPartnerShow } from "./recruitmentPartner/RecruitmentPartnerShow";
 import { jwtAuthProvider } from "./auth-provider/ra-auth-jwt";
 
 const App = (): React.ReactElement => {
@@ -184,6 +188,13 @@ const App = (): React.ReactElement => {
           edit={SkillLevelEdit}
           create={SkillLevelCreate}
           show={SkillLevelShow}
+        />
+        <Resource
+          name="RecruitmentPartner"
+          list={RecruitmentPartnerList}
+          edit={RecruitmentPartnerEdit}
+          create={RecruitmentPartnerCreate}
+          show={RecruitmentPartnerShow}
         />
       </Admin>
     </div>

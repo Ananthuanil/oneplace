@@ -6,11 +6,12 @@ import {
   ListProps,
   TextField,
   DateField,
-  BooleanField,
   ReferenceField,
+  BooleanField,
 } from "react-admin";
 
 import Pagination from "../Components/Pagination";
+import { RECRUITMENTPARTNER_TITLE_FIELD } from "../recruitmentPartner/RecruitmentPartnerTitle";
 import { OPPORTUNITY_TITLE_FIELD } from "../opportunity/OpportunityTitle";
 import { USER_TITLE_FIELD } from "../user/UserTitle";
 
@@ -34,10 +35,13 @@ export const CandidateList = (props: ListProps): React.ReactElement => {
         <TextField label="Current Status" source="currentStatus" />
         <TextField label="Email" source="email" />
         <TextField label="expected_ctc" source="expectedCtc" />
-        <TextField
+        <ReferenceField
           label="external_recruitment_partner"
-          source="externalRecruitmentPartner"
-        />
+          source="recruitmentpartner.id"
+          reference="RecruitmentPartner"
+        >
+          <TextField source={RECRUITMENTPARTNER_TITLE_FIELD} />
+        </ReferenceField>
         <TextField label="ID" source="id" />
         <BooleanField label="Is On Notice Period" source="isOnNoticePeriod" />
         <TextField label="Last Working Day" source="lastWorkingDay" />

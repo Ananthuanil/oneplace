@@ -1,3 +1,4 @@
+import { RecruitmentPartner } from "../recruitmentPartner/RecruitmentPartner";
 import { Interview } from "../interview/Interview";
 import { Opportunity } from "../opportunity/Opportunity";
 import { User } from "../user/User";
@@ -15,7 +16,7 @@ export type Candidate = {
   currentStatus: string;
   email: string;
   expectedCtc: number | null;
-  externalRecruitmentPartner: string | null;
+  externalRecruitmentPartner?: RecruitmentPartner | null;
   id: string;
   interviews?: Array<Interview>;
   isOnNoticePeriod: boolean;

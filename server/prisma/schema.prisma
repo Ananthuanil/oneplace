@@ -90,33 +90,34 @@ model SkillSet {
 }
 
 model Candidate {
-  additionalComments         String?
-  category                   EnumCandidateCategory
-  competitorCtc              Float?
-  createdAt                  DateTime              @default(now())
-  currentCtc                 Float?
-  currentDesignation         String?
-  currentFirm                String?
-  currentStatus              String
-  email                      String
-  expectedCtc                Float?
-  externalRecruitmentPartner String?
-  id                         String                @id @default(cuid())
-  interviews                 Interview[]
-  isOnNoticePeriod           Boolean
-  lastWorkingDay             DateTime?
-  name                       String
-  noticePeriodTime           Float?
-  opportunity                Opportunity?          @relation(fields: [opportunityId], references: [id])
-  opportunityId              String?
-  referalEmployee            User?                 @relation(fields: [referalEmployeeId], references: [id])
-  referalEmployeeId          String?
-  resume                     String?
-  skills                     Skill[]
-  skillSets                  SkillSet[]
-  source                     EnumCandidateSource
-  totalExperience            Int
-  updatedAt                  DateTime              @updatedAt
+  additionalComments           String?
+  category                     EnumCandidateCategory
+  competitorCtc                Float?
+  createdAt                    DateTime              @default(now())
+  currentCtc                   Float?
+  currentDesignation           String?
+  currentFirm                  String?
+  currentStatus                String
+  email                        String
+  expectedCtc                  Float?
+  externalRecruitmentPartner   RecruitmentPartner?   @relation(fields: [externalRecruitmentPartnerId], references: [id])
+  externalRecruitmentPartnerId String?
+  id                           String                @id @default(cuid())
+  interviews                   Interview[]
+  isOnNoticePeriod             Boolean
+  lastWorkingDay               DateTime?
+  name                         String
+  noticePeriodTime             Float?
+  opportunity                  Opportunity?          @relation(fields: [opportunityId], references: [id])
+  opportunityId                String?
+  referalEmployee              User?                 @relation(fields: [referalEmployeeId], references: [id])
+  referalEmployeeId            String?
+  resume                       String?
+  skills                       Skill[]
+  skillSets                    SkillSet[]
+  source                       EnumCandidateSource
+  totalExperience              Int
+  updatedAt                    DateTime              @updatedAt
 }
 
 model InterviewFeedback {
@@ -248,6 +249,14 @@ model SkillLevel {
   skillId             String?
   updatedAt           DateTime           @updatedAt
   users               User[]
+}
+
+model RecruitmentPartner {
+  candidates Candidate[]
+  createdAt  DateTime    @default(now())
+  id         String      @id @default(cuid())
+  name       String?
+  updatedAt  DateTime    @updatedAt
 }
 
 enum EnumUserDesignation {

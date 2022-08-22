@@ -24,8 +24,9 @@ import {
 } from "class-validator";
 
 import { EnumCandidateCategory } from "./EnumCandidateCategory";
-import { InterviewUpdateManyWithoutCandidatesInput } from "./InterviewUpdateManyWithoutCandidatesInput";
+import { RecruitmentPartnerWhereUniqueInput } from "../../recruitmentPartner/base/RecruitmentPartnerWhereUniqueInput";
 import { Type } from "class-transformer";
+import { InterviewUpdateManyWithoutCandidatesInput } from "./InterviewUpdateManyWithoutCandidatesInput";
 import { OpportunityWhereUniqueInput } from "../../opportunity/base/OpportunityWhereUniqueInput";
 import { UserWhereUniqueInput } from "../../user/base/UserWhereUniqueInput";
 import { SkillUpdateManyWithoutCandidatesInput } from "./SkillUpdateManyWithoutCandidatesInput";
@@ -134,14 +135,15 @@ class CandidateUpdateInput {
 
   @ApiProperty({
     required: false,
-    type: String,
+    type: () => RecruitmentPartnerWhereUniqueInput,
   })
-  @IsString()
+  @ValidateNested()
+  @Type(() => RecruitmentPartnerWhereUniqueInput)
   @IsOptional()
-  @Field(() => String, {
+  @Field(() => RecruitmentPartnerWhereUniqueInput, {
     nullable: true,
   })
-  externalRecruitmentPartner?: string | null;
+  externalRecruitmentPartner?: RecruitmentPartnerWhereUniqueInput | null;
 
   @ApiProperty({
     required: false,

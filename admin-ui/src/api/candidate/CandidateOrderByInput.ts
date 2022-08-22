@@ -11,7 +11,7 @@ export type CandidateOrderByInput = {
   currentStatus?: SortOrder;
   email?: SortOrder;
   expectedCtc?: SortOrder;
-  externalRecruitmentPartner?: SortOrder;
+  externalRecruitmentPartnerId?: SortOrder;
   id?: SortOrder;
   isOnNoticePeriod?: SortOrder;
   lastWorkingDay?: SortOrder;

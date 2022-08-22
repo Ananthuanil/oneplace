@@ -7,13 +7,14 @@ import {
   TextInput,
   SelectInput,
   NumberInput,
+  ReferenceInput,
   ReferenceArrayInput,
   SelectArrayInput,
   BooleanInput,
   DateInput,
-  ReferenceInput,
 } from "react-admin";
 
+import { RecruitmentPartnerTitle } from "../recruitmentPartner/RecruitmentPartnerTitle";
 import { InterviewTitle } from "../interview/InterviewTitle";
 import { OpportunityTitle } from "../opportunity/OpportunityTitle";
 import { UserTitle } from "../user/UserTitle";
@@ -47,10 +48,13 @@ export const CandidateCreate = (props: CreateProps): React.ReactElement => {
         <TextInput label="Current Status" source="currentStatus" />
         <TextInput label="Email" source="email" type="email" />
         <NumberInput label="expected_ctc" source="expectedCtc" />
-        <TextInput
+        <ReferenceInput
+          source="recruitmentpartner.id"
+          reference="RecruitmentPartner"
           label="external_recruitment_partner"
-          source="externalRecruitmentPartner"
-        />
+        >
+          <SelectInput optionText={RecruitmentPartnerTitle} />
+        </ReferenceInput>
         <ReferenceArrayInput
           source="interviews"
           reference="Interview"

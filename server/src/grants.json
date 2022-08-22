@@ -1,1 +1,242 @@
-[]
+[
+  {
+    "role": "hr",
+    "resource": "RecruitmentPartner",
+    "action": "read:own",
+    "attributes": "*"
+  },
+  {
+    "role": "communityLead",
+    "resource": "RecruitmentPartner",
+    "action": "read:own",
+    "attributes": "*"
+  },
+  {
+    "role": "tagMember",
+    "resource": "RecruitmentPartner",
+    "action": "read:own",
+    "attributes": "*"
+  },
+  {
+    "role": "learningDevelopmentHead",
+    "resource": "RecruitmentPartner",
+    "action": "read:own",
+    "attributes": "*"
+  },
+  {
+    "role": "accountOwner",
+    "resource": "RecruitmentPartner",
+    "action": "read:own",
+    "attributes": "*"
+  },
+  {
+    "role": "superAdmin",
+    "resource": "RecruitmentPartner",
+    "action": "read:own",
+    "attributes": "*"
+  },
+  {
+    "role": "associate",
+    "resource": "RecruitmentPartner",
+    "action": "read:own",
+    "attributes": "*"
+  },
+  {
+    "role": "user",
+    "resource": "RecruitmentPartner",
+    "action": "read:own",
+    "attributes": "*"
+  },
+  {
+    "role": "hr",
+    "resource": "RecruitmentPartner",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "communityLead",
+    "resource": "RecruitmentPartner",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "tagMember",
+    "resource": "RecruitmentPartner",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "learningDevelopmentHead",
+    "resource": "RecruitmentPartner",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "accountOwner",
+    "resource": "RecruitmentPartner",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "superAdmin",
+    "resource": "RecruitmentPartner",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "associate",
+    "resource": "RecruitmentPartner",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "user",
+    "resource": "RecruitmentPartner",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "hr",
+    "resource": "RecruitmentPartner",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "communityLead",
+    "resource": "RecruitmentPartner",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "tagMember",
+    "resource": "RecruitmentPartner",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "learningDevelopmentHead",
+    "resource": "RecruitmentPartner",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "accountOwner",
+    "resource": "RecruitmentPartner",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "superAdmin",
+    "resource": "RecruitmentPartner",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "associate",
+    "resource": "RecruitmentPartner",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "user",
+    "resource": "RecruitmentPartner",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "hr",
+    "resource": "RecruitmentPartner",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "communityLead",
+    "resource": "RecruitmentPartner",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "tagMember",
+    "resource": "RecruitmentPartner",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "learningDevelopmentHead",
+    "resource": "RecruitmentPartner",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "accountOwner",
+    "resource": "RecruitmentPartner",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "superAdmin",
+    "resource": "RecruitmentPartner",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "associate",
+    "resource": "RecruitmentPartner",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "user",
+    "resource": "RecruitmentPartner",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "hr",
+    "resource": "RecruitmentPartner",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "communityLead",
+    "resource": "RecruitmentPartner",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "tagMember",
+    "resource": "RecruitmentPartner",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "learningDevelopmentHead",
+    "resource": "RecruitmentPartner",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "accountOwner",
+    "resource": "RecruitmentPartner",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "superAdmin",
+    "resource": "RecruitmentPartner",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "associate",
+    "resource": "RecruitmentPartner",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "user",
+    "resource": "RecruitmentPartner",
+    "action": "read:any",
+    "attributes": "*"
+  }
+]
