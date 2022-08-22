@@ -1,6 +1,7 @@
 import { StringNullableFilter } from "../../util/StringNullableFilter";
 import { FloatNullableFilter } from "../../util/FloatNullableFilter";
 import { StringFilter } from "../../util/StringFilter";
+import { RecruitmentPartnerWhereUniqueInput } from "../recruitmentPartner/RecruitmentPartnerWhereUniqueInput";
 import { InterviewListRelationFilter } from "../interview/InterviewListRelationFilter";
 import { BooleanFilter } from "../../util/BooleanFilter";
 import { DateTimeNullableFilter } from "../../util/DateTimeNullableFilter";
@@ -20,7 +21,7 @@ export type CandidateWhereInput = {
   currentStatus?: StringFilter;
   email?: StringFilter;
   expectedCtc?: FloatNullableFilter;
-  externalRecruitmentPartner?: StringNullableFilter;
+  externalRecruitmentPartner?: RecruitmentPartnerWhereUniqueInput;
   id?: StringFilter;
   interviews?: InterviewListRelationFilter;
   isOnNoticePeriod?: BooleanFilter;
