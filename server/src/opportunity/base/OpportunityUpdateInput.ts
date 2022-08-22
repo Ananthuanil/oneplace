@@ -11,7 +11,7 @@ https://docs.amplication.com/docs/how-to/custom-code
   */
 import { InputType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
-import { UserWhereUniqueInput } from "../../user/base/UserWhereUniqueInput";
+import { CandidateUpdateManyWithoutOpportunitiesInput } from "./CandidateUpdateManyWithoutOpportunitiesInput";
 import {
   ValidateNested,
   IsOptional,
@@ -20,7 +20,7 @@ import {
   IsInt,
 } from "class-validator";
 import { Type } from "class-transformer";
-import { InterviewUpdateManyWithoutOpportunitiesInput } from "./InterviewUpdateManyWithoutOpportunitiesInput";
+import { UserWhereUniqueInput } from "../../user/base/UserWhereUniqueInput";
 import { SkillUpdateManyWithoutOpportunitiesInput } from "./SkillUpdateManyWithoutOpportunitiesInput";
 import { PartnerWhereUniqueInput } from "../../partner/base/PartnerWhereUniqueInput";
 import { EnumOpportunityProcurementStatus } from "./EnumOpportunityProcurementStatus";
@@ -28,6 +28,18 @@ import { ProjectWhereUniqueInput } from "../../project/base/ProjectWhereUniqueIn
 import { EnumOpportunitySource } from "./EnumOpportunitySource";
 @InputType()
 class OpportunityUpdateInput {
+  @ApiProperty({
+    required: false,
+    type: () => CandidateUpdateManyWithoutOpportunitiesInput,
+  })
+  @ValidateNested()
+  @Type(() => CandidateUpdateManyWithoutOpportunitiesInput)
+  @IsOptional()
+  @Field(() => CandidateUpdateManyWithoutOpportunitiesInput, {
+    nullable: true,
+  })
+  candidates?: CandidateUpdateManyWithoutOpportunitiesInput;
+
   @ApiProperty({
     required: false,
     type: () => UserWhereUniqueInput,
@@ -50,18 +62,6 @@ class OpportunityUpdateInput {
     nullable: true,
   })
   currentStatus?: string | null;
-
-  @ApiProperty({
-    required: false,
-    type: () => InterviewUpdateManyWithoutOpportunitiesInput,
-  })
-  @ValidateNested()
-  @Type(() => InterviewUpdateManyWithoutOpportunitiesInput)
-  @IsOptional()
-  @Field(() => InterviewUpdateManyWithoutOpportunitiesInput, {
-    nullable: true,
-  })
-  interviews?: InterviewUpdateManyWithoutOpportunitiesInput;
 
   @ApiProperty({
     required: false,

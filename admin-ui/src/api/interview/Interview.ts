@@ -1,7 +1,6 @@
 import { Candidate } from "../candidate/Candidate";
 import { InterviewFeedback } from "../interviewFeedback/InterviewFeedback";
 import { User } from "../user/User";
-import { Opportunity } from "../opportunity/Opportunity";
 
 export type Interview = {
   calendarScheduleId: string | null;
@@ -16,7 +15,6 @@ export type Interview = {
   interviewer?: User | null;
   level: string | null;
   mode: string | null;
-  opportunity?: Opportunity | null;
   startDate: Date | null;
   subject: string | null;
   updatedAt: Date;

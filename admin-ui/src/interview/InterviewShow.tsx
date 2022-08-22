@@ -16,7 +16,6 @@ import { COMMUNICATIONFEEDBACK_TITLE_FIELD } from "../communicationFeedback/Comm
 import { INTERVIEW_TITLE_FIELD } from "./InterviewTitle";
 import { CANDIDATE_TITLE_FIELD } from "../candidate/CandidateTitle";
 import { USER_TITLE_FIELD } from "../user/UserTitle";
-import { OPPORTUNITY_TITLE_FIELD } from "../opportunity/OpportunityTitle";
 
 export const InterviewShow = (props: ShowProps): React.ReactElement => {
   return (
@@ -41,13 +40,6 @@ export const InterviewShow = (props: ShowProps): React.ReactElement => {
         </ReferenceField>
         <TextField label="Level" source="level" />
         <TextField label="Mode" source="mode" />
-        <ReferenceField
-          label="Opportunity"
-          source="opportunity.id"
-          reference="Opportunity"
-        >
-          <TextField source={OPPORTUNITY_TITLE_FIELD} />
-        </ReferenceField>
         <TextField label="Start Date" source="startDate" />
         <TextField label="subject" source="subject" />
         <DateField source="updatedAt" label="Updated At" />

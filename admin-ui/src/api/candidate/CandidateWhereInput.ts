@@ -4,6 +4,7 @@ import { StringFilter } from "../../util/StringFilter";
 import { InterviewListRelationFilter } from "../interview/InterviewListRelationFilter";
 import { BooleanFilter } from "../../util/BooleanFilter";
 import { DateTimeNullableFilter } from "../../util/DateTimeNullableFilter";
+import { OpportunityWhereUniqueInput } from "../opportunity/OpportunityWhereUniqueInput";
 import { UserWhereUniqueInput } from "../user/UserWhereUniqueInput";
 import { SkillListRelationFilter } from "../skill/SkillListRelationFilter";
 import { SkillSetListRelationFilter } from "../skillSet/SkillSetListRelationFilter";
@@ -26,6 +27,7 @@ export type CandidateWhereInput = {
   lastWorkingDay?: DateTimeNullableFilter;
   name?: StringFilter;
   noticePeriodTime?: FloatNullableFilter;
+  opportunity?: OpportunityWhereUniqueInput;
   referalEmployee?: UserWhereUniqueInput;
   resume?: StringNullableFilter;
   skills?: SkillListRelationFilter;

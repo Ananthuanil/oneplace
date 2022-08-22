@@ -7,7 +7,7 @@ export type Skill = {
   candidate?: Array<Candidate>;
   createdAt: Date;
   id: string;
-  name: string | null;
+  name: string;
   opportunity?: Opportunity | null;
   oppurtunatyRequiredSkills?: Opportunity | null;
   skillMatrices?: Array<SkillLevel>;

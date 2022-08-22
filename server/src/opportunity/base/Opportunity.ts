@@ -11,7 +11,7 @@ https://docs.amplication.com/docs/how-to/custom-code
   */
 import { ObjectType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
-import { User } from "../../user/base/User";
+import { Candidate } from "../../candidate/base/Candidate";
 import {
   ValidateNested,
   IsOptional,
@@ -21,7 +21,7 @@ import {
   IsInt,
 } from "class-validator";
 import { Type } from "class-transformer";
-import { Interview } from "../../interview/base/Interview";
+import { User } from "../../user/base/User";
 import { Skill } from "../../skill/base/Skill";
 import { Partner } from "../../partner/base/Partner";
 import { EnumOpportunityProcurementStatus } from "./EnumOpportunityProcurementStatus";
@@ -29,6 +29,15 @@ import { Project } from "../../project/base/Project";
 import { EnumOpportunitySource } from "./EnumOpportunitySource";
 @ObjectType()
 class Opportunity {
+  @ApiProperty({
+    required: false,
+    type: () => [Candidate],
+  })
+  @ValidateNested()
+  @Type(() => Candidate)
+  @IsOptional()
+  candidates?: Array<Candidate>;
+
   @ApiProperty({
     required: false,
     type: () => User,
@@ -64,15 +73,6 @@ class Opportunity {
   @IsString()
   @Field(() => String)
   id!: string;
-
-  @ApiProperty({
-    required: false,
-    type: () => [Interview],
-  })
-  @ValidateNested()
-  @Type(() => Interview)
-  @IsOptional()
-  interviews?: Array<Interview>;
 
   @ApiProperty({
     required: false,

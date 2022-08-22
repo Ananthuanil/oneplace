@@ -16,7 +16,6 @@ import {
 import { CandidateTitle } from "../candidate/CandidateTitle";
 import { InterviewFeedbackTitle } from "../interviewFeedback/InterviewFeedbackTitle";
 import { UserTitle } from "../user/UserTitle";
-import { OpportunityTitle } from "../opportunity/OpportunityTitle";
 
 export const InterviewEdit = (props: EditProps): React.ReactElement => {
   return (
@@ -47,13 +46,6 @@ export const InterviewEdit = (props: EditProps): React.ReactElement => {
         </ReferenceInput>
         <TextInput label="Level" source="level" />
         <TextInput label="Mode" source="mode" />
-        <ReferenceInput
-          source="opportunity.id"
-          reference="Opportunity"
-          label="Opportunity"
-        >
-          <SelectInput optionText={OpportunityTitle} />
-        </ReferenceInput>
         <DateInput label="Start Date" source="startDate" />
         <TextInput label="subject" source="subject" />
       </SimpleForm>

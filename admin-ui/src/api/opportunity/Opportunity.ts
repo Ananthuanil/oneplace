@@ -1,15 +1,15 @@
+import { Candidate } from "../candidate/Candidate";
 import { User } from "../user/User";
-import { Interview } from "../interview/Interview";
 import { Skill } from "../skill/Skill";
 import { Partner } from "../partner/Partner";
 import { Project } from "../project/Project";
 
 export type Opportunity = {
+  candidates?: Array<Candidate>;
   claimedPerson?: User | null;
   createdAt: Date;
   currentStatus: string | null;
   id: string;
-  interviews?: Array<Interview>;
   mappedPerson?: User | null;
   name: string | null;
   optionalSkillset?: Array<Skill>;

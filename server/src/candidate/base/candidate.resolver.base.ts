@@ -30,6 +30,7 @@ import { SkillFindManyArgs } from "../../skill/base/SkillFindManyArgs";
 import { Skill } from "../../skill/base/Skill";
 import { SkillSetFindManyArgs } from "../../skillSet/base/SkillSetFindManyArgs";
 import { SkillSet } from "../../skillSet/base/SkillSet";
+import { Opportunity } from "../../opportunity/base/Opportunity";
 import { User } from "../../user/base/User";
 import { CandidateService } from "../candidate.service";
 
@@ -86,6 +87,12 @@ export class CandidateResolverBase {
       data: {
         ...args.data,
 
+        opportunity: args.data.opportunity
+          ? {
+              connect: args.data.opportunity,
+            }
+          : undefined,
+
         referalEmployee: args.data.referalEmployee
           ? {
               connect: args.data.referalEmployee,
@@ -105,6 +112,12 @@ export class CandidateResolverBase {
         ...args,
         data: {
           ...args.data,
+
+          opportunity: args.data.opportunity
+            ? {
+                connect: args.data.opportunity,
+              }
+            : undefined,
 
           referalEmployee: args.data.referalEmployee
             ? {
@@ -183,6 +196,19 @@ export class CandidateResolverBase {
     }
 
     return results;
+  }
+
+  @Public()
+  @graphql.ResolveField(() => Opportunity, { nullable: true })
+  async opportunity(
+    @graphql.Parent() parent: Candidate
+  ): Promise<Opportunity | null> {
+    const result = await this.service.getOpportunity(parent.id);
+
+    if (!result) {
+      return null;
+    }
+    return result;
   }
 
   @Public()

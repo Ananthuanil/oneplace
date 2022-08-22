@@ -22,7 +22,6 @@ import { CandidateWhereUniqueInput } from "../../candidate/base/CandidateWhereUn
 import { Type } from "class-transformer";
 import { InterviewFeedbackUpdateManyWithoutInterviewsInput } from "./InterviewFeedbackUpdateManyWithoutInterviewsInput";
 import { UserWhereUniqueInput } from "../../user/base/UserWhereUniqueInput";
-import { OpportunityWhereUniqueInput } from "../../opportunity/base/OpportunityWhereUniqueInput";
 @InputType()
 class InterviewUpdateInput {
   @ApiProperty({
@@ -137,18 +136,6 @@ class InterviewUpdateInput {
     nullable: true,
   })
   mode?: string | null;
-
-  @ApiProperty({
-    required: false,
-    type: () => OpportunityWhereUniqueInput,
-  })
-  @ValidateNested()
-  @Type(() => OpportunityWhereUniqueInput)
-  @IsOptional()
-  @Field(() => OpportunityWhereUniqueInput, {
-    nullable: true,
-  })
-  opportunity?: OpportunityWhereUniqueInput | null;
 
   @ApiProperty({
     required: false,

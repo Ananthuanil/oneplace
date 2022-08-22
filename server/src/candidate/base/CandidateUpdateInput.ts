@@ -26,6 +26,7 @@ import {
 import { EnumCandidateCategory } from "./EnumCandidateCategory";
 import { InterviewUpdateManyWithoutCandidatesInput } from "./InterviewUpdateManyWithoutCandidatesInput";
 import { Type } from "class-transformer";
+import { OpportunityWhereUniqueInput } from "../../opportunity/base/OpportunityWhereUniqueInput";
 import { UserWhereUniqueInput } from "../../user/base/UserWhereUniqueInput";
 import { SkillUpdateManyWithoutCandidatesInput } from "./SkillUpdateManyWithoutCandidatesInput";
 import { SkillSetUpdateManyWithoutCandidatesInput } from "./SkillSetUpdateManyWithoutCandidatesInput";
@@ -197,6 +198,18 @@ class CandidateUpdateInput {
     nullable: true,
   })
   noticePeriodTime?: number | null;
+
+  @ApiProperty({
+    required: false,
+    type: () => OpportunityWhereUniqueInput,
+  })
+  @ValidateNested()
+  @Type(() => OpportunityWhereUniqueInput)
+  @IsOptional()
+  @Field(() => OpportunityWhereUniqueInput, {
+    nullable: true,
+  })
+  opportunity?: OpportunityWhereUniqueInput | null;
 
   @ApiProperty({
     required: false,

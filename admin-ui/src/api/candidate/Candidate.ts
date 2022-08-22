@@ -1,4 +1,5 @@
 import { Interview } from "../interview/Interview";
+import { Opportunity } from "../opportunity/Opportunity";
 import { User } from "../user/User";
 import { Skill } from "../skill/Skill";
 import { SkillSet } from "../skillSet/SkillSet";
@@ -21,6 +22,7 @@ export type Candidate = {
   lastWorkingDay: Date | null;
   name: string;
   noticePeriodTime: number | null;
+  opportunity?: Opportunity | null;
   referalEmployee?: User | null;
   resume: string | null;
   skills?: Array<Skill>;
