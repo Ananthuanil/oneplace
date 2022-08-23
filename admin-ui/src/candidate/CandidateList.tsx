@@ -5,12 +5,13 @@ import {
   Datagrid,
   ListProps,
   TextField,
-  DateField,
   ReferenceField,
+  DateField,
   BooleanField,
 } from "react-admin";
 
 import Pagination from "../Components/Pagination";
+import { COMMUNICATIONFEEDBACK_TITLE_FIELD } from "../communicationFeedback/CommunicationFeedbackTitle";
 import { RECRUITMENTPARTNER_TITLE_FIELD } from "../recruitmentPartner/RecruitmentPartnerTitle";
 import { OPPORTUNITY_TITLE_FIELD } from "../opportunity/OpportunityTitle";
 import { USER_TITLE_FIELD } from "../user/UserTitle";
@@ -27,6 +28,13 @@ export const CandidateList = (props: ListProps): React.ReactElement => {
       <Datagrid rowClick="show">
         <TextField label="Additional Comments" source="additionalComments" />
         <TextField label="category" source="category" />
+        <ReferenceField
+          label="Communication Feedback"
+          source="communicationfeedback.id"
+          reference="CommunicationFeedback"
+        >
+          <TextField source={COMMUNICATIONFEEDBACK_TITLE_FIELD} />
+        </ReferenceField>
         <TextField label="competitor_ctc" source="competitorCtc" />
         <DateField source="createdAt" label="Created At" />
         <TextField label="current_ctc" source="currentCtc" />

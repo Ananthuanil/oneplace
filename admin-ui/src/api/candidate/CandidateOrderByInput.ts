@@ -3,6 +3,7 @@ import { SortOrder } from "../../util/SortOrder";
 export type CandidateOrderByInput = {
   additionalComments?: SortOrder;
   category?: SortOrder;
+  communicationFeedbackId?: SortOrder;
   competitorCtc?: SortOrder;
   createdAt?: SortOrder;
   currentCtc?: SortOrder;

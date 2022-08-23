@@ -1,3 +1,4 @@
+import { CommunicationFeedbackWhereUniqueInput } from "../communicationFeedback/CommunicationFeedbackWhereUniqueInput";
 import { RecruitmentPartnerWhereUniqueInput } from "../recruitmentPartner/RecruitmentPartnerWhereUniqueInput";
 import { InterviewUpdateManyWithoutCandidatesInput } from "./InterviewUpdateManyWithoutCandidatesInput";
 import { OpportunityWhereUniqueInput } from "../opportunity/OpportunityWhereUniqueInput";
@@ -8,6 +9,7 @@ import { SkillSetUpdateManyWithoutCandidatesInput } from "./SkillSetUpdateManyWi
 export type CandidateUpdateInput = {
   additionalComments?: string | null;
   category?: "P1" | "P2" | "P3";
+  communicationFeedback?: CommunicationFeedbackWhereUniqueInput | null;
   competitorCtc?: number | null;
   currentCtc?: number | null;
   currentDesignation?: string | null;

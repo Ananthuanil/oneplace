@@ -30,6 +30,7 @@ import { SkillFindManyArgs } from "../../skill/base/SkillFindManyArgs";
 import { Skill } from "../../skill/base/Skill";
 import { SkillSetFindManyArgs } from "../../skillSet/base/SkillSetFindManyArgs";
 import { SkillSet } from "../../skillSet/base/SkillSet";
+import { CommunicationFeedback } from "../../communicationFeedback/base/CommunicationFeedback";
 import { RecruitmentPartner } from "../../recruitmentPartner/base/RecruitmentPartner";
 import { Opportunity } from "../../opportunity/base/Opportunity";
 import { User } from "../../user/base/User";
@@ -88,6 +89,12 @@ export class CandidateResolverBase {
       data: {
         ...args.data,
 
+        communicationFeedback: args.data.communicationFeedback
+          ? {
+              connect: args.data.communicationFeedback,
+            }
+          : undefined,
+
         externalRecruitmentPartner: args.data.externalRecruitmentPartner
           ? {
               connect: args.data.externalRecruitmentPartner,
@@ -119,6 +126,12 @@ export class CandidateResolverBase {
         ...args,
         data: {
           ...args.data,
+
+          communicationFeedback: args.data.communicationFeedback
+            ? {
+                connect: args.data.communicationFeedback,
+              }
+            : undefined,
 
           externalRecruitmentPartner: args.data.externalRecruitmentPartner
             ? {
@@ -209,6 +222,19 @@ export class CandidateResolverBase {
     }
 
     return results;
+  }
+
+  @Public()
+  @graphql.ResolveField(() => CommunicationFeedback, { nullable: true })
+  async communicationFeedback(
+    @graphql.Parent() parent: Candidate
+  ): Promise<CommunicationFeedback | null> {
+    const result = await this.service.getCommunicationFeedback(parent.id);
+
+    if (!result) {
+      return null;
+    }
+    return result;
   }
 
   @Public()

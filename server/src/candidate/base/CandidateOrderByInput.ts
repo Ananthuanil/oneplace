@@ -43,6 +43,15 @@ class CandidateOrderByInput {
   @Field(() => SortOrder, {
     nullable: true,
   })
+  communicationFeedbackId?: SortOrder;
+
+  @ApiProperty({
+    required: false,
+    enum: ["asc", "desc"],
+  })
+  @Field(() => SortOrder, {
+    nullable: true,
+  })
   competitorCtc?: SortOrder;
 
   @ApiProperty({

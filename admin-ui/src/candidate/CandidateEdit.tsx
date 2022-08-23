@@ -6,14 +6,15 @@ import {
   EditProps,
   TextInput,
   SelectInput,
-  NumberInput,
   ReferenceInput,
+  NumberInput,
   ReferenceArrayInput,
   SelectArrayInput,
   BooleanInput,
   DateInput,
 } from "react-admin";
 
+import { CommunicationFeedbackTitle } from "../communicationFeedback/CommunicationFeedbackTitle";
 import { RecruitmentPartnerTitle } from "../recruitmentPartner/RecruitmentPartnerTitle";
 import { InterviewTitle } from "../interview/InterviewTitle";
 import { OpportunityTitle } from "../opportunity/OpportunityTitle";
@@ -41,6 +42,13 @@ export const CandidateEdit = (props: EditProps): React.ReactElement => {
           optionText="label"
           optionValue="value"
         />
+        <ReferenceInput
+          source="communicationfeedback.id"
+          reference="CommunicationFeedback"
+          label="Communication Feedback"
+        >
+          <SelectInput optionText={CommunicationFeedbackTitle} />
+        </ReferenceInput>
         <NumberInput label="competitor_ctc" source="competitorCtc" />
         <NumberInput label="current_ctc" source="currentCtc" />
         <TextInput label="Current Designation" source="currentDesignation" />

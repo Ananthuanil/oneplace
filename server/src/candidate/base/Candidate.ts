@@ -16,14 +16,15 @@ import {
   IsString,
   IsOptional,
   IsEnum,
+  ValidateNested,
   IsNumber,
   IsDate,
-  ValidateNested,
   IsBoolean,
   IsInt,
 } from "class-validator";
 
 import { EnumCandidateCategory } from "./EnumCandidateCategory";
+import { CommunicationFeedback } from "../../communicationFeedback/base/CommunicationFeedback";
 import { Type } from "class-transformer";
 import { RecruitmentPartner } from "../../recruitmentPartner/base/RecruitmentPartner";
 import { Interview } from "../../interview/base/Interview";
@@ -54,6 +55,15 @@ class Candidate {
     nullable: true,
   })
   category?: "P1" | "P2" | "P3";
+
+  @ApiProperty({
+    required: false,
+    type: () => CommunicationFeedback,
+  })
+  @ValidateNested()
+  @Type(() => CommunicationFeedback)
+  @IsOptional()
+  communicationFeedback?: CommunicationFeedback | null;
 
   @ApiProperty({
     required: false,

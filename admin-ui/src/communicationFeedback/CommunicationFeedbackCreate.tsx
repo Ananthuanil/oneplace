@@ -7,6 +7,7 @@ import {
   ReferenceInput,
   SelectInput,
 } from "react-admin";
+import { CandidateTitle } from "../candidate/CandidateTitle";
 import { InterviewFeedbackTitle } from "../interviewFeedback/InterviewFeedbackTitle";
 
 export const CommunicationFeedbackCreate = (
@@ -16,6 +17,13 @@ export const CommunicationFeedbackCreate = (
     <Create {...props}>
       <SimpleForm>
         <TextInput label="ability_to_articulate" source="abilityToArticulate" />
+        <ReferenceInput
+          source="candidate.id"
+          reference="Candidate"
+          label="Candidates"
+        >
+          <SelectInput optionText={CandidateTitle} />
+        </ReferenceInput>
         <TextInput label="confidence_level" source="confidenceLevel" />
         <TextInput
           label="english_speaking_skills"

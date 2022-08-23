@@ -11,7 +11,8 @@ https://docs.amplication.com/docs/how-to/custom-code
   */
 import { ObjectType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
-import { IsString, IsOptional, IsDate, ValidateNested } from "class-validator";
+import { IsString, IsOptional, ValidateNested, IsDate } from "class-validator";
+import { Candidate } from "../../candidate/base/Candidate";
 import { Type } from "class-transformer";
 import { InterviewFeedback } from "../../interviewFeedback/base/InterviewFeedback";
 @ObjectType()
@@ -26,6 +27,15 @@ class CommunicationFeedback {
     nullable: true,
   })
   abilityToArticulate!: string | null;
+
+  @ApiProperty({
+    required: false,
+    type: () => Candidate,
+  })
+  @ValidateNested()
+  @Type(() => Candidate)
+  @IsOptional()
+  candidates?: Candidate | null;
 
   @ApiProperty({
     required: false,

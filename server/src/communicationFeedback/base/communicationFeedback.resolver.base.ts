@@ -24,6 +24,7 @@ import { DeleteCommunicationFeedbackArgs } from "./DeleteCommunicationFeedbackAr
 import { CommunicationFeedbackFindManyArgs } from "./CommunicationFeedbackFindManyArgs";
 import { CommunicationFeedbackFindUniqueArgs } from "./CommunicationFeedbackFindUniqueArgs";
 import { CommunicationFeedback } from "./CommunicationFeedback";
+import { Candidate } from "../../candidate/base/Candidate";
 import { InterviewFeedback } from "../../interviewFeedback/base/InterviewFeedback";
 import { CommunicationFeedbackService } from "../communicationFeedback.service";
 
@@ -80,6 +81,12 @@ export class CommunicationFeedbackResolverBase {
       data: {
         ...args.data,
 
+        candidates: args.data.candidates
+          ? {
+              connect: args.data.candidates,
+            }
+          : undefined,
+
         interviewFeedbacks: args.data.interviewFeedbacks
           ? {
               connect: args.data.interviewFeedbacks,
@@ -99,6 +106,12 @@ export class CommunicationFeedbackResolverBase {
         ...args,
         data: {
           ...args.data,
+
+          candidates: args.data.candidates
+            ? {
+                connect: args.data.candidates,
+              }
+            : undefined,
 
           interviewFeedbacks: args.data.interviewFeedbacks
             ? {
@@ -132,6 +145,19 @@ export class CommunicationFeedbackResolverBase {
       }
       throw error;
     }
+  }
+
+  @Public()
+  @graphql.ResolveField(() => Candidate, { nullable: true })
+  async candidates(
+    @graphql.Parent() parent: CommunicationFeedback
+  ): Promise<Candidate | null> {
+    const result = await this.service.getCandidates(parent.id);
+
+    if (!result) {
+      return null;
+    }
+    return result;
   }
 
   @Public()

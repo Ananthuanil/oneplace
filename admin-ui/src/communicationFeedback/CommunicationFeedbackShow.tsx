@@ -4,9 +4,10 @@ import {
   SimpleShowLayout,
   ShowProps,
   TextField,
-  DateField,
   ReferenceField,
+  DateField,
 } from "react-admin";
+import { CANDIDATE_TITLE_FIELD } from "../candidate/CandidateTitle";
 import { INTERVIEWFEEDBACK_TITLE_FIELD } from "../interviewFeedback/InterviewFeedbackTitle";
 
 export const CommunicationFeedbackShow = (
@@ -16,6 +17,13 @@ export const CommunicationFeedbackShow = (
     <Show {...props}>
       <SimpleShowLayout>
         <TextField label="ability_to_articulate" source="abilityToArticulate" />
+        <ReferenceField
+          label="Candidates"
+          source="candidate.id"
+          reference="Candidate"
+        >
+          <TextField source={CANDIDATE_TITLE_FIELD} />
+        </ReferenceField>
         <TextField label="confidence_level" source="confidenceLevel" />
         <DateField source="createdAt" label="Created At" />
         <TextField

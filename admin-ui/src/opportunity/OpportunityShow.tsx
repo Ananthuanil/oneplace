@@ -12,6 +12,7 @@ import {
   BooleanField,
 } from "react-admin";
 
+import { COMMUNICATIONFEEDBACK_TITLE_FIELD } from "../communicationFeedback/CommunicationFeedbackTitle";
 import { RECRUITMENTPARTNER_TITLE_FIELD } from "../recruitmentPartner/RecruitmentPartnerTitle";
 import { OPPORTUNITY_TITLE_FIELD } from "./OpportunityTitle";
 import { USER_TITLE_FIELD } from "../user/UserTitle";
@@ -60,6 +61,13 @@ export const OpportunityShow = (props: ShowProps): React.ReactElement => {
               source="additionalComments"
             />
             <TextField label="category" source="category" />
+            <ReferenceField
+              label="Communication Feedback"
+              source="communicationfeedback.id"
+              reference="CommunicationFeedback"
+            >
+              <TextField source={COMMUNICATIONFEEDBACK_TITLE_FIELD} />
+            </ReferenceField>
             <TextField label="competitor_ctc" source="competitorCtc" />
             <DateField source="createdAt" label="Created At" />
             <TextField label="current_ctc" source="currentCtc" />
