@@ -34,6 +34,7 @@ model User {
   interviews             Interview[]
   lastName               String
   mappedPerson           Opportunity[]        @relation(name: "OpportunityMappedPersonUserMappedPerson")
+  notifications          String?
   opportunities          Opportunity[]        @relation(name: "claimedPerson")
   panNumber              String?
   password               String

@@ -115,6 +115,7 @@ export const UserCreate = (props: CreateProps): React.ReactElement => {
         >
           <SelectArrayInput optionText={OpportunityTitle} />
         </ReferenceArrayInput>
+        <TextInput label="notifications" source="notifications" />
         <ReferenceArrayInput
           source="opportunities"
           reference="Opportunity"

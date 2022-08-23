@@ -296,6 +296,17 @@ class User {
 
   @ApiProperty({
     required: false,
+    type: String,
+  })
+  @IsString()
+  @IsOptional()
+  @Field(() => String, {
+    nullable: true,
+  })
+  notifications!: string | null;
+
+  @ApiProperty({
+    required: false,
     type: () => [Opportunity],
   })
   @ValidateNested()
