@@ -1,4 +1,5 @@
 import { StringNullableFilter } from "../../util/StringNullableFilter";
+import { CommunicationFeedbackWhereUniqueInput } from "../communicationFeedback/CommunicationFeedbackWhereUniqueInput";
 import { FloatNullableFilter } from "../../util/FloatNullableFilter";
 import { StringFilter } from "../../util/StringFilter";
 import { RecruitmentPartnerWhereUniqueInput } from "../recruitmentPartner/RecruitmentPartnerWhereUniqueInput";
@@ -14,6 +15,7 @@ import { IntFilter } from "../../util/IntFilter";
 export type CandidateWhereInput = {
   additionalComments?: StringNullableFilter;
   category?: "P1" | "P2" | "P3";
+  communicationFeedback?: CommunicationFeedbackWhereUniqueInput;
   competitorCtc?: FloatNullableFilter;
   currentCtc?: FloatNullableFilter;
   currentDesignation?: StringNullableFilter;

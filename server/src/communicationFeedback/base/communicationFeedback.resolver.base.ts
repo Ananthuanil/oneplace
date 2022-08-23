@@ -24,6 +24,8 @@ import { DeleteCommunicationFeedbackArgs } from "./DeleteCommunicationFeedbackAr
 import { CommunicationFeedbackFindManyArgs } from "./CommunicationFeedbackFindManyArgs";
 import { CommunicationFeedbackFindUniqueArgs } from "./CommunicationFeedbackFindUniqueArgs";
 import { CommunicationFeedback } from "./CommunicationFeedback";
+import { CandidateFindManyArgs } from "../../candidate/base/CandidateFindManyArgs";
+import { Candidate } from "../../candidate/base/Candidate";
 import { InterviewFeedback } from "../../interviewFeedback/base/InterviewFeedback";
 import { CommunicationFeedbackService } from "../communicationFeedback.service";
 
@@ -132,6 +134,21 @@ export class CommunicationFeedbackResolverBase {
       }
       throw error;
     }
+  }
+
+  @Public()
+  @graphql.ResolveField(() => [Candidate])
+  async candidates(
+    @graphql.Parent() parent: CommunicationFeedback,
+    @graphql.Args() args: CandidateFindManyArgs
+  ): Promise<Candidate[]> {
+    const results = await this.service.findCandidates(parent.id, args);
+
+    if (!results) {
+      return [];
+    }
+
+    return results;
   }
 
   @Public()

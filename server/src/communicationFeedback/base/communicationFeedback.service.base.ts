@@ -13,6 +13,7 @@ import { PrismaService } from "nestjs-prisma";
 import {
   Prisma,
   CommunicationFeedback,
+  Candidate,
   InterviewFeedback,
 } from "@prisma/client";
 
@@ -49,6 +50,17 @@ export class CommunicationFeedbackServiceBase {
     args: Prisma.SelectSubset<T, Prisma.CommunicationFeedbackDeleteArgs>
   ): Promise<CommunicationFeedback> {
     return this.prisma.communicationFeedback.delete(args);
+  }
+
+  async findCandidates(
+    parentId: string,
+    args: Prisma.CandidateFindManyArgs
+  ): Promise<Candidate[]> {
+    return this.prisma.communicationFeedback
+      .findUnique({
+        where: { id: parentId },
+      })
+      .candidates(args);
   }
 
   async getInterviewFeedbacks(

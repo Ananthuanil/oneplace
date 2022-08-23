@@ -17,6 +17,7 @@ import {
   Interview,
   Skill,
   SkillSet,
+  CommunicationFeedback,
   RecruitmentPartner,
   Opportunity,
   User,
@@ -88,6 +89,16 @@ export class CandidateServiceBase {
         where: { id: parentId },
       })
       .skillSets(args);
+  }
+
+  async getCommunicationFeedback(
+    parentId: string
+  ): Promise<CommunicationFeedback | null> {
+    return this.prisma.candidate
+      .findUnique({
+        where: { id: parentId },
+      })
+      .communicationFeedback();
   }
 
   async getExternalRecruitmentPartner(

@@ -1,3 +1,4 @@
+import { CommunicationFeedback } from "../communicationFeedback/CommunicationFeedback";
 import { RecruitmentPartner } from "../recruitmentPartner/RecruitmentPartner";
 import { Interview } from "../interview/Interview";
 import { Opportunity } from "../opportunity/Opportunity";
@@ -8,6 +9,7 @@ import { SkillSet } from "../skillSet/SkillSet";
 export type Candidate = {
   additionalComments: string | null;
   category?: "P1" | "P2" | "P3";
+  communicationFeedback?: CommunicationFeedback | null;
   competitorCtc: number | null;
   createdAt: Date;
   currentCtc: number | null;
