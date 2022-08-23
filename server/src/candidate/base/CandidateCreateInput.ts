@@ -16,16 +16,17 @@ import {
   IsString,
   IsOptional,
   IsEnum,
-  IsNumber,
   ValidateNested,
+  IsNumber,
   IsBoolean,
   IsDate,
   IsInt,
 } from "class-validator";
 
 import { EnumCandidateCategory } from "./EnumCandidateCategory";
-import { RecruitmentPartnerWhereUniqueInput } from "../../recruitmentPartner/base/RecruitmentPartnerWhereUniqueInput";
+import { CommunicationFeedbackWhereUniqueInput } from "../../communicationFeedback/base/CommunicationFeedbackWhereUniqueInput";
 import { Type } from "class-transformer";
+import { RecruitmentPartnerWhereUniqueInput } from "../../recruitmentPartner/base/RecruitmentPartnerWhereUniqueInput";
 import { InterviewCreateNestedManyWithoutCandidatesInput } from "./InterviewCreateNestedManyWithoutCandidatesInput";
 import { OpportunityWhereUniqueInput } from "../../opportunity/base/OpportunityWhereUniqueInput";
 import { UserWhereUniqueInput } from "../../user/base/UserWhereUniqueInput";
@@ -52,6 +53,18 @@ class CandidateCreateInput {
   @IsEnum(EnumCandidateCategory)
   @Field(() => EnumCandidateCategory)
   category!: "P1" | "P2" | "P3";
+
+  @ApiProperty({
+    required: false,
+    type: () => CommunicationFeedbackWhereUniqueInput,
+  })
+  @ValidateNested()
+  @Type(() => CommunicationFeedbackWhereUniqueInput)
+  @IsOptional()
+  @Field(() => CommunicationFeedbackWhereUniqueInput, {
+    nullable: true,
+  })
+  communicationFeedback?: CommunicationFeedbackWhereUniqueInput | null;
 
   @ApiProperty({
     required: false,

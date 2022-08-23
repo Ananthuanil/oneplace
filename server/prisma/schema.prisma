@@ -92,32 +92,34 @@ model SkillSet {
 model Candidate {
   additionalComments           String?
   category                     EnumCandidateCategory
+  communicationFeedback        CommunicationFeedback? @relation(fields: [communicationFeedbackId], references: [id])
+  communicationFeedbackId      String?
   competitorCtc                Float?
-  createdAt                    DateTime              @default(now())
+  createdAt                    DateTime               @default(now())
   currentCtc                   Float?
   currentDesignation           String?
   currentFirm                  String?
   currentStatus                String
   email                        String
   expectedCtc                  Float?
-  externalRecruitmentPartner   RecruitmentPartner?   @relation(fields: [externalRecruitmentPartnerId], references: [id])
+  externalRecruitmentPartner   RecruitmentPartner?    @relation(fields: [externalRecruitmentPartnerId], references: [id])
   externalRecruitmentPartnerId String?
-  id                           String                @id @default(cuid())
+  id                           String                 @id @default(cuid())
   interviews                   Interview[]
   isOnNoticePeriod             Boolean
   lastWorkingDay               DateTime?
   name                         String
   noticePeriodTime             Float?
-  opportunity                  Opportunity?          @relation(fields: [opportunityId], references: [id])
+  opportunity                  Opportunity?           @relation(fields: [opportunityId], references: [id])
   opportunityId                String?
-  referalEmployee              User?                 @relation(fields: [referalEmployeeId], references: [id])
+  referalEmployee              User?                  @relation(fields: [referalEmployeeId], references: [id])
   referalEmployeeId            String?
   resume                       String?
   skills                       Skill[]
   skillSets                    SkillSet[]
   source                       EnumCandidateSource
   totalExperience              Int
-  updatedAt                    DateTime              @updatedAt
+  updatedAt                    DateTime               @updatedAt
 }
 
 model InterviewFeedback {
@@ -208,6 +210,7 @@ model Project {
 
 model CommunicationFeedback {
   abilityToArticulate   String?
+  candidates            Candidate[]
   confidenceLevel       String?
   createdAt             DateTime           @default(now())
   englishSpeakingSkills String?

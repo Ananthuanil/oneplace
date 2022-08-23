@@ -1,12 +1,17 @@
 import * as React from "react";
+
 import {
   Edit,
   SimpleForm,
   EditProps,
   TextInput,
+  ReferenceArrayInput,
+  SelectArrayInput,
   ReferenceInput,
   SelectInput,
 } from "react-admin";
+
+import { CandidateTitle } from "../candidate/CandidateTitle";
 import { InterviewFeedbackTitle } from "../interviewFeedback/InterviewFeedbackTitle";
 
 export const CommunicationFeedbackEdit = (
@@ -16,6 +21,14 @@ export const CommunicationFeedbackEdit = (
     <Edit {...props}>
       <SimpleForm>
         <TextInput label="ability_to_articulate" source="abilityToArticulate" />
+        <ReferenceArrayInput
+          source="candidates"
+          reference="Candidate"
+          parse={(value: any) => value && value.map((v: any) => ({ id: v }))}
+          format={(value: any) => value && value.map((v: any) => v.id)}
+        >
+          <SelectArrayInput optionText={CandidateTitle} />
+        </ReferenceArrayInput>
         <TextInput label="confidence_level" source="confidenceLevel" />
         <TextInput
           label="english_speaking_skills"

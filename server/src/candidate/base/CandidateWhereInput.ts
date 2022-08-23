@@ -15,6 +15,7 @@ import { StringNullableFilter } from "../../util/StringNullableFilter";
 import { Type } from "class-transformer";
 import { IsOptional, IsEnum, ValidateNested } from "class-validator";
 import { EnumCandidateCategory } from "./EnumCandidateCategory";
+import { CommunicationFeedbackWhereUniqueInput } from "../../communicationFeedback/base/CommunicationFeedbackWhereUniqueInput";
 import { FloatNullableFilter } from "../../util/FloatNullableFilter";
 import { StringFilter } from "../../util/StringFilter";
 import { RecruitmentPartnerWhereUniqueInput } from "../../recruitmentPartner/base/RecruitmentPartnerWhereUniqueInput";
@@ -50,6 +51,18 @@ class CandidateWhereInput {
     nullable: true,
   })
   category?: "P1" | "P2" | "P3";
+
+  @ApiProperty({
+    required: false,
+    type: () => CommunicationFeedbackWhereUniqueInput,
+  })
+  @ValidateNested()
+  @Type(() => CommunicationFeedbackWhereUniqueInput)
+  @IsOptional()
+  @Field(() => CommunicationFeedbackWhereUniqueInput, {
+    nullable: true,
+  })
+  communicationFeedback?: CommunicationFeedbackWhereUniqueInput;
 
   @ApiProperty({
     required: false,
