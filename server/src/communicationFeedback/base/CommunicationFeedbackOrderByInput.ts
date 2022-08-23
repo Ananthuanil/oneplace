@@ -34,6 +34,15 @@ class CommunicationFeedbackOrderByInput {
   @Field(() => SortOrder, {
     nullable: true,
   })
+  candidatesId?: SortOrder;
+
+  @ApiProperty({
+    required: false,
+    enum: ["asc", "desc"],
+  })
+  @Field(() => SortOrder, {
+    nullable: true,
+  })
   confidenceLevel?: SortOrder;
 
   @ApiProperty({

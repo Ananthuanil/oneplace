@@ -92,8 +92,7 @@ model SkillSet {
 model Candidate {
   additionalComments           String?
   category                     EnumCandidateCategory
-  communicationFeedback        CommunicationFeedback? @relation(fields: [communicationFeedbackId], references: [id])
-  communicationFeedbackId      String?
+  communicationFeedback        CommunicationFeedback?
   competitorCtc                Float?
   createdAt                    DateTime               @default(now())
   currentCtc                   Float?
@@ -210,7 +209,8 @@ model Project {
 
 model CommunicationFeedback {
   abilityToArticulate   String?
-  candidates            Candidate[]
+  candidates            Candidate?         @relation(fields: [candidatesId], references: [id])
+  candidatesId          String?            @unique
   confidenceLevel       String?
   createdAt             DateTime           @default(now())
   englishSpeakingSkills String?

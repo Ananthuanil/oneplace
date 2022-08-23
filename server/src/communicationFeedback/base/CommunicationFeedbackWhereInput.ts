@@ -14,7 +14,7 @@ import { ApiProperty } from "@nestjs/swagger";
 import { StringNullableFilter } from "../../util/StringNullableFilter";
 import { Type } from "class-transformer";
 import { IsOptional, ValidateNested } from "class-validator";
-import { CandidateListRelationFilter } from "../../candidate/base/CandidateListRelationFilter";
+import { CandidateWhereUniqueInput } from "../../candidate/base/CandidateWhereUniqueInput";
 import { StringFilter } from "../../util/StringFilter";
 import { InterviewFeedbackWhereUniqueInput } from "../../interviewFeedback/base/InterviewFeedbackWhereUniqueInput";
 @InputType()
@@ -32,15 +32,15 @@ class CommunicationFeedbackWhereInput {
 
   @ApiProperty({
     required: false,
-    type: () => CandidateListRelationFilter,
+    type: () => CandidateWhereUniqueInput,
   })
   @ValidateNested()
-  @Type(() => CandidateListRelationFilter)
+  @Type(() => CandidateWhereUniqueInput)
   @IsOptional()
-  @Field(() => CandidateListRelationFilter, {
+  @Field(() => CandidateWhereUniqueInput, {
     nullable: true,
   })
-  candidates?: CandidateListRelationFilter;
+  candidates?: CandidateWhereUniqueInput;
 
   @ApiProperty({
     required: false,

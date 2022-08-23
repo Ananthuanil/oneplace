@@ -24,7 +24,6 @@ import { DeleteCommunicationFeedbackArgs } from "./DeleteCommunicationFeedbackAr
 import { CommunicationFeedbackFindManyArgs } from "./CommunicationFeedbackFindManyArgs";
 import { CommunicationFeedbackFindUniqueArgs } from "./CommunicationFeedbackFindUniqueArgs";
 import { CommunicationFeedback } from "./CommunicationFeedback";
-import { CandidateFindManyArgs } from "../../candidate/base/CandidateFindManyArgs";
 import { Candidate } from "../../candidate/base/Candidate";
 import { InterviewFeedback } from "../../interviewFeedback/base/InterviewFeedback";
 import { CommunicationFeedbackService } from "../communicationFeedback.service";
@@ -82,6 +81,12 @@ export class CommunicationFeedbackResolverBase {
       data: {
         ...args.data,
 
+        candidates: args.data.candidates
+          ? {
+              connect: args.data.candidates,
+            }
+          : undefined,
+
         interviewFeedbacks: args.data.interviewFeedbacks
           ? {
               connect: args.data.interviewFeedbacks,
@@ -101,6 +106,12 @@ export class CommunicationFeedbackResolverBase {
         ...args,
         data: {
           ...args.data,
+
+          candidates: args.data.candidates
+            ? {
+                connect: args.data.candidates,
+              }
+            : undefined,
 
           interviewFeedbacks: args.data.interviewFeedbacks
             ? {
@@ -137,18 +148,16 @@ export class CommunicationFeedbackResolverBase {
   }
 
   @Public()
-  @graphql.ResolveField(() => [Candidate])
+  @graphql.ResolveField(() => Candidate, { nullable: true })
   async candidates(
-    @graphql.Parent() parent: CommunicationFeedback,
-    @graphql.Args() args: CandidateFindManyArgs
-  ): Promise<Candidate[]> {
-    const results = await this.service.findCandidates(parent.id, args);
+    @graphql.Parent() parent: CommunicationFeedback
+  ): Promise<Candidate | null> {
+    const result = await this.service.getCandidates(parent.id);
 
-    if (!results) {
-      return [];
+    if (!result) {
+      return null;
     }
-
-    return results;
+    return result;
   }
 
   @Public()
