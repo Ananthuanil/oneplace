@@ -52,15 +52,12 @@ export class CommunicationFeedbackServiceBase {
     return this.prisma.communicationFeedback.delete(args);
   }
 
-  async findCandidates(
-    parentId: string,
-    args: Prisma.CandidateFindManyArgs
-  ): Promise<Candidate[]> {
+  async getCandidates(parentId: string): Promise<Candidate | null> {
     return this.prisma.communicationFeedback
       .findUnique({
         where: { id: parentId },
       })
-      .candidates(args);
+      .candidates();
   }
 
   async getInterviewFeedbacks(

@@ -30,12 +30,12 @@ class CommunicationFeedback {
 
   @ApiProperty({
     required: false,
-    type: () => [Candidate],
+    type: () => Candidate,
   })
   @ValidateNested()
   @Type(() => Candidate)
   @IsOptional()
-  candidates?: Array<Candidate>;
+  candidates?: Candidate | null;
 
   @ApiProperty({
     required: false,

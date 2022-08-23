@@ -4,10 +4,11 @@ import {
   Datagrid,
   ListProps,
   TextField,
-  DateField,
   ReferenceField,
+  DateField,
 } from "react-admin";
 import Pagination from "../Components/Pagination";
+import { CANDIDATE_TITLE_FIELD } from "../candidate/CandidateTitle";
 import { INTERVIEWFEEDBACK_TITLE_FIELD } from "../interviewFeedback/InterviewFeedbackTitle";
 
 export const CommunicationFeedbackList = (
@@ -23,6 +24,13 @@ export const CommunicationFeedbackList = (
     >
       <Datagrid rowClick="show">
         <TextField label="ability_to_articulate" source="abilityToArticulate" />
+        <ReferenceField
+          label="Candidates"
+          source="candidate.id"
+          reference="Candidate"
+        >
+          <TextField source={CANDIDATE_TITLE_FIELD} />
+        </ReferenceField>
         <TextField label="confidence_level" source="confidenceLevel" />
         <DateField source="createdAt" label="Created At" />
         <TextField

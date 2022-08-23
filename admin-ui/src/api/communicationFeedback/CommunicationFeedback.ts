@@ -3,7 +3,7 @@ import { InterviewFeedback } from "../interviewFeedback/InterviewFeedback";
 
 export type CommunicationFeedback = {
   abilityToArticulate: string | null;
-  candidates?: Array<Candidate>;
+  candidates?: Candidate | null;
   confidenceLevel: string | null;
   createdAt: Date;
   englishSpeakingSkills: string | null;

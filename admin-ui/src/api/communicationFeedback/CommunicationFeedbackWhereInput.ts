@@ -1,11 +1,11 @@
 import { StringNullableFilter } from "../../util/StringNullableFilter";
-import { CandidateListRelationFilter } from "../candidate/CandidateListRelationFilter";
+import { CandidateWhereUniqueInput } from "../candidate/CandidateWhereUniqueInput";
 import { StringFilter } from "../../util/StringFilter";
 import { InterviewFeedbackWhereUniqueInput } from "../interviewFeedback/InterviewFeedbackWhereUniqueInput";
 
 export type CommunicationFeedbackWhereInput = {
   abilityToArticulate?: StringNullableFilter;
-  candidates?: CandidateListRelationFilter;
+  candidates?: CandidateWhereUniqueInput;
   confidenceLevel?: StringNullableFilter;
   englishSpeakingSkills?: StringNullableFilter;
   id?: StringFilter;
