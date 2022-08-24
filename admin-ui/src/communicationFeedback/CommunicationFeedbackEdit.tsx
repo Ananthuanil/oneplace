@@ -16,7 +16,11 @@ export const CommunicationFeedbackEdit = (
   return (
     <Edit {...props}>
       <SimpleForm>
-        <TextInput label="ability_to_articulate" source="abilityToArticulate" />
+        <TextInput
+          label="ability_to_articulate"
+          multiline
+          source="abilityToArticulate"
+        />
         <ReferenceInput
           source="candidate.id"
           reference="Candidate"
@@ -24,9 +28,14 @@ export const CommunicationFeedbackEdit = (
         >
           <SelectInput optionText={CandidateTitle} />
         </ReferenceInput>
-        <TextInput label="confidence_level" source="confidenceLevel" />
+        <TextInput
+          label="confidence_level"
+          multiline
+          source="confidenceLevel"
+        />
         <TextInput
           label="english_speaking_skills"
+          multiline
           source="englishSpeakingSkills"
         />
         <ReferenceInput

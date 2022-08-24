@@ -10,7 +10,7 @@ import { OpportunityWhereUniqueInput } from "../opportunity/OpportunityWhereUniq
 import { UserWhereUniqueInput } from "../user/UserWhereUniqueInput";
 import { SkillListRelationFilter } from "../skill/SkillListRelationFilter";
 import { SkillSetListRelationFilter } from "../skillSet/SkillSetListRelationFilter";
-import { IntFilter } from "../../util/IntFilter";
+import { FloatFilter } from "../../util/FloatFilter";
 
 export type CandidateWhereInput = {
   additionalComments?: StringNullableFilter;
@@ -36,5 +36,5 @@ export type CandidateWhereInput = {
   skills?: SkillListRelationFilter;
   skillSets?: SkillSetListRelationFilter;
   source?: "Internal" | "Referral" | "ExternalRecruitmentPartner";
-  totalExperience?: IntFilter;
+  totalExperience?: FloatFilter;
 };

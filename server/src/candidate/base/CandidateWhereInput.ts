@@ -27,7 +27,7 @@ import { UserWhereUniqueInput } from "../../user/base/UserWhereUniqueInput";
 import { SkillListRelationFilter } from "../../skill/base/SkillListRelationFilter";
 import { SkillSetListRelationFilter } from "../../skillSet/base/SkillSetListRelationFilter";
 import { EnumCandidateSource } from "./EnumCandidateSource";
-import { IntFilter } from "../../util/IntFilter";
+import { FloatFilter } from "../../util/FloatFilter";
 @InputType()
 class CandidateWhereInput {
   @ApiProperty({
@@ -292,13 +292,13 @@ class CandidateWhereInput {
 
   @ApiProperty({
     required: false,
-    type: IntFilter,
+    type: FloatFilter,
   })
-  @Type(() => IntFilter)
+  @Type(() => FloatFilter)
   @IsOptional()
-  @Field(() => IntFilter, {
+  @Field(() => FloatFilter, {
     nullable: true,
   })
-  totalExperience?: IntFilter;
+  totalExperience?: FloatFilter;
 }
 export { CandidateWhereInput };
