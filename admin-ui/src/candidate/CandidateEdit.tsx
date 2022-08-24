@@ -120,11 +120,7 @@ export const CandidateEdit = (props: EditProps): React.ReactElement => {
           optionText="label"
           optionValue="value"
         />
-        <NumberInput
-          step={1}
-          label="Total Experience"
-          source="totalExperience"
-        />
+        <NumberInput label="Total Experience" source="totalExperience" />
       </SimpleForm>
     </Edit>
   );
