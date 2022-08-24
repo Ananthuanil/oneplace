@@ -41,6 +41,7 @@ export type UserUpdateInput = {
   interviews?: InterviewUpdateManyWithoutUsersInput;
   lastName?: string;
   mappedPerson?: OpportunityUpdateManyWithoutUsersInput;
+  notifications?: string | null;
   opportunities?: OpportunityUpdateManyWithoutUsersInput;
   panNumber?: string | null;
   password?: string;

@@ -56,6 +56,7 @@ export const UserShow = (props: ShowProps): React.ReactElement => {
         <TextField label="Image" source="image" />
         <TextField label="Image Link" source="imageLink" />
         <TextField label="Last Name" source="lastName" />
+        <TextField label="notifications" source="notifications" />
         <TextField label="Pan Number" source="panNumber" />
         <TextField label="Personal Email ID" source="personalEmailId" />
         <TextField

@@ -44,6 +44,7 @@ export type UserWhereInput = {
   interviews?: InterviewListRelationFilter;
   lastName?: StringFilter;
   mappedPerson?: OpportunityListRelationFilter;
+  notifications?: StringNullableFilter;
   opportunities?: OpportunityListRelationFilter;
   panNumber?: StringNullableFilter;
   personalEmailId?: StringNullableFilter;
