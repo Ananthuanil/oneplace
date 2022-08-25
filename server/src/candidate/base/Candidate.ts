@@ -11,7 +11,6 @@ https://docs.amplication.com/docs/how-to/custom-code
   */
 import { ObjectType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
-
 import {
   IsString,
   IsOptional,
@@ -20,9 +19,7 @@ import {
   IsNumber,
   IsDate,
   IsBoolean,
-  IsInt,
 } from "class-validator";
-
 import { EnumCandidateCategory } from "./EnumCandidateCategory";
 import { CommunicationFeedback } from "../../communicationFeedback/base/CommunicationFeedback";
 import { Type } from "class-transformer";
@@ -269,7 +266,7 @@ class Candidate {
     required: true,
     type: Number,
   })
-  @IsInt()
+  @IsNumber()
   @Field(() => Number)
   totalExperience!: number;
 

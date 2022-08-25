@@ -308,6 +308,17 @@ class UserWhereInput {
 
   @ApiProperty({
     required: false,
+    type: StringNullableFilter,
+  })
+  @Type(() => StringNullableFilter)
+  @IsOptional()
+  @Field(() => StringNullableFilter, {
+    nullable: true,
+  })
+  notifications?: StringNullableFilter;
+
+  @ApiProperty({
+    required: false,
     type: () => OpportunityListRelationFilter,
   })
   @ValidateNested()

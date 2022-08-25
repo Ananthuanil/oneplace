@@ -41,6 +41,7 @@ export type UserCreateInput = {
   interviews?: InterviewCreateNestedManyWithoutUsersInput;
   lastName: string;
   mappedPerson?: OpportunityCreateNestedManyWithoutUsersInput;
+  notifications?: string | null;
   opportunities?: OpportunityCreateNestedManyWithoutUsersInput;
   panNumber?: string | null;
   password: string;

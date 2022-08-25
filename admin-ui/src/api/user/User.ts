@@ -43,6 +43,7 @@ export type User = {
   interviews?: Array<Interview>;
   lastName: string;
   mappedPerson?: Array<Opportunity>;
+  notifications: string | null;
   opportunities?: Array<Opportunity>;
   panNumber: string | null;
   personalEmailId: string | null;

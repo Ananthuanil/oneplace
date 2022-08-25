@@ -22,6 +22,7 @@ export type UserOrderByInput = {
   image?: SortOrder;
   imageLink?: SortOrder;
   lastName?: SortOrder;
+  notifications?: SortOrder;
   panNumber?: SortOrder;
   password?: SortOrder;
   personalEmailId?: SortOrder;
