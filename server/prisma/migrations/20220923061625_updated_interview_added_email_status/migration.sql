@@ -6,3 +6,7 @@
 */
 -- AlterTable
 ALTER TABLE "Interview" ADD COLUMN     "emailStatus" BOOLEAN;
+
+-- AlterTable
+ALTER TABLE "User" DROP COLUMN "roles",
+ADD COLUMN     "roles" JSONB NOT NULL;
