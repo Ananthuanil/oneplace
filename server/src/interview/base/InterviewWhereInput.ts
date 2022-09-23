@@ -80,6 +80,17 @@ class InterviewWhereInput {
 
   @ApiProperty({
     required: false,
+    type: BooleanNullableFilter,
+  })
+  @Type(() => BooleanNullableFilter)
+  @IsOptional()
+  @Field(() => BooleanNullableFilter, {
+    nullable: true,
+  })
+  emailStatus?: BooleanNullableFilter;
+
+  @ApiProperty({
+    required: false,
     type: DateTimeNullableFilter,
   })
   @Type(() => DateTimeNullableFilter)

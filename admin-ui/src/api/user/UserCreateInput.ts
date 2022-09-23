@@ -5,6 +5,7 @@ import { InterviewCreateNestedManyWithoutUsersInput } from "./InterviewCreateNes
 import { OpportunityCreateNestedManyWithoutUsersInput } from "./OpportunityCreateNestedManyWithoutUsersInput";
 import { ProjectCreateNestedManyWithoutUsersInput } from "./ProjectCreateNestedManyWithoutUsersInput";
 import { ProjectInvolvementCreateNestedManyWithoutUsersInput } from "./ProjectInvolvementCreateNestedManyWithoutUsersInput";
+import { InputJsonValue } from "../../types";
 import { SkillLevelWhereUniqueInput } from "../skillLevel/SkillLevelWhereUniqueInput";
 import { SkillSetCreateNestedManyWithoutUsersInput } from "./SkillSetCreateNestedManyWithoutUsersInput";
 
@@ -50,7 +51,7 @@ export type UserCreateInput = {
   project?: ProjectCreateNestedManyWithoutUsersInput;
   projectInvolved?: ProjectInvolvementCreateNestedManyWithoutUsersInput;
   resumeLink?: string | null;
-  roles: Array<string>;
+  roles: InputJsonValue;
   skillLevel?: SkillLevelWhereUniqueInput | null;
   skillSets?: SkillSetCreateNestedManyWithoutUsersInput;
   toPerson?: AwardCreateNestedManyWithoutUsersInput;

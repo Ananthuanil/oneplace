@@ -5,6 +5,7 @@ import { InterviewUpdateManyWithoutUsersInput } from "./InterviewUpdateManyWitho
 import { OpportunityUpdateManyWithoutUsersInput } from "./OpportunityUpdateManyWithoutUsersInput";
 import { ProjectUpdateManyWithoutUsersInput } from "./ProjectUpdateManyWithoutUsersInput";
 import { ProjectInvolvementUpdateManyWithoutUsersInput } from "./ProjectInvolvementUpdateManyWithoutUsersInput";
+import { InputJsonValue } from "../../types";
 import { SkillLevelWhereUniqueInput } from "../skillLevel/SkillLevelWhereUniqueInput";
 import { SkillSetUpdateManyWithoutUsersInput } from "./SkillSetUpdateManyWithoutUsersInput";
 
@@ -50,7 +51,7 @@ export type UserUpdateInput = {
   project?: ProjectUpdateManyWithoutUsersInput;
   projectInvolved?: ProjectInvolvementUpdateManyWithoutUsersInput;
   resumeLink?: string | null;
-  roles?: Array<string>;
+  roles?: InputJsonValue;
   skillLevel?: SkillLevelWhereUniqueInput | null;
   skillSets?: SkillSetUpdateManyWithoutUsersInput;
   toPerson?: AwardUpdateManyWithoutUsersInput;

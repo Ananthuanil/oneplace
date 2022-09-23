@@ -5,6 +5,7 @@ import { Interview } from "../interview/Interview";
 import { Opportunity } from "../opportunity/Opportunity";
 import { Project } from "../project/Project";
 import { ProjectInvolvement } from "../projectInvolvement/ProjectInvolvement";
+import { JsonValue } from "type-fest";
 import { SkillLevel } from "../skillLevel/SkillLevel";
 import { SkillSet } from "../skillSet/SkillSet";
 
@@ -51,7 +52,7 @@ export type User = {
   project?: Array<Project>;
   projectInvolved?: Array<ProjectInvolvement>;
   resumeLink: string | null;
-  roles: Array<string>;
+  roles: JsonValue;
   skillLevel?: SkillLevel | null;
   skillSets?: Array<SkillSet>;
   toPerson?: Array<Award>;

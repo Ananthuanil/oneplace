@@ -17,6 +17,7 @@ import {
   ValidateNested,
   IsDate,
   IsEnum,
+  IsJSON,
 } from "class-validator";
 import { AwardCreateNestedManyWithoutUsersInput } from "./AwardCreateNestedManyWithoutUsersInput";
 import { Type } from "class-transformer";
@@ -28,6 +29,8 @@ import { InterviewCreateNestedManyWithoutUsersInput } from "./InterviewCreateNes
 import { OpportunityCreateNestedManyWithoutUsersInput } from "./OpportunityCreateNestedManyWithoutUsersInput";
 import { ProjectCreateNestedManyWithoutUsersInput } from "./ProjectCreateNestedManyWithoutUsersInput";
 import { ProjectInvolvementCreateNestedManyWithoutUsersInput } from "./ProjectInvolvementCreateNestedManyWithoutUsersInput";
+import { GraphQLJSONObject } from "graphql-type-json";
+import { InputJsonValue } from "../../types";
 import { SkillLevelWhereUniqueInput } from "../../skillLevel/base/SkillLevelWhereUniqueInput";
 import { SkillSetCreateNestedManyWithoutUsersInput } from "./SkillSetCreateNestedManyWithoutUsersInput";
 @InputType()
@@ -394,13 +397,10 @@ class UserCreateInput {
 
   @ApiProperty({
     required: true,
-    type: [String],
   })
-  @IsString({
-    each: true,
-  })
-  @Field(() => [String])
-  roles!: Array<string>;
+  @IsJSON()
+  @Field(() => GraphQLJSONObject)
+  roles!: InputJsonValue;
 
   @ApiProperty({
     required: false,

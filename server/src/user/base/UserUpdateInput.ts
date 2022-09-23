@@ -17,6 +17,7 @@ import {
   ValidateNested,
   IsDate,
   IsEnum,
+  IsJSON,
 } from "class-validator";
 import { AwardUpdateManyWithoutUsersInput } from "./AwardUpdateManyWithoutUsersInput";
 import { Type } from "class-transformer";
@@ -28,6 +29,8 @@ import { InterviewUpdateManyWithoutUsersInput } from "./InterviewUpdateManyWitho
 import { OpportunityUpdateManyWithoutUsersInput } from "./OpportunityUpdateManyWithoutUsersInput";
 import { ProjectUpdateManyWithoutUsersInput } from "./ProjectUpdateManyWithoutUsersInput";
 import { ProjectInvolvementUpdateManyWithoutUsersInput } from "./ProjectInvolvementUpdateManyWithoutUsersInput";
+import { GraphQLJSONObject } from "graphql-type-json";
+import { InputJsonValue } from "../../types";
 import { SkillLevelWhereUniqueInput } from "../../skillLevel/base/SkillLevelWhereUniqueInput";
 import { SkillSetUpdateManyWithoutUsersInput } from "./SkillSetUpdateManyWithoutUsersInput";
 @InputType()
@@ -403,16 +406,13 @@ class UserUpdateInput {
 
   @ApiProperty({
     required: false,
-    type: [String],
   })
-  @IsString({
-    each: true,
-  })
+  @IsJSON()
   @IsOptional()
-  @Field(() => [String], {
+  @Field(() => GraphQLJSONObject, {
     nullable: true,
   })
-  roles?: Array<string>;
+  roles?: InputJsonValue;
 
   @ApiProperty({
     required: false,

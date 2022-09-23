@@ -8,6 +8,7 @@ export type InterviewCreateInput = {
   closed?: boolean | null;
   currentStatus?: string | null;
   date?: Date | null;
+  emailStatus?: boolean | null;
   endDate?: Date | null;
   feedback?: InterviewFeedbackCreateNestedManyWithoutInterviewsInput;
   interviewer?: UserWhereUniqueInput | null;

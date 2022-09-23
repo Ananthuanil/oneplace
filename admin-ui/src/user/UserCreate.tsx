@@ -153,7 +153,7 @@ export const UserCreate = (props: CreateProps): React.ReactElement => {
         </ReferenceArrayInput>
         <TextInput label="Resume Link" source="resumeLink" />
         <SelectArrayInput
-          source="roles"
+          source="roles.roles"
           choices={ROLES_OPTIONS}
           optionText="label"
           optionValue="value"

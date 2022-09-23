@@ -12,6 +12,7 @@ export type InterviewWhereInput = {
   closed?: BooleanNullableFilter;
   currentStatus?: StringNullableFilter;
   date?: DateTimeNullableFilter;
+  emailStatus?: BooleanNullableFilter;
   endDate?: DateTimeNullableFilter;
   feedback?: InterviewFeedbackListRelationFilter;
   id?: StringFilter;

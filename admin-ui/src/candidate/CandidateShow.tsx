@@ -92,6 +92,7 @@ export const CandidateShow = (props: ShowProps): React.ReactElement => {
             <DateField source="createdAt" label="Created At" />
             <TextField label="Current Status" source="currentStatus" />
             <TextField label="Date" source="date" />
+            <BooleanField label="Email Status" source="emailStatus" />
             <TextField label="End Date" source="endDate" />
             <TextField label="ID" source="id" />
             <ReferenceField
