@@ -32,6 +32,7 @@ export const InterviewEdit = (props: EditProps): React.ReactElement => {
         <BooleanInput label="closed" source="closed" />
         <TextInput label="Current Status" source="currentStatus" />
         <DateInput label="Date" source="date" />
+        <BooleanInput label="Email Status" source="emailStatus" />
         <DateInput label="End Date" source="endDate" />
         <ReferenceArrayInput
           source="feedback"

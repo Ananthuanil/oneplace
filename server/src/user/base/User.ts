@@ -17,6 +17,7 @@ import {
   ValidateNested,
   IsDate,
   IsEnum,
+  IsJSON,
 } from "class-validator";
 import { Award } from "../../award/base/Award";
 import { Type } from "class-transformer";
@@ -28,6 +29,8 @@ import { Interview } from "../../interview/base/Interview";
 import { Opportunity } from "../../opportunity/base/Opportunity";
 import { Project } from "../../project/base/Project";
 import { ProjectInvolvement } from "../../projectInvolvement/base/ProjectInvolvement";
+import { GraphQLJSONObject } from "graphql-type-json";
+import { JsonValue } from "type-fest";
 import { SkillLevel } from "../../skillLevel/base/SkillLevel";
 import { SkillSet } from "../../skillSet/base/SkillSet";
 @ObjectType()
@@ -378,13 +381,10 @@ class User {
 
   @ApiProperty({
     required: true,
-    type: [String],
   })
-  @IsString({
-    each: true,
-  })
-  @Field(() => [String])
-  roles!: Array<string>;
+  @IsJSON()
+  @Field(() => GraphQLJSONObject)
+  roles!: JsonValue;
 
   @ApiProperty({
     required: false,

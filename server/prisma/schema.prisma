@@ -1,6 +1,6 @@
 datasource postgres {
   provider = "postgresql"
-  url      = env("POSTGRESQL_URL")
+  url      = env("DB_URL")
 }
 
 generator client {
@@ -43,7 +43,7 @@ model User {
   project                Project[]
   projectInvolved        ProjectInvolvement[]
   resumeLink             String?
-  roles                  String[]
+  roles                  Json
   skillLevel             SkillLevel?          @relation(fields: [skillLevelId], references: [id])
   skillLevelId           String?
   skillSets              SkillSet[]
@@ -148,6 +148,7 @@ model Interview {
   createdAt          DateTime            @default(now())
   currentStatus      String?
   date               DateTime?
+  emailStatus        Boolean?
   endDate            DateTime?
   feedback           InterviewFeedback[]
   id                 String              @id @default(cuid())
