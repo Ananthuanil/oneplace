@@ -21,7 +21,7 @@ WORKDIR /app/admin-ui
 COPY . .
 
 # Install dependencies
-RUN npm ci --loglevel=$NPM_LOG_LEVEL
+RUN npm ci
 
 RUN npm i emojis-list
 
