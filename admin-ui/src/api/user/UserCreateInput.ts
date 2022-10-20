@@ -1,6 +1,7 @@
 import { AwardCreateNestedManyWithoutUsersInput } from "./AwardCreateNestedManyWithoutUsersInput";
 import { CandidateCreateNestedManyWithoutUsersInput } from "./CandidateCreateNestedManyWithoutUsersInput";
 import { CommunityWhereUniqueInput } from "../community/CommunityWhereUniqueInput";
+import { EmployeeFeedbackCreateNestedManyWithoutUsersInput } from "./EmployeeFeedbackCreateNestedManyWithoutUsersInput";
 import { InterviewCreateNestedManyWithoutUsersInput } from "./InterviewCreateNestedManyWithoutUsersInput";
 import { OpportunityCreateNestedManyWithoutUsersInput } from "./OpportunityCreateNestedManyWithoutUsersInput";
 import { ProjectCreateNestedManyWithoutUsersInput } from "./ProjectCreateNestedManyWithoutUsersInput";
@@ -33,6 +34,7 @@ export type UserCreateInput = {
   dob?: Date | null;
   email?: string | null;
   emergencyContactNumber?: string | null;
+  employeeFeedbacks?: EmployeeFeedbackCreateNestedManyWithoutUsersInput;
   firstName: string;
   folderLink?: string | null;
   fwExperience?: string | null;

@@ -65,6 +65,10 @@ import { RecruitmentPartnerList } from "./recruitmentPartner/RecruitmentPartnerL
 import { RecruitmentPartnerCreate } from "./recruitmentPartner/RecruitmentPartnerCreate";
 import { RecruitmentPartnerEdit } from "./recruitmentPartner/RecruitmentPartnerEdit";
 import { RecruitmentPartnerShow } from "./recruitmentPartner/RecruitmentPartnerShow";
+import { EmployeeFeedbackList } from "./employeeFeedback/EmployeeFeedbackList";
+import { EmployeeFeedbackCreate } from "./employeeFeedback/EmployeeFeedbackCreate";
+import { EmployeeFeedbackEdit } from "./employeeFeedback/EmployeeFeedbackEdit";
+import { EmployeeFeedbackShow } from "./employeeFeedback/EmployeeFeedbackShow";
 import { jwtAuthProvider } from "./auth-provider/ra-auth-jwt";
 
 const App = (): React.ReactElement => {
@@ -195,6 +199,13 @@ const App = (): React.ReactElement => {
           edit={RecruitmentPartnerEdit}
           create={RecruitmentPartnerCreate}
           show={RecruitmentPartnerShow}
+        />
+        <Resource
+          name="EmployeeFeedback"
+          list={EmployeeFeedbackList}
+          edit={EmployeeFeedbackEdit}
+          create={EmployeeFeedbackCreate}
+          show={EmployeeFeedbackShow}
         />
       </Admin>
     </div>

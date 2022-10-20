@@ -1,6 +1,7 @@
 import { Award } from "../award/Award";
 import { Candidate } from "../candidate/Candidate";
 import { Community } from "../community/Community";
+import { EmployeeFeedback } from "../employeeFeedback/EmployeeFeedback";
 import { Interview } from "../interview/Interview";
 import { Opportunity } from "../opportunity/Opportunity";
 import { Project } from "../project/Project";
@@ -34,6 +35,7 @@ export type User = {
   dob: Date | null;
   email: string | null;
   emergencyContactNumber: string | null;
+  employeeFeedbacks?: Array<EmployeeFeedback>;
   firstName: string;
   folderLink: string | null;
   fwExperience: string | null;

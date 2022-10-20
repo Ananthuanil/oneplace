@@ -1,6 +1,7 @@
 import { AwardUpdateManyWithoutUsersInput } from "./AwardUpdateManyWithoutUsersInput";
 import { CandidateUpdateManyWithoutUsersInput } from "./CandidateUpdateManyWithoutUsersInput";
 import { CommunityWhereUniqueInput } from "../community/CommunityWhereUniqueInput";
+import { EmployeeFeedbackUpdateManyWithoutUsersInput } from "./EmployeeFeedbackUpdateManyWithoutUsersInput";
 import { InterviewUpdateManyWithoutUsersInput } from "./InterviewUpdateManyWithoutUsersInput";
 import { OpportunityUpdateManyWithoutUsersInput } from "./OpportunityUpdateManyWithoutUsersInput";
 import { ProjectUpdateManyWithoutUsersInput } from "./ProjectUpdateManyWithoutUsersInput";
@@ -33,6 +34,7 @@ export type UserUpdateInput = {
   dob?: Date | null;
   email?: string | null;
   emergencyContactNumber?: string | null;
+  employeeFeedbacks?: EmployeeFeedbackUpdateManyWithoutUsersInput;
   firstName?: string;
   folderLink?: string | null;
   fwExperience?: string | null;

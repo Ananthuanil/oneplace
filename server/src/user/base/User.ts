@@ -24,12 +24,13 @@ import { Type } from "class-transformer";
 import { Candidate } from "../../candidate/base/Candidate";
 import { Community } from "../../community/base/Community";
 import { EnumUserDesignation } from "./EnumUserDesignation";
+import { EmployeeFeedback } from "../../employeeFeedback/base/EmployeeFeedback";
 import { EnumUserGender } from "./EnumUserGender";
 import { Interview } from "../../interview/base/Interview";
 import { Opportunity } from "../../opportunity/base/Opportunity";
 import { Project } from "../../project/base/Project";
 import { ProjectInvolvement } from "../../projectInvolvement/base/ProjectInvolvement";
-import { GraphQLJSONObject } from "graphql-type-json";
+import { GraphQLJSON } from "graphql-type-json";
 import { JsonValue } from "type-fest";
 import { SkillLevel } from "../../skillLevel/base/SkillLevel";
 import { SkillSet } from "../../skillSet/base/SkillSet";
@@ -199,6 +200,15 @@ class User {
     nullable: true,
   })
   emergencyContactNumber!: string | null;
+
+  @ApiProperty({
+    required: false,
+    type: () => [EmployeeFeedback],
+  })
+  @ValidateNested()
+  @Type(() => EmployeeFeedback)
+  @IsOptional()
+  employeeFeedbacks?: Array<EmployeeFeedback>;
 
   @ApiProperty({
     required: true,
@@ -383,7 +393,7 @@ class User {
     required: true,
   })
   @IsJSON()
-  @Field(() => GraphQLJSONObject)
+  @Field(() => GraphQLJSON)
   roles!: JsonValue;
 
   @ApiProperty({
