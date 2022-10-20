@@ -16,6 +16,7 @@ import {
   User,
   Award,
   Candidate,
+  EmployeeFeedback,
   Interview,
   Opportunity,
   Project,
@@ -108,6 +109,17 @@ export class UserServiceBase {
       .candidates(args);
   }
 
+  async findEmployeeFeedbacks(
+    parentId: string,
+    args: Prisma.EmployeeFeedbackFindManyArgs
+  ): Promise<EmployeeFeedback[]> {
+    return this.prisma.user
+      .findUnique({
+        where: { id: parentId },
+      })
+      .employeeFeedbacks(args);
+  }
+
   async findInterviews(
     parentId: string,
     args: Prisma.InterviewFindManyArgs
@@ -161,6 +173,17 @@ export class UserServiceBase {
         where: { id: parentId },
       })
       .projectInvolved(args);
+  }
+
+  async findReviewer(
+    parentId: string,
+    args: Prisma.EmployeeFeedbackFindManyArgs
+  ): Promise<EmployeeFeedback[]> {
+    return this.prisma.user
+      .findUnique({
+        where: { id: parentId },
+      })
+      .reviewer(args);
   }
 
   async findSkillSets(

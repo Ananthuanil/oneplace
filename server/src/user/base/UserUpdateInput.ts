@@ -24,12 +24,13 @@ import { Type } from "class-transformer";
 import { CandidateUpdateManyWithoutUsersInput } from "./CandidateUpdateManyWithoutUsersInput";
 import { CommunityWhereUniqueInput } from "../../community/base/CommunityWhereUniqueInput";
 import { EnumUserDesignation } from "./EnumUserDesignation";
+import { EmployeeFeedbackUpdateManyWithoutUsersInput } from "./EmployeeFeedbackUpdateManyWithoutUsersInput";
 import { EnumUserGender } from "./EnumUserGender";
 import { InterviewUpdateManyWithoutUsersInput } from "./InterviewUpdateManyWithoutUsersInput";
 import { OpportunityUpdateManyWithoutUsersInput } from "./OpportunityUpdateManyWithoutUsersInput";
 import { ProjectUpdateManyWithoutUsersInput } from "./ProjectUpdateManyWithoutUsersInput";
 import { ProjectInvolvementUpdateManyWithoutUsersInput } from "./ProjectInvolvementUpdateManyWithoutUsersInput";
-import { GraphQLJSONObject } from "graphql-type-json";
+import { GraphQLJSON } from "graphql-type-json";
 import { InputJsonValue } from "../../types";
 import { SkillLevelWhereUniqueInput } from "../../skillLevel/base/SkillLevelWhereUniqueInput";
 import { SkillSetUpdateManyWithoutUsersInput } from "./SkillSetUpdateManyWithoutUsersInput";
@@ -200,6 +201,18 @@ class UserUpdateInput {
     nullable: true,
   })
   emergencyContactNumber?: string | null;
+
+  @ApiProperty({
+    required: false,
+    type: () => EmployeeFeedbackUpdateManyWithoutUsersInput,
+  })
+  @ValidateNested()
+  @Type(() => EmployeeFeedbackUpdateManyWithoutUsersInput)
+  @IsOptional()
+  @Field(() => EmployeeFeedbackUpdateManyWithoutUsersInput, {
+    nullable: true,
+  })
+  employeeFeedbacks?: EmployeeFeedbackUpdateManyWithoutUsersInput;
 
   @ApiProperty({
     required: false,
@@ -406,10 +419,22 @@ class UserUpdateInput {
 
   @ApiProperty({
     required: false,
+    type: () => EmployeeFeedbackUpdateManyWithoutUsersInput,
+  })
+  @ValidateNested()
+  @Type(() => EmployeeFeedbackUpdateManyWithoutUsersInput)
+  @IsOptional()
+  @Field(() => EmployeeFeedbackUpdateManyWithoutUsersInput, {
+    nullable: true,
+  })
+  reviewer?: EmployeeFeedbackUpdateManyWithoutUsersInput;
+
+  @ApiProperty({
+    required: false,
   })
   @IsJSON()
   @IsOptional()
-  @Field(() => GraphQLJSONObject, {
+  @Field(() => GraphQLJSON, {
     nullable: true,
   })
   roles?: InputJsonValue;

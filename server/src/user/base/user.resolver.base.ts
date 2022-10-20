@@ -18,6 +18,7 @@ import * as gqlACGuard from "../../auth/gqlAC.guard";
 import { isRecordNotFoundError } from "../../prisma.util";
 import { MetaQueryPayload } from "../../util/MetaQueryPayload";
 import { Public } from "../../decorators/public.decorator";
+import { AclFilterResponseInterceptor } from "../../interceptors/aclFilterResponse.interceptor";
 import { CreateUserArgs } from "./CreateUserArgs";
 import { UpdateUserArgs } from "./UpdateUserArgs";
 import { DeleteUserArgs } from "./DeleteUserArgs";
@@ -28,6 +29,8 @@ import { AwardFindManyArgs } from "../../award/base/AwardFindManyArgs";
 import { Award } from "../../award/base/Award";
 import { CandidateFindManyArgs } from "../../candidate/base/CandidateFindManyArgs";
 import { Candidate } from "../../candidate/base/Candidate";
+import { EmployeeFeedbackFindManyArgs } from "../../employeeFeedback/base/EmployeeFeedbackFindManyArgs";
+import { EmployeeFeedback } from "../../employeeFeedback/base/EmployeeFeedback";
 import { InterviewFindManyArgs } from "../../interview/base/InterviewFindManyArgs";
 import { Interview } from "../../interview/base/Interview";
 import { OpportunityFindManyArgs } from "../../opportunity/base/OpportunityFindManyArgs";
@@ -181,6 +184,26 @@ export class UserResolverBase {
     return results;
   }
 
+  @common.UseInterceptors(AclFilterResponseInterceptor)
+  @graphql.ResolveField(() => [EmployeeFeedback])
+  @nestAccessControl.UseRoles({
+    resource: "EmployeeFeedback",
+    action: "read",
+    possession: "any",
+  })
+  async employeeFeedbacks(
+    @graphql.Parent() parent: User,
+    @graphql.Args() args: EmployeeFeedbackFindManyArgs
+  ): Promise<EmployeeFeedback[]> {
+    const results = await this.service.findEmployeeFeedbacks(parent.id, args);
+
+    if (!results) {
+      return [];
+    }
+
+    return results;
+  }
+
   @Public()
   @graphql.ResolveField(() => [Interview])
   async interviews(
@@ -248,6 +271,26 @@ export class UserResolverBase {
     @graphql.Args() args: ProjectInvolvementFindManyArgs
   ): Promise<ProjectInvolvement[]> {
     const results = await this.service.findProjectInvolved(parent.id, args);
+
+    if (!results) {
+      return [];
+    }
+
+    return results;
+  }
+
+  @common.UseInterceptors(AclFilterResponseInterceptor)
+  @graphql.ResolveField(() => [EmployeeFeedback])
+  @nestAccessControl.UseRoles({
+    resource: "EmployeeFeedback",
+    action: "read",
+    possession: "any",
+  })
+  async reviewer(
+    @graphql.Parent() parent: User,
+    @graphql.Args() args: EmployeeFeedbackFindManyArgs
+  ): Promise<EmployeeFeedback[]> {
+    const results = await this.service.findReviewer(parent.id, args);
 
     if (!results) {
       return [];
