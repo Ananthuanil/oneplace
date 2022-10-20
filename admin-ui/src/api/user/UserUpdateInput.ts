@@ -53,6 +53,7 @@ export type UserUpdateInput = {
   project?: ProjectUpdateManyWithoutUsersInput;
   projectInvolved?: ProjectInvolvementUpdateManyWithoutUsersInput;
   resumeLink?: string | null;
+  reviewer?: EmployeeFeedbackUpdateManyWithoutUsersInput;
   roles?: InputJsonValue;
   skillLevel?: SkillLevelWhereUniqueInput | null;
   skillSets?: SkillSetUpdateManyWithoutUsersInput;

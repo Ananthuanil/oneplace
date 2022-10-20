@@ -85,5 +85,17 @@ class EmployeeFeedbackWhereInput {
     nullable: true,
   })
   remark?: StringFilter;
+
+  @ApiProperty({
+    required: false,
+    type: () => UserWhereUniqueInput,
+  })
+  @ValidateNested()
+  @Type(() => UserWhereUniqueInput)
+  @IsOptional()
+  @Field(() => UserWhereUniqueInput, {
+    nullable: true,
+  })
+  reviewer?: UserWhereUniqueInput;
 }
 export { EmployeeFeedbackWhereInput };

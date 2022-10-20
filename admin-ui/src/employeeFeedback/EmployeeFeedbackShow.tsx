@@ -22,6 +22,9 @@ export const EmployeeFeedbackShow = (props: ShowProps): React.ReactElement => {
         <TextField label="ID" source="id" />
         <TextField label="nature " source="nature" />
         <TextField label="remark " source="remark" />
+        <ReferenceField label="reviewer" source="user.id" reference="User">
+          <TextField source={USER_TITLE_FIELD} />
+        </ReferenceField>
         <DateField source="updatedAt" label="Updated At" />
       </SimpleShowLayout>
     </Show>

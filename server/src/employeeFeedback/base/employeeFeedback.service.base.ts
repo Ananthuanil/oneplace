@@ -54,4 +54,12 @@ export class EmployeeFeedbackServiceBase {
       })
       .employee();
   }
+
+  async getReviewer(parentId: string): Promise<User | null> {
+    return this.prisma.employeeFeedback
+      .findUnique({
+        where: { id: parentId },
+      })
+      .reviewer();
+  }
 }

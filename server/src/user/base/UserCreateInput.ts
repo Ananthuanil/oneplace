@@ -409,6 +409,18 @@ class UserCreateInput {
   resumeLink?: string | null;
 
   @ApiProperty({
+    required: false,
+    type: () => EmployeeFeedbackCreateNestedManyWithoutUsersInput,
+  })
+  @ValidateNested()
+  @Type(() => EmployeeFeedbackCreateNestedManyWithoutUsersInput)
+  @IsOptional()
+  @Field(() => EmployeeFeedbackCreateNestedManyWithoutUsersInput, {
+    nullable: true,
+  })
+  reviewer?: EmployeeFeedbackCreateNestedManyWithoutUsersInput;
+
+  @ApiProperty({
     required: true,
   })
   @IsJSON()

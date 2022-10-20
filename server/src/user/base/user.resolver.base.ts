@@ -279,6 +279,26 @@ export class UserResolverBase {
     return results;
   }
 
+  @common.UseInterceptors(AclFilterResponseInterceptor)
+  @graphql.ResolveField(() => [EmployeeFeedback])
+  @nestAccessControl.UseRoles({
+    resource: "EmployeeFeedback",
+    action: "read",
+    possession: "any",
+  })
+  async reviewer(
+    @graphql.Parent() parent: User,
+    @graphql.Args() args: EmployeeFeedbackFindManyArgs
+  ): Promise<EmployeeFeedback[]> {
+    const results = await this.service.findReviewer(parent.id, args);
+
+    if (!results) {
+      return [];
+    }
+
+    return results;
+  }
+
   @Public()
   @graphql.ResolveField(() => [SkillSet])
   async skillSets(

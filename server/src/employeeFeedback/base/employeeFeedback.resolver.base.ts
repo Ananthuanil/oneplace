@@ -104,6 +104,10 @@ export class EmployeeFeedbackResolverBase {
         employee: {
           connect: args.data.employee,
         },
+
+        reviewer: {
+          connect: args.data.reviewer,
+        },
       },
     });
   }
@@ -126,6 +130,10 @@ export class EmployeeFeedbackResolverBase {
 
           employee: {
             connect: args.data.employee,
+          },
+
+          reviewer: {
+            connect: args.data.reviewer,
           },
         },
       });
@@ -166,6 +174,19 @@ export class EmployeeFeedbackResolverBase {
     @graphql.Parent() parent: EmployeeFeedback
   ): Promise<User | null> {
     const result = await this.service.getEmployee(parent.id);
+
+    if (!result) {
+      return null;
+    }
+    return result;
+  }
+
+  @Public()
+  @graphql.ResolveField(() => User, { nullable: true })
+  async reviewer(
+    @graphql.Parent() parent: EmployeeFeedback
+  ): Promise<User | null> {
+    const result = await this.service.getReviewer(parent.id);
 
     if (!result) {
       return null;

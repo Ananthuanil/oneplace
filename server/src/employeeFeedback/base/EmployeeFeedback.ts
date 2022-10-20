@@ -77,6 +77,14 @@ class EmployeeFeedback {
 
   @ApiProperty({
     required: true,
+    type: () => User,
+  })
+  @ValidateNested()
+  @Type(() => User)
+  reviewer?: User;
+
+  @ApiProperty({
+    required: true,
   })
   @IsDate()
   @Type(() => Date)

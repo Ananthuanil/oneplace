@@ -53,6 +53,7 @@ export type UserCreateInput = {
   project?: ProjectCreateNestedManyWithoutUsersInput;
   projectInvolved?: ProjectInvolvementCreateNestedManyWithoutUsersInput;
   resumeLink?: string | null;
+  reviewer?: EmployeeFeedbackCreateNestedManyWithoutUsersInput;
   roles: InputJsonValue;
   skillLevel?: SkillLevelWhereUniqueInput | null;
   skillSets?: SkillSetCreateNestedManyWithoutUsersInput;

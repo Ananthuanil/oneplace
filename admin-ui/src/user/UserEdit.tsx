@@ -161,6 +161,14 @@ export const UserEdit = (props: EditProps): React.ReactElement => {
           <SelectArrayInput optionText={ProjectInvolvementTitle} />
         </ReferenceArrayInput>
         <TextInput label="Resume Link" source="resumeLink" />
+        <ReferenceArrayInput
+          source="reviewer"
+          reference="EmployeeFeedback"
+          parse={(value: any) => value && value.map((v: any) => ({ id: v }))}
+          format={(value: any) => value && value.map((v: any) => v.id)}
+        >
+          <SelectArrayInput optionText={EmployeeFeedbackTitle} />
+        </ReferenceArrayInput>
         <SelectArrayInput
           source="roles"
           choices={ROLES_OPTIONS}

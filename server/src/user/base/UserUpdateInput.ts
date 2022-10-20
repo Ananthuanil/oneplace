@@ -419,6 +419,18 @@ class UserUpdateInput {
 
   @ApiProperty({
     required: false,
+    type: () => EmployeeFeedbackUpdateManyWithoutUsersInput,
+  })
+  @ValidateNested()
+  @Type(() => EmployeeFeedbackUpdateManyWithoutUsersInput)
+  @IsOptional()
+  @Field(() => EmployeeFeedbackUpdateManyWithoutUsersInput, {
+    nullable: true,
+  })
+  reviewer?: EmployeeFeedbackUpdateManyWithoutUsersInput;
+
+  @ApiProperty({
+    required: false,
   })
   @IsJSON()
   @IsOptional()

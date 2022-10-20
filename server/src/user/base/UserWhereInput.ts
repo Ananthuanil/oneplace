@@ -412,6 +412,18 @@ class UserWhereInput {
 
   @ApiProperty({
     required: false,
+    type: () => EmployeeFeedbackListRelationFilter,
+  })
+  @ValidateNested()
+  @Type(() => EmployeeFeedbackListRelationFilter)
+  @IsOptional()
+  @Field(() => EmployeeFeedbackListRelationFilter, {
+    nullable: true,
+  })
+  reviewer?: EmployeeFeedbackListRelationFilter;
+
+  @ApiProperty({
+    required: false,
     type: () => SkillLevelWhereUniqueInput,
   })
   @ValidateNested()

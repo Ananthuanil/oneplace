@@ -175,6 +175,17 @@ export class UserServiceBase {
       .projectInvolved(args);
   }
 
+  async findReviewer(
+    parentId: string,
+    args: Prisma.EmployeeFeedbackFindManyArgs
+  ): Promise<EmployeeFeedback[]> {
+    return this.prisma.user
+      .findUnique({
+        where: { id: parentId },
+      })
+      .reviewer(args);
+  }
+
   async findSkillSets(
     parentId: string,
     args: Prisma.SkillSetFindManyArgs

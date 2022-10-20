@@ -9,4 +9,5 @@ export type EmployeeFeedbackWhereInput = {
   id?: StringFilter;
   nature?: "Positive" | "Negative" | "Neutral";
   remark?: StringFilter;
+  reviewer?: UserWhereUniqueInput;
 };

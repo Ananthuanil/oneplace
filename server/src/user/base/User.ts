@@ -390,6 +390,15 @@ class User {
   resumeLink!: string | null;
 
   @ApiProperty({
+    required: false,
+    type: () => [EmployeeFeedback],
+  })
+  @ValidateNested()
+  @Type(() => EmployeeFeedback)
+  @IsOptional()
+  reviewer?: Array<EmployeeFeedback>;
+
+  @ApiProperty({
     required: true,
   })
   @IsJSON()

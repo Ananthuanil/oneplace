@@ -8,5 +8,6 @@ export type EmployeeFeedback = {
   id: string;
   nature?: "Positive" | "Negative" | "Neutral";
   remark: string;
+  reviewer?: User;
   updatedAt: Date;
 };

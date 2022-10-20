@@ -57,5 +57,14 @@ class EmployeeFeedbackCreateInput {
   @IsString()
   @Field(() => String)
   remark!: string;
+
+  @ApiProperty({
+    required: true,
+    type: () => UserWhereUniqueInput,
+  })
+  @ValidateNested()
+  @Type(() => UserWhereUniqueInput)
+  @Field(() => UserWhereUniqueInput)
+  reviewer!: UserWhereUniqueInput;
 }
 export { EmployeeFeedbackCreateInput };

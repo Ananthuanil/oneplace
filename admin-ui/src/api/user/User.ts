@@ -54,6 +54,7 @@ export type User = {
   project?: Array<Project>;
   projectInvolved?: Array<ProjectInvolvement>;
   resumeLink: string | null;
+  reviewer?: Array<EmployeeFeedback>;
   roles: JsonValue;
   skillLevel?: SkillLevel | null;
   skillSets?: Array<SkillSet>;
