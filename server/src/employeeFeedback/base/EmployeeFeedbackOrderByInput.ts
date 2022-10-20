@@ -88,6 +88,7 @@ class EmployeeFeedbackOrderByInput {
   @Field(() => SortOrder, {
     nullable: true,
   })
+
   reviewerId?: SortOrder;
 
   @ApiProperty({
