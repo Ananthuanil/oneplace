@@ -16,6 +16,7 @@ import {
   User,
   Award,
   Candidate,
+  EmployeeFeedback,
   Interview,
   Opportunity,
   Project,
@@ -106,6 +107,17 @@ export class UserServiceBase {
         where: { id: parentId },
       })
       .candidates(args);
+  }
+
+  async findEmployeeFeedbacks(
+    parentId: string,
+    args: Prisma.EmployeeFeedbackFindManyArgs
+  ): Promise<EmployeeFeedback[]> {
+    return this.prisma.user
+      .findUnique({
+        where: { id: parentId },
+      })
+      .employeeFeedbacks(args);
   }
 
   async findInterviews(

@@ -24,12 +24,13 @@ import { Type } from "class-transformer";
 import { CandidateCreateNestedManyWithoutUsersInput } from "./CandidateCreateNestedManyWithoutUsersInput";
 import { CommunityWhereUniqueInput } from "../../community/base/CommunityWhereUniqueInput";
 import { EnumUserDesignation } from "./EnumUserDesignation";
+import { EmployeeFeedbackCreateNestedManyWithoutUsersInput } from "./EmployeeFeedbackCreateNestedManyWithoutUsersInput";
 import { EnumUserGender } from "./EnumUserGender";
 import { InterviewCreateNestedManyWithoutUsersInput } from "./InterviewCreateNestedManyWithoutUsersInput";
 import { OpportunityCreateNestedManyWithoutUsersInput } from "./OpportunityCreateNestedManyWithoutUsersInput";
 import { ProjectCreateNestedManyWithoutUsersInput } from "./ProjectCreateNestedManyWithoutUsersInput";
 import { ProjectInvolvementCreateNestedManyWithoutUsersInput } from "./ProjectInvolvementCreateNestedManyWithoutUsersInput";
-import { GraphQLJSONObject } from "graphql-type-json";
+import { GraphQLJSON } from "graphql-type-json";
 import { InputJsonValue } from "../../types";
 import { SkillLevelWhereUniqueInput } from "../../skillLevel/base/SkillLevelWhereUniqueInput";
 import { SkillSetCreateNestedManyWithoutUsersInput } from "./SkillSetCreateNestedManyWithoutUsersInput";
@@ -200,6 +201,18 @@ class UserCreateInput {
     nullable: true,
   })
   emergencyContactNumber?: string | null;
+
+  @ApiProperty({
+    required: false,
+    type: () => EmployeeFeedbackCreateNestedManyWithoutUsersInput,
+  })
+  @ValidateNested()
+  @Type(() => EmployeeFeedbackCreateNestedManyWithoutUsersInput)
+  @IsOptional()
+  @Field(() => EmployeeFeedbackCreateNestedManyWithoutUsersInput, {
+    nullable: true,
+  })
+  employeeFeedbacks?: EmployeeFeedbackCreateNestedManyWithoutUsersInput;
 
   @ApiProperty({
     required: true,
@@ -399,7 +412,7 @@ class UserCreateInput {
     required: true,
   })
   @IsJSON()
-  @Field(() => GraphQLJSONObject)
+  @Field(() => GraphQLJSON)
   roles!: InputJsonValue;
 
   @ApiProperty({

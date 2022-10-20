@@ -24,6 +24,7 @@ model User {
   dob                    DateTime?
   email                  String?
   emergencyContactNumber String?
+  employeeFeedbacks      EmployeeFeedback[]
   firstName              String
   folderLink             String?
   fwExperience           String?
@@ -264,6 +265,18 @@ model RecruitmentPartner {
   updatedAt  DateTime    @updatedAt
 }
 
+model EmployeeFeedback {
+  area       String
+  createdAt  DateTime                   @default(now())
+  date       DateTime
+  employee   User                       @relation(fields: [employeeId], references: [id])
+  employeeId String
+  id         String                     @id @default(cuid())
+  nature     EnumEmployeeFeedbackNature
+  remark     String
+  updatedAt  DateTime                   @updatedAt
+}
+
 enum EnumUserDesignation {
   Joe
   Engineer
@@ -307,4 +320,10 @@ enum EnumOpportunityProcurementStatus {
 enum EnumOpportunitySource {
   New
   BackFill
+}
+
+enum EnumEmployeeFeedbackNature {
+  Positive
+  Negative
+  Neutral
 }

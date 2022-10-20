@@ -3,6 +3,7 @@ import { AwardListRelationFilter } from "../award/AwardListRelationFilter";
 import { CandidateListRelationFilter } from "../candidate/CandidateListRelationFilter";
 import { DateTimeNullableFilter } from "../../util/DateTimeNullableFilter";
 import { CommunityWhereUniqueInput } from "../community/CommunityWhereUniqueInput";
+import { EmployeeFeedbackListRelationFilter } from "../employeeFeedback/EmployeeFeedbackListRelationFilter";
 import { StringFilter } from "../../util/StringFilter";
 import { InterviewListRelationFilter } from "../interview/InterviewListRelationFilter";
 import { OpportunityListRelationFilter } from "../opportunity/OpportunityListRelationFilter";
@@ -34,6 +35,7 @@ export type UserWhereInput = {
   dob?: DateTimeNullableFilter;
   email?: StringNullableFilter;
   emergencyContactNumber?: StringNullableFilter;
+  employeeFeedbacks?: EmployeeFeedbackListRelationFilter;
   firstName?: StringFilter;
   folderLink?: StringNullableFilter;
   fwExperience?: StringNullableFilter;

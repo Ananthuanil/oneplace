@@ -1,1 +1,242 @@
-[]
+[
+  {
+    "role": "hr",
+    "resource": "EmployeeFeedback",
+    "action": "read:own",
+    "attributes": "*"
+  },
+  {
+    "role": "communityLead",
+    "resource": "EmployeeFeedback",
+    "action": "read:own",
+    "attributes": "*"
+  },
+  {
+    "role": "tagMember",
+    "resource": "EmployeeFeedback",
+    "action": "read:own",
+    "attributes": "*"
+  },
+  {
+    "role": "learningDevelopmentHead",
+    "resource": "EmployeeFeedback",
+    "action": "read:own",
+    "attributes": "*"
+  },
+  {
+    "role": "accountOwner",
+    "resource": "EmployeeFeedback",
+    "action": "read:own",
+    "attributes": "*"
+  },
+  {
+    "role": "superAdmin",
+    "resource": "EmployeeFeedback",
+    "action": "read:own",
+    "attributes": "*"
+  },
+  {
+    "role": "associate",
+    "resource": "EmployeeFeedback",
+    "action": "read:own",
+    "attributes": "*"
+  },
+  {
+    "role": "user",
+    "resource": "EmployeeFeedback",
+    "action": "read:own",
+    "attributes": "*"
+  },
+  {
+    "role": "hr",
+    "resource": "EmployeeFeedback",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "communityLead",
+    "resource": "EmployeeFeedback",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "tagMember",
+    "resource": "EmployeeFeedback",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "learningDevelopmentHead",
+    "resource": "EmployeeFeedback",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "accountOwner",
+    "resource": "EmployeeFeedback",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "superAdmin",
+    "resource": "EmployeeFeedback",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "associate",
+    "resource": "EmployeeFeedback",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "user",
+    "resource": "EmployeeFeedback",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "hr",
+    "resource": "EmployeeFeedback",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "communityLead",
+    "resource": "EmployeeFeedback",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "tagMember",
+    "resource": "EmployeeFeedback",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "learningDevelopmentHead",
+    "resource": "EmployeeFeedback",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "accountOwner",
+    "resource": "EmployeeFeedback",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "superAdmin",
+    "resource": "EmployeeFeedback",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "associate",
+    "resource": "EmployeeFeedback",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "user",
+    "resource": "EmployeeFeedback",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "hr",
+    "resource": "EmployeeFeedback",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "communityLead",
+    "resource": "EmployeeFeedback",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "tagMember",
+    "resource": "EmployeeFeedback",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "learningDevelopmentHead",
+    "resource": "EmployeeFeedback",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "accountOwner",
+    "resource": "EmployeeFeedback",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "superAdmin",
+    "resource": "EmployeeFeedback",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "associate",
+    "resource": "EmployeeFeedback",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "user",
+    "resource": "EmployeeFeedback",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "hr",
+    "resource": "EmployeeFeedback",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "communityLead",
+    "resource": "EmployeeFeedback",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "tagMember",
+    "resource": "EmployeeFeedback",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "learningDevelopmentHead",
+    "resource": "EmployeeFeedback",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "accountOwner",
+    "resource": "EmployeeFeedback",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "superAdmin",
+    "resource": "EmployeeFeedback",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "associate",
+    "resource": "EmployeeFeedback",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "user",
+    "resource": "EmployeeFeedback",
+    "action": "read:any",
+    "attributes": "*"
+  }
+]
