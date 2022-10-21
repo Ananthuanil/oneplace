@@ -36,7 +36,6 @@ export const EmployeeFeedbackEdit = (props: EditProps): React.ReactElement => {
         <ReferenceInput source="user.id" reference="User" label="reviewer">
           <SelectInput optionText={UserTitle} />
         </ReferenceInput>
-        <TextInput label="test" source="test" />
       </SimpleForm>
     </Edit>
   );

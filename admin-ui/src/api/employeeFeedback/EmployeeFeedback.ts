@@ -9,6 +9,5 @@ export type EmployeeFeedback = {
   nature?: "Positive" | "Negative" | "Neutral";
   remark: string;
   reviewer?: User;
-  test: string | null;
   updatedAt: Date;
 };
