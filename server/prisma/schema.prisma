@@ -277,6 +277,7 @@ model EmployeeFeedback {
   remark     String
   reviewer   User                       @relation(name: "EmployeeFeedbackReviewerUserReviewer", fields: [reviewerId], references: [id])
   reviewerId String
+  test       String?
   updatedAt  DateTime                   @updatedAt
 }
 

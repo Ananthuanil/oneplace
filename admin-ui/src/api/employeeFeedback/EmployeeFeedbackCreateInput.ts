@@ -7,4 +7,5 @@ export type EmployeeFeedbackCreateInput = {
   nature: "Positive" | "Negative" | "Neutral";
   remark: string;
   reviewer: UserWhereUniqueInput;
+  test?: string | null;
 };

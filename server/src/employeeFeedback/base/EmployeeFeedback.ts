@@ -11,7 +11,13 @@ https://docs.amplication.com/docs/how-to/custom-code
   */
 import { ObjectType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
-import { IsString, IsDate, ValidateNested, IsEnum } from "class-validator";
+import {
+  IsString,
+  IsDate,
+  ValidateNested,
+  IsEnum,
+  IsOptional,
+} from "class-validator";
 import { Type } from "class-transformer";
 import { User } from "../../user/base/User";
 import { EnumEmployeeFeedbackNature } from "./EnumEmployeeFeedbackNature";
@@ -82,6 +88,17 @@ class EmployeeFeedback {
   @ValidateNested()
   @Type(() => User)
   reviewer?: User;
+
+  @ApiProperty({
+    required: false,
+    type: String,
+  })
+  @IsString()
+  @IsOptional()
+  @Field(() => String, {
+    nullable: true,
+  })
+  test!: string | null;
 
   @ApiProperty({
     required: true,
