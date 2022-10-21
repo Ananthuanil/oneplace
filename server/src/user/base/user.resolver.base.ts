@@ -18,7 +18,6 @@ import * as gqlACGuard from "../../auth/gqlAC.guard";
 import { isRecordNotFoundError } from "../../prisma.util";
 import { MetaQueryPayload } from "../../util/MetaQueryPayload";
 import { Public } from "../../decorators/public.decorator";
-import { AclFilterResponseInterceptor } from "../../interceptors/aclFilterResponse.interceptor";
 import { CreateUserArgs } from "./CreateUserArgs";
 import { UpdateUserArgs } from "./UpdateUserArgs";
 import { DeleteUserArgs } from "./DeleteUserArgs";
@@ -184,13 +183,8 @@ export class UserResolverBase {
     return results;
   }
 
-  @common.UseInterceptors(AclFilterResponseInterceptor)
+  @Public()
   @graphql.ResolveField(() => [EmployeeFeedback])
-  @nestAccessControl.UseRoles({
-    resource: "EmployeeFeedback",
-    action: "read",
-    possession: "any",
-  })
   async employeeFeedbacks(
     @graphql.Parent() parent: User,
     @graphql.Args() args: EmployeeFeedbackFindManyArgs
@@ -279,13 +273,8 @@ export class UserResolverBase {
     return results;
   }
 
-  @common.UseInterceptors(AclFilterResponseInterceptor)
+  @Public()
   @graphql.ResolveField(() => [EmployeeFeedback])
-  @nestAccessControl.UseRoles({
-    resource: "EmployeeFeedback",
-    action: "read",
-    possession: "any",
-  })
   async reviewer(
     @graphql.Parent() parent: User,
     @graphql.Args() args: EmployeeFeedbackFindManyArgs

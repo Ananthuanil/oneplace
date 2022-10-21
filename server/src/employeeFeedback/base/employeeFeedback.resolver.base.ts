@@ -17,8 +17,6 @@ import { GqlDefaultAuthGuard } from "../../auth/gqlDefaultAuth.guard";
 import * as gqlACGuard from "../../auth/gqlAC.guard";
 import { isRecordNotFoundError } from "../../prisma.util";
 import { MetaQueryPayload } from "../../util/MetaQueryPayload";
-import { AclFilterResponseInterceptor } from "../../interceptors/aclFilterResponse.interceptor";
-import { AclValidateRequestInterceptor } from "../../interceptors/aclValidateRequest.interceptor";
 import { Public } from "../../decorators/public.decorator";
 import { CreateEmployeeFeedbackArgs } from "./CreateEmployeeFeedbackArgs";
 import { UpdateEmployeeFeedbackArgs } from "./UpdateEmployeeFeedbackArgs";
@@ -37,12 +35,8 @@ export class EmployeeFeedbackResolverBase {
     protected readonly rolesBuilder: nestAccessControl.RolesBuilder
   ) {}
 
+  @Public()
   @graphql.Query(() => MetaQueryPayload)
-  @nestAccessControl.UseRoles({
-    resource: "EmployeeFeedback",
-    action: "read",
-    possession: "any",
-  })
   async _employeeFeedbacksMeta(
     @graphql.Args() args: EmployeeFeedbackFindManyArgs
   ): Promise<MetaQueryPayload> {
@@ -56,26 +50,16 @@ export class EmployeeFeedbackResolverBase {
     };
   }
 
-  @common.UseInterceptors(AclFilterResponseInterceptor)
+  @Public()
   @graphql.Query(() => [EmployeeFeedback])
-  @nestAccessControl.UseRoles({
-    resource: "EmployeeFeedback",
-    action: "read",
-    possession: "any",
-  })
   async employeeFeedbacks(
     @graphql.Args() args: EmployeeFeedbackFindManyArgs
   ): Promise<EmployeeFeedback[]> {
     return this.service.findMany(args);
   }
 
-  @common.UseInterceptors(AclFilterResponseInterceptor)
+  @Public()
   @graphql.Query(() => EmployeeFeedback, { nullable: true })
-  @nestAccessControl.UseRoles({
-    resource: "EmployeeFeedback",
-    action: "read",
-    possession: "own",
-  })
   async employeeFeedback(
     @graphql.Args() args: EmployeeFeedbackFindUniqueArgs
   ): Promise<EmployeeFeedback | null> {
@@ -86,13 +70,8 @@ export class EmployeeFeedbackResolverBase {
     return result;
   }
 
-  @common.UseInterceptors(AclValidateRequestInterceptor)
+  @Public()
   @graphql.Mutation(() => EmployeeFeedback)
-  @nestAccessControl.UseRoles({
-    resource: "EmployeeFeedback",
-    action: "create",
-    possession: "any",
-  })
   async createEmployeeFeedback(
     @graphql.Args() args: CreateEmployeeFeedbackArgs
   ): Promise<EmployeeFeedback> {
@@ -112,13 +91,8 @@ export class EmployeeFeedbackResolverBase {
     });
   }
 
-  @common.UseInterceptors(AclValidateRequestInterceptor)
+  @Public()
   @graphql.Mutation(() => EmployeeFeedback)
-  @nestAccessControl.UseRoles({
-    resource: "EmployeeFeedback",
-    action: "update",
-    possession: "any",
-  })
   async updateEmployeeFeedback(
     @graphql.Args() args: UpdateEmployeeFeedbackArgs
   ): Promise<EmployeeFeedback | null> {
@@ -147,12 +121,8 @@ export class EmployeeFeedbackResolverBase {
     }
   }
 
+  @Public()
   @graphql.Mutation(() => EmployeeFeedback)
-  @nestAccessControl.UseRoles({
-    resource: "EmployeeFeedback",
-    action: "delete",
-    possession: "any",
-  })
   async deleteEmployeeFeedback(
     @graphql.Args() args: DeleteEmployeeFeedbackArgs
   ): Promise<EmployeeFeedback | null> {
