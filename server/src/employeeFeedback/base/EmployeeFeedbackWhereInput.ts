@@ -17,7 +17,6 @@ import { IsOptional, ValidateNested, IsEnum } from "class-validator";
 import { DateTimeFilter } from "../../util/DateTimeFilter";
 import { UserWhereUniqueInput } from "../../user/base/UserWhereUniqueInput";
 import { EnumEmployeeFeedbackNature } from "./EnumEmployeeFeedbackNature";
-import { StringNullableFilter } from "../../util/StringNullableFilter";
 @InputType()
 class EmployeeFeedbackWhereInput {
   @ApiProperty({
@@ -98,16 +97,5 @@ class EmployeeFeedbackWhereInput {
     nullable: true,
   })
   reviewer?: UserWhereUniqueInput;
-
-  @ApiProperty({
-    required: false,
-    type: StringNullableFilter,
-  })
-  @Type(() => StringNullableFilter)
-  @IsOptional()
-  @Field(() => StringNullableFilter, {
-    nullable: true,
-  })
-  test?: StringNullableFilter;
 }
 export { EmployeeFeedbackWhereInput };

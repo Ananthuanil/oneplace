@@ -9,6 +9,5 @@ export type EmployeeFeedbackOrderByInput = {
   nature?: SortOrder;
   remark?: SortOrder;
   reviewerId?: SortOrder;
-  test?: SortOrder;
   updatedAt?: SortOrder;
 };

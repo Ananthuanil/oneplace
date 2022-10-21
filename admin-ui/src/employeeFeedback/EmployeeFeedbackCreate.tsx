@@ -38,7 +38,6 @@ export const EmployeeFeedbackCreate = (
         <ReferenceInput source="user.id" reference="User" label="reviewer">
           <SelectInput optionText={UserTitle} />
         </ReferenceInput>
-        <TextInput label="test" source="test" />
       </SimpleForm>
     </Create>
   );

@@ -18,6 +18,7 @@ import * as gqlACGuard from "../../auth/gqlAC.guard";
 import { isRecordNotFoundError } from "../../prisma.util";
 import { MetaQueryPayload } from "../../util/MetaQueryPayload";
 import { Public } from "../../decorators/public.decorator";
+import { AclValidateRequestInterceptor } from "../../interceptors/aclValidateRequest.interceptor";
 import { CreateEmployeeFeedbackArgs } from "./CreateEmployeeFeedbackArgs";
 import { UpdateEmployeeFeedbackArgs } from "./UpdateEmployeeFeedbackArgs";
 import { DeleteEmployeeFeedbackArgs } from "./DeleteEmployeeFeedbackArgs";
@@ -70,8 +71,13 @@ export class EmployeeFeedbackResolverBase {
     return result;
   }
 
-  @Public()
+  @common.UseInterceptors(AclValidateRequestInterceptor)
   @graphql.Mutation(() => EmployeeFeedback)
+  @nestAccessControl.UseRoles({
+    resource: "EmployeeFeedback",
+    action: "create",
+    possession: "any",
+  })
   async createEmployeeFeedback(
     @graphql.Args() args: CreateEmployeeFeedbackArgs
   ): Promise<EmployeeFeedback> {

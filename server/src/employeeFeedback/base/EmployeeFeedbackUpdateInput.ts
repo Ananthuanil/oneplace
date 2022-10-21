@@ -90,16 +90,5 @@ class EmployeeFeedbackUpdateInput {
     nullable: true,
   })
   reviewer?: UserWhereUniqueInput;
-
-  @ApiProperty({
-    required: false,
-    type: String,
-  })
-  @IsString()
-  @IsOptional()
-  @Field(() => String, {
-    nullable: true,
-  })
-  test?: string | null;
 }
 export { EmployeeFeedbackUpdateInput };
