@@ -8,60 +8,64 @@ generator client {
 }
 
 model User {
-  aadarNumber            String?
-  address                String?
-  awards                 Award[]              @relation(name: "awards")
-  bloodGroup             String?
-  candidates             Candidate[]
-  careerStartDate        DateTime?
-  community              Community?           @relation(fields: [communityId], references: [id])
-  communityId            String?
-  contactNumber          String?
-  courseOutDate          DateTime?
-  createdAt              DateTime             @default(now())
-  dateOfJoining          DateTime?
-  designation            EnumUserDesignation?
-  dob                    DateTime?
-  email                  String?
-  emergencyContactNumber String?
-  employeeFeedbacks      EmployeeFeedback[]   @relation(name: "employee")
-  firstName              String
-  folderLink             String?
-  fwExperience           String?
-  gender                 EnumUserGender?
-  id                     String               @id @default(cuid())
-  image                  String?
-  imageLink              String?
-  interviews             Interview[]
-  lastName               String
-  mappedPerson           Opportunity[]        @relation(name: "OpportunityMappedPersonUserMappedPerson")
-  notifications          String?
-  opportunities          Opportunity[]        @relation(name: "claimedPerson")
-  panNumber              String?
-  password               String
-  personalEmailId        String?
-  previousFirmOutDate    DateTime?
-  project                Project[]
-  projectInvolved        ProjectInvolvement[]
-  resumeLink             String?
-  reviewer               EmployeeFeedback[]   @relation(name: "EmployeeFeedbackReviewerUserReviewer")
-  roles                  Json
-  skillLevel             SkillLevel?          @relation(fields: [skillLevelId], references: [id])
-  skillLevelId           String?
-  skillSets              SkillSet[]
-  toPerson               Award[]              @relation(name: "AwardToPersonUserToPerson")
-  totalExperience        String
-  updatedAt              DateTime             @updatedAt
-  username               String               @unique
+  aadarNumber                String?
+  address                    String?
+  awards                     Award[]                     @relation(name: "awards")
+  bloodGroup                 String?
+  candidates                 Candidate[]
+  careerStartDate            DateTime?
+  communities                Community[]                 @relation(name: "communities")
+  community                  Community?                  @relation(name: "CommunityOnUsers", fields: [communityId], references: [id])
+  communityId                String?
+  communityActivityFeedbacks CommunityActivityFeedback[]
+  contactNumber              String?
+  courseOutDate              DateTime?
+  createdAt                  DateTime                    @default(now())
+  dateOfJoining              DateTime?
+  designation                EnumUserDesignation?
+  dob                        DateTime?
+  email                      String?
+  emergencyContactNumber     String?
+  employeeFeedbacks          EmployeeFeedback[]          @relation(name: "employeeFeedbacks")
+  firstName                  String
+  folderLink                 String?
+  fwExperience               String?
+  gender                     EnumUserGender?
+  id                         String                      @id @default(cuid())
+  image                      String?
+  imageLink                  String?
+  interviews                 Interview[]
+  lastName                   String
+  mappedPerson               Opportunity[]               @relation(name: "OpportunityMappedPersonUserMappedPerson")
+  notifications              String?
+  opportunities              Opportunity[]               @relation(name: "claimedPerson")
+  panNumber                  String?
+  password                   String
+  personalEmailId            String?
+  previousFirmOutDate        DateTime?
+  project                    Project[]
+  projectInvolved            ProjectInvolvement[]
+  resumeLink                 String?
+  reviewer                   EmployeeFeedback[]          @relation(name: "EmployeeFeedbackReviewerUserReviewer")
+  roles                      Json
+  skillLevel                 SkillLevel?                 @relation(fields: [skillLevelId], references: [id])
+  skillLevelId               String?
+  skillSets                  SkillSet[]
+  toPerson                   Award[]                     @relation(name: "AwardToPersonUserToPerson")
+  totalExperience            String
+  updatedAt                  DateTime                    @updatedAt
+  username                   String                      @unique
 }
 
 model Community {
-  createdAt   DateTime @default(now())
-  description String?
-  id          String   @id @default(cuid())
-  name        String?
-  updatedAt   DateTime @updatedAt
-  users       User[]
+  communityActivities CommunityActivity[]
+  communityLeads      User[]              @relation(name: "communities")
+  createdAt           DateTime            @default(now())
+  description         String?
+  id                  String              @id @default(cuid())
+  name                String?
+  updatedAt           DateTime            @updatedAt
+  users               User[]              @relation(name: "CommunityOnUsers")
 }
 
 model Skill {
@@ -270,7 +274,7 @@ model EmployeeFeedback {
   area       String
   createdAt  DateTime                   @default(now())
   date       DateTime
-  employee   User                       @relation(name: "employee", fields: [employeeId], references: [id])
+  employee   User                       @relation(name: "employeeFeedbacks", fields: [employeeId], references: [id])
   employeeId String
   id         String                     @id @default(cuid())
   nature     EnumEmployeeFeedbackNature
@@ -278,6 +282,31 @@ model EmployeeFeedback {
   reviewer   User                       @relation(name: "EmployeeFeedbackReviewerUserReviewer", fields: [reviewerId], references: [id])
   reviewerId String
   updatedAt  DateTime                   @updatedAt
+}
+
+model CommunityActivity {
+  community                  Community                   @relation(fields: [communityId], references: [id])
+  communityId                String
+  communityActivityFeedbacks CommunityActivityFeedback[]
+  createdAt                  DateTime                    @default(now())
+  date                       DateTime
+  description                String
+  id                         String                      @id @default(cuid())
+  title                      String
+  updatedAt                  DateTime                    @updatedAt
+}
+
+model CommunityActivityFeedback {
+  activity         CommunityActivity? @relation(fields: [activityId], references: [id])
+  activityId       String?
+  activityFeedback String?
+  attendance       Boolean
+  createdAt        DateTime           @default(now())
+  employee         User               @relation(fields: [employeeId], references: [id])
+  employeeId       String
+  id               String             @id @default(cuid())
+  rating           Float?
+  updatedAt        DateTime           @updatedAt
 }
 
 enum EnumUserDesignation {

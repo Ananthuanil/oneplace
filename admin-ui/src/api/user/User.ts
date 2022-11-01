@@ -1,6 +1,7 @@
 import { Award } from "../award/Award";
 import { Candidate } from "../candidate/Candidate";
 import { Community } from "../community/Community";
+import { CommunityActivityFeedback } from "../communityActivityFeedback/CommunityActivityFeedback";
 import { EmployeeFeedback } from "../employeeFeedback/EmployeeFeedback";
 import { Interview } from "../interview/Interview";
 import { Opportunity } from "../opportunity/Opportunity";
@@ -17,7 +18,9 @@ export type User = {
   bloodGroup: string | null;
   candidates?: Array<Candidate>;
   careerStartDate: Date | null;
+  communities?: Array<Community>;
   community?: Community | null;
+  communityActivityFeedbacks?: Array<CommunityActivityFeedback>;
   contactNumber: string | null;
   courseOutDate: Date | null;
   createdAt: Date;

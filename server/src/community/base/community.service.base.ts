@@ -10,7 +10,7 @@ https://docs.amplication.com/docs/how-to/custom-code
 ------------------------------------------------------------------------------
   */
 import { PrismaService } from "nestjs-prisma";
-import { Prisma, Community, User } from "@prisma/client";
+import { Prisma, Community, CommunityActivity, User } from "@prisma/client";
 
 export class CommunityServiceBase {
   constructor(protected readonly prisma: PrismaService) {}
@@ -45,6 +45,28 @@ export class CommunityServiceBase {
     args: Prisma.SelectSubset<T, Prisma.CommunityDeleteArgs>
   ): Promise<Community> {
     return this.prisma.community.delete(args);
+  }
+
+  async findCommunityActivities(
+    parentId: string,
+    args: Prisma.CommunityActivityFindManyArgs
+  ): Promise<CommunityActivity[]> {
+    return this.prisma.community
+      .findUnique({
+        where: { id: parentId },
+      })
+      .communityActivities(args);
+  }
+
+  async findCommunityLeads(
+    parentId: string,
+    args: Prisma.UserFindManyArgs
+  ): Promise<User[]> {
+    return this.prisma.community
+      .findUnique({
+        where: { id: parentId },
+      })
+      .communityLeads(args);
   }
 
   async findUsers(

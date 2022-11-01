@@ -1,6 +1,8 @@
 import { AwardUpdateManyWithoutUsersInput } from "./AwardUpdateManyWithoutUsersInput";
 import { CandidateUpdateManyWithoutUsersInput } from "./CandidateUpdateManyWithoutUsersInput";
+import { CommunityUpdateManyWithoutUsersInput } from "./CommunityUpdateManyWithoutUsersInput";
 import { CommunityWhereUniqueInput } from "../community/CommunityWhereUniqueInput";
+import { CommunityActivityFeedbackUpdateManyWithoutUsersInput } from "./CommunityActivityFeedbackUpdateManyWithoutUsersInput";
 import { EmployeeFeedbackUpdateManyWithoutUsersInput } from "./EmployeeFeedbackUpdateManyWithoutUsersInput";
 import { InterviewUpdateManyWithoutUsersInput } from "./InterviewUpdateManyWithoutUsersInput";
 import { OpportunityUpdateManyWithoutUsersInput } from "./OpportunityUpdateManyWithoutUsersInput";
@@ -17,7 +19,9 @@ export type UserUpdateInput = {
   bloodGroup?: string | null;
   candidates?: CandidateUpdateManyWithoutUsersInput;
   careerStartDate?: Date | null;
+  communities?: CommunityUpdateManyWithoutUsersInput;
   community?: CommunityWhereUniqueInput | null;
+  communityActivityFeedbacks?: CommunityActivityFeedbackUpdateManyWithoutUsersInput;
   contactNumber?: string | null;
   courseOutDate?: Date | null;
   dateOfJoining?: Date | null;

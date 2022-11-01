@@ -22,7 +22,9 @@ import {
 import { AwardUpdateManyWithoutUsersInput } from "./AwardUpdateManyWithoutUsersInput";
 import { Type } from "class-transformer";
 import { CandidateUpdateManyWithoutUsersInput } from "./CandidateUpdateManyWithoutUsersInput";
+import { CommunityUpdateManyWithoutUsersInput } from "./CommunityUpdateManyWithoutUsersInput";
 import { CommunityWhereUniqueInput } from "../../community/base/CommunityWhereUniqueInput";
+import { CommunityActivityFeedbackUpdateManyWithoutUsersInput } from "./CommunityActivityFeedbackUpdateManyWithoutUsersInput";
 import { EnumUserDesignation } from "./EnumUserDesignation";
 import { EmployeeFeedbackUpdateManyWithoutUsersInput } from "./EmployeeFeedbackUpdateManyWithoutUsersInput";
 import { EnumUserGender } from "./EnumUserGender";
@@ -106,6 +108,18 @@ class UserUpdateInput {
 
   @ApiProperty({
     required: false,
+    type: () => CommunityUpdateManyWithoutUsersInput,
+  })
+  @ValidateNested()
+  @Type(() => CommunityUpdateManyWithoutUsersInput)
+  @IsOptional()
+  @Field(() => CommunityUpdateManyWithoutUsersInput, {
+    nullable: true,
+  })
+  communities?: CommunityUpdateManyWithoutUsersInput;
+
+  @ApiProperty({
+    required: false,
     type: () => CommunityWhereUniqueInput,
   })
   @ValidateNested()
@@ -115,6 +129,18 @@ class UserUpdateInput {
     nullable: true,
   })
   community?: CommunityWhereUniqueInput | null;
+
+  @ApiProperty({
+    required: false,
+    type: () => CommunityActivityFeedbackUpdateManyWithoutUsersInput,
+  })
+  @ValidateNested()
+  @Type(() => CommunityActivityFeedbackUpdateManyWithoutUsersInput)
+  @IsOptional()
+  @Field(() => CommunityActivityFeedbackUpdateManyWithoutUsersInput, {
+    nullable: true,
+  })
+  communityActivityFeedbacks?: CommunityActivityFeedbackUpdateManyWithoutUsersInput;
 
   @ApiProperty({
     required: false,
