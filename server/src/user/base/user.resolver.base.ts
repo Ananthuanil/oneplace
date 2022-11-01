@@ -18,6 +18,7 @@ import * as gqlACGuard from "../../auth/gqlAC.guard";
 import { isRecordNotFoundError } from "../../prisma.util";
 import { MetaQueryPayload } from "../../util/MetaQueryPayload";
 import { Public } from "../../decorators/public.decorator";
+import { AclFilterResponseInterceptor } from "../../interceptors/aclFilterResponse.interceptor";
 import { CreateUserArgs } from "./CreateUserArgs";
 import { UpdateUserArgs } from "./UpdateUserArgs";
 import { DeleteUserArgs } from "./DeleteUserArgs";
@@ -28,6 +29,10 @@ import { AwardFindManyArgs } from "../../award/base/AwardFindManyArgs";
 import { Award } from "../../award/base/Award";
 import { CandidateFindManyArgs } from "../../candidate/base/CandidateFindManyArgs";
 import { Candidate } from "../../candidate/base/Candidate";
+import { CommunityFindManyArgs } from "../../community/base/CommunityFindManyArgs";
+import { Community } from "../../community/base/Community";
+import { CommunityActivityFeedbackFindManyArgs } from "../../communityActivityFeedback/base/CommunityActivityFeedbackFindManyArgs";
+import { CommunityActivityFeedback } from "../../communityActivityFeedback/base/CommunityActivityFeedback";
 import { EmployeeFeedbackFindManyArgs } from "../../employeeFeedback/base/EmployeeFeedbackFindManyArgs";
 import { EmployeeFeedback } from "../../employeeFeedback/base/EmployeeFeedback";
 import { InterviewFindManyArgs } from "../../interview/base/InterviewFindManyArgs";
@@ -40,7 +45,6 @@ import { ProjectInvolvementFindManyArgs } from "../../projectInvolvement/base/Pr
 import { ProjectInvolvement } from "../../projectInvolvement/base/ProjectInvolvement";
 import { SkillSetFindManyArgs } from "../../skillSet/base/SkillSetFindManyArgs";
 import { SkillSet } from "../../skillSet/base/SkillSet";
-import { Community } from "../../community/base/Community";
 import { SkillLevel } from "../../skillLevel/base/SkillLevel";
 import { UserService } from "../user.service";
 
@@ -175,6 +179,44 @@ export class UserResolverBase {
     @graphql.Args() args: CandidateFindManyArgs
   ): Promise<Candidate[]> {
     const results = await this.service.findCandidates(parent.id, args);
+
+    if (!results) {
+      return [];
+    }
+
+    return results;
+  }
+
+  @Public()
+  @graphql.ResolveField(() => [Community])
+  async communities(
+    @graphql.Parent() parent: User,
+    @graphql.Args() args: CommunityFindManyArgs
+  ): Promise<Community[]> {
+    const results = await this.service.findCommunities(parent.id, args);
+
+    if (!results) {
+      return [];
+    }
+
+    return results;
+  }
+
+  @common.UseInterceptors(AclFilterResponseInterceptor)
+  @graphql.ResolveField(() => [CommunityActivityFeedback])
+  @nestAccessControl.UseRoles({
+    resource: "CommunityActivityFeedback",
+    action: "read",
+    possession: "any",
+  })
+  async communityActivityFeedbacks(
+    @graphql.Parent() parent: User,
+    @graphql.Args() args: CommunityActivityFeedbackFindManyArgs
+  ): Promise<CommunityActivityFeedback[]> {
+    const results = await this.service.findCommunityActivityFeedbacks(
+      parent.id,
+      args
+    );
 
     if (!results) {
       return [];

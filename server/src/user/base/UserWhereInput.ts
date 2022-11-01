@@ -17,7 +17,9 @@ import { IsOptional, ValidateNested, IsEnum } from "class-validator";
 import { AwardListRelationFilter } from "../../award/base/AwardListRelationFilter";
 import { CandidateListRelationFilter } from "../../candidate/base/CandidateListRelationFilter";
 import { DateTimeNullableFilter } from "../../util/DateTimeNullableFilter";
+import { CommunityListRelationFilter } from "../../community/base/CommunityListRelationFilter";
 import { CommunityWhereUniqueInput } from "../../community/base/CommunityWhereUniqueInput";
+import { CommunityActivityFeedbackListRelationFilter } from "../../communityActivityFeedback/base/CommunityActivityFeedbackListRelationFilter";
 import { EnumUserDesignation } from "./EnumUserDesignation";
 import { EmployeeFeedbackListRelationFilter } from "../../employeeFeedback/base/EmployeeFeedbackListRelationFilter";
 import { StringFilter } from "../../util/StringFilter";
@@ -100,6 +102,18 @@ class UserWhereInput {
 
   @ApiProperty({
     required: false,
+    type: () => CommunityListRelationFilter,
+  })
+  @ValidateNested()
+  @Type(() => CommunityListRelationFilter)
+  @IsOptional()
+  @Field(() => CommunityListRelationFilter, {
+    nullable: true,
+  })
+  communities?: CommunityListRelationFilter;
+
+  @ApiProperty({
+    required: false,
     type: () => CommunityWhereUniqueInput,
   })
   @ValidateNested()
@@ -109,6 +123,18 @@ class UserWhereInput {
     nullable: true,
   })
   community?: CommunityWhereUniqueInput;
+
+  @ApiProperty({
+    required: false,
+    type: () => CommunityActivityFeedbackListRelationFilter,
+  })
+  @ValidateNested()
+  @Type(() => CommunityActivityFeedbackListRelationFilter)
+  @IsOptional()
+  @Field(() => CommunityActivityFeedbackListRelationFilter, {
+    nullable: true,
+  })
+  communityActivityFeedbacks?: CommunityActivityFeedbackListRelationFilter;
 
   @ApiProperty({
     required: false,

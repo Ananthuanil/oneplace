@@ -1,6 +1,8 @@
 import { AwardCreateNestedManyWithoutUsersInput } from "./AwardCreateNestedManyWithoutUsersInput";
 import { CandidateCreateNestedManyWithoutUsersInput } from "./CandidateCreateNestedManyWithoutUsersInput";
+import { CommunityCreateNestedManyWithoutUsersInput } from "./CommunityCreateNestedManyWithoutUsersInput";
 import { CommunityWhereUniqueInput } from "../community/CommunityWhereUniqueInput";
+import { CommunityActivityFeedbackCreateNestedManyWithoutUsersInput } from "./CommunityActivityFeedbackCreateNestedManyWithoutUsersInput";
 import { EmployeeFeedbackCreateNestedManyWithoutUsersInput } from "./EmployeeFeedbackCreateNestedManyWithoutUsersInput";
 import { InterviewCreateNestedManyWithoutUsersInput } from "./InterviewCreateNestedManyWithoutUsersInput";
 import { OpportunityCreateNestedManyWithoutUsersInput } from "./OpportunityCreateNestedManyWithoutUsersInput";
@@ -17,7 +19,9 @@ export type UserCreateInput = {
   bloodGroup?: string | null;
   candidates?: CandidateCreateNestedManyWithoutUsersInput;
   careerStartDate?: Date | null;
+  communities?: CommunityCreateNestedManyWithoutUsersInput;
   community?: CommunityWhereUniqueInput | null;
+  communityActivityFeedbacks?: CommunityActivityFeedbackCreateNestedManyWithoutUsersInput;
   contactNumber?: string | null;
   courseOutDate?: Date | null;
   dateOfJoining?: Date | null;

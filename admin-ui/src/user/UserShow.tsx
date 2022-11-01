@@ -16,6 +16,7 @@ import { USER_TITLE_FIELD } from "./UserTitle";
 import { COMMUNICATIONFEEDBACK_TITLE_FIELD } from "../communicationFeedback/CommunicationFeedbackTitle";
 import { RECRUITMENTPARTNER_TITLE_FIELD } from "../recruitmentPartner/RecruitmentPartnerTitle";
 import { OPPORTUNITY_TITLE_FIELD } from "../opportunity/OpportunityTitle";
+import { COMMUNITYACTIVITY_TITLE_FIELD } from "../communityActivity/CommunityActivityTitle";
 import { CANDIDATE_TITLE_FIELD } from "../candidate/CandidateTitle";
 import { PARTNER_TITLE_FIELD } from "../partner/PartnerTitle";
 import { PROJECT_TITLE_FIELD } from "../project/ProjectTitle";
@@ -155,6 +156,30 @@ export const UserShow = (props: ShowProps): React.ReactElement => {
             <TextField label="Resume" source="resume" />
             <TextField label="source" source="source" />
             <TextField label="Total Experience" source="totalExperience" />
+            <DateField source="updatedAt" label="Updated At" />
+          </Datagrid>
+        </ReferenceManyField>
+        <ReferenceManyField
+          reference="CommunityActivityFeedback"
+          target="UserId"
+          label="community_activity_feedbacks"
+        >
+          <Datagrid rowClick="show">
+            <ReferenceField
+              label="activity"
+              source="communityactivity.id"
+              reference="CommunityActivity"
+            >
+              <TextField source={COMMUNITYACTIVITY_TITLE_FIELD} />
+            </ReferenceField>
+            <TextField label="activity_feedback" source="activityFeedback" />
+            <BooleanField label="attendance" source="attendance" />
+            <DateField source="createdAt" label="Created At" />
+            <ReferenceField label="employee" source="user.id" reference="User">
+              <TextField source={USER_TITLE_FIELD} />
+            </ReferenceField>
+            <TextField label="ID" source="id" />
+            <TextField label="rating" source="rating" />
             <DateField source="updatedAt" label="Updated At" />
           </Datagrid>
         </ReferenceManyField>

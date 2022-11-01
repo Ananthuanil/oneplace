@@ -18,12 +18,15 @@ import * as gqlACGuard from "../../auth/gqlAC.guard";
 import { isRecordNotFoundError } from "../../prisma.util";
 import { MetaQueryPayload } from "../../util/MetaQueryPayload";
 import { Public } from "../../decorators/public.decorator";
+import { AclFilterResponseInterceptor } from "../../interceptors/aclFilterResponse.interceptor";
 import { CreateCommunityArgs } from "./CreateCommunityArgs";
 import { UpdateCommunityArgs } from "./UpdateCommunityArgs";
 import { DeleteCommunityArgs } from "./DeleteCommunityArgs";
 import { CommunityFindManyArgs } from "./CommunityFindManyArgs";
 import { CommunityFindUniqueArgs } from "./CommunityFindUniqueArgs";
 import { Community } from "./Community";
+import { CommunityActivityFindManyArgs } from "../../communityActivity/base/CommunityActivityFindManyArgs";
+import { CommunityActivity } from "../../communityActivity/base/CommunityActivity";
 import { UserFindManyArgs } from "../../user/base/UserFindManyArgs";
 import { User } from "../../user/base/User";
 import { CommunityService } from "../community.service";
@@ -117,6 +120,41 @@ export class CommunityResolverBase {
       }
       throw error;
     }
+  }
+
+  @common.UseInterceptors(AclFilterResponseInterceptor)
+  @graphql.ResolveField(() => [CommunityActivity])
+  @nestAccessControl.UseRoles({
+    resource: "CommunityActivity",
+    action: "read",
+    possession: "any",
+  })
+  async communityActivities(
+    @graphql.Parent() parent: Community,
+    @graphql.Args() args: CommunityActivityFindManyArgs
+  ): Promise<CommunityActivity[]> {
+    const results = await this.service.findCommunityActivities(parent.id, args);
+
+    if (!results) {
+      return [];
+    }
+
+    return results;
+  }
+
+  @Public()
+  @graphql.ResolveField(() => [User])
+  async communityLeads(
+    @graphql.Parent() parent: Community,
+    @graphql.Args() args: UserFindManyArgs
+  ): Promise<User[]> {
+    const results = await this.service.findCommunityLeads(parent.id, args);
+
+    if (!results) {
+      return [];
+    }
+
+    return results;
   }
 
   @Public()

@@ -16,13 +16,14 @@ import {
   User,
   Award,
   Candidate,
+  Community,
+  CommunityActivityFeedback,
   EmployeeFeedback,
   Interview,
   Opportunity,
   Project,
   ProjectInvolvement,
   SkillSet,
-  Community,
   SkillLevel,
 } from "@prisma/client";
 
@@ -107,6 +108,28 @@ export class UserServiceBase {
         where: { id: parentId },
       })
       .candidates(args);
+  }
+
+  async findCommunities(
+    parentId: string,
+    args: Prisma.CommunityFindManyArgs
+  ): Promise<Community[]> {
+    return this.prisma.user
+      .findUnique({
+        where: { id: parentId },
+      })
+      .communities(args);
+  }
+
+  async findCommunityActivityFeedbacks(
+    parentId: string,
+    args: Prisma.CommunityActivityFeedbackFindManyArgs
+  ): Promise<CommunityActivityFeedback[]> {
+    return this.prisma.user
+      .findUnique({
+        where: { id: parentId },
+      })
+      .communityActivityFeedbacks(args);
   }
 
   async findEmployeeFeedbacks(
