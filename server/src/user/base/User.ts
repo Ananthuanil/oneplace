@@ -23,6 +23,7 @@ import { Award } from "../../award/base/Award";
 import { Type } from "class-transformer";
 import { Candidate } from "../../candidate/base/Candidate";
 import { Community } from "../../community/base/Community";
+import { CommunityActivityFeedback } from "../../communityActivityFeedback/base/CommunityActivityFeedback";
 import { EnumUserDesignation } from "./EnumUserDesignation";
 import { EmployeeFeedback } from "../../employeeFeedback/base/EmployeeFeedback";
 import { EnumUserGender } from "./EnumUserGender";
@@ -100,12 +101,30 @@ class User {
 
   @ApiProperty({
     required: false,
+    type: () => [Community],
+  })
+  @ValidateNested()
+  @Type(() => Community)
+  @IsOptional()
+  communities?: Array<Community>;
+
+  @ApiProperty({
+    required: false,
     type: () => Community,
   })
   @ValidateNested()
   @Type(() => Community)
   @IsOptional()
   community?: Community | null;
+
+  @ApiProperty({
+    required: false,
+    type: () => [CommunityActivityFeedback],
+  })
+  @ValidateNested()
+  @Type(() => CommunityActivityFeedback)
+  @IsOptional()
+  communityActivityFeedbacks?: Array<CommunityActivityFeedback>;
 
   @ApiProperty({
     required: false,

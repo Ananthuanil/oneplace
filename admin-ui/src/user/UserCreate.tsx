@@ -16,6 +16,7 @@ import {
 import { AwardTitle } from "../award/AwardTitle";
 import { CandidateTitle } from "../candidate/CandidateTitle";
 import { CommunityTitle } from "../community/CommunityTitle";
+import { CommunityActivityFeedbackTitle } from "../communityActivityFeedback/CommunityActivityFeedbackTitle";
 import { EmployeeFeedbackTitle } from "../employeeFeedback/EmployeeFeedbackTitle";
 import { InterviewTitle } from "../interview/InterviewTitle";
 import { OpportunityTitle } from "../opportunity/OpportunityTitle";
@@ -49,6 +50,14 @@ export const UserCreate = (props: CreateProps): React.ReactElement => {
           <SelectArrayInput optionText={CandidateTitle} />
         </ReferenceArrayInput>
         <DateInput label="Career Start Date" source="careerStartDate" />
+        <ReferenceArrayInput
+          source="communities"
+          reference="Community"
+          parse={(value: any) => value && value.map((v: any) => ({ id: v }))}
+          format={(value: any) => value && value.map((v: any) => v.id)}
+        >
+          <SelectArrayInput optionText={CommunityTitle} />
+        </ReferenceArrayInput>
         <ReferenceInput
           source="community.id"
           reference="Community"
@@ -56,6 +65,14 @@ export const UserCreate = (props: CreateProps): React.ReactElement => {
         >
           <SelectInput optionText={CommunityTitle} />
         </ReferenceInput>
+        <ReferenceArrayInput
+          source="communityActivityFeedbacks"
+          reference="CommunityActivityFeedback"
+          parse={(value: any) => value && value.map((v: any) => ({ id: v }))}
+          format={(value: any) => value && value.map((v: any) => v.id)}
+        >
+          <SelectArrayInput optionText={CommunityActivityFeedbackTitle} />
+        </ReferenceArrayInput>
         <TextInput label="Contact Number" source="contactNumber" />
         <DateInput label="Course Out Date" source="courseOutDate" />
         <DateInput label="Date of Joining" source="dateOfJoining" />
