@@ -192,6 +192,11 @@ export const UserCreate = (props: CreateProps): React.ReactElement => {
           optionText="label"
           optionValue="value"
         />
+        <TextInput
+          label="Secondary Email"
+          source="secondaryEmail"
+          type="email"
+        />
         <ReferenceInput
           source="skilllevel.id"
           reference="SkillLevel"

@@ -59,6 +59,7 @@ export type User = {
   resumeLink: string | null;
   reviewer?: Array<EmployeeFeedback>;
   roles: JsonValue;
+  secondaryEmail: string | null;
   skillLevel?: SkillLevel | null;
   skillSets?: Array<SkillSet>;
   toPerson?: Array<Award>;

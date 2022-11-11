@@ -59,6 +59,7 @@ export type UserUpdateInput = {
   resumeLink?: string | null;
   reviewer?: EmployeeFeedbackUpdateManyWithoutUsersInput;
   roles?: InputJsonValue;
+  secondaryEmail?: string | null;
   skillLevel?: SkillLevelWhereUniqueInput | null;
   skillSets?: SkillSetUpdateManyWithoutUsersInput;
   toPerson?: AwardUpdateManyWithoutUsersInput;

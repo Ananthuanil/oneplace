@@ -59,6 +59,7 @@ export type UserWhereInput = {
   projectInvolved?: ProjectInvolvementListRelationFilter;
   resumeLink?: StringNullableFilter;
   reviewer?: EmployeeFeedbackListRelationFilter;
+  secondaryEmail?: StringNullableFilter;
   skillLevel?: SkillLevelWhereUniqueInput;
   skillSets?: SkillSetListRelationFilter;
   toPerson?: AwardListRelationFilter;
