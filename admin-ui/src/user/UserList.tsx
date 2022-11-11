@@ -60,6 +60,7 @@ export const UserList = (props: ListProps): React.ReactElement => {
         />
         <TextField label="Resume Link" source="resumeLink" />
         <TextField label="Roles" source="roles" />
+        <TextField label="Secondary Email" source="secondaryEmail" />
         <ReferenceField
           label="Skill Level"
           source="skilllevel.id"

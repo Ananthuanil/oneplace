@@ -48,6 +48,7 @@ model User {
   resumeLink                 String?
   reviewer                   EmployeeFeedback[]          @relation(name: "EmployeeFeedbackReviewerUserReviewer")
   roles                      Json
+  secondaryEmail             String?
   skillLevel                 SkillLevel?                 @relation(fields: [skillLevelId], references: [id])
   skillLevelId               String?
   skillSets                  SkillSet[]

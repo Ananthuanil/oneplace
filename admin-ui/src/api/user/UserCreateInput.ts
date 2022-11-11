@@ -59,6 +59,7 @@ export type UserCreateInput = {
   resumeLink?: string | null;
   reviewer?: EmployeeFeedbackCreateNestedManyWithoutUsersInput;
   roles: InputJsonValue;
+  secondaryEmail?: string | null;
   skillLevel?: SkillLevelWhereUniqueInput | null;
   skillSets?: SkillSetCreateNestedManyWithoutUsersInput;
   toPerson?: AwardCreateNestedManyWithoutUsersInput;

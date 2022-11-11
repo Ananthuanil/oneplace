@@ -29,6 +29,7 @@ export type UserOrderByInput = {
   previousFirmOutDate?: SortOrder;
   resumeLink?: SortOrder;
   roles?: SortOrder;
+  secondaryEmail?: SortOrder;
   skillLevelId?: SortOrder;
   totalExperience?: SortOrder;
   updatedAt?: SortOrder;
