@@ -4,5 +4,5 @@
 npx prisma migrate deploy --preview-feature
 # npx prisma migrate resolve --applied "20220923061625_updated_interview_added_email_status"
 # npm run db:clean
-npm run db:init
+# npm run db:init
 node dist/main
