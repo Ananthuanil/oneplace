@@ -11,13 +11,38 @@ https://docs.amplication.com/docs/how-to/custom-code
   */
 import { InputType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
-import { StringNullableFilter } from "../../util/StringNullableFilter";
+import { CommunityActivityListRelationFilter } from "../../communityActivity/base/CommunityActivityListRelationFilter";
+import { ValidateNested, IsOptional } from "class-validator";
 import { Type } from "class-transformer";
-import { IsOptional, ValidateNested } from "class-validator";
-import { StringFilter } from "../../util/StringFilter";
 import { UserListRelationFilter } from "../../user/base/UserListRelationFilter";
+import { StringNullableFilter } from "../../util/StringNullableFilter";
+import { StringFilter } from "../../util/StringFilter";
 @InputType()
 class CommunityWhereInput {
+  @ApiProperty({
+    required: false,
+    type: () => CommunityActivityListRelationFilter,
+  })
+  @ValidateNested()
+  @Type(() => CommunityActivityListRelationFilter)
+  @IsOptional()
+  @Field(() => CommunityActivityListRelationFilter, {
+    nullable: true,
+  })
+  communityActivities?: CommunityActivityListRelationFilter;
+
+  @ApiProperty({
+    required: false,
+    type: () => UserListRelationFilter,
+  })
+  @ValidateNested()
+  @Type(() => UserListRelationFilter)
+  @IsOptional()
+  @Field(() => UserListRelationFilter, {
+    nullable: true,
+  })
+  communityLeads?: UserListRelationFilter;
+
   @ApiProperty({
     required: false,
     type: StringNullableFilter,

@@ -2,7 +2,10 @@ import { StringNullableFilter } from "../../util/StringNullableFilter";
 import { AwardListRelationFilter } from "../award/AwardListRelationFilter";
 import { CandidateListRelationFilter } from "../candidate/CandidateListRelationFilter";
 import { DateTimeNullableFilter } from "../../util/DateTimeNullableFilter";
+import { CommunityListRelationFilter } from "../community/CommunityListRelationFilter";
 import { CommunityWhereUniqueInput } from "../community/CommunityWhereUniqueInput";
+import { CommunityActivityFeedbackListRelationFilter } from "../communityActivityFeedback/CommunityActivityFeedbackListRelationFilter";
+import { EmployeeFeedbackListRelationFilter } from "../employeeFeedback/EmployeeFeedbackListRelationFilter";
 import { StringFilter } from "../../util/StringFilter";
 import { InterviewListRelationFilter } from "../interview/InterviewListRelationFilter";
 import { OpportunityListRelationFilter } from "../opportunity/OpportunityListRelationFilter";
@@ -18,7 +21,9 @@ export type UserWhereInput = {
   bloodGroup?: StringNullableFilter;
   candidates?: CandidateListRelationFilter;
   careerStartDate?: DateTimeNullableFilter;
+  communities?: CommunityListRelationFilter;
   community?: CommunityWhereUniqueInput;
+  communityActivityFeedbacks?: CommunityActivityFeedbackListRelationFilter;
   contactNumber?: StringNullableFilter;
   courseOutDate?: DateTimeNullableFilter;
   dateOfJoining?: DateTimeNullableFilter;
@@ -34,6 +39,7 @@ export type UserWhereInput = {
   dob?: DateTimeNullableFilter;
   email?: StringNullableFilter;
   emergencyContactNumber?: StringNullableFilter;
+  employeeFeedbacks?: EmployeeFeedbackListRelationFilter;
   firstName?: StringFilter;
   folderLink?: StringNullableFilter;
   fwExperience?: StringNullableFilter;
@@ -52,6 +58,8 @@ export type UserWhereInput = {
   project?: ProjectListRelationFilter;
   projectInvolved?: ProjectInvolvementListRelationFilter;
   resumeLink?: StringNullableFilter;
+  reviewer?: EmployeeFeedbackListRelationFilter;
+  secondaryEmail?: StringNullableFilter;
   skillLevel?: SkillLevelWhereUniqueInput;
   skillSets?: SkillSetListRelationFilter;
   toPerson?: AwardListRelationFilter;

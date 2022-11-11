@@ -16,6 +16,7 @@ import { USER_TITLE_FIELD } from "./UserTitle";
 import { COMMUNICATIONFEEDBACK_TITLE_FIELD } from "../communicationFeedback/CommunicationFeedbackTitle";
 import { RECRUITMENTPARTNER_TITLE_FIELD } from "../recruitmentPartner/RecruitmentPartnerTitle";
 import { OPPORTUNITY_TITLE_FIELD } from "../opportunity/OpportunityTitle";
+import { COMMUNITYACTIVITY_TITLE_FIELD } from "../communityActivity/CommunityActivityTitle";
 import { CANDIDATE_TITLE_FIELD } from "../candidate/CandidateTitle";
 import { PARTNER_TITLE_FIELD } from "../partner/PartnerTitle";
 import { PROJECT_TITLE_FIELD } from "../project/ProjectTitle";
@@ -65,6 +66,7 @@ export const UserShow = (props: ShowProps): React.ReactElement => {
         />
         <TextField label="Resume Link" source="resumeLink" />
         <TextField label="Roles" source="roles" />
+        <TextField label="Secondary Email" source="secondaryEmail" />
         <ReferenceField
           label="Skill Level"
           source="skilllevel.id"
@@ -159,6 +161,51 @@ export const UserShow = (props: ShowProps): React.ReactElement => {
           </Datagrid>
         </ReferenceManyField>
         <ReferenceManyField
+          reference="CommunityActivityFeedback"
+          target="UserId"
+          label="community_activity_feedbacks"
+        >
+          <Datagrid rowClick="show">
+            <ReferenceField
+              label="activity"
+              source="communityactivity.id"
+              reference="CommunityActivity"
+            >
+              <TextField source={COMMUNITYACTIVITY_TITLE_FIELD} />
+            </ReferenceField>
+            <TextField label="activity_feedback" source="activityFeedback" />
+            <BooleanField label="attendance" source="attendance" />
+            <DateField source="createdAt" label="Created At" />
+            <ReferenceField label="employee" source="user.id" reference="User">
+              <TextField source={USER_TITLE_FIELD} />
+            </ReferenceField>
+            <TextField label="ID" source="id" />
+            <TextField label="rating" source="rating" />
+            <DateField source="updatedAt" label="Updated At" />
+          </Datagrid>
+        </ReferenceManyField>
+        <ReferenceManyField
+          reference="EmployeeFeedback"
+          target="UserId"
+          label="EmployeeFeedbacks"
+        >
+          <Datagrid rowClick="show">
+            <TextField label="area " source="area" />
+            <DateField source="createdAt" label="Created At" />
+            <TextField label="date" source="date" />
+            <ReferenceField label="employee" source="user.id" reference="User">
+              <TextField source={USER_TITLE_FIELD} />
+            </ReferenceField>
+            <TextField label="ID" source="id" />
+            <TextField label="nature " source="nature" />
+            <TextField label="remark " source="remark" />
+            <ReferenceField label="reviewer" source="user.id" reference="User">
+              <TextField source={USER_TITLE_FIELD} />
+            </ReferenceField>
+            <DateField source="updatedAt" label="Updated At" />
+          </Datagrid>
+        </ReferenceManyField>
+        <ReferenceManyField
           reference="Interview"
           target="UserId"
           label="Interviews"
@@ -179,6 +226,7 @@ export const UserShow = (props: ShowProps): React.ReactElement => {
             <DateField source="createdAt" label="Created At" />
             <TextField label="Current Status" source="currentStatus" />
             <TextField label="Date" source="date" />
+            <BooleanField label="Email Status" source="emailStatus" />
             <TextField label="End Date" source="endDate" />
             <TextField label="ID" source="id" />
             <ReferenceField
@@ -318,6 +366,27 @@ export const UserShow = (props: ShowProps): React.ReactElement => {
             <ReferenceField label="Employees" source="user.id" reference="User">
               <TextField source={USER_TITLE_FIELD} />
             </ReferenceField>
+          </Datagrid>
+        </ReferenceManyField>
+        <ReferenceManyField
+          reference="EmployeeFeedback"
+          target="UserId"
+          label="EmployeeFeedbacks"
+        >
+          <Datagrid rowClick="show">
+            <TextField label="area " source="area" />
+            <DateField source="createdAt" label="Created At" />
+            <TextField label="date" source="date" />
+            <ReferenceField label="employee" source="user.id" reference="User">
+              <TextField source={USER_TITLE_FIELD} />
+            </ReferenceField>
+            <TextField label="ID" source="id" />
+            <TextField label="nature " source="nature" />
+            <TextField label="remark " source="remark" />
+            <ReferenceField label="reviewer" source="user.id" reference="User">
+              <TextField source={USER_TITLE_FIELD} />
+            </ReferenceField>
+            <DateField source="updatedAt" label="Updated At" />
           </Datagrid>
         </ReferenceManyField>
         <ReferenceManyField reference="Award" target="UserId" label="Awards">

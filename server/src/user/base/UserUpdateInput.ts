@@ -17,17 +17,23 @@ import {
   ValidateNested,
   IsDate,
   IsEnum,
+  IsJSON,
 } from "class-validator";
 import { AwardUpdateManyWithoutUsersInput } from "./AwardUpdateManyWithoutUsersInput";
 import { Type } from "class-transformer";
 import { CandidateUpdateManyWithoutUsersInput } from "./CandidateUpdateManyWithoutUsersInput";
+import { CommunityUpdateManyWithoutUsersInput } from "./CommunityUpdateManyWithoutUsersInput";
 import { CommunityWhereUniqueInput } from "../../community/base/CommunityWhereUniqueInput";
+import { CommunityActivityFeedbackUpdateManyWithoutUsersInput } from "./CommunityActivityFeedbackUpdateManyWithoutUsersInput";
 import { EnumUserDesignation } from "./EnumUserDesignation";
+import { EmployeeFeedbackUpdateManyWithoutUsersInput } from "./EmployeeFeedbackUpdateManyWithoutUsersInput";
 import { EnumUserGender } from "./EnumUserGender";
 import { InterviewUpdateManyWithoutUsersInput } from "./InterviewUpdateManyWithoutUsersInput";
 import { OpportunityUpdateManyWithoutUsersInput } from "./OpportunityUpdateManyWithoutUsersInput";
 import { ProjectUpdateManyWithoutUsersInput } from "./ProjectUpdateManyWithoutUsersInput";
 import { ProjectInvolvementUpdateManyWithoutUsersInput } from "./ProjectInvolvementUpdateManyWithoutUsersInput";
+import { GraphQLJSON } from "graphql-type-json";
+import { InputJsonValue } from "../../types";
 import { SkillLevelWhereUniqueInput } from "../../skillLevel/base/SkillLevelWhereUniqueInput";
 import { SkillSetUpdateManyWithoutUsersInput } from "./SkillSetUpdateManyWithoutUsersInput";
 @InputType()
@@ -102,6 +108,18 @@ class UserUpdateInput {
 
   @ApiProperty({
     required: false,
+    type: () => CommunityUpdateManyWithoutUsersInput,
+  })
+  @ValidateNested()
+  @Type(() => CommunityUpdateManyWithoutUsersInput)
+  @IsOptional()
+  @Field(() => CommunityUpdateManyWithoutUsersInput, {
+    nullable: true,
+  })
+  communities?: CommunityUpdateManyWithoutUsersInput;
+
+  @ApiProperty({
+    required: false,
     type: () => CommunityWhereUniqueInput,
   })
   @ValidateNested()
@@ -111,6 +129,18 @@ class UserUpdateInput {
     nullable: true,
   })
   community?: CommunityWhereUniqueInput | null;
+
+  @ApiProperty({
+    required: false,
+    type: () => CommunityActivityFeedbackUpdateManyWithoutUsersInput,
+  })
+  @ValidateNested()
+  @Type(() => CommunityActivityFeedbackUpdateManyWithoutUsersInput)
+  @IsOptional()
+  @Field(() => CommunityActivityFeedbackUpdateManyWithoutUsersInput, {
+    nullable: true,
+  })
+  communityActivityFeedbacks?: CommunityActivityFeedbackUpdateManyWithoutUsersInput;
 
   @ApiProperty({
     required: false,
@@ -197,6 +227,18 @@ class UserUpdateInput {
     nullable: true,
   })
   emergencyContactNumber?: string | null;
+
+  @ApiProperty({
+    required: false,
+    type: () => EmployeeFeedbackUpdateManyWithoutUsersInput,
+  })
+  @ValidateNested()
+  @Type(() => EmployeeFeedbackUpdateManyWithoutUsersInput)
+  @IsOptional()
+  @Field(() => EmployeeFeedbackUpdateManyWithoutUsersInput, {
+    nullable: true,
+  })
+  employeeFeedbacks?: EmployeeFeedbackUpdateManyWithoutUsersInput;
 
   @ApiProperty({
     required: false,
@@ -403,16 +445,36 @@ class UserUpdateInput {
 
   @ApiProperty({
     required: false,
-    type: [String],
+    type: () => EmployeeFeedbackUpdateManyWithoutUsersInput,
   })
-  @IsString({
-    each: true,
-  })
+  @ValidateNested()
+  @Type(() => EmployeeFeedbackUpdateManyWithoutUsersInput)
   @IsOptional()
-  @Field(() => [String], {
+  @Field(() => EmployeeFeedbackUpdateManyWithoutUsersInput, {
     nullable: true,
   })
-  roles?: Array<string>;
+  reviewer?: EmployeeFeedbackUpdateManyWithoutUsersInput;
+
+  @ApiProperty({
+    required: false,
+  })
+  @IsJSON()
+  @IsOptional()
+  @Field(() => GraphQLJSON, {
+    nullable: true,
+  })
+  roles?: InputJsonValue;
+
+  @ApiProperty({
+    required: false,
+    type: String,
+  })
+  @IsString()
+  @IsOptional()
+  @Field(() => String, {
+    nullable: true,
+  })
+  secondaryEmail?: string | null;
 
   @ApiProperty({
     required: false,

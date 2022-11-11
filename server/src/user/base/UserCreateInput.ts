@@ -17,17 +17,23 @@ import {
   ValidateNested,
   IsDate,
   IsEnum,
+  IsJSON,
 } from "class-validator";
 import { AwardCreateNestedManyWithoutUsersInput } from "./AwardCreateNestedManyWithoutUsersInput";
 import { Type } from "class-transformer";
 import { CandidateCreateNestedManyWithoutUsersInput } from "./CandidateCreateNestedManyWithoutUsersInput";
+import { CommunityCreateNestedManyWithoutUsersInput } from "./CommunityCreateNestedManyWithoutUsersInput";
 import { CommunityWhereUniqueInput } from "../../community/base/CommunityWhereUniqueInput";
+import { CommunityActivityFeedbackCreateNestedManyWithoutUsersInput } from "./CommunityActivityFeedbackCreateNestedManyWithoutUsersInput";
 import { EnumUserDesignation } from "./EnumUserDesignation";
+import { EmployeeFeedbackCreateNestedManyWithoutUsersInput } from "./EmployeeFeedbackCreateNestedManyWithoutUsersInput";
 import { EnumUserGender } from "./EnumUserGender";
 import { InterviewCreateNestedManyWithoutUsersInput } from "./InterviewCreateNestedManyWithoutUsersInput";
 import { OpportunityCreateNestedManyWithoutUsersInput } from "./OpportunityCreateNestedManyWithoutUsersInput";
 import { ProjectCreateNestedManyWithoutUsersInput } from "./ProjectCreateNestedManyWithoutUsersInput";
 import { ProjectInvolvementCreateNestedManyWithoutUsersInput } from "./ProjectInvolvementCreateNestedManyWithoutUsersInput";
+import { GraphQLJSON } from "graphql-type-json";
+import { InputJsonValue } from "../../types";
 import { SkillLevelWhereUniqueInput } from "../../skillLevel/base/SkillLevelWhereUniqueInput";
 import { SkillSetCreateNestedManyWithoutUsersInput } from "./SkillSetCreateNestedManyWithoutUsersInput";
 @InputType()
@@ -102,6 +108,18 @@ class UserCreateInput {
 
   @ApiProperty({
     required: false,
+    type: () => CommunityCreateNestedManyWithoutUsersInput,
+  })
+  @ValidateNested()
+  @Type(() => CommunityCreateNestedManyWithoutUsersInput)
+  @IsOptional()
+  @Field(() => CommunityCreateNestedManyWithoutUsersInput, {
+    nullable: true,
+  })
+  communities?: CommunityCreateNestedManyWithoutUsersInput;
+
+  @ApiProperty({
+    required: false,
     type: () => CommunityWhereUniqueInput,
   })
   @ValidateNested()
@@ -111,6 +129,18 @@ class UserCreateInput {
     nullable: true,
   })
   community?: CommunityWhereUniqueInput | null;
+
+  @ApiProperty({
+    required: false,
+    type: () => CommunityActivityFeedbackCreateNestedManyWithoutUsersInput,
+  })
+  @ValidateNested()
+  @Type(() => CommunityActivityFeedbackCreateNestedManyWithoutUsersInput)
+  @IsOptional()
+  @Field(() => CommunityActivityFeedbackCreateNestedManyWithoutUsersInput, {
+    nullable: true,
+  })
+  communityActivityFeedbacks?: CommunityActivityFeedbackCreateNestedManyWithoutUsersInput;
 
   @ApiProperty({
     required: false,
@@ -197,6 +227,18 @@ class UserCreateInput {
     nullable: true,
   })
   emergencyContactNumber?: string | null;
+
+  @ApiProperty({
+    required: false,
+    type: () => EmployeeFeedbackCreateNestedManyWithoutUsersInput,
+  })
+  @ValidateNested()
+  @Type(() => EmployeeFeedbackCreateNestedManyWithoutUsersInput)
+  @IsOptional()
+  @Field(() => EmployeeFeedbackCreateNestedManyWithoutUsersInput, {
+    nullable: true,
+  })
+  employeeFeedbacks?: EmployeeFeedbackCreateNestedManyWithoutUsersInput;
 
   @ApiProperty({
     required: true,
@@ -393,14 +435,34 @@ class UserCreateInput {
   resumeLink?: string | null;
 
   @ApiProperty({
+    required: false,
+    type: () => EmployeeFeedbackCreateNestedManyWithoutUsersInput,
+  })
+  @ValidateNested()
+  @Type(() => EmployeeFeedbackCreateNestedManyWithoutUsersInput)
+  @IsOptional()
+  @Field(() => EmployeeFeedbackCreateNestedManyWithoutUsersInput, {
+    nullable: true,
+  })
+  reviewer?: EmployeeFeedbackCreateNestedManyWithoutUsersInput;
+
+  @ApiProperty({
     required: true,
-    type: [String],
   })
-  @IsString({
-    each: true,
+  @IsJSON()
+  @Field(() => GraphQLJSON)
+  roles!: InputJsonValue;
+
+  @ApiProperty({
+    required: false,
+    type: String,
   })
-  @Field(() => [String])
-  roles!: Array<string>;
+  @IsString()
+  @IsOptional()
+  @Field(() => String, {
+    nullable: true,
+  })
+  secondaryEmail?: string | null;
 
   @ApiProperty({
     required: false,

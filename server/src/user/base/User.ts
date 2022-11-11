@@ -17,17 +17,22 @@ import {
   ValidateNested,
   IsDate,
   IsEnum,
+  IsJSON,
 } from "class-validator";
 import { Award } from "../../award/base/Award";
 import { Type } from "class-transformer";
 import { Candidate } from "../../candidate/base/Candidate";
 import { Community } from "../../community/base/Community";
+import { CommunityActivityFeedback } from "../../communityActivityFeedback/base/CommunityActivityFeedback";
 import { EnumUserDesignation } from "./EnumUserDesignation";
+import { EmployeeFeedback } from "../../employeeFeedback/base/EmployeeFeedback";
 import { EnumUserGender } from "./EnumUserGender";
 import { Interview } from "../../interview/base/Interview";
 import { Opportunity } from "../../opportunity/base/Opportunity";
 import { Project } from "../../project/base/Project";
 import { ProjectInvolvement } from "../../projectInvolvement/base/ProjectInvolvement";
+import { GraphQLJSON } from "graphql-type-json";
+import { JsonValue } from "type-fest";
 import { SkillLevel } from "../../skillLevel/base/SkillLevel";
 import { SkillSet } from "../../skillSet/base/SkillSet";
 @ObjectType()
@@ -96,12 +101,30 @@ class User {
 
   @ApiProperty({
     required: false,
+    type: () => [Community],
+  })
+  @ValidateNested()
+  @Type(() => Community)
+  @IsOptional()
+  communities?: Array<Community>;
+
+  @ApiProperty({
+    required: false,
     type: () => Community,
   })
   @ValidateNested()
   @Type(() => Community)
   @IsOptional()
   community?: Community | null;
+
+  @ApiProperty({
+    required: false,
+    type: () => [CommunityActivityFeedback],
+  })
+  @ValidateNested()
+  @Type(() => CommunityActivityFeedback)
+  @IsOptional()
+  communityActivityFeedbacks?: Array<CommunityActivityFeedback>;
 
   @ApiProperty({
     required: false,
@@ -196,6 +219,15 @@ class User {
     nullable: true,
   })
   emergencyContactNumber!: string | null;
+
+  @ApiProperty({
+    required: false,
+    type: () => [EmployeeFeedback],
+  })
+  @ValidateNested()
+  @Type(() => EmployeeFeedback)
+  @IsOptional()
+  employeeFeedbacks?: Array<EmployeeFeedback>;
 
   @ApiProperty({
     required: true,
@@ -377,14 +409,31 @@ class User {
   resumeLink!: string | null;
 
   @ApiProperty({
+    required: false,
+    type: () => [EmployeeFeedback],
+  })
+  @ValidateNested()
+  @Type(() => EmployeeFeedback)
+  @IsOptional()
+  reviewer?: Array<EmployeeFeedback>;
+
+  @ApiProperty({
     required: true,
-    type: [String],
   })
-  @IsString({
-    each: true,
+  @IsJSON()
+  @Field(() => GraphQLJSON)
+  roles!: JsonValue;
+
+  @ApiProperty({
+    required: false,
+    type: String,
   })
-  @Field(() => [String])
-  roles!: Array<string>;
+  @IsString()
+  @IsOptional()
+  @Field(() => String, {
+    nullable: true,
+  })
+  secondaryEmail!: string | null;
 
   @ApiProperty({
     required: false,

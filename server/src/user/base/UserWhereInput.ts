@@ -17,8 +17,11 @@ import { IsOptional, ValidateNested, IsEnum } from "class-validator";
 import { AwardListRelationFilter } from "../../award/base/AwardListRelationFilter";
 import { CandidateListRelationFilter } from "../../candidate/base/CandidateListRelationFilter";
 import { DateTimeNullableFilter } from "../../util/DateTimeNullableFilter";
+import { CommunityListRelationFilter } from "../../community/base/CommunityListRelationFilter";
 import { CommunityWhereUniqueInput } from "../../community/base/CommunityWhereUniqueInput";
+import { CommunityActivityFeedbackListRelationFilter } from "../../communityActivityFeedback/base/CommunityActivityFeedbackListRelationFilter";
 import { EnumUserDesignation } from "./EnumUserDesignation";
+import { EmployeeFeedbackListRelationFilter } from "../../employeeFeedback/base/EmployeeFeedbackListRelationFilter";
 import { StringFilter } from "../../util/StringFilter";
 import { EnumUserGender } from "./EnumUserGender";
 import { InterviewListRelationFilter } from "../../interview/base/InterviewListRelationFilter";
@@ -99,6 +102,18 @@ class UserWhereInput {
 
   @ApiProperty({
     required: false,
+    type: () => CommunityListRelationFilter,
+  })
+  @ValidateNested()
+  @Type(() => CommunityListRelationFilter)
+  @IsOptional()
+  @Field(() => CommunityListRelationFilter, {
+    nullable: true,
+  })
+  communities?: CommunityListRelationFilter;
+
+  @ApiProperty({
+    required: false,
     type: () => CommunityWhereUniqueInput,
   })
   @ValidateNested()
@@ -108,6 +123,18 @@ class UserWhereInput {
     nullable: true,
   })
   community?: CommunityWhereUniqueInput;
+
+  @ApiProperty({
+    required: false,
+    type: () => CommunityActivityFeedbackListRelationFilter,
+  })
+  @ValidateNested()
+  @Type(() => CommunityActivityFeedbackListRelationFilter)
+  @IsOptional()
+  @Field(() => CommunityActivityFeedbackListRelationFilter, {
+    nullable: true,
+  })
+  communityActivityFeedbacks?: CommunityActivityFeedbackListRelationFilter;
 
   @ApiProperty({
     required: false,
@@ -193,6 +220,18 @@ class UserWhereInput {
     nullable: true,
   })
   emergencyContactNumber?: StringNullableFilter;
+
+  @ApiProperty({
+    required: false,
+    type: () => EmployeeFeedbackListRelationFilter,
+  })
+  @ValidateNested()
+  @Type(() => EmployeeFeedbackListRelationFilter)
+  @IsOptional()
+  @Field(() => EmployeeFeedbackListRelationFilter, {
+    nullable: true,
+  })
+  employeeFeedbacks?: EmployeeFeedbackListRelationFilter;
 
   @ApiProperty({
     required: false,
@@ -396,6 +435,29 @@ class UserWhereInput {
     nullable: true,
   })
   resumeLink?: StringNullableFilter;
+
+  @ApiProperty({
+    required: false,
+    type: () => EmployeeFeedbackListRelationFilter,
+  })
+  @ValidateNested()
+  @Type(() => EmployeeFeedbackListRelationFilter)
+  @IsOptional()
+  @Field(() => EmployeeFeedbackListRelationFilter, {
+    nullable: true,
+  })
+  reviewer?: EmployeeFeedbackListRelationFilter;
+
+  @ApiProperty({
+    required: false,
+    type: StringNullableFilter,
+  })
+  @Type(() => StringNullableFilter)
+  @IsOptional()
+  @Field(() => StringNullableFilter, {
+    nullable: true,
+  })
+  secondaryEmail?: StringNullableFilter;
 
   @ApiProperty({
     required: false,

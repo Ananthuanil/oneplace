@@ -16,6 +16,9 @@ import { AwardModule } from "./award/award.module";
 import { ProjectInvolvementModule } from "./projectInvolvement/projectInvolvement.module";
 import { SkillLevelModule } from "./skillLevel/skillLevel.module";
 import { RecruitmentPartnerModule } from "./recruitmentPartner/recruitmentPartner.module";
+import { EmployeeFeedbackModule } from "./employeeFeedback/employeeFeedback.module";
+import { CommunityActivityModule } from "./communityActivity/communityActivity.module";
+import { CommunityActivityFeedbackModule } from "./communityActivityFeedback/communityActivityFeedback.module";
 import { ACLModule } from "./auth/acl.module";
 import { AuthModule } from "./auth/auth.module";
 import { HealthModule } from "./health/health.module";
@@ -43,6 +46,9 @@ import { GraphQLModule } from "@nestjs/graphql";
     ProjectInvolvementModule,
     SkillLevelModule,
     RecruitmentPartnerModule,
+    EmployeeFeedbackModule,
+    CommunityActivityModule,
+    CommunityActivityFeedbackModule,
     ACLModule,
     AuthModule,
     HealthModule,

@@ -9,6 +9,7 @@ export type Interview = {
   createdAt: Date;
   currentStatus: string | null;
   date: Date | null;
+  emailStatus: boolean | null;
   endDate: Date | null;
   feedback?: Array<InterviewFeedback>;
   id: string;

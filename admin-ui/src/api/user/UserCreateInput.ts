@@ -1,10 +1,14 @@
 import { AwardCreateNestedManyWithoutUsersInput } from "./AwardCreateNestedManyWithoutUsersInput";
 import { CandidateCreateNestedManyWithoutUsersInput } from "./CandidateCreateNestedManyWithoutUsersInput";
+import { CommunityCreateNestedManyWithoutUsersInput } from "./CommunityCreateNestedManyWithoutUsersInput";
 import { CommunityWhereUniqueInput } from "../community/CommunityWhereUniqueInput";
+import { CommunityActivityFeedbackCreateNestedManyWithoutUsersInput } from "./CommunityActivityFeedbackCreateNestedManyWithoutUsersInput";
+import { EmployeeFeedbackCreateNestedManyWithoutUsersInput } from "./EmployeeFeedbackCreateNestedManyWithoutUsersInput";
 import { InterviewCreateNestedManyWithoutUsersInput } from "./InterviewCreateNestedManyWithoutUsersInput";
 import { OpportunityCreateNestedManyWithoutUsersInput } from "./OpportunityCreateNestedManyWithoutUsersInput";
 import { ProjectCreateNestedManyWithoutUsersInput } from "./ProjectCreateNestedManyWithoutUsersInput";
 import { ProjectInvolvementCreateNestedManyWithoutUsersInput } from "./ProjectInvolvementCreateNestedManyWithoutUsersInput";
+import { InputJsonValue } from "../../types";
 import { SkillLevelWhereUniqueInput } from "../skillLevel/SkillLevelWhereUniqueInput";
 import { SkillSetCreateNestedManyWithoutUsersInput } from "./SkillSetCreateNestedManyWithoutUsersInput";
 
@@ -15,7 +19,9 @@ export type UserCreateInput = {
   bloodGroup?: string | null;
   candidates?: CandidateCreateNestedManyWithoutUsersInput;
   careerStartDate?: Date | null;
+  communities?: CommunityCreateNestedManyWithoutUsersInput;
   community?: CommunityWhereUniqueInput | null;
+  communityActivityFeedbacks?: CommunityActivityFeedbackCreateNestedManyWithoutUsersInput;
   contactNumber?: string | null;
   courseOutDate?: Date | null;
   dateOfJoining?: Date | null;
@@ -32,6 +38,7 @@ export type UserCreateInput = {
   dob?: Date | null;
   email?: string | null;
   emergencyContactNumber?: string | null;
+  employeeFeedbacks?: EmployeeFeedbackCreateNestedManyWithoutUsersInput;
   firstName: string;
   folderLink?: string | null;
   fwExperience?: string | null;
@@ -50,7 +57,9 @@ export type UserCreateInput = {
   project?: ProjectCreateNestedManyWithoutUsersInput;
   projectInvolved?: ProjectInvolvementCreateNestedManyWithoutUsersInput;
   resumeLink?: string | null;
-  roles: Array<string>;
+  reviewer?: EmployeeFeedbackCreateNestedManyWithoutUsersInput;
+  roles: InputJsonValue;
+  secondaryEmail?: string | null;
   skillLevel?: SkillLevelWhereUniqueInput | null;
   skillSets?: SkillSetCreateNestedManyWithoutUsersInput;
   toPerson?: AwardCreateNestedManyWithoutUsersInput;

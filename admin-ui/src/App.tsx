@@ -65,6 +65,18 @@ import { RecruitmentPartnerList } from "./recruitmentPartner/RecruitmentPartnerL
 import { RecruitmentPartnerCreate } from "./recruitmentPartner/RecruitmentPartnerCreate";
 import { RecruitmentPartnerEdit } from "./recruitmentPartner/RecruitmentPartnerEdit";
 import { RecruitmentPartnerShow } from "./recruitmentPartner/RecruitmentPartnerShow";
+import { EmployeeFeedbackList } from "./employeeFeedback/EmployeeFeedbackList";
+import { EmployeeFeedbackCreate } from "./employeeFeedback/EmployeeFeedbackCreate";
+import { EmployeeFeedbackEdit } from "./employeeFeedback/EmployeeFeedbackEdit";
+import { EmployeeFeedbackShow } from "./employeeFeedback/EmployeeFeedbackShow";
+import { CommunityActivityList } from "./communityActivity/CommunityActivityList";
+import { CommunityActivityCreate } from "./communityActivity/CommunityActivityCreate";
+import { CommunityActivityEdit } from "./communityActivity/CommunityActivityEdit";
+import { CommunityActivityShow } from "./communityActivity/CommunityActivityShow";
+import { CommunityActivityFeedbackList } from "./communityActivityFeedback/CommunityActivityFeedbackList";
+import { CommunityActivityFeedbackCreate } from "./communityActivityFeedback/CommunityActivityFeedbackCreate";
+import { CommunityActivityFeedbackEdit } from "./communityActivityFeedback/CommunityActivityFeedbackEdit";
+import { CommunityActivityFeedbackShow } from "./communityActivityFeedback/CommunityActivityFeedbackShow";
 import { jwtAuthProvider } from "./auth-provider/ra-auth-jwt";
 
 const App = (): React.ReactElement => {
@@ -195,6 +207,27 @@ const App = (): React.ReactElement => {
           edit={RecruitmentPartnerEdit}
           create={RecruitmentPartnerCreate}
           show={RecruitmentPartnerShow}
+        />
+        <Resource
+          name="EmployeeFeedback"
+          list={EmployeeFeedbackList}
+          edit={EmployeeFeedbackEdit}
+          create={EmployeeFeedbackCreate}
+          show={EmployeeFeedbackShow}
+        />
+        <Resource
+          name="CommunityActivity"
+          list={CommunityActivityList}
+          edit={CommunityActivityEdit}
+          create={CommunityActivityCreate}
+          show={CommunityActivityShow}
+        />
+        <Resource
+          name="CommunityActivityFeedback"
+          list={CommunityActivityFeedbackList}
+          edit={CommunityActivityFeedbackEdit}
+          create={CommunityActivityFeedbackCreate}
+          show={CommunityActivityFeedbackShow}
         />
       </Admin>
     </div>

@@ -11,11 +11,36 @@ https://docs.amplication.com/docs/how-to/custom-code
   */
 import { InputType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
-import { IsString, IsOptional, ValidateNested } from "class-validator";
-import { UserCreateNestedManyWithoutCommunitiesInput } from "./UserCreateNestedManyWithoutCommunitiesInput";
+import { CommunityActivityCreateNestedManyWithoutCommunitiesInput } from "./CommunityActivityCreateNestedManyWithoutCommunitiesInput";
+import { ValidateNested, IsOptional, IsString } from "class-validator";
 import { Type } from "class-transformer";
+import { UserCreateNestedManyWithoutCommunitiesInput } from "./UserCreateNestedManyWithoutCommunitiesInput";
 @InputType()
 class CommunityCreateInput {
+  @ApiProperty({
+    required: false,
+    type: () => CommunityActivityCreateNestedManyWithoutCommunitiesInput,
+  })
+  @ValidateNested()
+  @Type(() => CommunityActivityCreateNestedManyWithoutCommunitiesInput)
+  @IsOptional()
+  @Field(() => CommunityActivityCreateNestedManyWithoutCommunitiesInput, {
+    nullable: true,
+  })
+  communityActivities?: CommunityActivityCreateNestedManyWithoutCommunitiesInput;
+
+  @ApiProperty({
+    required: true,
+    type: () => UserCreateNestedManyWithoutCommunitiesInput,
+  })
+  @ValidateNested()
+  @Type(() => UserCreateNestedManyWithoutCommunitiesInput)
+  @IsOptional()
+  @Field(() => UserCreateNestedManyWithoutCommunitiesInput, {
+    nullable: true,
+  })
+  communityLeads?: UserCreateNestedManyWithoutCommunitiesInput;
+
   @ApiProperty({
     required: false,
     type: String,

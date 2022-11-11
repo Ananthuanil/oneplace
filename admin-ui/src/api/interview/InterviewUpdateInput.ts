@@ -8,6 +8,7 @@ export type InterviewUpdateInput = {
   closed?: boolean | null;
   currentStatus?: string | null;
   date?: Date | null;
+  emailStatus?: boolean | null;
   endDate?: Date | null;
   feedback?: InterviewFeedbackUpdateManyWithoutInterviewsInput;
   interviewer?: UserWhereUniqueInput | null;

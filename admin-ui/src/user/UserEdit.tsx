@@ -16,6 +16,8 @@ import {
 import { AwardTitle } from "../award/AwardTitle";
 import { CandidateTitle } from "../candidate/CandidateTitle";
 import { CommunityTitle } from "../community/CommunityTitle";
+import { CommunityActivityFeedbackTitle } from "../communityActivityFeedback/CommunityActivityFeedbackTitle";
+import { EmployeeFeedbackTitle } from "../employeeFeedback/EmployeeFeedbackTitle";
 import { InterviewTitle } from "../interview/InterviewTitle";
 import { OpportunityTitle } from "../opportunity/OpportunityTitle";
 import { ProjectTitle } from "../project/ProjectTitle";
@@ -48,6 +50,14 @@ export const UserEdit = (props: EditProps): React.ReactElement => {
           <SelectArrayInput optionText={CandidateTitle} />
         </ReferenceArrayInput>
         <DateInput label="Career Start Date" source="careerStartDate" />
+        <ReferenceArrayInput
+          source="communities"
+          reference="Community"
+          parse={(value: any) => value && value.map((v: any) => ({ id: v }))}
+          format={(value: any) => value && value.map((v: any) => v.id)}
+        >
+          <SelectArrayInput optionText={CommunityTitle} />
+        </ReferenceArrayInput>
         <ReferenceInput
           source="community.id"
           reference="Community"
@@ -55,6 +65,14 @@ export const UserEdit = (props: EditProps): React.ReactElement => {
         >
           <SelectInput optionText={CommunityTitle} />
         </ReferenceInput>
+        <ReferenceArrayInput
+          source="communityActivityFeedbacks"
+          reference="CommunityActivityFeedback"
+          parse={(value: any) => value && value.map((v: any) => ({ id: v }))}
+          format={(value: any) => value && value.map((v: any) => v.id)}
+        >
+          <SelectArrayInput optionText={CommunityActivityFeedbackTitle} />
+        </ReferenceArrayInput>
         <TextInput label="Contact Number" source="contactNumber" />
         <DateInput label="Course Out Date" source="courseOutDate" />
         <DateInput label="Date of Joining" source="dateOfJoining" />
@@ -81,6 +99,14 @@ export const UserEdit = (props: EditProps): React.ReactElement => {
           label="Emergency Contact Number"
           source="emergencyContactNumber"
         />
+        <ReferenceArrayInput
+          source="employeeFeedbacks"
+          reference="EmployeeFeedback"
+          parse={(value: any) => value && value.map((v: any) => ({ id: v }))}
+          format={(value: any) => value && value.map((v: any) => v.id)}
+        >
+          <SelectArrayInput optionText={EmployeeFeedbackTitle} />
+        </ReferenceArrayInput>
         <TextInput label="First Name" source="firstName" />
         <TextInput label="Folder Link" source="folderLink" />
         <TextInput label="Fw Experience" source="fwExperience" />
@@ -152,11 +178,24 @@ export const UserEdit = (props: EditProps): React.ReactElement => {
           <SelectArrayInput optionText={ProjectInvolvementTitle} />
         </ReferenceArrayInput>
         <TextInput label="Resume Link" source="resumeLink" />
+        <ReferenceArrayInput
+          source="reviewer"
+          reference="EmployeeFeedback"
+          parse={(value: any) => value && value.map((v: any) => ({ id: v }))}
+          format={(value: any) => value && value.map((v: any) => v.id)}
+        >
+          <SelectArrayInput optionText={EmployeeFeedbackTitle} />
+        </ReferenceArrayInput>
         <SelectArrayInput
           source="roles"
           choices={ROLES_OPTIONS}
           optionText="label"
           optionValue="value"
+        />
+        <TextInput
+          label="Secondary Email"
+          source="secondaryEmail"
+          type="email"
         />
         <ReferenceInput
           source="skilllevel.id"

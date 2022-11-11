@@ -1,10 +1,14 @@
 import { AwardUpdateManyWithoutUsersInput } from "./AwardUpdateManyWithoutUsersInput";
 import { CandidateUpdateManyWithoutUsersInput } from "./CandidateUpdateManyWithoutUsersInput";
+import { CommunityUpdateManyWithoutUsersInput } from "./CommunityUpdateManyWithoutUsersInput";
 import { CommunityWhereUniqueInput } from "../community/CommunityWhereUniqueInput";
+import { CommunityActivityFeedbackUpdateManyWithoutUsersInput } from "./CommunityActivityFeedbackUpdateManyWithoutUsersInput";
+import { EmployeeFeedbackUpdateManyWithoutUsersInput } from "./EmployeeFeedbackUpdateManyWithoutUsersInput";
 import { InterviewUpdateManyWithoutUsersInput } from "./InterviewUpdateManyWithoutUsersInput";
 import { OpportunityUpdateManyWithoutUsersInput } from "./OpportunityUpdateManyWithoutUsersInput";
 import { ProjectUpdateManyWithoutUsersInput } from "./ProjectUpdateManyWithoutUsersInput";
 import { ProjectInvolvementUpdateManyWithoutUsersInput } from "./ProjectInvolvementUpdateManyWithoutUsersInput";
+import { InputJsonValue } from "../../types";
 import { SkillLevelWhereUniqueInput } from "../skillLevel/SkillLevelWhereUniqueInput";
 import { SkillSetUpdateManyWithoutUsersInput } from "./SkillSetUpdateManyWithoutUsersInput";
 
@@ -15,7 +19,9 @@ export type UserUpdateInput = {
   bloodGroup?: string | null;
   candidates?: CandidateUpdateManyWithoutUsersInput;
   careerStartDate?: Date | null;
+  communities?: CommunityUpdateManyWithoutUsersInput;
   community?: CommunityWhereUniqueInput | null;
+  communityActivityFeedbacks?: CommunityActivityFeedbackUpdateManyWithoutUsersInput;
   contactNumber?: string | null;
   courseOutDate?: Date | null;
   dateOfJoining?: Date | null;
@@ -32,6 +38,7 @@ export type UserUpdateInput = {
   dob?: Date | null;
   email?: string | null;
   emergencyContactNumber?: string | null;
+  employeeFeedbacks?: EmployeeFeedbackUpdateManyWithoutUsersInput;
   firstName?: string;
   folderLink?: string | null;
   fwExperience?: string | null;
@@ -50,7 +57,9 @@ export type UserUpdateInput = {
   project?: ProjectUpdateManyWithoutUsersInput;
   projectInvolved?: ProjectInvolvementUpdateManyWithoutUsersInput;
   resumeLink?: string | null;
-  roles?: Array<string>;
+  reviewer?: EmployeeFeedbackUpdateManyWithoutUsersInput;
+  roles?: InputJsonValue;
+  secondaryEmail?: string | null;
   skillLevel?: SkillLevelWhereUniqueInput | null;
   skillSets?: SkillSetUpdateManyWithoutUsersInput;
   toPerson?: AwardUpdateManyWithoutUsersInput;
