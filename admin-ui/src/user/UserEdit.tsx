@@ -15,8 +15,10 @@ import {
 
 import { AwardTitle } from "../award/AwardTitle";
 import { CandidateTitle } from "../candidate/CandidateTitle";
+import { ClientFeedbackTitle } from "../clientFeedback/ClientFeedbackTitle";
 import { CommunityTitle } from "../community/CommunityTitle";
 import { CommunityActivityFeedbackTitle } from "../communityActivityFeedback/CommunityActivityFeedbackTitle";
+import { UserTitle } from "./UserTitle";
 import { EmployeeFeedbackTitle } from "../employeeFeedback/EmployeeFeedbackTitle";
 import { InterviewTitle } from "../interview/InterviewTitle";
 import { OpportunityTitle } from "../opportunity/OpportunityTitle";
@@ -51,6 +53,14 @@ export const UserEdit = (props: EditProps): React.ReactElement => {
         </ReferenceArrayInput>
         <DateInput label="Career Start Date" source="careerStartDate" />
         <ReferenceArrayInput
+          source="clientFeedbacks"
+          reference="ClientFeedback"
+          parse={(value: any) => value && value.map((v: any) => ({ id: v }))}
+          format={(value: any) => value && value.map((v: any) => v.id)}
+        >
+          <SelectArrayInput optionText={ClientFeedbackTitle} />
+        </ReferenceArrayInput>
+        <ReferenceArrayInput
           source="communities"
           reference="Community"
           parse={(value: any) => value && value.map((v: any) => ({ id: v }))}
@@ -73,6 +83,13 @@ export const UserEdit = (props: EditProps): React.ReactElement => {
         >
           <SelectArrayInput optionText={CommunityActivityFeedbackTitle} />
         </ReferenceArrayInput>
+        <ReferenceInput
+          source="user.id"
+          reference="User"
+          label="CommunityMentor"
+        >
+          <SelectInput optionText={UserTitle} />
+        </ReferenceInput>
         <TextInput label="Contact Number" source="contactNumber" />
         <DateInput label="Course Out Date" source="courseOutDate" />
         <DateInput label="Date of Joining" source="dateOfJoining" />
@@ -214,6 +231,14 @@ export const UserEdit = (props: EditProps): React.ReactElement => {
         </ReferenceArrayInput>
         <TextInput label="Total Experience" source="totalExperience" />
         <TextInput label="Username" source="username" />
+        <ReferenceArrayInput
+          source="users"
+          reference="User"
+          parse={(value: any) => value && value.map((v: any) => ({ id: v }))}
+          format={(value: any) => value && value.map((v: any) => v.id)}
+        >
+          <SelectArrayInput optionText={UserTitle} />
+        </ReferenceArrayInput>
       </SimpleForm>
     </Edit>
   );

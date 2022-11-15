@@ -18,6 +18,7 @@ import * as gqlACGuard from "../../auth/gqlAC.guard";
 import { isRecordNotFoundError } from "../../prisma.util";
 import { MetaQueryPayload } from "../../util/MetaQueryPayload";
 import { Public } from "../../decorators/public.decorator";
+import { AclFilterResponseInterceptor } from "../../interceptors/aclFilterResponse.interceptor";
 import { CreateUserArgs } from "./CreateUserArgs";
 import { UpdateUserArgs } from "./UpdateUserArgs";
 import { DeleteUserArgs } from "./DeleteUserArgs";
@@ -28,6 +29,8 @@ import { AwardFindManyArgs } from "../../award/base/AwardFindManyArgs";
 import { Award } from "../../award/base/Award";
 import { CandidateFindManyArgs } from "../../candidate/base/CandidateFindManyArgs";
 import { Candidate } from "../../candidate/base/Candidate";
+import { ClientFeedbackFindManyArgs } from "../../clientFeedback/base/ClientFeedbackFindManyArgs";
+import { ClientFeedback } from "../../clientFeedback/base/ClientFeedback";
 import { CommunityFindManyArgs } from "../../community/base/CommunityFindManyArgs";
 import { Community } from "../../community/base/Community";
 import { CommunityActivityFeedbackFindManyArgs } from "../../communityActivityFeedback/base/CommunityActivityFeedbackFindManyArgs";
@@ -100,6 +103,12 @@ export class UserResolverBase {
             }
           : undefined,
 
+        communityMentor: args.data.communityMentor
+          ? {
+              connect: args.data.communityMentor,
+            }
+          : undefined,
+
         skillLevel: args.data.skillLevel
           ? {
               connect: args.data.skillLevel,
@@ -121,6 +130,12 @@ export class UserResolverBase {
           community: args.data.community
             ? {
                 connect: args.data.community,
+              }
+            : undefined,
+
+          communityMentor: args.data.communityMentor
+            ? {
+                connect: args.data.communityMentor,
               }
             : undefined,
 
@@ -178,6 +193,26 @@ export class UserResolverBase {
     @graphql.Args() args: CandidateFindManyArgs
   ): Promise<Candidate[]> {
     const results = await this.service.findCandidates(parent.id, args);
+
+    if (!results) {
+      return [];
+    }
+
+    return results;
+  }
+
+  @common.UseInterceptors(AclFilterResponseInterceptor)
+  @graphql.ResolveField(() => [ClientFeedback])
+  @nestAccessControl.UseRoles({
+    resource: "ClientFeedback",
+    action: "read",
+    possession: "any",
+  })
+  async clientFeedbacks(
+    @graphql.Parent() parent: User,
+    @graphql.Args() args: ClientFeedbackFindManyArgs
+  ): Promise<ClientFeedback[]> {
+    const results = await this.service.findClientFeedbacks(parent.id, args);
 
     if (!results) {
       return [];
@@ -340,9 +375,35 @@ export class UserResolverBase {
   }
 
   @Public()
+  @graphql.ResolveField(() => [User])
+  async users(
+    @graphql.Parent() parent: User,
+    @graphql.Args() args: UserFindManyArgs
+  ): Promise<User[]> {
+    const results = await this.service.findUsers(parent.id, args);
+
+    if (!results) {
+      return [];
+    }
+
+    return results;
+  }
+
+  @Public()
   @graphql.ResolveField(() => Community, { nullable: true })
   async community(@graphql.Parent() parent: User): Promise<Community | null> {
     const result = await this.service.getCommunity(parent.id);
+
+    if (!result) {
+      return null;
+    }
+    return result;
+  }
+
+  @Public()
+  @graphql.ResolveField(() => User, { nullable: true })
+  async communityMentor(@graphql.Parent() parent: User): Promise<User | null> {
+    const result = await this.service.getCommunityMentor(parent.id);
 
     if (!result) {
       return null;

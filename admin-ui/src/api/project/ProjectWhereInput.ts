@@ -1,3 +1,4 @@
+import { ClientFeedbackListRelationFilter } from "../clientFeedback/ClientFeedbackListRelationFilter";
 import { StringFilter } from "../../util/StringFilter";
 import { StringNullableFilter } from "../../util/StringNullableFilter";
 import { OpportunityListRelationFilter } from "../opportunity/OpportunityListRelationFilter";
@@ -7,6 +8,7 @@ import { DateTimeNullableFilter } from "../../util/DateTimeNullableFilter";
 import { UserListRelationFilter } from "../user/UserListRelationFilter";
 
 export type ProjectWhereInput = {
+  clientFeedbacks?: ClientFeedbackListRelationFilter;
   id?: StringFilter;
   name?: StringNullableFilter;
   opportunities?: OpportunityListRelationFilter;

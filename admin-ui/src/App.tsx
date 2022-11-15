@@ -77,6 +77,10 @@ import { CommunityActivityFeedbackList } from "./communityActivityFeedback/Commu
 import { CommunityActivityFeedbackCreate } from "./communityActivityFeedback/CommunityActivityFeedbackCreate";
 import { CommunityActivityFeedbackEdit } from "./communityActivityFeedback/CommunityActivityFeedbackEdit";
 import { CommunityActivityFeedbackShow } from "./communityActivityFeedback/CommunityActivityFeedbackShow";
+import { ClientFeedbackList } from "./clientFeedback/ClientFeedbackList";
+import { ClientFeedbackCreate } from "./clientFeedback/ClientFeedbackCreate";
+import { ClientFeedbackEdit } from "./clientFeedback/ClientFeedbackEdit";
+import { ClientFeedbackShow } from "./clientFeedback/ClientFeedbackShow";
 import { jwtAuthProvider } from "./auth-provider/ra-auth-jwt";
 
 const App = (): React.ReactElement => {
@@ -228,6 +232,13 @@ const App = (): React.ReactElement => {
           edit={CommunityActivityFeedbackEdit}
           create={CommunityActivityFeedbackCreate}
           show={CommunityActivityFeedbackShow}
+        />
+        <Resource
+          name="ClientFeedback"
+          list={ClientFeedbackList}
+          edit={ClientFeedbackEdit}
+          create={ClientFeedbackCreate}
+          show={ClientFeedbackShow}
         />
       </Admin>
     </div>

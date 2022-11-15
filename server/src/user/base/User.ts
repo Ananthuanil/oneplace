@@ -22,6 +22,7 @@ import {
 import { Award } from "../../award/base/Award";
 import { Type } from "class-transformer";
 import { Candidate } from "../../candidate/base/Candidate";
+import { ClientFeedback } from "../../clientFeedback/base/ClientFeedback";
 import { Community } from "../../community/base/Community";
 import { CommunityActivityFeedback } from "../../communityActivityFeedback/base/CommunityActivityFeedback";
 import { EnumUserDesignation } from "./EnumUserDesignation";
@@ -101,6 +102,15 @@ class User {
 
   @ApiProperty({
     required: false,
+    type: () => [ClientFeedback],
+  })
+  @ValidateNested()
+  @Type(() => ClientFeedback)
+  @IsOptional()
+  clientFeedbacks?: Array<ClientFeedback>;
+
+  @ApiProperty({
+    required: false,
     type: () => [Community],
   })
   @ValidateNested()
@@ -125,6 +135,15 @@ class User {
   @Type(() => CommunityActivityFeedback)
   @IsOptional()
   communityActivityFeedbacks?: Array<CommunityActivityFeedback>;
+
+  @ApiProperty({
+    required: false,
+    type: () => User,
+  })
+  @ValidateNested()
+  @Type(() => User)
+  @IsOptional()
+  communityMentor?: User | null;
 
   @ApiProperty({
     required: false,
@@ -476,5 +495,14 @@ class User {
   @IsString()
   @Field(() => String)
   username!: string;
+
+  @ApiProperty({
+    required: false,
+    type: () => [User],
+  })
+  @ValidateNested()
+  @Type(() => User)
+  @IsOptional()
+  users?: Array<User>;
 }
 export { User };
