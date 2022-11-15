@@ -335,18 +335,6 @@ class UserWhereInput {
 
   @ApiProperty({
     required: false,
-    type: () => OpportunityListRelationFilter,
-  })
-  @ValidateNested()
-  @Type(() => OpportunityListRelationFilter)
-  @IsOptional()
-  @Field(() => OpportunityListRelationFilter, {
-    nullable: true,
-  })
-  mappedPerson?: OpportunityListRelationFilter;
-
-  @ApiProperty({
-    required: false,
     type: StringNullableFilter,
   })
   @Type(() => StringNullableFilter)

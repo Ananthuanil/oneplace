@@ -26,13 +26,14 @@ import { CandidateFindUniqueArgs } from "./CandidateFindUniqueArgs";
 import { Candidate } from "./Candidate";
 import { InterviewFindManyArgs } from "../../interview/base/InterviewFindManyArgs";
 import { Interview } from "../../interview/base/Interview";
+import { OpportunityFindManyArgs } from "../../opportunity/base/OpportunityFindManyArgs";
+import { Opportunity } from "../../opportunity/base/Opportunity";
 import { SkillFindManyArgs } from "../../skill/base/SkillFindManyArgs";
 import { Skill } from "../../skill/base/Skill";
 import { SkillSetFindManyArgs } from "../../skillSet/base/SkillSetFindManyArgs";
 import { SkillSet } from "../../skillSet/base/SkillSet";
 import { CommunicationFeedback } from "../../communicationFeedback/base/CommunicationFeedback";
 import { RecruitmentPartner } from "../../recruitmentPartner/base/RecruitmentPartner";
-import { Opportunity } from "../../opportunity/base/Opportunity";
 import { User } from "../../user/base/User";
 import { CandidateService } from "../candidate.service";
 
@@ -186,6 +187,21 @@ export class CandidateResolverBase {
     @graphql.Args() args: InterviewFindManyArgs
   ): Promise<Interview[]> {
     const results = await this.service.findInterviews(parent.id, args);
+
+    if (!results) {
+      return [];
+    }
+
+    return results;
+  }
+
+  @Public()
+  @graphql.ResolveField(() => [Opportunity])
+  async opportunities(
+    @graphql.Parent() parent: Candidate,
+    @graphql.Args() args: OpportunityFindManyArgs
+  ): Promise<Opportunity[]> {
+    const results = await this.service.findOpportunities(parent.id, args);
 
     if (!results) {
       return [];

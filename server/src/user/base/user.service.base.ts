@@ -154,17 +154,6 @@ export class UserServiceBase {
       .interviews(args);
   }
 
-  async findMappedPerson(
-    parentId: string,
-    args: Prisma.OpportunityFindManyArgs
-  ): Promise<Opportunity[]> {
-    return this.prisma.user
-      .findUnique({
-        where: { id: parentId },
-      })
-      .mappedPerson(args);
-  }
-
   async findOpportunities(
     parentId: string,
     args: Prisma.OpportunityFindManyArgs

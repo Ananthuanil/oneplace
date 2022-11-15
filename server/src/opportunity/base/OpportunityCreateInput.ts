@@ -65,15 +65,15 @@ class OpportunityCreateInput {
 
   @ApiProperty({
     required: false,
-    type: () => UserWhereUniqueInput,
+    type: () => CandidateCreateNestedManyWithoutOpportunitiesInput,
   })
   @ValidateNested()
-  @Type(() => UserWhereUniqueInput)
+  @Type(() => CandidateCreateNestedManyWithoutOpportunitiesInput)
   @IsOptional()
-  @Field(() => UserWhereUniqueInput, {
+  @Field(() => CandidateCreateNestedManyWithoutOpportunitiesInput, {
     nullable: true,
   })
-  mappedPerson?: UserWhereUniqueInput | null;
+  mappedPerson?: CandidateCreateNestedManyWithoutOpportunitiesInput;
 
   @ApiProperty({
     required: false,

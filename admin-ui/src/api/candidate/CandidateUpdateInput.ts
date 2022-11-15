@@ -1,6 +1,7 @@
 import { CommunicationFeedbackWhereUniqueInput } from "../communicationFeedback/CommunicationFeedbackWhereUniqueInput";
 import { RecruitmentPartnerWhereUniqueInput } from "../recruitmentPartner/RecruitmentPartnerWhereUniqueInput";
 import { InterviewUpdateManyWithoutCandidatesInput } from "./InterviewUpdateManyWithoutCandidatesInput";
+import { OpportunityUpdateManyWithoutCandidatesInput } from "./OpportunityUpdateManyWithoutCandidatesInput";
 import { OpportunityWhereUniqueInput } from "../opportunity/OpportunityWhereUniqueInput";
 import { UserWhereUniqueInput } from "../user/UserWhereUniqueInput";
 import { SkillUpdateManyWithoutCandidatesInput } from "./SkillUpdateManyWithoutCandidatesInput";
@@ -23,6 +24,7 @@ export type CandidateUpdateInput = {
   lastWorkingDay?: Date | null;
   name?: string;
   noticePeriodTime?: number | null;
+  opportunities?: OpportunityUpdateManyWithoutCandidatesInput;
   opportunity?: OpportunityWhereUniqueInput | null;
   referalEmployee?: UserWhereUniqueInput | null;
   resume?: string | null;

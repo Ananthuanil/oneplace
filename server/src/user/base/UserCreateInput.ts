@@ -325,18 +325,6 @@ class UserCreateInput {
 
   @ApiProperty({
     required: false,
-    type: () => OpportunityCreateNestedManyWithoutUsersInput,
-  })
-  @ValidateNested()
-  @Type(() => OpportunityCreateNestedManyWithoutUsersInput)
-  @IsOptional()
-  @Field(() => OpportunityCreateNestedManyWithoutUsersInput, {
-    nullable: true,
-  })
-  mappedPerson?: OpportunityCreateNestedManyWithoutUsersInput;
-
-  @ApiProperty({
-    required: false,
     type: String,
   })
   @IsString()

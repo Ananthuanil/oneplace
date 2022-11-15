@@ -47,7 +47,6 @@ export type UserUpdateInput = {
   imageLink?: string | null;
   interviews?: InterviewUpdateManyWithoutUsersInput;
   lastName?: string;
-  mappedPerson?: OpportunityUpdateManyWithoutUsersInput;
   notifications?: string | null;
   opportunities?: OpportunityUpdateManyWithoutUsersInput;
   panNumber?: string | null;

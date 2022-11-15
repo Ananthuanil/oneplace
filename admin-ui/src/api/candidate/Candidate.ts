@@ -25,6 +25,7 @@ export type Candidate = {
   lastWorkingDay: Date | null;
   name: string;
   noticePeriodTime: number | null;
+  opportunities?: Array<Opportunity>;
   opportunity?: Opportunity | null;
   referalEmployee?: User | null;
   resume: string | null;

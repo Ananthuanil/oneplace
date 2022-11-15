@@ -76,12 +76,12 @@ class Opportunity {
 
   @ApiProperty({
     required: false,
-    type: () => User,
+    type: () => [Candidate],
   })
   @ValidateNested()
-  @Type(() => User)
+  @Type(() => Candidate)
   @IsOptional()
-  mappedPerson?: User | null;
+  mappedPerson?: Array<Candidate>;
 
   @ApiProperty({
     required: false,

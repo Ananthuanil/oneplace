@@ -40,13 +40,6 @@ export const PartnerShow = (props: ShowProps): React.ReactElement => {
             <DateField source="createdAt" label="Created At" />
             <TextField label="Current Status" source="currentStatus" />
             <TextField label="ID" source="id" />
-            <ReferenceField
-              label="Mapped Person"
-              source="user.id"
-              reference="User"
-            >
-              <TextField source={USER_TITLE_FIELD} />
-            </ReferenceField>
             <TextField label="name" source="name" />
             <ReferenceField
               label="Partner"

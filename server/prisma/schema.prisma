@@ -36,9 +36,8 @@ model User {
   imageLink                  String?
   interviews                 Interview[]
   lastName                   String
-  mappedPerson               Opportunity[]               @relation(name: "OpportunityMappedPersonUserMappedPerson")
   notifications              String?
-  opportunities              Opportunity[]               @relation(name: "claimedPerson")
+  opportunities              Opportunity[]
   panNumber                  String?
   password                   String
   personalEmailId            String?
@@ -117,7 +116,8 @@ model Candidate {
   lastWorkingDay               DateTime?
   name                         String
   noticePeriodTime             Float?
-  opportunity                  Opportunity?           @relation(fields: [opportunityId], references: [id])
+  opportunities                Opportunity[]          @relation(name: "mappedPerson")
+  opportunity                  Opportunity?           @relation(name: "CandidatesOnOpportunity", fields: [opportunityId], references: [id])
   opportunityId                String?
   referalEmployee              User?                  @relation(fields: [referalEmployeeId], references: [id])
   referalEmployeeId            String?
@@ -169,14 +169,13 @@ model Interview {
 }
 
 model Opportunity {
-  candidates         Candidate[]
-  claimedPerson      User?                             @relation(name: "claimedPerson", fields: [claimedPersonId], references: [id])
+  candidates         Candidate[]                       @relation(name: "CandidatesOnOpportunity")
+  claimedPerson      User?                             @relation(fields: [claimedPersonId], references: [id])
   claimedPersonId    String?
   createdAt          DateTime                          @default(now())
   currentStatus      String?
   id                 String                            @id @default(cuid())
-  mappedPerson       User?                             @relation(name: "OpportunityMappedPersonUserMappedPerson", fields: [mappedPersonId], references: [id])
-  mappedPersonId     String?
+  mappedPerson       Candidate[]                       @relation(name: "mappedPerson")
   name               String?
   optionalSkillset   Skill[]                           @relation(name: "optionalSkillset")
   partner            Partner?                          @relation(fields: [partnerId], references: [id])

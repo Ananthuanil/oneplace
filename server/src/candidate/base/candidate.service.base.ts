@@ -15,11 +15,11 @@ import {
   Prisma,
   Candidate,
   Interview,
+  Opportunity,
   Skill,
   SkillSet,
   CommunicationFeedback,
   RecruitmentPartner,
-  Opportunity,
   User,
 } from "@prisma/client";
 
@@ -67,6 +67,17 @@ export class CandidateServiceBase {
         where: { id: parentId },
       })
       .interviews(args);
+  }
+
+  async findOpportunities(
+    parentId: string,
+    args: Prisma.OpportunityFindManyArgs
+  ): Promise<Opportunity[]> {
+    return this.prisma.candidate
+      .findUnique({
+        where: { id: parentId },
+      })
+      .opportunities(args);
   }
 
   async findSkills(

@@ -8,7 +8,7 @@ export type OpportunityCreateInput = {
   candidates?: CandidateCreateNestedManyWithoutOpportunitiesInput;
   claimedPerson?: UserWhereUniqueInput | null;
   currentStatus?: string | null;
-  mappedPerson?: UserWhereUniqueInput | null;
+  mappedPerson?: CandidateCreateNestedManyWithoutOpportunitiesInput;
   name?: string | null;
   optionalSkillset?: SkillCreateNestedManyWithoutOpportunitiesInput;
   partner?: PartnerWhereUniqueInput | null;
