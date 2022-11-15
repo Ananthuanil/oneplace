@@ -17,7 +17,11 @@ export type ClientFeedbackWhereInput = {
   reviewerEmail?: StringFilter;
   reviewerName?: StringNullableFilter;
   role?: StringFilter;
-  status?: "LinkGenerated" | "WaitingForFeedback" | "FeedbackReceived";
+  status?:
+    | "LinkGenerated"
+    | "WaitingForFeedback"
+    | "FeedbackReceived"
+    | "NoResponse";
   teamWork?: IntFilter;
   technicalExpertise?: IntFilter;
 };

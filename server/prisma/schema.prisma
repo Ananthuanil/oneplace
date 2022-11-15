@@ -391,4 +391,5 @@ enum EnumClientFeedbackStatus {
   LinkGenerated
   WaitingForFeedback
   FeedbackReceived
+  NoResponse
 }
