@@ -207,6 +207,15 @@ class Candidate {
 
   @ApiProperty({
     required: false,
+    type: () => [Opportunity],
+  })
+  @ValidateNested()
+  @Type(() => Opportunity)
+  @IsOptional()
+  opportunities?: Array<Opportunity>;
+
+  @ApiProperty({
+    required: false,
     type: () => Opportunity,
   })
   @ValidateNested()

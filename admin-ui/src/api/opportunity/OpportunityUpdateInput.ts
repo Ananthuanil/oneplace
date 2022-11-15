@@ -8,7 +8,7 @@ export type OpportunityUpdateInput = {
   candidates?: CandidateUpdateManyWithoutOpportunitiesInput;
   claimedPerson?: UserWhereUniqueInput | null;
   currentStatus?: string | null;
-  mappedPerson?: UserWhereUniqueInput | null;
+  mappedPerson?: CandidateUpdateManyWithoutOpportunitiesInput;
   name?: string | null;
   optionalSkillset?: SkillUpdateManyWithoutOpportunitiesInput;
   partner?: PartnerWhereUniqueInput | null;

@@ -25,6 +25,7 @@ import { CommunicationFeedbackWhereUniqueInput } from "../../communicationFeedba
 import { Type } from "class-transformer";
 import { RecruitmentPartnerWhereUniqueInput } from "../../recruitmentPartner/base/RecruitmentPartnerWhereUniqueInput";
 import { InterviewUpdateManyWithoutCandidatesInput } from "./InterviewUpdateManyWithoutCandidatesInput";
+import { OpportunityUpdateManyWithoutCandidatesInput } from "./OpportunityUpdateManyWithoutCandidatesInput";
 import { OpportunityWhereUniqueInput } from "../../opportunity/base/OpportunityWhereUniqueInput";
 import { UserWhereUniqueInput } from "../../user/base/UserWhereUniqueInput";
 import { SkillUpdateManyWithoutCandidatesInput } from "./SkillUpdateManyWithoutCandidatesInput";
@@ -210,6 +211,18 @@ class CandidateUpdateInput {
     nullable: true,
   })
   noticePeriodTime?: number | null;
+
+  @ApiProperty({
+    required: false,
+    type: () => OpportunityUpdateManyWithoutCandidatesInput,
+  })
+  @ValidateNested()
+  @Type(() => OpportunityUpdateManyWithoutCandidatesInput)
+  @IsOptional()
+  @Field(() => OpportunityUpdateManyWithoutCandidatesInput, {
+    nullable: true,
+  })
+  opportunities?: OpportunityUpdateManyWithoutCandidatesInput;
 
   @ApiProperty({
     required: false,

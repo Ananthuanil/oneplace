@@ -73,15 +73,15 @@ class OpportunityWhereInput {
 
   @ApiProperty({
     required: false,
-    type: () => UserWhereUniqueInput,
+    type: () => CandidateListRelationFilter,
   })
   @ValidateNested()
-  @Type(() => UserWhereUniqueInput)
+  @Type(() => CandidateListRelationFilter)
   @IsOptional()
-  @Field(() => UserWhereUniqueInput, {
+  @Field(() => CandidateListRelationFilter, {
     nullable: true,
   })
-  mappedPerson?: UserWhereUniqueInput;
+  mappedPerson?: CandidateListRelationFilter;
 
   @ApiProperty({
     required: false,

@@ -1,6 +1,7 @@
 import { CommunicationFeedbackWhereUniqueInput } from "../communicationFeedback/CommunicationFeedbackWhereUniqueInput";
 import { RecruitmentPartnerWhereUniqueInput } from "../recruitmentPartner/RecruitmentPartnerWhereUniqueInput";
 import { InterviewCreateNestedManyWithoutCandidatesInput } from "./InterviewCreateNestedManyWithoutCandidatesInput";
+import { OpportunityCreateNestedManyWithoutCandidatesInput } from "./OpportunityCreateNestedManyWithoutCandidatesInput";
 import { OpportunityWhereUniqueInput } from "../opportunity/OpportunityWhereUniqueInput";
 import { UserWhereUniqueInput } from "../user/UserWhereUniqueInput";
 import { SkillCreateNestedManyWithoutCandidatesInput } from "./SkillCreateNestedManyWithoutCandidatesInput";
@@ -23,6 +24,7 @@ export type CandidateCreateInput = {
   lastWorkingDay?: Date | null;
   name: string;
   noticePeriodTime?: number | null;
+  opportunities?: OpportunityCreateNestedManyWithoutCandidatesInput;
   opportunity?: OpportunityWhereUniqueInput | null;
   referalEmployee?: UserWhereUniqueInput | null;
   resume?: string | null;

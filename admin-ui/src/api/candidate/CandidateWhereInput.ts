@@ -6,6 +6,7 @@ import { RecruitmentPartnerWhereUniqueInput } from "../recruitmentPartner/Recrui
 import { InterviewListRelationFilter } from "../interview/InterviewListRelationFilter";
 import { BooleanFilter } from "../../util/BooleanFilter";
 import { DateTimeNullableFilter } from "../../util/DateTimeNullableFilter";
+import { OpportunityListRelationFilter } from "../opportunity/OpportunityListRelationFilter";
 import { OpportunityWhereUniqueInput } from "../opportunity/OpportunityWhereUniqueInput";
 import { UserWhereUniqueInput } from "../user/UserWhereUniqueInput";
 import { SkillListRelationFilter } from "../skill/SkillListRelationFilter";
@@ -30,6 +31,7 @@ export type CandidateWhereInput = {
   lastWorkingDay?: DateTimeNullableFilter;
   name?: StringFilter;
   noticePeriodTime?: FloatNullableFilter;
+  opportunities?: OpportunityListRelationFilter;
   opportunity?: OpportunityWhereUniqueInput;
   referalEmployee?: UserWhereUniqueInput;
   resume?: StringNullableFilter;

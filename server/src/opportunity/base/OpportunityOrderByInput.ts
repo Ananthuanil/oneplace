@@ -61,15 +61,6 @@ class OpportunityOrderByInput {
   @Field(() => SortOrder, {
     nullable: true,
   })
-  mappedPersonId?: SortOrder;
-
-  @ApiProperty({
-    required: false,
-    enum: ["asc", "desc"],
-  })
-  @Field(() => SortOrder, {
-    nullable: true,
-  })
   name?: SortOrder;
 
   @ApiProperty({

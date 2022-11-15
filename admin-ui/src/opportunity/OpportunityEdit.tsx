@@ -38,9 +38,14 @@ export const OpportunityEdit = (props: EditProps): React.ReactElement => {
           <SelectInput optionText={UserTitle} />
         </ReferenceInput>
         <TextInput label="Current Status" source="currentStatus" />
-        <ReferenceInput source="user.id" reference="User" label="Mapped Person">
-          <SelectInput optionText={UserTitle} />
-        </ReferenceInput>
+        <ReferenceArrayInput
+          source="mappedPerson"
+          reference="Candidate"
+          parse={(value: any) => value && value.map((v: any) => ({ id: v }))}
+          format={(value: any) => value && value.map((v: any) => v.id)}
+        >
+          <SelectArrayInput optionText={CandidateTitle} />
+        </ReferenceArrayInput>
         <TextInput label="name" source="name" />
         <ReferenceArrayInput
           source="optionalSkillset"

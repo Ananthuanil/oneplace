@@ -251,21 +251,6 @@ export class UserResolverBase {
 
   @Public()
   @graphql.ResolveField(() => [Opportunity])
-  async mappedPerson(
-    @graphql.Parent() parent: User,
-    @graphql.Args() args: OpportunityFindManyArgs
-  ): Promise<Opportunity[]> {
-    const results = await this.service.findMappedPerson(parent.id, args);
-
-    if (!results) {
-      return [];
-    }
-
-    return results;
-  }
-
-  @Public()
-  @graphql.ResolveField(() => [Opportunity])
   async opportunities(
     @graphql.Parent() parent: User,
     @graphql.Args() args: OpportunityFindManyArgs

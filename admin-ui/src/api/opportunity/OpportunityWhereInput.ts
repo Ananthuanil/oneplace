@@ -12,7 +12,7 @@ export type OpportunityWhereInput = {
   claimedPerson?: UserWhereUniqueInput;
   currentStatus?: StringNullableFilter;
   id?: StringFilter;
-  mappedPerson?: UserWhereUniqueInput;
+  mappedPerson?: CandidateListRelationFilter;
   name?: StringNullableFilter;
   optionalSkillset?: SkillListRelationFilter;
   partner?: PartnerWhereUniqueInput;

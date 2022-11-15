@@ -48,7 +48,6 @@ export type User = {
   imageLink: string | null;
   interviews?: Array<Interview>;
   lastName: string;
-  mappedPerson?: Array<Opportunity>;
   notifications: string | null;
   opportunities?: Array<Opportunity>;
   panNumber: string | null;

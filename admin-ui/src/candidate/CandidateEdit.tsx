@@ -75,6 +75,14 @@ export const CandidateEdit = (props: EditProps): React.ReactElement => {
         <DateInput label="Last Working Day" source="lastWorkingDay" />
         <TextInput label="Name" source="name" />
         <NumberInput label="Notice Period Time" source="noticePeriodTime" />
+        <ReferenceArrayInput
+          source="opportunities"
+          reference="Opportunity"
+          parse={(value: any) => value && value.map((v: any) => ({ id: v }))}
+          format={(value: any) => value && value.map((v: any) => v.id)}
+        >
+          <SelectArrayInput optionText={OpportunityTitle} />
+        </ReferenceArrayInput>
         <ReferenceInput
           source="opportunity.id"
           reference="Opportunity"

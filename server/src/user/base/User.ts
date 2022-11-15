@@ -319,15 +319,6 @@ class User {
 
   @ApiProperty({
     required: false,
-    type: () => [Opportunity],
-  })
-  @ValidateNested()
-  @Type(() => Opportunity)
-  @IsOptional()
-  mappedPerson?: Array<Opportunity>;
-
-  @ApiProperty({
-    required: false,
     type: String,
   })
   @IsString()

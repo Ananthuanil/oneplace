@@ -49,7 +49,6 @@ export type UserWhereInput = {
   imageLink?: StringNullableFilter;
   interviews?: InterviewListRelationFilter;
   lastName?: StringFilter;
-  mappedPerson?: OpportunityListRelationFilter;
   notifications?: StringNullableFilter;
   opportunities?: OpportunityListRelationFilter;
   panNumber?: StringNullableFilter;

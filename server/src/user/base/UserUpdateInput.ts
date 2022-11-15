@@ -331,18 +331,6 @@ class UserUpdateInput {
 
   @ApiProperty({
     required: false,
-    type: () => OpportunityUpdateManyWithoutUsersInput,
-  })
-  @ValidateNested()
-  @Type(() => OpportunityUpdateManyWithoutUsersInput)
-  @IsOptional()
-  @Field(() => OpportunityUpdateManyWithoutUsersInput, {
-    nullable: true,
-  })
-  mappedPerson?: OpportunityUpdateManyWithoutUsersInput;
-
-  @ApiProperty({
-    required: false,
     type: String,
   })
   @IsString()
