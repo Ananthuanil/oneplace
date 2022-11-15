@@ -138,7 +138,12 @@ class ClientFeedbackCreateInput {
   @Field(() => EnumClientFeedbackStatus, {
     nullable: true,
   })
-  status?: "LinkGenerated" | "WaitingForFeedback" | "FeedbackReceived" | null;
+  status?:
+    | "LinkGenerated"
+    | "WaitingForFeedback"
+    | "FeedbackReceived"
+    | "NoResponse"
+    | null;
 
   @ApiProperty({
     required: true,

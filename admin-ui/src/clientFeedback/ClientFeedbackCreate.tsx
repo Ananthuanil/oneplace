@@ -61,6 +61,7 @@ export const ClientFeedbackCreate = (
             { label: "linkGenerated", value: "LinkGenerated" },
             { label: "waitingForFeedback", value: "WaitingForFeedback" },
             { label: "feedbackReceived", value: "FeedbackReceived" },
+            { label: "noResponse", value: "NoResponse" },
           ]}
           optionText="label"
           allowEmpty

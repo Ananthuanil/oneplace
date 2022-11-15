@@ -15,7 +15,12 @@ export type ClientFeedback = {
   reviewerEmail: string;
   reviewerName: string | null;
   role: string;
-  status?: "LinkGenerated" | "WaitingForFeedback" | "FeedbackReceived" | null;
+  status?:
+    | "LinkGenerated"
+    | "WaitingForFeedback"
+    | "FeedbackReceived"
+    | "NoResponse"
+    | null;
   teamWork: number;
   technicalExpertise: number;
   updatedAt: Date;
