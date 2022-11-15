@@ -19,6 +19,7 @@ import { RecruitmentPartnerModule } from "./recruitmentPartner/recruitmentPartne
 import { EmployeeFeedbackModule } from "./employeeFeedback/employeeFeedback.module";
 import { CommunityActivityModule } from "./communityActivity/communityActivity.module";
 import { CommunityActivityFeedbackModule } from "./communityActivityFeedback/communityActivityFeedback.module";
+import { ClientFeedbackModule } from "./clientFeedback/clientFeedback.module";
 import { ACLModule } from "./auth/acl.module";
 import { AuthModule } from "./auth/auth.module";
 import { HealthModule } from "./health/health.module";
@@ -49,6 +50,7 @@ import { GraphQLModule } from "@nestjs/graphql";
     EmployeeFeedbackModule,
     CommunityActivityModule,
     CommunityActivityFeedbackModule,
+    ClientFeedbackModule,
     ACLModule,
     AuthModule,
     HealthModule,

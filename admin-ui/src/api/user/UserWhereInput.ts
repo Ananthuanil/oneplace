@@ -2,6 +2,7 @@ import { StringNullableFilter } from "../../util/StringNullableFilter";
 import { AwardListRelationFilter } from "../award/AwardListRelationFilter";
 import { CandidateListRelationFilter } from "../candidate/CandidateListRelationFilter";
 import { DateTimeNullableFilter } from "../../util/DateTimeNullableFilter";
+import { ClientFeedbackListRelationFilter } from "../clientFeedback/ClientFeedbackListRelationFilter";
 import { CommunityListRelationFilter } from "../community/CommunityListRelationFilter";
 import { CommunityWhereUniqueInput } from "../community/CommunityWhereUniqueInput";
 import { CommunityActivityFeedbackListRelationFilter } from "../communityActivityFeedback/CommunityActivityFeedbackListRelationFilter";
@@ -21,6 +22,7 @@ export type UserWhereInput = {
   bloodGroup?: StringNullableFilter;
   candidates?: CandidateListRelationFilter;
   careerStartDate?: DateTimeNullableFilter;
+  clientFeedbacks?: ClientFeedbackListRelationFilter;
   communities?: CommunityListRelationFilter;
   community?: CommunityWhereUniqueInput;
   communityActivityFeedbacks?: CommunityActivityFeedbackListRelationFilter;

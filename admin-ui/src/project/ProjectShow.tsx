@@ -12,8 +12,8 @@ import {
 } from "react-admin";
 
 import { USER_TITLE_FIELD } from "../user/UserTitle";
-import { PARTNER_TITLE_FIELD } from "../partner/PartnerTitle";
 import { PROJECT_TITLE_FIELD } from "./ProjectTitle";
+import { PARTNER_TITLE_FIELD } from "../partner/PartnerTitle";
 
 export const ProjectShow = (props: ShowProps): React.ReactElement => {
   return (
@@ -27,6 +27,41 @@ export const ProjectShow = (props: ShowProps): React.ReactElement => {
         </ReferenceField>
         <TextField label="Start Date" source="startDate" />
         <DateField source="updatedAt" label="Updated At" />
+        <ReferenceManyField
+          reference="ClientFeedback"
+          target="ProjectId"
+          label="client_feedbacks"
+        >
+          <Datagrid rowClick="show">
+            <DateField source="createdAt" label="Created At" />
+            <TextField label="DetailedFeedback" source="detailedFeedback" />
+            <ReferenceField label="Employee" source="user.id" reference="User">
+              <TextField source={USER_TITLE_FIELD} />
+            </ReferenceField>
+            <TextField label="ID" source="id" />
+            <TextField label="ImprovementNeeded" source="improvementNeeded" />
+            <TextField label="MeetingEtiquite" source="meetingEtiquite" />
+            <TextField label=" ProcessGovernance" source="processGovernance" />
+            <ReferenceField
+              label="Project"
+              source="project.id"
+              reference="Project"
+            >
+              <TextField source={PROJECT_TITLE_FIELD} />
+            </ReferenceField>
+            <TextField
+              label="QualityOfDeliverables"
+              source="qualityOfDeliverables"
+            />
+            <TextField label="ReportingManager" source="reportingManager" />
+            <TextField label="ReviewerEmail" source="reviewerEmail" />
+            <TextField label="ReviewerName" source="reviewerName" />
+            <TextField label="Role" source="role" />
+            <TextField label="TeamWork " source="teamWork" />
+            <TextField label="TechnicalExpertise" source="technicalExpertise" />
+            <DateField source="updatedAt" label="Updated At" />
+          </Datagrid>
+        </ReferenceManyField>
         <ReferenceManyField
           reference="Opportunity"
           target="ProjectId"

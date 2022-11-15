@@ -17,6 +17,7 @@ import { IsOptional, ValidateNested, IsEnum } from "class-validator";
 import { AwardListRelationFilter } from "../../award/base/AwardListRelationFilter";
 import { CandidateListRelationFilter } from "../../candidate/base/CandidateListRelationFilter";
 import { DateTimeNullableFilter } from "../../util/DateTimeNullableFilter";
+import { ClientFeedbackListRelationFilter } from "../../clientFeedback/base/ClientFeedbackListRelationFilter";
 import { CommunityListRelationFilter } from "../../community/base/CommunityListRelationFilter";
 import { CommunityWhereUniqueInput } from "../../community/base/CommunityWhereUniqueInput";
 import { CommunityActivityFeedbackListRelationFilter } from "../../communityActivityFeedback/base/CommunityActivityFeedbackListRelationFilter";
@@ -99,6 +100,18 @@ class UserWhereInput {
     nullable: true,
   })
   careerStartDate?: DateTimeNullableFilter;
+
+  @ApiProperty({
+    required: false,
+    type: () => ClientFeedbackListRelationFilter,
+  })
+  @ValidateNested()
+  @Type(() => ClientFeedbackListRelationFilter)
+  @IsOptional()
+  @Field(() => ClientFeedbackListRelationFilter, {
+    nullable: true,
+  })
+  clientFeedbacks?: ClientFeedbackListRelationFilter;
 
   @ApiProperty({
     required: false,

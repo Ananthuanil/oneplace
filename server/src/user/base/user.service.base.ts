@@ -16,6 +16,7 @@ import {
   User,
   Award,
   Candidate,
+  ClientFeedback,
   Community,
   CommunityActivityFeedback,
   EmployeeFeedback,
@@ -108,6 +109,17 @@ export class UserServiceBase {
         where: { id: parentId },
       })
       .candidates(args);
+  }
+
+  async findClientFeedbacks(
+    parentId: string,
+    args: Prisma.ClientFeedbackFindManyArgs
+  ): Promise<ClientFeedback[]> {
+    return this.prisma.user
+      .findUnique({
+        where: { id: parentId },
+      })
+      .clientFeedbacks(args);
   }
 
   async findCommunities(

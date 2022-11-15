@@ -1,5 +1,6 @@
 import { AwardCreateNestedManyWithoutUsersInput } from "./AwardCreateNestedManyWithoutUsersInput";
 import { CandidateCreateNestedManyWithoutUsersInput } from "./CandidateCreateNestedManyWithoutUsersInput";
+import { ClientFeedbackCreateNestedManyWithoutUsersInput } from "./ClientFeedbackCreateNestedManyWithoutUsersInput";
 import { CommunityCreateNestedManyWithoutUsersInput } from "./CommunityCreateNestedManyWithoutUsersInput";
 import { CommunityWhereUniqueInput } from "../community/CommunityWhereUniqueInput";
 import { CommunityActivityFeedbackCreateNestedManyWithoutUsersInput } from "./CommunityActivityFeedbackCreateNestedManyWithoutUsersInput";
@@ -19,6 +20,7 @@ export type UserCreateInput = {
   bloodGroup?: string | null;
   candidates?: CandidateCreateNestedManyWithoutUsersInput;
   careerStartDate?: Date | null;
+  clientFeedbacks?: ClientFeedbackCreateNestedManyWithoutUsersInput;
   communities?: CommunityCreateNestedManyWithoutUsersInput;
   community?: CommunityWhereUniqueInput | null;
   communityActivityFeedbacks?: CommunityActivityFeedbackCreateNestedManyWithoutUsersInput;

@@ -1,1 +1,242 @@
-[]
+[
+  {
+    "role": "hr",
+    "resource": "ClientFeedback",
+    "action": "read:own",
+    "attributes": "*"
+  },
+  {
+    "role": "communityLead",
+    "resource": "ClientFeedback",
+    "action": "read:own",
+    "attributes": "*"
+  },
+  {
+    "role": "tagMember",
+    "resource": "ClientFeedback",
+    "action": "read:own",
+    "attributes": "*"
+  },
+  {
+    "role": "learningDevelopmentHead",
+    "resource": "ClientFeedback",
+    "action": "read:own",
+    "attributes": "*"
+  },
+  {
+    "role": "accountOwner",
+    "resource": "ClientFeedback",
+    "action": "read:own",
+    "attributes": "*"
+  },
+  {
+    "role": "superAdmin",
+    "resource": "ClientFeedback",
+    "action": "read:own",
+    "attributes": "*"
+  },
+  {
+    "role": "associate",
+    "resource": "ClientFeedback",
+    "action": "read:own",
+    "attributes": "*"
+  },
+  {
+    "role": "user",
+    "resource": "ClientFeedback",
+    "action": "read:own",
+    "attributes": "*"
+  },
+  {
+    "role": "hr",
+    "resource": "ClientFeedback",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "communityLead",
+    "resource": "ClientFeedback",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "tagMember",
+    "resource": "ClientFeedback",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "learningDevelopmentHead",
+    "resource": "ClientFeedback",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "accountOwner",
+    "resource": "ClientFeedback",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "superAdmin",
+    "resource": "ClientFeedback",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "associate",
+    "resource": "ClientFeedback",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "user",
+    "resource": "ClientFeedback",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "hr",
+    "resource": "ClientFeedback",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "communityLead",
+    "resource": "ClientFeedback",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "tagMember",
+    "resource": "ClientFeedback",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "learningDevelopmentHead",
+    "resource": "ClientFeedback",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "accountOwner",
+    "resource": "ClientFeedback",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "superAdmin",
+    "resource": "ClientFeedback",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "associate",
+    "resource": "ClientFeedback",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "user",
+    "resource": "ClientFeedback",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "hr",
+    "resource": "ClientFeedback",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "communityLead",
+    "resource": "ClientFeedback",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "tagMember",
+    "resource": "ClientFeedback",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "learningDevelopmentHead",
+    "resource": "ClientFeedback",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "accountOwner",
+    "resource": "ClientFeedback",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "superAdmin",
+    "resource": "ClientFeedback",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "associate",
+    "resource": "ClientFeedback",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "user",
+    "resource": "ClientFeedback",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "hr",
+    "resource": "ClientFeedback",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "communityLead",
+    "resource": "ClientFeedback",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "tagMember",
+    "resource": "ClientFeedback",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "learningDevelopmentHead",
+    "resource": "ClientFeedback",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "accountOwner",
+    "resource": "ClientFeedback",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "superAdmin",
+    "resource": "ClientFeedback",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "associate",
+    "resource": "ClientFeedback",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "user",
+    "resource": "ClientFeedback",
+    "action": "read:any",
+    "attributes": "*"
+  }
+]

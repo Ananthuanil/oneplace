@@ -15,6 +15,7 @@ import {
 
 import { AwardTitle } from "../award/AwardTitle";
 import { CandidateTitle } from "../candidate/CandidateTitle";
+import { ClientFeedbackTitle } from "../clientFeedback/ClientFeedbackTitle";
 import { CommunityTitle } from "../community/CommunityTitle";
 import { CommunityActivityFeedbackTitle } from "../communityActivityFeedback/CommunityActivityFeedbackTitle";
 import { EmployeeFeedbackTitle } from "../employeeFeedback/EmployeeFeedbackTitle";
@@ -50,6 +51,14 @@ export const UserCreate = (props: CreateProps): React.ReactElement => {
           <SelectArrayInput optionText={CandidateTitle} />
         </ReferenceArrayInput>
         <DateInput label="Career Start Date" source="careerStartDate" />
+        <ReferenceArrayInput
+          source="clientFeedbacks"
+          reference="ClientFeedback"
+          parse={(value: any) => value && value.map((v: any) => ({ id: v }))}
+          format={(value: any) => value && value.map((v: any) => v.id)}
+        >
+          <SelectArrayInput optionText={ClientFeedbackTitle} />
+        </ReferenceArrayInput>
         <ReferenceArrayInput
           source="communities"
           reference="Community"

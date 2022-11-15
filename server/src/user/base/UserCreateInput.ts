@@ -22,6 +22,7 @@ import {
 import { AwardCreateNestedManyWithoutUsersInput } from "./AwardCreateNestedManyWithoutUsersInput";
 import { Type } from "class-transformer";
 import { CandidateCreateNestedManyWithoutUsersInput } from "./CandidateCreateNestedManyWithoutUsersInput";
+import { ClientFeedbackCreateNestedManyWithoutUsersInput } from "./ClientFeedbackCreateNestedManyWithoutUsersInput";
 import { CommunityCreateNestedManyWithoutUsersInput } from "./CommunityCreateNestedManyWithoutUsersInput";
 import { CommunityWhereUniqueInput } from "../../community/base/CommunityWhereUniqueInput";
 import { CommunityActivityFeedbackCreateNestedManyWithoutUsersInput } from "./CommunityActivityFeedbackCreateNestedManyWithoutUsersInput";
@@ -105,6 +106,18 @@ class UserCreateInput {
     nullable: true,
   })
   careerStartDate?: Date | null;
+
+  @ApiProperty({
+    required: false,
+    type: () => ClientFeedbackCreateNestedManyWithoutUsersInput,
+  })
+  @ValidateNested()
+  @Type(() => ClientFeedbackCreateNestedManyWithoutUsersInput)
+  @IsOptional()
+  @Field(() => ClientFeedbackCreateNestedManyWithoutUsersInput, {
+    nullable: true,
+  })
+  clientFeedbacks?: ClientFeedbackCreateNestedManyWithoutUsersInput;
 
   @ApiProperty({
     required: false,

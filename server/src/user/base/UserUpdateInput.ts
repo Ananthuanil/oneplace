@@ -22,6 +22,7 @@ import {
 import { AwardUpdateManyWithoutUsersInput } from "./AwardUpdateManyWithoutUsersInput";
 import { Type } from "class-transformer";
 import { CandidateUpdateManyWithoutUsersInput } from "./CandidateUpdateManyWithoutUsersInput";
+import { ClientFeedbackUpdateManyWithoutUsersInput } from "./ClientFeedbackUpdateManyWithoutUsersInput";
 import { CommunityUpdateManyWithoutUsersInput } from "./CommunityUpdateManyWithoutUsersInput";
 import { CommunityWhereUniqueInput } from "../../community/base/CommunityWhereUniqueInput";
 import { CommunityActivityFeedbackUpdateManyWithoutUsersInput } from "./CommunityActivityFeedbackUpdateManyWithoutUsersInput";
@@ -105,6 +106,18 @@ class UserUpdateInput {
     nullable: true,
   })
   careerStartDate?: Date | null;
+
+  @ApiProperty({
+    required: false,
+    type: () => ClientFeedbackUpdateManyWithoutUsersInput,
+  })
+  @ValidateNested()
+  @Type(() => ClientFeedbackUpdateManyWithoutUsersInput)
+  @IsOptional()
+  @Field(() => ClientFeedbackUpdateManyWithoutUsersInput, {
+    nullable: true,
+  })
+  clientFeedbacks?: ClientFeedbackUpdateManyWithoutUsersInput;
 
   @ApiProperty({
     required: false,
