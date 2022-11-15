@@ -12,6 +12,7 @@ import {
 } from "react-admin";
 
 import { COMMUNITY_TITLE_FIELD } from "./CommunityTitle";
+import { USER_TITLE_FIELD } from "../user/UserTitle";
 import { SKILLLEVEL_TITLE_FIELD } from "../skillLevel/SkillLevelTitle";
 
 export const CommunityShow = (props: ShowProps): React.ReactElement => {
@@ -56,6 +57,13 @@ export const CommunityShow = (props: ShowProps): React.ReactElement => {
               reference="Community"
             >
               <TextField source={COMMUNITY_TITLE_FIELD} />
+            </ReferenceField>
+            <ReferenceField
+              label="CommunityMentor"
+              source="user.id"
+              reference="User"
+            >
+              <TextField source={USER_TITLE_FIELD} />
             </ReferenceField>
             <TextField label="Contact Number" source="contactNumber" />
             <TextField label="Course Out Date" source="courseOutDate" />

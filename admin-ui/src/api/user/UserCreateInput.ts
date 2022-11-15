@@ -1,8 +1,10 @@
 import { AwardCreateNestedManyWithoutUsersInput } from "./AwardCreateNestedManyWithoutUsersInput";
 import { CandidateCreateNestedManyWithoutUsersInput } from "./CandidateCreateNestedManyWithoutUsersInput";
+import { ClientFeedbackCreateNestedManyWithoutUsersInput } from "./ClientFeedbackCreateNestedManyWithoutUsersInput";
 import { CommunityCreateNestedManyWithoutUsersInput } from "./CommunityCreateNestedManyWithoutUsersInput";
 import { CommunityWhereUniqueInput } from "../community/CommunityWhereUniqueInput";
 import { CommunityActivityFeedbackCreateNestedManyWithoutUsersInput } from "./CommunityActivityFeedbackCreateNestedManyWithoutUsersInput";
+import { UserWhereUniqueInput } from "./UserWhereUniqueInput";
 import { EmployeeFeedbackCreateNestedManyWithoutUsersInput } from "./EmployeeFeedbackCreateNestedManyWithoutUsersInput";
 import { InterviewCreateNestedManyWithoutUsersInput } from "./InterviewCreateNestedManyWithoutUsersInput";
 import { OpportunityCreateNestedManyWithoutUsersInput } from "./OpportunityCreateNestedManyWithoutUsersInput";
@@ -11,6 +13,7 @@ import { ProjectInvolvementCreateNestedManyWithoutUsersInput } from "./ProjectIn
 import { InputJsonValue } from "../../types";
 import { SkillLevelWhereUniqueInput } from "../skillLevel/SkillLevelWhereUniqueInput";
 import { SkillSetCreateNestedManyWithoutUsersInput } from "./SkillSetCreateNestedManyWithoutUsersInput";
+import { UserCreateNestedManyWithoutUsersInput } from "./UserCreateNestedManyWithoutUsersInput";
 
 export type UserCreateInput = {
   aadarNumber?: string | null;
@@ -19,9 +22,11 @@ export type UserCreateInput = {
   bloodGroup?: string | null;
   candidates?: CandidateCreateNestedManyWithoutUsersInput;
   careerStartDate?: Date | null;
+  clientFeedbacks?: ClientFeedbackCreateNestedManyWithoutUsersInput;
   communities?: CommunityCreateNestedManyWithoutUsersInput;
   community?: CommunityWhereUniqueInput | null;
   communityActivityFeedbacks?: CommunityActivityFeedbackCreateNestedManyWithoutUsersInput;
+  communityMentor?: UserWhereUniqueInput | null;
   contactNumber?: string | null;
   courseOutDate?: Date | null;
   dateOfJoining?: Date | null;
@@ -64,4 +69,5 @@ export type UserCreateInput = {
   toPerson?: AwardCreateNestedManyWithoutUsersInput;
   totalExperience: string;
   username: string;
+  users?: UserCreateNestedManyWithoutUsersInput;
 };

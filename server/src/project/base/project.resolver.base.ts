@@ -18,12 +18,15 @@ import * as gqlACGuard from "../../auth/gqlAC.guard";
 import { isRecordNotFoundError } from "../../prisma.util";
 import { MetaQueryPayload } from "../../util/MetaQueryPayload";
 import { Public } from "../../decorators/public.decorator";
+import { AclFilterResponseInterceptor } from "../../interceptors/aclFilterResponse.interceptor";
 import { CreateProjectArgs } from "./CreateProjectArgs";
 import { UpdateProjectArgs } from "./UpdateProjectArgs";
 import { DeleteProjectArgs } from "./DeleteProjectArgs";
 import { ProjectFindManyArgs } from "./ProjectFindManyArgs";
 import { ProjectFindUniqueArgs } from "./ProjectFindUniqueArgs";
 import { Project } from "./Project";
+import { ClientFeedbackFindManyArgs } from "../../clientFeedback/base/ClientFeedbackFindManyArgs";
+import { ClientFeedback } from "../../clientFeedback/base/ClientFeedback";
 import { OpportunityFindManyArgs } from "../../opportunity/base/OpportunityFindManyArgs";
 import { Opportunity } from "../../opportunity/base/Opportunity";
 import { ProjectInvolvementFindManyArgs } from "../../projectInvolvement/base/ProjectInvolvementFindManyArgs";
@@ -138,6 +141,26 @@ export class ProjectResolverBase {
       }
       throw error;
     }
+  }
+
+  @common.UseInterceptors(AclFilterResponseInterceptor)
+  @graphql.ResolveField(() => [ClientFeedback])
+  @nestAccessControl.UseRoles({
+    resource: "ClientFeedback",
+    action: "read",
+    possession: "any",
+  })
+  async clientFeedbacks(
+    @graphql.Parent() parent: Project,
+    @graphql.Args() args: ClientFeedbackFindManyArgs
+  ): Promise<ClientFeedback[]> {
+    const results = await this.service.findClientFeedbacks(parent.id, args);
+
+    if (!results) {
+      return [];
+    }
+
+    return results;
   }
 
   @Public()

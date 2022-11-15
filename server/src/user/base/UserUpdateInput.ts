@@ -22,9 +22,11 @@ import {
 import { AwardUpdateManyWithoutUsersInput } from "./AwardUpdateManyWithoutUsersInput";
 import { Type } from "class-transformer";
 import { CandidateUpdateManyWithoutUsersInput } from "./CandidateUpdateManyWithoutUsersInput";
+import { ClientFeedbackUpdateManyWithoutUsersInput } from "./ClientFeedbackUpdateManyWithoutUsersInput";
 import { CommunityUpdateManyWithoutUsersInput } from "./CommunityUpdateManyWithoutUsersInput";
 import { CommunityWhereUniqueInput } from "../../community/base/CommunityWhereUniqueInput";
 import { CommunityActivityFeedbackUpdateManyWithoutUsersInput } from "./CommunityActivityFeedbackUpdateManyWithoutUsersInput";
+import { UserWhereUniqueInput } from "./UserWhereUniqueInput";
 import { EnumUserDesignation } from "./EnumUserDesignation";
 import { EmployeeFeedbackUpdateManyWithoutUsersInput } from "./EmployeeFeedbackUpdateManyWithoutUsersInput";
 import { EnumUserGender } from "./EnumUserGender";
@@ -36,6 +38,7 @@ import { GraphQLJSON } from "graphql-type-json";
 import { InputJsonValue } from "../../types";
 import { SkillLevelWhereUniqueInput } from "../../skillLevel/base/SkillLevelWhereUniqueInput";
 import { SkillSetUpdateManyWithoutUsersInput } from "./SkillSetUpdateManyWithoutUsersInput";
+import { UserUpdateManyWithoutUsersInput } from "./UserUpdateManyWithoutUsersInput";
 @InputType()
 class UserUpdateInput {
   @ApiProperty({
@@ -108,6 +111,18 @@ class UserUpdateInput {
 
   @ApiProperty({
     required: false,
+    type: () => ClientFeedbackUpdateManyWithoutUsersInput,
+  })
+  @ValidateNested()
+  @Type(() => ClientFeedbackUpdateManyWithoutUsersInput)
+  @IsOptional()
+  @Field(() => ClientFeedbackUpdateManyWithoutUsersInput, {
+    nullable: true,
+  })
+  clientFeedbacks?: ClientFeedbackUpdateManyWithoutUsersInput;
+
+  @ApiProperty({
+    required: false,
     type: () => CommunityUpdateManyWithoutUsersInput,
   })
   @ValidateNested()
@@ -141,6 +156,18 @@ class UserUpdateInput {
     nullable: true,
   })
   communityActivityFeedbacks?: CommunityActivityFeedbackUpdateManyWithoutUsersInput;
+
+  @ApiProperty({
+    required: false,
+    type: () => UserWhereUniqueInput,
+  })
+  @ValidateNested()
+  @Type(() => UserWhereUniqueInput)
+  @IsOptional()
+  @Field(() => UserWhereUniqueInput, {
+    nullable: true,
+  })
+  communityMentor?: UserWhereUniqueInput | null;
 
   @ApiProperty({
     required: false,
@@ -521,5 +548,17 @@ class UserUpdateInput {
     nullable: true,
   })
   username?: string;
+
+  @ApiProperty({
+    required: false,
+    type: () => UserUpdateManyWithoutUsersInput,
+  })
+  @ValidateNested()
+  @Type(() => UserUpdateManyWithoutUsersInput)
+  @IsOptional()
+  @Field(() => UserUpdateManyWithoutUsersInput, {
+    nullable: true,
+  })
+  users?: UserUpdateManyWithoutUsersInput;
 }
 export { UserUpdateInput };

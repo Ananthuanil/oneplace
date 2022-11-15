@@ -14,10 +14,13 @@ model User {
   bloodGroup                 String?
   candidates                 Candidate[]
   careerStartDate            DateTime?
+  clientFeedbacks            ClientFeedback[]
   communities                Community[]                 @relation(name: "communities")
   community                  Community?                  @relation(name: "CommunityOnUsers", fields: [communityId], references: [id])
   communityId                String?
   communityActivityFeedbacks CommunityActivityFeedback[]
+  communityMentor            User?                       @relation(name: "communityMentor", fields: [communityMentorId], references: [id])
+  communityMentorId          String?
   contactNumber              String?
   courseOutDate              DateTime?
   createdAt                  DateTime                    @default(now())
@@ -55,6 +58,7 @@ model User {
   totalExperience            String
   updatedAt                  DateTime                    @updatedAt
   username                   String                      @unique
+  users                      User[]                      @relation(name: "communityMentor")
 }
 
 model Community {
@@ -203,6 +207,7 @@ model Partner {
 }
 
 model Project {
+  clientFeedbacks     ClientFeedback[]
   createdAt           DateTime             @default(now())
   id                  String               @id @default(cuid())
   name                String?
@@ -307,6 +312,27 @@ model CommunityActivityFeedback {
   id               String             @id @default(cuid())
   rating           Float?
   updatedAt        DateTime           @updatedAt
+}
+
+model ClientFeedback {
+  createdAt             DateTime @default(now())
+  detailedFeedback      String?
+  employee              User     @relation(fields: [employeeId], references: [id])
+  employeeId            String
+  id                    String   @id @default(cuid())
+  improvementNeeded     String?
+  meetingEtiquite       Int
+  processGovernance     Int
+  project               Project? @relation(fields: [projectId], references: [id])
+  projectId             String?
+  qualityOfDeliverables Int
+  reportingManager      String?
+  reviewerEmail         String
+  reviewerName          String?
+  role                  String
+  teamWork              Int
+  technicalExpertise    Int
+  updatedAt             DateTime @updatedAt
 }
 
 enum EnumUserDesignation {

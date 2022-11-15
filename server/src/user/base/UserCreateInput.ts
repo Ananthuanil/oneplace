@@ -22,9 +22,11 @@ import {
 import { AwardCreateNestedManyWithoutUsersInput } from "./AwardCreateNestedManyWithoutUsersInput";
 import { Type } from "class-transformer";
 import { CandidateCreateNestedManyWithoutUsersInput } from "./CandidateCreateNestedManyWithoutUsersInput";
+import { ClientFeedbackCreateNestedManyWithoutUsersInput } from "./ClientFeedbackCreateNestedManyWithoutUsersInput";
 import { CommunityCreateNestedManyWithoutUsersInput } from "./CommunityCreateNestedManyWithoutUsersInput";
 import { CommunityWhereUniqueInput } from "../../community/base/CommunityWhereUniqueInput";
 import { CommunityActivityFeedbackCreateNestedManyWithoutUsersInput } from "./CommunityActivityFeedbackCreateNestedManyWithoutUsersInput";
+import { UserWhereUniqueInput } from "./UserWhereUniqueInput";
 import { EnumUserDesignation } from "./EnumUserDesignation";
 import { EmployeeFeedbackCreateNestedManyWithoutUsersInput } from "./EmployeeFeedbackCreateNestedManyWithoutUsersInput";
 import { EnumUserGender } from "./EnumUserGender";
@@ -36,6 +38,7 @@ import { GraphQLJSON } from "graphql-type-json";
 import { InputJsonValue } from "../../types";
 import { SkillLevelWhereUniqueInput } from "../../skillLevel/base/SkillLevelWhereUniqueInput";
 import { SkillSetCreateNestedManyWithoutUsersInput } from "./SkillSetCreateNestedManyWithoutUsersInput";
+import { UserCreateNestedManyWithoutUsersInput } from "./UserCreateNestedManyWithoutUsersInput";
 @InputType()
 class UserCreateInput {
   @ApiProperty({
@@ -108,6 +111,18 @@ class UserCreateInput {
 
   @ApiProperty({
     required: false,
+    type: () => ClientFeedbackCreateNestedManyWithoutUsersInput,
+  })
+  @ValidateNested()
+  @Type(() => ClientFeedbackCreateNestedManyWithoutUsersInput)
+  @IsOptional()
+  @Field(() => ClientFeedbackCreateNestedManyWithoutUsersInput, {
+    nullable: true,
+  })
+  clientFeedbacks?: ClientFeedbackCreateNestedManyWithoutUsersInput;
+
+  @ApiProperty({
+    required: false,
     type: () => CommunityCreateNestedManyWithoutUsersInput,
   })
   @ValidateNested()
@@ -141,6 +156,18 @@ class UserCreateInput {
     nullable: true,
   })
   communityActivityFeedbacks?: CommunityActivityFeedbackCreateNestedManyWithoutUsersInput;
+
+  @ApiProperty({
+    required: false,
+    type: () => UserWhereUniqueInput,
+  })
+  @ValidateNested()
+  @Type(() => UserWhereUniqueInput)
+  @IsOptional()
+  @Field(() => UserWhereUniqueInput, {
+    nullable: true,
+  })
+  communityMentor?: UserWhereUniqueInput | null;
 
   @ApiProperty({
     required: false,
@@ -503,5 +530,17 @@ class UserCreateInput {
   @IsString()
   @Field(() => String)
   username!: string;
+
+  @ApiProperty({
+    required: false,
+    type: () => UserCreateNestedManyWithoutUsersInput,
+  })
+  @ValidateNested()
+  @Type(() => UserCreateNestedManyWithoutUsersInput)
+  @IsOptional()
+  @Field(() => UserCreateNestedManyWithoutUsersInput, {
+    nullable: true,
+  })
+  users?: UserCreateNestedManyWithoutUsersInput;
 }
 export { UserCreateInput };
