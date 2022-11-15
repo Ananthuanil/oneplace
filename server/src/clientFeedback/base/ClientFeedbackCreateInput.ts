@@ -11,10 +11,17 @@ https://docs.amplication.com/docs/how-to/custom-code
   */
 import { InputType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
-import { IsString, IsOptional, ValidateNested, IsInt } from "class-validator";
+import {
+  IsString,
+  IsOptional,
+  ValidateNested,
+  IsInt,
+  IsEnum,
+} from "class-validator";
 import { UserWhereUniqueInput } from "../../user/base/UserWhereUniqueInput";
 import { Type } from "class-transformer";
 import { ProjectWhereUniqueInput } from "../../project/base/ProjectWhereUniqueInput";
+import { EnumClientFeedbackStatus } from "./EnumClientFeedbackStatus";
 @InputType()
 class ClientFeedbackCreateInput {
   @ApiProperty({
@@ -121,6 +128,17 @@ class ClientFeedbackCreateInput {
   @IsString()
   @Field(() => String)
   role!: string;
+
+  @ApiProperty({
+    required: false,
+    enum: EnumClientFeedbackStatus,
+  })
+  @IsEnum(EnumClientFeedbackStatus)
+  @IsOptional()
+  @Field(() => EnumClientFeedbackStatus, {
+    nullable: true,
+  })
+  status?: "LinkGenerated" | "WaitingForFeedback" | "FeedbackReceived" | null;
 
   @ApiProperty({
     required: true,

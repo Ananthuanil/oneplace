@@ -14,6 +14,7 @@ export type ClientFeedbackOrderByInput = {
   reviewerEmail?: SortOrder;
   reviewerName?: SortOrder;
   role?: SortOrder;
+  status?: SortOrder;
   teamWork?: SortOrder;
   technicalExpertise?: SortOrder;
   updatedAt?: SortOrder;

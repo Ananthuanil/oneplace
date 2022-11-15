@@ -34,6 +34,7 @@ export const ClientFeedbackShow = (props: ShowProps): React.ReactElement => {
         <TextField label="ReviewerEmail" source="reviewerEmail" />
         <TextField label="ReviewerName" source="reviewerName" />
         <TextField label="Role" source="role" />
+        <TextField label="status" source="status" />
         <TextField label="TeamWork " source="teamWork" />
         <TextField label="TechnicalExpertise" source="technicalExpertise" />
         <DateField source="updatedAt" label="Updated At" />

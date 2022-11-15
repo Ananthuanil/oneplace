@@ -17,10 +17,12 @@ import {
   IsOptional,
   ValidateNested,
   IsInt,
+  IsEnum,
 } from "class-validator";
 import { Type } from "class-transformer";
 import { User } from "../../user/base/User";
 import { Project } from "../../project/base/Project";
+import { EnumClientFeedbackStatus } from "./EnumClientFeedbackStatus";
 @ObjectType()
 class ClientFeedback {
   @ApiProperty({
@@ -139,6 +141,17 @@ class ClientFeedback {
   @IsString()
   @Field(() => String)
   role!: string;
+
+  @ApiProperty({
+    required: false,
+    enum: EnumClientFeedbackStatus,
+  })
+  @IsEnum(EnumClientFeedbackStatus)
+  @IsOptional()
+  @Field(() => EnumClientFeedbackStatus, {
+    nullable: true,
+  })
+  status?: "LinkGenerated" | "WaitingForFeedback" | "FeedbackReceived" | null;
 
   @ApiProperty({
     required: true,

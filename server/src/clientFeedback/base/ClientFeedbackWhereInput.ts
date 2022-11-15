@@ -13,11 +13,12 @@ import { InputType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
 import { StringNullableFilter } from "../../util/StringNullableFilter";
 import { Type } from "class-transformer";
-import { IsOptional, ValidateNested } from "class-validator";
+import { IsOptional, ValidateNested, IsEnum } from "class-validator";
 import { UserWhereUniqueInput } from "../../user/base/UserWhereUniqueInput";
 import { StringFilter } from "../../util/StringFilter";
 import { IntFilter } from "../../util/IntFilter";
 import { ProjectWhereUniqueInput } from "../../project/base/ProjectWhereUniqueInput";
+import { EnumClientFeedbackStatus } from "./EnumClientFeedbackStatus";
 @InputType()
 class ClientFeedbackWhereInput {
   @ApiProperty({
@@ -153,6 +154,17 @@ class ClientFeedbackWhereInput {
     nullable: true,
   })
   role?: StringFilter;
+
+  @ApiProperty({
+    required: false,
+    enum: EnumClientFeedbackStatus,
+  })
+  @IsEnum(EnumClientFeedbackStatus)
+  @IsOptional()
+  @Field(() => EnumClientFeedbackStatus, {
+    nullable: true,
+  })
+  status?: "LinkGenerated" | "WaitingForFeedback" | "FeedbackReceived";
 
   @ApiProperty({
     required: false,
