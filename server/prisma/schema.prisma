@@ -19,6 +19,8 @@ model User {
   community                  Community?                  @relation(name: "CommunityOnUsers", fields: [communityId], references: [id])
   communityId                String?
   communityActivityFeedbacks CommunityActivityFeedback[]
+  communityMentor            User?                       @relation(name: "communityMentor", fields: [communityMentorId], references: [id])
+  communityMentorId          String?
   contactNumber              String?
   courseOutDate              DateTime?
   createdAt                  DateTime                    @default(now())
@@ -56,6 +58,7 @@ model User {
   totalExperience            String
   updatedAt                  DateTime                    @updatedAt
   username                   String                      @unique
+  users                      User[]                      @relation(name: "communityMentor")
 }
 
 model Community {

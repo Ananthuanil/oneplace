@@ -232,12 +232,31 @@ export class UserServiceBase {
       .toPerson(args);
   }
 
+  async findUsers(
+    parentId: string,
+    args: Prisma.UserFindManyArgs
+  ): Promise<User[]> {
+    return this.prisma.user
+      .findUnique({
+        where: { id: parentId },
+      })
+      .users(args);
+  }
+
   async getCommunity(parentId: string): Promise<Community | null> {
     return this.prisma.user
       .findUnique({
         where: { id: parentId },
       })
       .community();
+  }
+
+  async getCommunityMentor(parentId: string): Promise<User | null> {
+    return this.prisma.user
+      .findUnique({
+        where: { id: parentId },
+      })
+      .communityMentor();
   }
 
   async getSkillLevel(parentId: string): Promise<SkillLevel | null> {

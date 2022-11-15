@@ -23,6 +23,7 @@ export type User = {
   communities?: Array<Community>;
   community?: Community | null;
   communityActivityFeedbacks?: Array<CommunityActivityFeedback>;
+  communityMentor?: User | null;
   contactNumber: string | null;
   courseOutDate: Date | null;
   createdAt: Date;
@@ -67,4 +68,5 @@ export type User = {
   totalExperience: string;
   updatedAt: Date;
   username: string;
+  users?: Array<User>;
 };

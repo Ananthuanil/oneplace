@@ -138,6 +138,15 @@ class User {
 
   @ApiProperty({
     required: false,
+    type: () => User,
+  })
+  @ValidateNested()
+  @Type(() => User)
+  @IsOptional()
+  communityMentor?: User | null;
+
+  @ApiProperty({
+    required: false,
     type: String,
   })
   @IsString()
@@ -486,5 +495,14 @@ class User {
   @IsString()
   @Field(() => String)
   username!: string;
+
+  @ApiProperty({
+    required: false,
+    type: () => [User],
+  })
+  @ValidateNested()
+  @Type(() => User)
+  @IsOptional()
+  users?: Array<User>;
 }
 export { User };

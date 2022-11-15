@@ -103,6 +103,12 @@ export class UserResolverBase {
             }
           : undefined,
 
+        communityMentor: args.data.communityMentor
+          ? {
+              connect: args.data.communityMentor,
+            }
+          : undefined,
+
         skillLevel: args.data.skillLevel
           ? {
               connect: args.data.skillLevel,
@@ -124,6 +130,12 @@ export class UserResolverBase {
           community: args.data.community
             ? {
                 connect: args.data.community,
+              }
+            : undefined,
+
+          communityMentor: args.data.communityMentor
+            ? {
+                connect: args.data.communityMentor,
               }
             : undefined,
 
@@ -363,9 +375,35 @@ export class UserResolverBase {
   }
 
   @Public()
+  @graphql.ResolveField(() => [User])
+  async users(
+    @graphql.Parent() parent: User,
+    @graphql.Args() args: UserFindManyArgs
+  ): Promise<User[]> {
+    const results = await this.service.findUsers(parent.id, args);
+
+    if (!results) {
+      return [];
+    }
+
+    return results;
+  }
+
+  @Public()
   @graphql.ResolveField(() => Community, { nullable: true })
   async community(@graphql.Parent() parent: User): Promise<Community | null> {
     const result = await this.service.getCommunity(parent.id);
+
+    if (!result) {
+      return null;
+    }
+    return result;
+  }
+
+  @Public()
+  @graphql.ResolveField(() => User, { nullable: true })
+  async communityMentor(@graphql.Parent() parent: User): Promise<User | null> {
+    const result = await this.service.getCommunityMentor(parent.id);
 
     if (!result) {
       return null;

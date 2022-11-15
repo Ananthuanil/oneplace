@@ -6,6 +6,7 @@ export type UserOrderByInput = {
   bloodGroup?: SortOrder;
   careerStartDate?: SortOrder;
   communityId?: SortOrder;
+  communityMentorId?: SortOrder;
   contactNumber?: SortOrder;
   courseOutDate?: SortOrder;
   createdAt?: SortOrder;

@@ -4,6 +4,7 @@ import { ClientFeedbackUpdateManyWithoutUsersInput } from "./ClientFeedbackUpdat
 import { CommunityUpdateManyWithoutUsersInput } from "./CommunityUpdateManyWithoutUsersInput";
 import { CommunityWhereUniqueInput } from "../community/CommunityWhereUniqueInput";
 import { CommunityActivityFeedbackUpdateManyWithoutUsersInput } from "./CommunityActivityFeedbackUpdateManyWithoutUsersInput";
+import { UserWhereUniqueInput } from "./UserWhereUniqueInput";
 import { EmployeeFeedbackUpdateManyWithoutUsersInput } from "./EmployeeFeedbackUpdateManyWithoutUsersInput";
 import { InterviewUpdateManyWithoutUsersInput } from "./InterviewUpdateManyWithoutUsersInput";
 import { OpportunityUpdateManyWithoutUsersInput } from "./OpportunityUpdateManyWithoutUsersInput";
@@ -12,6 +13,7 @@ import { ProjectInvolvementUpdateManyWithoutUsersInput } from "./ProjectInvolvem
 import { InputJsonValue } from "../../types";
 import { SkillLevelWhereUniqueInput } from "../skillLevel/SkillLevelWhereUniqueInput";
 import { SkillSetUpdateManyWithoutUsersInput } from "./SkillSetUpdateManyWithoutUsersInput";
+import { UserUpdateManyWithoutUsersInput } from "./UserUpdateManyWithoutUsersInput";
 
 export type UserUpdateInput = {
   aadarNumber?: string | null;
@@ -24,6 +26,7 @@ export type UserUpdateInput = {
   communities?: CommunityUpdateManyWithoutUsersInput;
   community?: CommunityWhereUniqueInput | null;
   communityActivityFeedbacks?: CommunityActivityFeedbackUpdateManyWithoutUsersInput;
+  communityMentor?: UserWhereUniqueInput | null;
   contactNumber?: string | null;
   courseOutDate?: Date | null;
   dateOfJoining?: Date | null;
@@ -66,4 +69,5 @@ export type UserUpdateInput = {
   toPerson?: AwardUpdateManyWithoutUsersInput;
   totalExperience?: string;
   username?: string;
+  users?: UserUpdateManyWithoutUsersInput;
 };

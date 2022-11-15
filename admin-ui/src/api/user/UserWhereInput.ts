@@ -6,6 +6,7 @@ import { ClientFeedbackListRelationFilter } from "../clientFeedback/ClientFeedba
 import { CommunityListRelationFilter } from "../community/CommunityListRelationFilter";
 import { CommunityWhereUniqueInput } from "../community/CommunityWhereUniqueInput";
 import { CommunityActivityFeedbackListRelationFilter } from "../communityActivityFeedback/CommunityActivityFeedbackListRelationFilter";
+import { UserWhereUniqueInput } from "./UserWhereUniqueInput";
 import { EmployeeFeedbackListRelationFilter } from "../employeeFeedback/EmployeeFeedbackListRelationFilter";
 import { StringFilter } from "../../util/StringFilter";
 import { InterviewListRelationFilter } from "../interview/InterviewListRelationFilter";
@@ -14,6 +15,7 @@ import { ProjectListRelationFilter } from "../project/ProjectListRelationFilter"
 import { ProjectInvolvementListRelationFilter } from "../projectInvolvement/ProjectInvolvementListRelationFilter";
 import { SkillLevelWhereUniqueInput } from "../skillLevel/SkillLevelWhereUniqueInput";
 import { SkillSetListRelationFilter } from "../skillSet/SkillSetListRelationFilter";
+import { UserListRelationFilter } from "./UserListRelationFilter";
 
 export type UserWhereInput = {
   aadarNumber?: StringNullableFilter;
@@ -26,6 +28,7 @@ export type UserWhereInput = {
   communities?: CommunityListRelationFilter;
   community?: CommunityWhereUniqueInput;
   communityActivityFeedbacks?: CommunityActivityFeedbackListRelationFilter;
+  communityMentor?: UserWhereUniqueInput;
   contactNumber?: StringNullableFilter;
   courseOutDate?: DateTimeNullableFilter;
   dateOfJoining?: DateTimeNullableFilter;
@@ -66,4 +69,5 @@ export type UserWhereInput = {
   toPerson?: AwardListRelationFilter;
   totalExperience?: StringFilter;
   username?: StringFilter;
+  users?: UserListRelationFilter;
 };

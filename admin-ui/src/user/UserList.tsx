@@ -9,6 +9,7 @@ import {
 } from "react-admin";
 import Pagination from "../Components/Pagination";
 import { COMMUNITY_TITLE_FIELD } from "../community/CommunityTitle";
+import { USER_TITLE_FIELD } from "./UserTitle";
 import { SKILLLEVEL_TITLE_FIELD } from "../skillLevel/SkillLevelTitle";
 
 export const UserList = (props: ListProps): React.ReactElement => {
@@ -31,6 +32,13 @@ export const UserList = (props: ListProps): React.ReactElement => {
           reference="Community"
         >
           <TextField source={COMMUNITY_TITLE_FIELD} />
+        </ReferenceField>
+        <ReferenceField
+          label="CommunityMentor"
+          source="user.id"
+          reference="User"
+        >
+          <TextField source={USER_TITLE_FIELD} />
         </ReferenceField>
         <TextField label="Contact Number" source="contactNumber" />
         <TextField label="Course Out Date" source="courseOutDate" />
