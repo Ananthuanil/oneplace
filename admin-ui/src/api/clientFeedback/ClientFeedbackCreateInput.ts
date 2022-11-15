@@ -13,6 +13,7 @@ export type ClientFeedbackCreateInput = {
   reviewerEmail: string;
   reviewerName?: string | null;
   role: string;
+  status?: "LinkGenerated" | "WaitingForFeedback" | "FeedbackReceived" | null;
   teamWork: number;
   technicalExpertise: number;
 };

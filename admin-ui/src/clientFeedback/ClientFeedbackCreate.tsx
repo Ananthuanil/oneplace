@@ -54,6 +54,18 @@ export const ClientFeedbackCreate = (
         <TextInput label="ReviewerEmail" source="reviewerEmail" type="email" />
         <TextInput label="ReviewerName" source="reviewerName" />
         <TextInput label="Role" source="role" />
+        <SelectInput
+          source="status"
+          label="status"
+          choices={[
+            { label: "linkGenerated", value: "LinkGenerated" },
+            { label: "waitingForFeedback", value: "WaitingForFeedback" },
+            { label: "feedbackReceived", value: "FeedbackReceived" },
+          ]}
+          optionText="label"
+          allowEmpty
+          optionValue="value"
+        />
         <NumberInput step={1} label="TeamWork " source="teamWork" />
         <NumberInput
           step={1}
