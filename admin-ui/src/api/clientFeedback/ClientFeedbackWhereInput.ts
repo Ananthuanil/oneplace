@@ -21,7 +21,8 @@ export type ClientFeedbackWhereInput = {
     | "LinkGenerated"
     | "WaitingForFeedback"
     | "FeedbackReceived"
-    | "NoResponse";
+    | "NoResponse"
+    | "FeedbackError";
   teamWork?: IntFilter;
   technicalExpertise?: IntFilter;
 };
