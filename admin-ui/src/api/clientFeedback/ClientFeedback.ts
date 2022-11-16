@@ -20,6 +20,7 @@ export type ClientFeedback = {
     | "WaitingForFeedback"
     | "FeedbackReceived"
     | "NoResponse"
+    | "FeedbackError"
     | null;
   teamWork: number;
   technicalExpertise: number;
