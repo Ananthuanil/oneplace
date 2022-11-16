@@ -75,9 +75,9 @@ export class UserResolverBase {
 
   @Public()
   @graphql.Query(() => [User])
-  async users(@graphql.Args() args: UserFindManyArgs): Promise<User[]> {
-    return this.service.findMany(args);
-  }
+  // async users(@graphql.Args() args: UserFindManyArgs): Promise<User[]> {
+  //   return this.service.findMany(args);
+  // }
 
   @Public()
   @graphql.Query(() => User, { nullable: true })
@@ -146,7 +146,7 @@ export class UserResolverBase {
             : undefined,
         },
       });
-    } catch (error) {
+    } catch (error:any) {
       if (isRecordNotFoundError(error)) {
         throw new apollo.ApolloError(
           `No resource was found for ${JSON.stringify(args.where)}`
@@ -161,7 +161,7 @@ export class UserResolverBase {
   async deleteUser(@graphql.Args() args: DeleteUserArgs): Promise<User | null> {
     try {
       return await this.service.delete(args);
-    } catch (error) {
+    } catch (error:any) {
       if (isRecordNotFoundError(error)) {
         throw new apollo.ApolloError(
           `No resource was found for ${JSON.stringify(args.where)}`
