@@ -156,7 +156,6 @@ class ClientFeedback {
     | "WaitingForFeedback"
     | "FeedbackReceived"
     | "NoResponse"
-    | "FeedbackError"
     | null;
 
   @ApiProperty({

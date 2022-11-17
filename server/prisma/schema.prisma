@@ -392,5 +392,4 @@ enum EnumClientFeedbackStatus {
   WaitingForFeedback
   FeedbackReceived
   NoResponse
-  FeedbackError
 }

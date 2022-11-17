@@ -60,7 +60,6 @@ export const ClientFeedbackEdit = (props: EditProps): React.ReactElement => {
             { label: "waitingForFeedback", value: "WaitingForFeedback" },
             { label: "feedbackReceived", value: "FeedbackReceived" },
             { label: "noResponse", value: "NoResponse" },
-            { label: "feedbackError", value: "FeedbackError" },
           ]}
           optionText="label"
           allowEmpty
