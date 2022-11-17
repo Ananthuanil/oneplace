@@ -20,7 +20,6 @@ import {
 } from "class-validator";
 import { UserWhereUniqueInput } from "../../user/base/UserWhereUniqueInput";
 import { Type } from "class-transformer";
-import { ProjectWhereUniqueInput } from "../../project/base/ProjectWhereUniqueInput";
 import { EnumClientFeedbackStatus } from "./EnumClientFeedbackStatus";
 @InputType()
 class ClientFeedbackUpdateInput {
@@ -45,7 +44,7 @@ class ClientFeedbackUpdateInput {
   @Field(() => UserWhereUniqueInput, {
     nullable: true,
   })
-  employee?: UserWhereUniqueInput;
+  employee?: UserWhereUniqueInput | null;
 
   @ApiProperty({
     required: false,
@@ -67,7 +66,7 @@ class ClientFeedbackUpdateInput {
   @Field(() => Number, {
     nullable: true,
   })
-  meetingEtiquite?: number;
+  meetingEtiquite?: number | null;
 
   @ApiProperty({
     required: false,
@@ -78,19 +77,18 @@ class ClientFeedbackUpdateInput {
   @Field(() => Number, {
     nullable: true,
   })
-  processGovernance?: number;
+  processGovernance?: number | null;
 
   @ApiProperty({
     required: false,
-    type: () => ProjectWhereUniqueInput,
+    type: String,
   })
-  @ValidateNested()
-  @Type(() => ProjectWhereUniqueInput)
+  @IsString()
   @IsOptional()
-  @Field(() => ProjectWhereUniqueInput, {
+  @Field(() => String, {
     nullable: true,
   })
-  project?: ProjectWhereUniqueInput | null;
+  project?: string | null;
 
   @ApiProperty({
     required: false,
@@ -101,7 +99,7 @@ class ClientFeedbackUpdateInput {
   @Field(() => Number, {
     nullable: true,
   })
-  qualityOfDeliverables?: number;
+  qualityOfDeliverables?: number | null;
 
   @ApiProperty({
     required: false,
@@ -123,7 +121,7 @@ class ClientFeedbackUpdateInput {
   @Field(() => String, {
     nullable: true,
   })
-  reviewerEmail?: string;
+  reviewerEmail?: string | null;
 
   @ApiProperty({
     required: false,
@@ -145,7 +143,7 @@ class ClientFeedbackUpdateInput {
   @Field(() => String, {
     nullable: true,
   })
-  role?: string;
+  role?: string | null;
 
   @ApiProperty({
     required: false,
@@ -172,7 +170,7 @@ class ClientFeedbackUpdateInput {
   @Field(() => Number, {
     nullable: true,
   })
-  teamWork?: number;
+  teamWork?: number | null;
 
   @ApiProperty({
     required: false,
@@ -183,6 +181,6 @@ class ClientFeedbackUpdateInput {
   @Field(() => Number, {
     nullable: true,
   })
-  technicalExpertise?: number;
+  technicalExpertise?: number | null;
 }
 export { ClientFeedbackUpdateInput };

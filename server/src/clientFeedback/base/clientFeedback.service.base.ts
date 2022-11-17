@@ -10,7 +10,7 @@ https://docs.amplication.com/docs/how-to/custom-code
 ------------------------------------------------------------------------------
   */
 import { PrismaService } from "nestjs-prisma";
-import { Prisma, ClientFeedback, User, Project } from "@prisma/client";
+import { Prisma, ClientFeedback, User } from "@prisma/client";
 
 export class ClientFeedbackServiceBase {
   constructor(protected readonly prisma: PrismaService) {}
@@ -53,13 +53,5 @@ export class ClientFeedbackServiceBase {
         where: { id: parentId },
       })
       .employee();
-  }
-
-  async getProject(parentId: string): Promise<Project | null> {
-    return this.prisma.clientFeedback
-      .findUnique({
-        where: { id: parentId },
-      })
-      .project();
   }
 }

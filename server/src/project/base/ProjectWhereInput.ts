@@ -11,10 +11,9 @@ https://docs.amplication.com/docs/how-to/custom-code
   */
 import { InputType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
-import { ClientFeedbackListRelationFilter } from "../../clientFeedback/base/ClientFeedbackListRelationFilter";
-import { ValidateNested, IsOptional } from "class-validator";
-import { Type } from "class-transformer";
 import { StringFilter } from "../../util/StringFilter";
+import { Type } from "class-transformer";
+import { IsOptional, ValidateNested } from "class-validator";
 import { StringNullableFilter } from "../../util/StringNullableFilter";
 import { OpportunityListRelationFilter } from "../../opportunity/base/OpportunityListRelationFilter";
 import { PartnerWhereUniqueInput } from "../../partner/base/PartnerWhereUniqueInput";
@@ -23,18 +22,6 @@ import { DateTimeNullableFilter } from "../../util/DateTimeNullableFilter";
 import { UserListRelationFilter } from "../../user/base/UserListRelationFilter";
 @InputType()
 class ProjectWhereInput {
-  @ApiProperty({
-    required: false,
-    type: () => ClientFeedbackListRelationFilter,
-  })
-  @ValidateNested()
-  @Type(() => ClientFeedbackListRelationFilter)
-  @IsOptional()
-  @Field(() => ClientFeedbackListRelationFilter, {
-    nullable: true,
-  })
-  clientFeedbacks?: ClientFeedbackListRelationFilter;
-
   @ApiProperty({
     required: false,
     type: StringFilter,

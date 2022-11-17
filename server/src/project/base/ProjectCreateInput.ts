@@ -11,27 +11,14 @@ https://docs.amplication.com/docs/how-to/custom-code
   */
 import { InputType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
-import { ClientFeedbackCreateNestedManyWithoutProjectsInput } from "./ClientFeedbackCreateNestedManyWithoutProjectsInput";
-import { ValidateNested, IsOptional, IsString, IsDate } from "class-validator";
-import { Type } from "class-transformer";
+import { IsString, IsOptional, ValidateNested, IsDate } from "class-validator";
 import { OpportunityCreateNestedManyWithoutProjectsInput } from "./OpportunityCreateNestedManyWithoutProjectsInput";
+import { Type } from "class-transformer";
 import { PartnerWhereUniqueInput } from "../../partner/base/PartnerWhereUniqueInput";
 import { ProjectInvolvementCreateNestedManyWithoutProjectsInput } from "./ProjectInvolvementCreateNestedManyWithoutProjectsInput";
 import { UserCreateNestedManyWithoutProjectsInput } from "./UserCreateNestedManyWithoutProjectsInput";
 @InputType()
 class ProjectCreateInput {
-  @ApiProperty({
-    required: false,
-    type: () => ClientFeedbackCreateNestedManyWithoutProjectsInput,
-  })
-  @ValidateNested()
-  @Type(() => ClientFeedbackCreateNestedManyWithoutProjectsInput)
-  @IsOptional()
-  @Field(() => ClientFeedbackCreateNestedManyWithoutProjectsInput, {
-    nullable: true,
-  })
-  clientFeedbacks?: ClientFeedbackCreateNestedManyWithoutProjectsInput;
-
   @ApiProperty({
     required: false,
     type: String,

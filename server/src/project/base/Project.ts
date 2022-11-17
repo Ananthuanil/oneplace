@@ -11,8 +11,7 @@ https://docs.amplication.com/docs/how-to/custom-code
   */
 import { ObjectType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
-import { ClientFeedback } from "../../clientFeedback/base/ClientFeedback";
-import { ValidateNested, IsOptional, IsDate, IsString } from "class-validator";
+import { IsDate, IsString, IsOptional, ValidateNested } from "class-validator";
 import { Type } from "class-transformer";
 import { Opportunity } from "../../opportunity/base/Opportunity";
 import { Partner } from "../../partner/base/Partner";
@@ -20,15 +19,6 @@ import { ProjectInvolvement } from "../../projectInvolvement/base/ProjectInvolve
 import { User } from "../../user/base/User";
 @ObjectType()
 class Project {
-  @ApiProperty({
-    required: false,
-    type: () => [ClientFeedback],
-  })
-  @ValidateNested()
-  @Type(() => ClientFeedback)
-  @IsOptional()
-  clientFeedbacks?: Array<ClientFeedback>;
-
   @ApiProperty({
     required: true,
   })

@@ -207,7 +207,6 @@ model Partner {
 }
 
 model Project {
-  clientFeedbacks     ClientFeedback[]
   createdAt           DateTime             @default(now())
   id                  String               @id @default(cuid())
   name                String?
@@ -317,22 +316,21 @@ model CommunityActivityFeedback {
 model ClientFeedback {
   createdAt             DateTime                  @default(now())
   detailedFeedback      String?
-  employee              User                      @relation(fields: [employeeId], references: [id])
-  employeeId            String
+  employee              User?                     @relation(fields: [employeeId], references: [id])
+  employeeId            String?
   id                    String                    @id @default(cuid())
   improvementNeeded     String?
-  meetingEtiquite       Int
-  processGovernance     Int
-  project               Project?                  @relation(fields: [projectId], references: [id])
-  projectId             String?
-  qualityOfDeliverables Int
+  meetingEtiquite       Int?
+  processGovernance     Int?
+  project               String?
+  qualityOfDeliverables Int?
   reportingManager      String?
-  reviewerEmail         String
+  reviewerEmail         String?
   reviewerName          String?
-  role                  String
+  role                  String?
   status                EnumClientFeedbackStatus?
-  teamWork              Int
-  technicalExpertise    Int
+  teamWork              Int?
+  technicalExpertise    Int?
   updatedAt             DateTime                  @updatedAt
 }
 

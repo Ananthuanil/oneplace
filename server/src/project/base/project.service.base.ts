@@ -10,11 +10,9 @@ https://docs.amplication.com/docs/how-to/custom-code
 ------------------------------------------------------------------------------
   */
 import { PrismaService } from "nestjs-prisma";
-
 import {
   Prisma,
   Project,
-  ClientFeedback,
   Opportunity,
   ProjectInvolvement,
   User,
@@ -54,17 +52,6 @@ export class ProjectServiceBase {
     args: Prisma.SelectSubset<T, Prisma.ProjectDeleteArgs>
   ): Promise<Project> {
     return this.prisma.project.delete(args);
-  }
-
-  async findClientFeedbacks(
-    parentId: string,
-    args: Prisma.ClientFeedbackFindManyArgs
-  ): Promise<ClientFeedback[]> {
-    return this.prisma.project
-      .findUnique({
-        where: { id: parentId },
-      })
-      .clientFeedbacks(args);
   }
 
   async findOpportunities(

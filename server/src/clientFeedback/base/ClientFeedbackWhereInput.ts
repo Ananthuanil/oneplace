@@ -16,8 +16,7 @@ import { Type } from "class-transformer";
 import { IsOptional, ValidateNested, IsEnum } from "class-validator";
 import { UserWhereUniqueInput } from "../../user/base/UserWhereUniqueInput";
 import { StringFilter } from "../../util/StringFilter";
-import { IntFilter } from "../../util/IntFilter";
-import { ProjectWhereUniqueInput } from "../../project/base/ProjectWhereUniqueInput";
+import { IntNullableFilter } from "../../util/IntNullableFilter";
 import { EnumClientFeedbackStatus } from "./EnumClientFeedbackStatus";
 @InputType()
 class ClientFeedbackWhereInput {
@@ -68,48 +67,47 @@ class ClientFeedbackWhereInput {
 
   @ApiProperty({
     required: false,
-    type: IntFilter,
+    type: IntNullableFilter,
   })
-  @Type(() => IntFilter)
+  @Type(() => IntNullableFilter)
   @IsOptional()
-  @Field(() => IntFilter, {
+  @Field(() => IntNullableFilter, {
     nullable: true,
   })
-  meetingEtiquite?: IntFilter;
+  meetingEtiquite?: IntNullableFilter;
 
   @ApiProperty({
     required: false,
-    type: IntFilter,
+    type: IntNullableFilter,
   })
-  @Type(() => IntFilter)
+  @Type(() => IntNullableFilter)
   @IsOptional()
-  @Field(() => IntFilter, {
+  @Field(() => IntNullableFilter, {
     nullable: true,
   })
-  processGovernance?: IntFilter;
+  processGovernance?: IntNullableFilter;
 
   @ApiProperty({
     required: false,
-    type: () => ProjectWhereUniqueInput,
+    type: StringNullableFilter,
   })
-  @ValidateNested()
-  @Type(() => ProjectWhereUniqueInput)
+  @Type(() => StringNullableFilter)
   @IsOptional()
-  @Field(() => ProjectWhereUniqueInput, {
+  @Field(() => StringNullableFilter, {
     nullable: true,
   })
-  project?: ProjectWhereUniqueInput;
+  project?: StringNullableFilter;
 
   @ApiProperty({
     required: false,
-    type: IntFilter,
+    type: IntNullableFilter,
   })
-  @Type(() => IntFilter)
+  @Type(() => IntNullableFilter)
   @IsOptional()
-  @Field(() => IntFilter, {
+  @Field(() => IntNullableFilter, {
     nullable: true,
   })
-  qualityOfDeliverables?: IntFilter;
+  qualityOfDeliverables?: IntNullableFilter;
 
   @ApiProperty({
     required: false,
@@ -124,14 +122,14 @@ class ClientFeedbackWhereInput {
 
   @ApiProperty({
     required: false,
-    type: StringFilter,
+    type: StringNullableFilter,
   })
-  @Type(() => StringFilter)
+  @Type(() => StringNullableFilter)
   @IsOptional()
-  @Field(() => StringFilter, {
+  @Field(() => StringNullableFilter, {
     nullable: true,
   })
-  reviewerEmail?: StringFilter;
+  reviewerEmail?: StringNullableFilter;
 
   @ApiProperty({
     required: false,
@@ -146,14 +144,14 @@ class ClientFeedbackWhereInput {
 
   @ApiProperty({
     required: false,
-    type: StringFilter,
+    type: StringNullableFilter,
   })
-  @Type(() => StringFilter)
+  @Type(() => StringNullableFilter)
   @IsOptional()
-  @Field(() => StringFilter, {
+  @Field(() => StringNullableFilter, {
     nullable: true,
   })
-  role?: StringFilter;
+  role?: StringNullableFilter;
 
   @ApiProperty({
     required: false,
@@ -172,24 +170,24 @@ class ClientFeedbackWhereInput {
 
   @ApiProperty({
     required: false,
-    type: IntFilter,
+    type: IntNullableFilter,
   })
-  @Type(() => IntFilter)
+  @Type(() => IntNullableFilter)
   @IsOptional()
-  @Field(() => IntFilter, {
+  @Field(() => IntNullableFilter, {
     nullable: true,
   })
-  teamWork?: IntFilter;
+  teamWork?: IntNullableFilter;
 
   @ApiProperty({
     required: false,
-    type: IntFilter,
+    type: IntNullableFilter,
   })
-  @Type(() => IntFilter)
+  @Type(() => IntNullableFilter)
   @IsOptional()
-  @Field(() => IntFilter, {
+  @Field(() => IntNullableFilter, {
     nullable: true,
   })
-  technicalExpertise?: IntFilter;
+  technicalExpertise?: IntNullableFilter;
 }
 export { ClientFeedbackWhereInput };

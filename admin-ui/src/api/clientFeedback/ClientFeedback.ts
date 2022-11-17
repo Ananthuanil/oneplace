@@ -1,27 +1,26 @@
 import { User } from "../user/User";
-import { Project } from "../project/Project";
 
 export type ClientFeedback = {
   createdAt: Date;
   detailedFeedback: string | null;
-  employee?: User;
+  employee?: User | null;
   id: string;
   improvementNeeded: string | null;
-  meetingEtiquite: number;
-  processGovernance: number;
-  project?: Project | null;
-  qualityOfDeliverables: number;
+  meetingEtiquite: number | null;
+  processGovernance: number | null;
+  project: string | null;
+  qualityOfDeliverables: number | null;
   reportingManager: string | null;
-  reviewerEmail: string;
+  reviewerEmail: string | null;
   reviewerName: string | null;
-  role: string;
+  role: string | null;
   status?:
     | "LinkGenerated"
     | "WaitingForFeedback"
     | "FeedbackReceived"
     | "NoResponse"
     | null;
-  teamWork: number;
-  technicalExpertise: number;
+  teamWork: number | null;
+  technicalExpertise: number | null;
   updatedAt: Date;
 };

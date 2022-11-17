@@ -21,7 +21,6 @@ import {
 } from "class-validator";
 import { Type } from "class-transformer";
 import { User } from "../../user/base/User";
-import { Project } from "../../project/base/Project";
 import { EnumClientFeedbackStatus } from "./EnumClientFeedbackStatus";
 @ObjectType()
 class ClientFeedback {
@@ -45,12 +44,13 @@ class ClientFeedback {
   detailedFeedback!: string | null;
 
   @ApiProperty({
-    required: true,
+    required: false,
     type: () => User,
   })
   @ValidateNested()
   @Type(() => User)
-  employee?: User;
+  @IsOptional()
+  employee?: User | null;
 
   @ApiProperty({
     required: true,
@@ -72,37 +72,48 @@ class ClientFeedback {
   improvementNeeded!: string | null;
 
   @ApiProperty({
-    required: true,
+    required: false,
     type: Number,
   })
   @IsInt()
-  @Field(() => Number)
-  meetingEtiquite!: number;
-
-  @ApiProperty({
-    required: true,
-    type: Number,
+  @IsOptional()
+  @Field(() => Number, {
+    nullable: true,
   })
-  @IsInt()
-  @Field(() => Number)
-  processGovernance!: number;
+  meetingEtiquite!: number | null;
 
   @ApiProperty({
     required: false,
-    type: () => Project,
-  })
-  @ValidateNested()
-  @Type(() => Project)
-  @IsOptional()
-  project?: Project | null;
-
-  @ApiProperty({
-    required: true,
     type: Number,
   })
   @IsInt()
-  @Field(() => Number)
-  qualityOfDeliverables!: number;
+  @IsOptional()
+  @Field(() => Number, {
+    nullable: true,
+  })
+  processGovernance!: number | null;
+
+  @ApiProperty({
+    required: false,
+    type: String,
+  })
+  @IsString()
+  @IsOptional()
+  @Field(() => String, {
+    nullable: true,
+  })
+  project!: string | null;
+
+  @ApiProperty({
+    required: false,
+    type: Number,
+  })
+  @IsInt()
+  @IsOptional()
+  @Field(() => Number, {
+    nullable: true,
+  })
+  qualityOfDeliverables!: number | null;
 
   @ApiProperty({
     required: false,
@@ -116,12 +127,15 @@ class ClientFeedback {
   reportingManager!: string | null;
 
   @ApiProperty({
-    required: true,
+    required: false,
     type: String,
   })
   @IsString()
-  @Field(() => String)
-  reviewerEmail!: string;
+  @IsOptional()
+  @Field(() => String, {
+    nullable: true,
+  })
+  reviewerEmail!: string | null;
 
   @ApiProperty({
     required: false,
@@ -135,12 +149,15 @@ class ClientFeedback {
   reviewerName!: string | null;
 
   @ApiProperty({
-    required: true,
+    required: false,
     type: String,
   })
   @IsString()
-  @Field(() => String)
-  role!: string;
+  @IsOptional()
+  @Field(() => String, {
+    nullable: true,
+  })
+  role!: string | null;
 
   @ApiProperty({
     required: false,
@@ -159,20 +176,26 @@ class ClientFeedback {
     | null;
 
   @ApiProperty({
-    required: true,
+    required: false,
     type: Number,
   })
   @IsInt()
-  @Field(() => Number)
-  teamWork!: number;
+  @IsOptional()
+  @Field(() => Number, {
+    nullable: true,
+  })
+  teamWork!: number | null;
 
   @ApiProperty({
-    required: true,
+    required: false,
     type: Number,
   })
   @IsInt()
-  @Field(() => Number)
-  technicalExpertise!: number;
+  @IsOptional()
+  @Field(() => Number, {
+    nullable: true,
+  })
+  technicalExpertise!: number | null;
 
   @ApiProperty({
     required: true,

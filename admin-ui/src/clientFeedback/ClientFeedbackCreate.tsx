@@ -11,7 +11,6 @@ import {
 } from "react-admin";
 
 import { UserTitle } from "../user/UserTitle";
-import { ProjectTitle } from "../project/ProjectTitle";
 
 export const ClientFeedbackCreate = (
   props: CreateProps
@@ -42,9 +41,7 @@ export const ClientFeedbackCreate = (
           label=" ProcessGovernance"
           source="processGovernance"
         />
-        <ReferenceInput source="project.id" reference="Project" label="Project">
-          <SelectInput optionText={ProjectTitle} />
-        </ReferenceInput>
+        <TextInput label="Project" source="project" />
         <NumberInput
           step={1}
           label="QualityOfDeliverables"

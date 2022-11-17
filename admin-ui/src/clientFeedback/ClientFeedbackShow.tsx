@@ -8,7 +8,6 @@ import {
   ReferenceField,
 } from "react-admin";
 import { USER_TITLE_FIELD } from "../user/UserTitle";
-import { PROJECT_TITLE_FIELD } from "../project/ProjectTitle";
 
 export const ClientFeedbackShow = (props: ShowProps): React.ReactElement => {
   return (
@@ -23,9 +22,7 @@ export const ClientFeedbackShow = (props: ShowProps): React.ReactElement => {
         <TextField label="ImprovementNeeded" source="improvementNeeded" />
         <TextField label="MeetingEtiquite" source="meetingEtiquite" />
         <TextField label=" ProcessGovernance" source="processGovernance" />
-        <ReferenceField label="Project" source="project.id" reference="Project">
-          <TextField source={PROJECT_TITLE_FIELD} />
-        </ReferenceField>
+        <TextField label="Project" source="project" />
         <TextField
           label="QualityOfDeliverables"
           source="qualityOfDeliverables"
