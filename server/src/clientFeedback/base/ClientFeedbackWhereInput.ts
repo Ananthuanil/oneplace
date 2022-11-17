@@ -168,8 +168,7 @@ class ClientFeedbackWhereInput {
     | "LinkGenerated"
     | "WaitingForFeedback"
     | "FeedbackReceived"
-    | "NoResponse"
-    | "FeedbackError";
+    | "NoResponse";
 
   @ApiProperty({
     required: false,

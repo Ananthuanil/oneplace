@@ -3,5 +3,4 @@ export enum EnumClientFeedbackStatus {
   WaitingForFeedback = "WaitingForFeedback",
   FeedbackReceived = "FeedbackReceived",
   NoResponse = "NoResponse",
-  FeedbackError = "FeedbackError",
 }

@@ -18,7 +18,6 @@ export type ClientFeedbackCreateInput = {
     | "WaitingForFeedback"
     | "FeedbackReceived"
     | "NoResponse"
-    | "FeedbackError"
     | null;
   teamWork: number;
   technicalExpertise: number;
