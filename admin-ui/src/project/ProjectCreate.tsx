@@ -4,15 +4,14 @@ import {
   Create,
   SimpleForm,
   CreateProps,
+  TextInput,
   ReferenceArrayInput,
   SelectArrayInput,
-  TextInput,
   ReferenceInput,
   SelectInput,
   DateTimeInput,
 } from "react-admin";
 
-import { ClientFeedbackTitle } from "../clientFeedback/ClientFeedbackTitle";
 import { OpportunityTitle } from "../opportunity/OpportunityTitle";
 import { PartnerTitle } from "../partner/PartnerTitle";
 import { ProjectInvolvementTitle } from "../projectInvolvement/ProjectInvolvementTitle";
@@ -22,14 +21,6 @@ export const ProjectCreate = (props: CreateProps): React.ReactElement => {
   return (
     <Create {...props}>
       <SimpleForm>
-        <ReferenceArrayInput
-          source="clientFeedbacks"
-          reference="ClientFeedback"
-          parse={(value: any) => value && value.map((v: any) => ({ id: v }))}
-          format={(value: any) => value && value.map((v: any) => v.id)}
-        >
-          <SelectArrayInput optionText={ClientFeedbackTitle} />
-        </ReferenceArrayInput>
         <TextInput label="Name" source="name" />
         <ReferenceArrayInput
           source="opportunities"

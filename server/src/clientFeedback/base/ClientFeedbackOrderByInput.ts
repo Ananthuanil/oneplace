@@ -88,7 +88,7 @@ class ClientFeedbackOrderByInput {
   @Field(() => SortOrder, {
     nullable: true,
   })
-  projectId?: SortOrder;
+  project?: SortOrder;
 
   @ApiProperty({
     required: false,

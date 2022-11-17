@@ -27,7 +27,6 @@ import { ClientFeedbackFindManyArgs } from "./ClientFeedbackFindManyArgs";
 import { ClientFeedbackFindUniqueArgs } from "./ClientFeedbackFindUniqueArgs";
 import { ClientFeedback } from "./ClientFeedback";
 import { User } from "../../user/base/User";
-import { Project } from "../../project/base/Project";
 import { ClientFeedbackService } from "../clientFeedback.service";
 
 @graphql.Resolver(() => ClientFeedback)
@@ -102,13 +101,9 @@ export class ClientFeedbackResolverBase {
       data: {
         ...args.data,
 
-        employee: {
-          connect: args.data.employee,
-        },
-
-        project: args.data.project
+        employee: args.data.employee
           ? {
-              connect: args.data.project,
+              connect: args.data.employee,
             }
           : undefined,
       },
@@ -131,13 +126,9 @@ export class ClientFeedbackResolverBase {
         data: {
           ...args.data,
 
-          employee: {
-            connect: args.data.employee,
-          },
-
-          project: args.data.project
+          employee: args.data.employee
             ? {
-                connect: args.data.project,
+                connect: args.data.employee,
               }
             : undefined,
         },
@@ -179,19 +170,6 @@ export class ClientFeedbackResolverBase {
     @graphql.Parent() parent: ClientFeedback
   ): Promise<User | null> {
     const result = await this.service.getEmployee(parent.id);
-
-    if (!result) {
-      return null;
-    }
-    return result;
-  }
-
-  @Public()
-  @graphql.ResolveField(() => Project, { nullable: true })
-  async project(
-    @graphql.Parent() parent: ClientFeedback
-  ): Promise<Project | null> {
-    const result = await this.service.getProject(parent.id);
 
     if (!result) {
       return null;

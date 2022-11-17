@@ -16,10 +16,10 @@ import { USER_TITLE_FIELD } from "./UserTitle";
 import { COMMUNICATIONFEEDBACK_TITLE_FIELD } from "../communicationFeedback/CommunicationFeedbackTitle";
 import { RECRUITMENTPARTNER_TITLE_FIELD } from "../recruitmentPartner/RecruitmentPartnerTitle";
 import { OPPORTUNITY_TITLE_FIELD } from "../opportunity/OpportunityTitle";
-import { PROJECT_TITLE_FIELD } from "../project/ProjectTitle";
 import { COMMUNITYACTIVITY_TITLE_FIELD } from "../communityActivity/CommunityActivityTitle";
 import { CANDIDATE_TITLE_FIELD } from "../candidate/CandidateTitle";
 import { PARTNER_TITLE_FIELD } from "../partner/PartnerTitle";
+import { PROJECT_TITLE_FIELD } from "../project/ProjectTitle";
 import { COMMUNITY_TITLE_FIELD } from "../community/CommunityTitle";
 import { SKILLLEVEL_TITLE_FIELD } from "../skillLevel/SkillLevelTitle";
 
@@ -182,13 +182,7 @@ export const UserShow = (props: ShowProps): React.ReactElement => {
             <TextField label="ImprovementNeeded" source="improvementNeeded" />
             <TextField label="MeetingEtiquite" source="meetingEtiquite" />
             <TextField label=" ProcessGovernance" source="processGovernance" />
-            <ReferenceField
-              label="Project"
-              source="project.id"
-              reference="Project"
-            >
-              <TextField source={PROJECT_TITLE_FIELD} />
-            </ReferenceField>
+            <TextField label="Project" source="project" />
             <TextField
               label="QualityOfDeliverables"
               source="qualityOfDeliverables"

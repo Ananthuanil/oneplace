@@ -20,7 +20,6 @@ import {
 } from "class-validator";
 import { UserWhereUniqueInput } from "../../user/base/UserWhereUniqueInput";
 import { Type } from "class-transformer";
-import { ProjectWhereUniqueInput } from "../../project/base/ProjectWhereUniqueInput";
 import { EnumClientFeedbackStatus } from "./EnumClientFeedbackStatus";
 @InputType()
 class ClientFeedbackCreateInput {
@@ -36,13 +35,16 @@ class ClientFeedbackCreateInput {
   detailedFeedback?: string | null;
 
   @ApiProperty({
-    required: true,
+    required: false,
     type: () => UserWhereUniqueInput,
   })
   @ValidateNested()
   @Type(() => UserWhereUniqueInput)
-  @Field(() => UserWhereUniqueInput)
-  employee!: UserWhereUniqueInput;
+  @IsOptional()
+  @Field(() => UserWhereUniqueInput, {
+    nullable: true,
+  })
+  employee?: UserWhereUniqueInput | null;
 
   @ApiProperty({
     required: false,
@@ -56,40 +58,48 @@ class ClientFeedbackCreateInput {
   improvementNeeded?: string | null;
 
   @ApiProperty({
-    required: true,
+    required: false,
     type: Number,
   })
   @IsInt()
-  @Field(() => Number)
-  meetingEtiquite!: number;
-
-  @ApiProperty({
-    required: true,
-    type: Number,
+  @IsOptional()
+  @Field(() => Number, {
+    nullable: true,
   })
-  @IsInt()
-  @Field(() => Number)
-  processGovernance!: number;
+  meetingEtiquite?: number | null;
 
   @ApiProperty({
     required: false,
-    type: () => ProjectWhereUniqueInput,
-  })
-  @ValidateNested()
-  @Type(() => ProjectWhereUniqueInput)
-  @IsOptional()
-  @Field(() => ProjectWhereUniqueInput, {
-    nullable: true,
-  })
-  project?: ProjectWhereUniqueInput | null;
-
-  @ApiProperty({
-    required: true,
     type: Number,
   })
   @IsInt()
-  @Field(() => Number)
-  qualityOfDeliverables!: number;
+  @IsOptional()
+  @Field(() => Number, {
+    nullable: true,
+  })
+  processGovernance?: number | null;
+
+  @ApiProperty({
+    required: false,
+    type: String,
+  })
+  @IsString()
+  @IsOptional()
+  @Field(() => String, {
+    nullable: true,
+  })
+  project?: string | null;
+
+  @ApiProperty({
+    required: false,
+    type: Number,
+  })
+  @IsInt()
+  @IsOptional()
+  @Field(() => Number, {
+    nullable: true,
+  })
+  qualityOfDeliverables?: number | null;
 
   @ApiProperty({
     required: false,
@@ -103,12 +113,15 @@ class ClientFeedbackCreateInput {
   reportingManager?: string | null;
 
   @ApiProperty({
-    required: true,
+    required: false,
     type: String,
   })
   @IsString()
-  @Field(() => String)
-  reviewerEmail!: string;
+  @IsOptional()
+  @Field(() => String, {
+    nullable: true,
+  })
+  reviewerEmail?: string | null;
 
   @ApiProperty({
     required: false,
@@ -122,12 +135,15 @@ class ClientFeedbackCreateInput {
   reviewerName?: string | null;
 
   @ApiProperty({
-    required: true,
+    required: false,
     type: String,
   })
   @IsString()
-  @Field(() => String)
-  role!: string;
+  @IsOptional()
+  @Field(() => String, {
+    nullable: true,
+  })
+  role?: string | null;
 
   @ApiProperty({
     required: false,
@@ -146,19 +162,25 @@ class ClientFeedbackCreateInput {
     | null;
 
   @ApiProperty({
-    required: true,
+    required: false,
     type: Number,
   })
   @IsInt()
-  @Field(() => Number)
-  teamWork!: number;
+  @IsOptional()
+  @Field(() => Number, {
+    nullable: true,
+  })
+  teamWork?: number | null;
 
   @ApiProperty({
-    required: true,
+    required: false,
     type: Number,
   })
   @IsInt()
-  @Field(() => Number)
-  technicalExpertise!: number;
+  @IsOptional()
+  @Field(() => Number, {
+    nullable: true,
+  })
+  technicalExpertise?: number | null;
 }
 export { ClientFeedbackCreateInput };

@@ -1,24 +1,23 @@
 import { UserWhereUniqueInput } from "../user/UserWhereUniqueInput";
-import { ProjectWhereUniqueInput } from "../project/ProjectWhereUniqueInput";
 
 export type ClientFeedbackUpdateInput = {
   detailedFeedback?: string | null;
-  employee?: UserWhereUniqueInput;
+  employee?: UserWhereUniqueInput | null;
   improvementNeeded?: string | null;
-  meetingEtiquite?: number;
-  processGovernance?: number;
-  project?: ProjectWhereUniqueInput | null;
-  qualityOfDeliverables?: number;
+  meetingEtiquite?: number | null;
+  processGovernance?: number | null;
+  project?: string | null;
+  qualityOfDeliverables?: number | null;
   reportingManager?: string | null;
-  reviewerEmail?: string;
+  reviewerEmail?: string | null;
   reviewerName?: string | null;
-  role?: string;
+  role?: string | null;
   status?:
     | "LinkGenerated"
     | "WaitingForFeedback"
     | "FeedbackReceived"
     | "NoResponse"
     | null;
-  teamWork?: number;
-  technicalExpertise?: number;
+  teamWork?: number | null;
+  technicalExpertise?: number | null;
 };
