@@ -18,7 +18,6 @@ import * as gqlACGuard from "../../auth/gqlAC.guard";
 import { isRecordNotFoundError } from "../../prisma.util";
 import { MetaQueryPayload } from "../../util/MetaQueryPayload";
 import { Public } from "../../decorators/public.decorator";
-import { AclFilterResponseInterceptor } from "../../interceptors/aclFilterResponse.interceptor";
 import { CreateUserArgs } from "./CreateUserArgs";
 import { UpdateUserArgs } from "./UpdateUserArgs";
 import { DeleteUserArgs } from "./DeleteUserArgs";
@@ -201,13 +200,8 @@ export class UserResolverBase {
     return results;
   }
 
-  @common.UseInterceptors(AclFilterResponseInterceptor)
+  @Public()
   @graphql.ResolveField(() => [ClientFeedback])
-  @nestAccessControl.UseRoles({
-    resource: "ClientFeedback",
-    action: "read",
-    possession: "any",
-  })
   async clientFeedbacks(
     @graphql.Parent() parent: User,
     @graphql.Args() args: ClientFeedbackFindManyArgs
