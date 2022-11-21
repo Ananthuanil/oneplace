@@ -1,0 +1,2115 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Award {
+  awardType: String
+  comment: String
+  createdAt: DateTime!
+  fromPerson: User
+  id: String!
+  toPerson: User
+  updatedAt: DateTime!
+}
+
+input AwardCreateInput {
+  awardType: String
+  comment: String
+  fromPerson: UserWhereUniqueInput
+  toPerson: UserWhereUniqueInput
+}
+
+input AwardCreateNestedManyWithoutUsersInput {
+  connect: [AwardWhereUniqueInput!]
+}
+
+input AwardListRelationFilter {
+  every: AwardWhereInput
+  none: AwardWhereInput
+  some: AwardWhereInput
+}
+
+input AwardOrderByInput {
+  awardType: SortOrder
+  comment: SortOrder
+  createdAt: SortOrder
+  fromPersonId: SortOrder
+  id: SortOrder
+  toPersonId: SortOrder
+  updatedAt: SortOrder
+}
+
+input AwardUpdateInput {
+  awardType: String
+  comment: String
+  fromPerson: UserWhereUniqueInput
+  toPerson: UserWhereUniqueInput
+}
+
+input AwardUpdateManyWithoutUsersInput {
+  connect: [AwardWhereUniqueInput!]
+  disconnect: [AwardWhereUniqueInput!]
+  set: [AwardWhereUniqueInput!]
+}
+
+input AwardWhereInput {
+  awardType: StringNullableFilter
+  comment: StringNullableFilter
+  fromPerson: UserWhereUniqueInput
+  id: StringFilter
+  toPerson: UserWhereUniqueInput
+}
+
+input AwardWhereUniqueInput {
+  id: String!
+}
+
+input BooleanFilter {
+  equals: Boolean
+  not: Boolean
+}
+
+input BooleanNullableFilter {
+  equals: Boolean
+  not: Boolean
+}
+
+type Candidate {
+  additionalComments: String
+  category: EnumCandidateCategory
+  communicationFeedback: CommunicationFeedback
+  competitorCtc: Float
+  createdAt: DateTime!
+  currentCtc: Float
+  currentDesignation: String
+  currentFirm: String
+  currentStatus: String!
+  email: String!
+  expectedCtc: Float
+  externalRecruitmentPartner: RecruitmentPartner
+  id: String!
+  interviews(orderBy: [InterviewOrderByInput!], skip: Float, take: Float, where: InterviewWhereInput): [Interview!]!
+  isOnNoticePeriod: Boolean!
+  lastWorkingDay: DateTime
+  name: String!
+  noticePeriodTime: Float
+  opportunities(orderBy: [OpportunityOrderByInput!], skip: Float, take: Float, where: OpportunityWhereInput): [Opportunity!]!
+  opportunity: Opportunity
+  referalEmployee: User
+  resume: String
+  skillSets(orderBy: [SkillSetOrderByInput!], skip: Float, take: Float, where: SkillSetWhereInput): [SkillSet!]!
+  skills(orderBy: [SkillOrderByInput!], skip: Float, take: Float, where: SkillWhereInput): [Skill!]!
+  source: EnumCandidateSource
+  totalExperience: Float!
+  updatedAt: DateTime!
+}
+
+input CandidateCreateInput {
+  additionalComments: String
+  category: EnumCandidateCategory!
+  communicationFeedback: CommunicationFeedbackWhereUniqueInput
+  competitorCtc: Float
+  currentCtc: Float
+  currentDesignation: String
+  currentFirm: String
+  currentStatus: String!
+  email: String!
+  expectedCtc: Float
+  externalRecruitmentPartner: RecruitmentPartnerWhereUniqueInput
+  interviews: InterviewCreateNestedManyWithoutCandidatesInput
+  isOnNoticePeriod: Boolean!
+  lastWorkingDay: DateTime
+  name: String!
+  noticePeriodTime: Float
+  opportunities: OpportunityCreateNestedManyWithoutCandidatesInput
+  opportunity: OpportunityWhereUniqueInput
+  referalEmployee: UserWhereUniqueInput
+  resume: String
+  skillSets: SkillSetCreateNestedManyWithoutCandidatesInput
+  skills: SkillCreateNestedManyWithoutCandidatesInput
+  source: EnumCandidateSource!
+  totalExperience: Float!
+}
+
+input CandidateCreateNestedManyWithoutOpportunitiesInput {
+  connect: [CandidateWhereUniqueInput!]
+}
+
+input CandidateCreateNestedManyWithoutRecruitmentPartnersInput {
+  connect: [CandidateWhereUniqueInput!]
+}
+
+input CandidateCreateNestedManyWithoutSkillsInput {
+  connect: [CandidateWhereUniqueInput!]
+}
+
+input CandidateCreateNestedManyWithoutUsersInput {
+  connect: [CandidateWhereUniqueInput!]
+}
+
+input CandidateListRelationFilter {
+  every: CandidateWhereInput
+  none: CandidateWhereInput
+  some: CandidateWhereInput
+}
+
+input CandidateOrderByInput {
+  additionalComments: SortOrder
+  category: SortOrder
+  communicationFeedbackId: SortOrder
+  competitorCtc: SortOrder
+  createdAt: SortOrder
+  currentCtc: SortOrder
+  currentDesignation: SortOrder
+  currentFirm: SortOrder
+  currentStatus: SortOrder
+  email: SortOrder
+  expectedCtc: SortOrder
+  externalRecruitmentPartnerId: SortOrder
+  id: SortOrder
+  isOnNoticePeriod: SortOrder
+  lastWorkingDay: SortOrder
+  name: SortOrder
+  noticePeriodTime: SortOrder
+  opportunityId: SortOrder
+  referalEmployeeId: SortOrder
+  resume: SortOrder
+  source: SortOrder
+  totalExperience: SortOrder
+  updatedAt: SortOrder
+}
+
+input CandidateUpdateInput {
+  additionalComments: String
+  category: EnumCandidateCategory
+  communicationFeedback: CommunicationFeedbackWhereUniqueInput
+  competitorCtc: Float
+  currentCtc: Float
+  currentDesignation: String
+  currentFirm: String
+  currentStatus: String
+  email: String
+  expectedCtc: Float
+  externalRecruitmentPartner: RecruitmentPartnerWhereUniqueInput
+  interviews: InterviewUpdateManyWithoutCandidatesInput
+  isOnNoticePeriod: Boolean
+  lastWorkingDay: DateTime
+  name: String
+  noticePeriodTime: Float
+  opportunities: OpportunityUpdateManyWithoutCandidatesInput
+  opportunity: OpportunityWhereUniqueInput
+  referalEmployee: UserWhereUniqueInput
+  resume: String
+  skillSets: SkillSetUpdateManyWithoutCandidatesInput
+  skills: SkillUpdateManyWithoutCandidatesInput
+  source: EnumCandidateSource
+  totalExperience: Float
+}
+
+input CandidateUpdateManyWithoutOpportunitiesInput {
+  connect: [CandidateWhereUniqueInput!]
+  disconnect: [CandidateWhereUniqueInput!]
+  set: [CandidateWhereUniqueInput!]
+}
+
+input CandidateUpdateManyWithoutRecruitmentPartnersInput {
+  connect: [CandidateWhereUniqueInput!]
+  disconnect: [CandidateWhereUniqueInput!]
+  set: [CandidateWhereUniqueInput!]
+}
+
+input CandidateUpdateManyWithoutSkillsInput {
+  connect: [CandidateWhereUniqueInput!]
+  disconnect: [CandidateWhereUniqueInput!]
+  set: [CandidateWhereUniqueInput!]
+}
+
+input CandidateUpdateManyWithoutUsersInput {
+  connect: [CandidateWhereUniqueInput!]
+  disconnect: [CandidateWhereUniqueInput!]
+  set: [CandidateWhereUniqueInput!]
+}
+
+input CandidateWhereInput {
+  additionalComments: StringNullableFilter
+  category: EnumCandidateCategory
+  communicationFeedback: CommunicationFeedbackWhereUniqueInput
+  competitorCtc: FloatNullableFilter
+  currentCtc: FloatNullableFilter
+  currentDesignation: StringNullableFilter
+  currentFirm: StringNullableFilter
+  currentStatus: StringFilter
+  email: StringFilter
+  expectedCtc: FloatNullableFilter
+  externalRecruitmentPartner: RecruitmentPartnerWhereUniqueInput
+  id: StringFilter
+  interviews: InterviewListRelationFilter
+  isOnNoticePeriod: BooleanFilter
+  lastWorkingDay: DateTimeNullableFilter
+  name: StringFilter
+  noticePeriodTime: FloatNullableFilter
+  opportunities: OpportunityListRelationFilter
+  opportunity: OpportunityWhereUniqueInput
+  referalEmployee: UserWhereUniqueInput
+  resume: StringNullableFilter
+  skillSets: SkillSetListRelationFilter
+  skills: SkillListRelationFilter
+  source: EnumCandidateSource
+  totalExperience: FloatFilter
+}
+
+input CandidateWhereUniqueInput {
+  id: String!
+}
+
+type ClientFeedback {
+  createdAt: DateTime!
+  detailedFeedback: String
+  employee: User
+  id: String!
+  improvementNeeded: String
+  meetingEtiquite: Float
+  processGovernance: Float
+  project: String
+  qualityOfDeliverables: Float
+  reportingManager: String
+  reviewerEmail: String
+  reviewerName: String
+  role: String
+  status: EnumClientFeedbackStatus
+  teamWork: Float
+  technicalExpertise: Float
+  updatedAt: DateTime!
+}
+
+input ClientFeedbackCreateInput {
+  detailedFeedback: String
+  employee: UserWhereUniqueInput
+  improvementNeeded: String
+  meetingEtiquite: Float
+  processGovernance: Float
+  project: String
+  qualityOfDeliverables: Float
+  reportingManager: String
+  reviewerEmail: String
+  reviewerName: String
+  role: String
+  status: EnumClientFeedbackStatus
+  teamWork: Float
+  technicalExpertise: Float
+}
+
+input ClientFeedbackCreateNestedManyWithoutUsersInput {
+  connect: [ClientFeedbackWhereUniqueInput!]
+}
+
+input ClientFeedbackListRelationFilter {
+  every: ClientFeedbackWhereInput
+  none: ClientFeedbackWhereInput
+  some: ClientFeedbackWhereInput
+}
+
+input ClientFeedbackOrderByInput {
+  createdAt: SortOrder
+  detailedFeedback: SortOrder
+  employeeId: SortOrder
+  id: SortOrder
+  improvementNeeded: SortOrder
+  meetingEtiquite: SortOrder
+  processGovernance: SortOrder
+  project: SortOrder
+  qualityOfDeliverables: SortOrder
+  reportingManager: SortOrder
+  reviewerEmail: SortOrder
+  reviewerName: SortOrder
+  role: SortOrder
+  status: SortOrder
+  teamWork: SortOrder
+  technicalExpertise: SortOrder
+  updatedAt: SortOrder
+}
+
+input ClientFeedbackUpdateInput {
+  detailedFeedback: String
+  employee: UserWhereUniqueInput
+  improvementNeeded: String
+  meetingEtiquite: Float
+  processGovernance: Float
+  project: String
+  qualityOfDeliverables: Float
+  reportingManager: String
+  reviewerEmail: String
+  reviewerName: String
+  role: String
+  status: EnumClientFeedbackStatus
+  teamWork: Float
+  technicalExpertise: Float
+}
+
+input ClientFeedbackUpdateManyWithoutUsersInput {
+  connect: [ClientFeedbackWhereUniqueInput!]
+  disconnect: [ClientFeedbackWhereUniqueInput!]
+  set: [ClientFeedbackWhereUniqueInput!]
+}
+
+input ClientFeedbackWhereInput {
+  detailedFeedback: StringNullableFilter
+  employee: UserWhereUniqueInput
+  id: StringFilter
+  improvementNeeded: StringNullableFilter
+  meetingEtiquite: IntNullableFilter
+  processGovernance: IntNullableFilter
+  project: StringNullableFilter
+  qualityOfDeliverables: IntNullableFilter
+  reportingManager: StringNullableFilter
+  reviewerEmail: StringNullableFilter
+  reviewerName: StringNullableFilter
+  role: StringNullableFilter
+  status: EnumClientFeedbackStatus
+  teamWork: IntNullableFilter
+  technicalExpertise: IntNullableFilter
+}
+
+input ClientFeedbackWhereUniqueInput {
+  id: String!
+}
+
+type CommunicationFeedback {
+  abilityToArticulate: String
+  candidates: Candidate
+  confidenceLevel: String
+  createdAt: DateTime!
+  englishSpeakingSkills: String
+  id: String!
+  interviewFeedbacks: InterviewFeedback
+  updatedAt: DateTime!
+}
+
+input CommunicationFeedbackCreateInput {
+  abilityToArticulate: String
+  candidates: CandidateWhereUniqueInput
+  confidenceLevel: String
+  englishSpeakingSkills: String
+  interviewFeedbacks: InterviewFeedbackWhereUniqueInput
+}
+
+input CommunicationFeedbackOrderByInput {
+  abilityToArticulate: SortOrder
+  candidatesId: SortOrder
+  confidenceLevel: SortOrder
+  createdAt: SortOrder
+  englishSpeakingSkills: SortOrder
+  id: SortOrder
+  interviewFeedbacksId: SortOrder
+  updatedAt: SortOrder
+}
+
+input CommunicationFeedbackUpdateInput {
+  abilityToArticulate: String
+  candidates: CandidateWhereUniqueInput
+  confidenceLevel: String
+  englishSpeakingSkills: String
+  interviewFeedbacks: InterviewFeedbackWhereUniqueInput
+}
+
+input CommunicationFeedbackWhereInput {
+  abilityToArticulate: StringNullableFilter
+  candidates: CandidateWhereUniqueInput
+  confidenceLevel: StringNullableFilter
+  englishSpeakingSkills: StringNullableFilter
+  id: StringFilter
+  interviewFeedbacks: InterviewFeedbackWhereUniqueInput
+}
+
+input CommunicationFeedbackWhereUniqueInput {
+  id: String!
+}
+
+type Community {
+  communityActivities(orderBy: [CommunityActivityOrderByInput!], skip: Float, take: Float, where: CommunityActivityWhereInput): [CommunityActivity!]!
+  communityLeads(orderBy: [UserOrderByInput!], skip: Float, take: Float, where: UserWhereInput): [User!]!
+  createdAt: DateTime!
+  description: String
+  id: String!
+  name: String
+  updatedAt: DateTime!
+  users(orderBy: [UserOrderByInput!], skip: Float, take: Float, where: UserWhereInput): [User!]!
+}
+
+type CommunityActivity {
+  community: Community
+  communityActivityFeedbacks(orderBy: [CommunityActivityFeedbackOrderByInput!], skip: Float, take: Float, where: CommunityActivityFeedbackWhereInput): [CommunityActivityFeedback!]!
+  createdAt: DateTime!
+  date: DateTime!
+  description: String!
+  id: String!
+  title: String!
+  updatedAt: DateTime!
+}
+
+input CommunityActivityCreateInput {
+  community: CommunityWhereUniqueInput!
+  communityActivityFeedbacks: CommunityActivityFeedbackCreateNestedManyWithoutCommunityActivitiesInput
+  date: DateTime!
+  description: String!
+  title: String!
+}
+
+input CommunityActivityCreateNestedManyWithoutCommunitiesInput {
+  connect: [CommunityActivityWhereUniqueInput!]
+}
+
+type CommunityActivityFeedback {
+  activity: CommunityActivity
+  activityFeedback: String
+  attendance: Boolean!
+  createdAt: DateTime!
+  employee: User
+  id: String!
+  rating: Float
+  updatedAt: DateTime!
+}
+
+input CommunityActivityFeedbackCreateInput {
+  activity: CommunityActivityWhereUniqueInput
+  activityFeedback: String
+  attendance: Boolean!
+  employee: UserWhereUniqueInput!
+  rating: Float
+}
+
+input CommunityActivityFeedbackCreateNestedManyWithoutCommunityActivitiesInput {
+  connect: [CommunityActivityFeedbackWhereUniqueInput!]
+}
+
+input CommunityActivityFeedbackCreateNestedManyWithoutUsersInput {
+  connect: [CommunityActivityFeedbackWhereUniqueInput!]
+}
+
+input CommunityActivityFeedbackListRelationFilter {
+  every: CommunityActivityFeedbackWhereInput
+  none: CommunityActivityFeedbackWhereInput
+  some: CommunityActivityFeedbackWhereInput
+}
+
+input CommunityActivityFeedbackOrderByInput {
+  activityFeedback: SortOrder
+  activityId: SortOrder
+  attendance: SortOrder
+  createdAt: SortOrder
+  employeeId: SortOrder
+  id: SortOrder
+  rating: SortOrder
+  updatedAt: SortOrder
+}
+
+input CommunityActivityFeedbackUpdateInput {
+  activity: CommunityActivityWhereUniqueInput
+  activityFeedback: String
+  attendance: Boolean
+  employee: UserWhereUniqueInput
+  rating: Float
+}
+
+input CommunityActivityFeedbackUpdateManyWithoutCommunityActivitiesInput {
+  connect: [CommunityActivityFeedbackWhereUniqueInput!]
+  disconnect: [CommunityActivityFeedbackWhereUniqueInput!]
+  set: [CommunityActivityFeedbackWhereUniqueInput!]
+}
+
+input CommunityActivityFeedbackUpdateManyWithoutUsersInput {
+  connect: [CommunityActivityFeedbackWhereUniqueInput!]
+  disconnect: [CommunityActivityFeedbackWhereUniqueInput!]
+  set: [CommunityActivityFeedbackWhereUniqueInput!]
+}
+
+input CommunityActivityFeedbackWhereInput {
+  activity: CommunityActivityWhereUniqueInput
+  activityFeedback: StringNullableFilter
+  attendance: BooleanFilter
+  employee: UserWhereUniqueInput
+  id: StringFilter
+  rating: FloatNullableFilter
+}
+
+input CommunityActivityFeedbackWhereUniqueInput {
+  id: String!
+}
+
+input CommunityActivityListRelationFilter {
+  every: CommunityActivityWhereInput
+  none: CommunityActivityWhereInput
+  some: CommunityActivityWhereInput
+}
+
+input CommunityActivityOrderByInput {
+  communityId: SortOrder
+  createdAt: SortOrder
+  date: SortOrder
+  description: SortOrder
+  id: SortOrder
+  title: SortOrder
+  updatedAt: SortOrder
+}
+
+input CommunityActivityUpdateInput {
+  community: CommunityWhereUniqueInput
+  communityActivityFeedbacks: CommunityActivityFeedbackUpdateManyWithoutCommunityActivitiesInput
+  date: DateTime
+  description: String
+  title: String
+}
+
+input CommunityActivityUpdateManyWithoutCommunitiesInput {
+  connect: [CommunityActivityWhereUniqueInput!]
+  disconnect: [CommunityActivityWhereUniqueInput!]
+  set: [CommunityActivityWhereUniqueInput!]
+}
+
+input CommunityActivityWhereInput {
+  community: CommunityWhereUniqueInput
+  communityActivityFeedbacks: CommunityActivityFeedbackListRelationFilter
+  date: DateTimeFilter
+  description: StringFilter
+  id: StringFilter
+  title: StringFilter
+}
+
+input CommunityActivityWhereUniqueInput {
+  id: String!
+}
+
+input CommunityCreateInput {
+  communityActivities: CommunityActivityCreateNestedManyWithoutCommunitiesInput
+  communityLeads: UserCreateNestedManyWithoutCommunitiesInput
+  description: String
+  name: String
+  users: UserCreateNestedManyWithoutCommunitiesInput
+}
+
+input CommunityCreateNestedManyWithoutUsersInput {
+  connect: [CommunityWhereUniqueInput!]
+}
+
+input CommunityListRelationFilter {
+  every: CommunityWhereInput
+  none: CommunityWhereInput
+  some: CommunityWhereInput
+}
+
+input CommunityOrderByInput {
+  createdAt: SortOrder
+  description: SortOrder
+  id: SortOrder
+  name: SortOrder
+  updatedAt: SortOrder
+}
+
+input CommunityUpdateInput {
+  communityActivities: CommunityActivityUpdateManyWithoutCommunitiesInput
+  communityLeads: UserUpdateManyWithoutCommunitiesInput
+  description: String
+  name: String
+  users: UserUpdateManyWithoutCommunitiesInput
+}
+
+input CommunityUpdateManyWithoutUsersInput {
+  connect: [CommunityWhereUniqueInput!]
+  disconnect: [CommunityWhereUniqueInput!]
+  set: [CommunityWhereUniqueInput!]
+}
+
+input CommunityWhereInput {
+  communityActivities: CommunityActivityListRelationFilter
+  communityLeads: UserListRelationFilter
+  description: StringNullableFilter
+  id: StringFilter
+  name: StringNullableFilter
+  users: UserListRelationFilter
+}
+
+input CommunityWhereUniqueInput {
+  id: String!
+}
+
+input Credentials {
+  password: String!
+  username: String!
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+input DateTimeFilter {
+  equals: DateTime
+  gt: DateTime
+  gte: DateTime
+  in: [DateTime!]
+  lt: DateTime
+  lte: DateTime
+  not: DateTime
+  notIn: [DateTime!]
+}
+
+input DateTimeNullableFilter {
+  equals: DateTime
+  gt: DateTime
+  gte: DateTime
+  in: [DateTime!]
+  lt: DateTime
+  lte: DateTime
+  not: DateTime
+  notIn: [DateTime!]
+}
+
+type EmployeeFeedback {
+  area: String!
+  createdAt: DateTime!
+  date: DateTime!
+  employee: User
+  id: String!
+  nature: EnumEmployeeFeedbackNature
+  remark: String!
+  reviewer: User
+  updatedAt: DateTime!
+}
+
+input EmployeeFeedbackCreateInput {
+  area: String!
+  date: DateTime!
+  employee: UserWhereUniqueInput!
+  nature: EnumEmployeeFeedbackNature!
+  remark: String!
+  reviewer: UserWhereUniqueInput!
+}
+
+input EmployeeFeedbackCreateNestedManyWithoutUsersInput {
+  connect: [EmployeeFeedbackWhereUniqueInput!]
+}
+
+input EmployeeFeedbackListRelationFilter {
+  every: EmployeeFeedbackWhereInput
+  none: EmployeeFeedbackWhereInput
+  some: EmployeeFeedbackWhereInput
+}
+
+input EmployeeFeedbackOrderByInput {
+  area: SortOrder
+  createdAt: SortOrder
+  date: SortOrder
+  employeeId: SortOrder
+  id: SortOrder
+  nature: SortOrder
+  remark: SortOrder
+  reviewerId: SortOrder
+  updatedAt: SortOrder
+}
+
+input EmployeeFeedbackUpdateInput {
+  area: String
+  date: DateTime
+  employee: UserWhereUniqueInput
+  nature: EnumEmployeeFeedbackNature
+  remark: String
+  reviewer: UserWhereUniqueInput
+}
+
+input EmployeeFeedbackUpdateManyWithoutUsersInput {
+  connect: [EmployeeFeedbackWhereUniqueInput!]
+  disconnect: [EmployeeFeedbackWhereUniqueInput!]
+  set: [EmployeeFeedbackWhereUniqueInput!]
+}
+
+input EmployeeFeedbackWhereInput {
+  area: StringFilter
+  date: DateTimeFilter
+  employee: UserWhereUniqueInput
+  id: StringFilter
+  nature: EnumEmployeeFeedbackNature
+  remark: StringFilter
+  reviewer: UserWhereUniqueInput
+}
+
+input EmployeeFeedbackWhereUniqueInput {
+  id: String!
+}
+
+enum EnumCandidateCategory {
+  P1
+  P2
+  P3
+}
+
+enum EnumCandidateSource {
+  ExternalRecruitmentPartner
+  Internal
+  Referral
+}
+
+enum EnumClientFeedbackStatus {
+  FeedbackReceived
+  LinkGenerated
+  NoResponse
+  WaitingForFeedback
+}
+
+enum EnumEmployeeFeedbackNature {
+  Negative
+  Neutral
+  Positive
+}
+
+enum EnumInterviewFeedbackStatus {
+  Hold
+  NotPassed
+  Passed
+}
+
+enum EnumOpportunityProcurementStatus {
+  New
+  Replacement
+}
+
+enum EnumOpportunitySource {
+  BackFill
+  New
+}
+
+enum EnumUserDesignation {
+  Consultant
+  Cxo
+  Director
+  Engineer
+  Joe
+  PrincipalConsultant
+  SeniorConsultant
+  SeniorEngineer
+}
+
+enum EnumUserGender {
+  Female
+  Male
+  Others
+}
+
+input FloatFilter {
+  equals: Float
+  gt: Float
+  gte: Float
+  in: [Float!]
+  lt: Float
+  lte: Float
+  not: Float
+  notIn: [Float!]
+}
+
+input FloatNullableFilter {
+  equals: Float
+  gt: Float
+  gte: Float
+  in: [Float!]
+  lt: Float
+  lte: Float
+  not: Float
+  notIn: [Float!]
+}
+
+input IntNullableFilter {
+  equals: Int
+  gt: Int
+  gte: Int
+  in: [Int!]
+  lt: Int
+  lte: Int
+  not: Int
+  notIn: [Int!]
+}
+
+type Interview {
+  calendarScheduleId: String
+  candidate: Candidate
+  closed: Boolean
+  createdAt: DateTime!
+  currentStatus: String
+  date: DateTime
+  emailStatus: Boolean
+  endDate: DateTime
+  feedback(orderBy: [InterviewFeedbackOrderByInput!], skip: Float, take: Float, where: InterviewFeedbackWhereInput): [InterviewFeedback!]!
+  id: String!
+  interviewer: User
+  level: String
+  mode: String
+  startDate: DateTime
+  subject: String
+  updatedAt: DateTime!
+}
+
+input InterviewCreateInput {
+  calendarScheduleId: String
+  candidate: CandidateWhereUniqueInput
+  closed: Boolean
+  currentStatus: String
+  date: DateTime
+  emailStatus: Boolean
+  endDate: DateTime
+  feedback: InterviewFeedbackCreateNestedManyWithoutInterviewsInput
+  interviewer: UserWhereUniqueInput
+  level: String
+  mode: String
+  startDate: DateTime
+  subject: String
+}
+
+input InterviewCreateNestedManyWithoutCandidatesInput {
+  connect: [InterviewWhereUniqueInput!]
+}
+
+input InterviewCreateNestedManyWithoutUsersInput {
+  connect: [InterviewWhereUniqueInput!]
+}
+
+type InterviewFeedback {
+  attitudeFeedback: String
+  comments: String
+  communication: CommunicationFeedback
+  createdAt: DateTime!
+  feedback: String!
+  id: String!
+  interview: Interview
+  logicFeedback: String
+  relevantTechFeedback: String
+  skillMatrices(orderBy: [SkillLevelOrderByInput!], skip: Float, take: Float, where: SkillLevelWhereInput): [SkillLevel!]!
+  skillSets(orderBy: [SkillSetOrderByInput!], skip: Float, take: Float, where: SkillSetWhereInput): [SkillSet!]!
+  status: EnumInterviewFeedbackStatus
+  updatedAt: DateTime!
+}
+
+input InterviewFeedbackCreateInput {
+  attitudeFeedback: String
+  comments: String
+  communication: CommunicationFeedbackWhereUniqueInput
+  feedback: String!
+  interview: InterviewWhereUniqueInput
+  logicFeedback: String
+  relevantTechFeedback: String
+  skillMatrices: SkillLevelCreateNestedManyWithoutInterviewFeedbacksInput
+  skillSets: SkillSetCreateNestedManyWithoutInterviewFeedbacksInput
+  status: EnumInterviewFeedbackStatus
+}
+
+input InterviewFeedbackCreateNestedManyWithoutInterviewsInput {
+  connect: [InterviewFeedbackWhereUniqueInput!]
+}
+
+input InterviewFeedbackListRelationFilter {
+  every: InterviewFeedbackWhereInput
+  none: InterviewFeedbackWhereInput
+  some: InterviewFeedbackWhereInput
+}
+
+input InterviewFeedbackOrderByInput {
+  attitudeFeedback: SortOrder
+  comments: SortOrder
+  communicationId: SortOrder
+  createdAt: SortOrder
+  feedback: SortOrder
+  id: SortOrder
+  interviewId: SortOrder
+  logicFeedback: SortOrder
+  relevantTechFeedback: SortOrder
+  status: SortOrder
+  updatedAt: SortOrder
+}
+
+input InterviewFeedbackUpdateInput {
+  attitudeFeedback: String
+  comments: String
+  communication: CommunicationFeedbackWhereUniqueInput
+  feedback: String
+  interview: InterviewWhereUniqueInput
+  logicFeedback: String
+  relevantTechFeedback: String
+  skillMatrices: SkillLevelUpdateManyWithoutInterviewFeedbacksInput
+  skillSets: SkillSetUpdateManyWithoutInterviewFeedbacksInput
+  status: EnumInterviewFeedbackStatus
+}
+
+input InterviewFeedbackUpdateManyWithoutInterviewsInput {
+  connect: [InterviewFeedbackWhereUniqueInput!]
+  disconnect: [InterviewFeedbackWhereUniqueInput!]
+  set: [InterviewFeedbackWhereUniqueInput!]
+}
+
+input InterviewFeedbackWhereInput {
+  attitudeFeedback: StringNullableFilter
+  comments: StringNullableFilter
+  communication: CommunicationFeedbackWhereUniqueInput
+  feedback: StringFilter
+  id: StringFilter
+  interview: InterviewWhereUniqueInput
+  logicFeedback: StringNullableFilter
+  relevantTechFeedback: StringNullableFilter
+  skillMatrices: SkillLevelListRelationFilter
+  skillSets: SkillSetListRelationFilter
+  status: EnumInterviewFeedbackStatus
+}
+
+input InterviewFeedbackWhereUniqueInput {
+  id: String!
+}
+
+input InterviewListRelationFilter {
+  every: InterviewWhereInput
+  none: InterviewWhereInput
+  some: InterviewWhereInput
+}
+
+input InterviewOrderByInput {
+  calendarScheduleId: SortOrder
+  candidateId: SortOrder
+  closed: SortOrder
+  createdAt: SortOrder
+  currentStatus: SortOrder
+  date: SortOrder
+  emailStatus: SortOrder
+  endDate: SortOrder
+  id: SortOrder
+  interviewerId: SortOrder
+  level: SortOrder
+  mode: SortOrder
+  startDate: SortOrder
+  subject: SortOrder
+  updatedAt: SortOrder
+}
+
+input InterviewUpdateInput {
+  calendarScheduleId: String
+  candidate: CandidateWhereUniqueInput
+  closed: Boolean
+  currentStatus: String
+  date: DateTime
+  emailStatus: Boolean
+  endDate: DateTime
+  feedback: InterviewFeedbackUpdateManyWithoutInterviewsInput
+  interviewer: UserWhereUniqueInput
+  level: String
+  mode: String
+  startDate: DateTime
+  subject: String
+}
+
+input InterviewUpdateManyWithoutCandidatesInput {
+  connect: [InterviewWhereUniqueInput!]
+  disconnect: [InterviewWhereUniqueInput!]
+  set: [InterviewWhereUniqueInput!]
+}
+
+input InterviewUpdateManyWithoutUsersInput {
+  connect: [InterviewWhereUniqueInput!]
+  disconnect: [InterviewWhereUniqueInput!]
+  set: [InterviewWhereUniqueInput!]
+}
+
+input InterviewWhereInput {
+  calendarScheduleId: StringNullableFilter
+  candidate: CandidateWhereUniqueInput
+  closed: BooleanNullableFilter
+  currentStatus: StringNullableFilter
+  date: DateTimeNullableFilter
+  emailStatus: BooleanNullableFilter
+  endDate: DateTimeNullableFilter
+  feedback: InterviewFeedbackListRelationFilter
+  id: StringFilter
+  interviewer: UserWhereUniqueInput
+  level: StringNullableFilter
+  mode: StringNullableFilter
+  startDate: DateTimeNullableFilter
+  subject: StringNullableFilter
+}
+
+input InterviewWhereUniqueInput {
+  id: String!
+}
+
+"""
+The `JSON` scalar type represents JSON values as specified by [ECMA-404](http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf).
+"""
+scalar JSON @specifiedBy(url: "http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf")
+
+type MetaQueryPayload {
+  count: Float!
+}
+
+type Mutation {
+  createAward(data: AwardCreateInput!): Award!
+  createCandidate(data: CandidateCreateInput!): Candidate!
+  createClientFeedback(data: ClientFeedbackCreateInput!): ClientFeedback!
+  createCommunicationFeedback(data: CommunicationFeedbackCreateInput!): CommunicationFeedback!
+  createCommunity(data: CommunityCreateInput!): Community!
+  createCommunityActivity(data: CommunityActivityCreateInput!): CommunityActivity!
+  createCommunityActivityFeedback(data: CommunityActivityFeedbackCreateInput!): CommunityActivityFeedback!
+  createEmployeeFeedback(data: EmployeeFeedbackCreateInput!): EmployeeFeedback!
+  createInterview(data: InterviewCreateInput!): Interview!
+  createInterviewFeedback(data: InterviewFeedbackCreateInput!): InterviewFeedback!
+  createOpportunity(data: OpportunityCreateInput!): Opportunity!
+  createPartner(data: PartnerCreateInput!): Partner!
+  createProject(data: ProjectCreateInput!): Project!
+  createProjectInvolvement(data: ProjectInvolvementCreateInput!): ProjectInvolvement!
+  createRecruitmentPartner(data: RecruitmentPartnerCreateInput!): RecruitmentPartner!
+  createSkill(data: SkillCreateInput!): Skill!
+  createSkillLevel(data: SkillLevelCreateInput!): SkillLevel!
+  createSkillSet(data: SkillSetCreateInput!): SkillSet!
+  createUser(data: UserCreateInput!): User!
+  deleteAward(where: AwardWhereUniqueInput!): Award!
+  deleteCandidate(where: CandidateWhereUniqueInput!): Candidate!
+  deleteClientFeedback(where: ClientFeedbackWhereUniqueInput!): ClientFeedback!
+  deleteCommunicationFeedback(where: CommunicationFeedbackWhereUniqueInput!): CommunicationFeedback!
+  deleteCommunity(where: CommunityWhereUniqueInput!): Community!
+  deleteCommunityActivity(where: CommunityActivityWhereUniqueInput!): CommunityActivity!
+  deleteCommunityActivityFeedback(where: CommunityActivityFeedbackWhereUniqueInput!): CommunityActivityFeedback!
+  deleteEmployeeFeedback(where: EmployeeFeedbackWhereUniqueInput!): EmployeeFeedback!
+  deleteInterview(where: InterviewWhereUniqueInput!): Interview!
+  deleteInterviewFeedback(where: InterviewFeedbackWhereUniqueInput!): InterviewFeedback!
+  deleteOpportunity(where: OpportunityWhereUniqueInput!): Opportunity!
+  deletePartner(where: PartnerWhereUniqueInput!): Partner!
+  deleteProject(where: ProjectWhereUniqueInput!): Project!
+  deleteProjectInvolvement(where: ProjectInvolvementWhereUniqueInput!): ProjectInvolvement!
+  deleteRecruitmentPartner(where: RecruitmentPartnerWhereUniqueInput!): RecruitmentPartner!
+  deleteSkill(where: SkillWhereUniqueInput!): Skill!
+  deleteSkillLevel(where: SkillLevelWhereUniqueInput!): SkillLevel!
+  deleteSkillSet(where: SkillSetWhereUniqueInput!): SkillSet!
+  deleteUser(where: UserWhereUniqueInput!): User!
+  login(credentials: Credentials!): UserInfo!
+  updateAward(data: AwardUpdateInput!, where: AwardWhereUniqueInput!): Award!
+  updateCandidate(data: CandidateUpdateInput!, where: CandidateWhereUniqueInput!): Candidate!
+  updateClientFeedback(data: ClientFeedbackUpdateInput!, where: ClientFeedbackWhereUniqueInput!): ClientFeedback!
+  updateCommunicationFeedback(data: CommunicationFeedbackUpdateInput!, where: CommunicationFeedbackWhereUniqueInput!): CommunicationFeedback!
+  updateCommunity(data: CommunityUpdateInput!, where: CommunityWhereUniqueInput!): Community!
+  updateCommunityActivity(data: CommunityActivityUpdateInput!, where: CommunityActivityWhereUniqueInput!): CommunityActivity!
+  updateCommunityActivityFeedback(data: CommunityActivityFeedbackUpdateInput!, where: CommunityActivityFeedbackWhereUniqueInput!): CommunityActivityFeedback!
+  updateEmployeeFeedback(data: EmployeeFeedbackUpdateInput!, where: EmployeeFeedbackWhereUniqueInput!): EmployeeFeedback!
+  updateInterview(data: InterviewUpdateInput!, where: InterviewWhereUniqueInput!): Interview!
+  updateInterviewFeedback(data: InterviewFeedbackUpdateInput!, where: InterviewFeedbackWhereUniqueInput!): InterviewFeedback!
+  updateOpportunity(data: OpportunityUpdateInput!, where: OpportunityWhereUniqueInput!): Opportunity!
+  updatePartner(data: PartnerUpdateInput!, where: PartnerWhereUniqueInput!): Partner!
+  updateProject(data: ProjectUpdateInput!, where: ProjectWhereUniqueInput!): Project!
+  updateProjectInvolvement(data: ProjectInvolvementUpdateInput!, where: ProjectInvolvementWhereUniqueInput!): ProjectInvolvement!
+  updateRecruitmentPartner(data: RecruitmentPartnerUpdateInput!, where: RecruitmentPartnerWhereUniqueInput!): RecruitmentPartner!
+  updateSkill(data: SkillUpdateInput!, where: SkillWhereUniqueInput!): Skill!
+  updateSkillLevel(data: SkillLevelUpdateInput!, where: SkillLevelWhereUniqueInput!): SkillLevel!
+  updateSkillSet(data: SkillSetUpdateInput!, where: SkillSetWhereUniqueInput!): SkillSet!
+  updateUser(data: UserUpdateInput!, where: UserWhereUniqueInput!): User!
+}
+
+type Opportunity {
+  candidates(orderBy: [CandidateOrderByInput!], skip: Float, take: Float, where: CandidateWhereInput): [Candidate!]!
+  claimedPerson: User
+  createdAt: DateTime!
+  currentStatus: String
+  id: String!
+  mappedPerson(orderBy: [CandidateOrderByInput!], skip: Float, take: Float, where: CandidateWhereInput): [Candidate!]!
+  name: String
+  optionalSkillset(orderBy: [SkillOrderByInput!], skip: Float, take: Float, where: SkillWhereInput): [Skill!]!
+  partner: Partner
+  procurementStatus: EnumOpportunityProcurementStatus
+  project: Project
+  requiredExperience: Float
+  requiredSkills(orderBy: [SkillOrderByInput!], skip: Float, take: Float, where: SkillWhereInput): [Skill!]!
+  requirements: String
+  resumeId: String
+  source: EnumOpportunitySource
+  updatedAt: DateTime!
+  winOdds: Float
+}
+
+input OpportunityCreateInput {
+  candidates: CandidateCreateNestedManyWithoutOpportunitiesInput
+  claimedPerson: UserWhereUniqueInput
+  currentStatus: String
+  mappedPerson: CandidateCreateNestedManyWithoutOpportunitiesInput
+  name: String
+  optionalSkillset: SkillCreateNestedManyWithoutOpportunitiesInput
+  partner: PartnerWhereUniqueInput
+  procurementStatus: EnumOpportunityProcurementStatus
+  project: ProjectWhereUniqueInput
+  requiredExperience: Float
+  requiredSkills: SkillCreateNestedManyWithoutOpportunitiesInput
+  requirements: String
+  resumeId: String
+  source: EnumOpportunitySource
+  winOdds: Float
+}
+
+input OpportunityCreateNestedManyWithoutCandidatesInput {
+  connect: [OpportunityWhereUniqueInput!]
+}
+
+input OpportunityCreateNestedManyWithoutPartnersInput {
+  connect: [OpportunityWhereUniqueInput!]
+}
+
+input OpportunityCreateNestedManyWithoutProjectsInput {
+  connect: [OpportunityWhereUniqueInput!]
+}
+
+input OpportunityCreateNestedManyWithoutUsersInput {
+  connect: [OpportunityWhereUniqueInput!]
+}
+
+input OpportunityListRelationFilter {
+  every: OpportunityWhereInput
+  none: OpportunityWhereInput
+  some: OpportunityWhereInput
+}
+
+input OpportunityOrderByInput {
+  claimedPersonId: SortOrder
+  createdAt: SortOrder
+  currentStatus: SortOrder
+  id: SortOrder
+  name: SortOrder
+  partnerId: SortOrder
+  procurementStatus: SortOrder
+  projectId: SortOrder
+  requiredExperience: SortOrder
+  requirements: SortOrder
+  resumeId: SortOrder
+  source: SortOrder
+  updatedAt: SortOrder
+  winOdds: SortOrder
+}
+
+input OpportunityUpdateInput {
+  candidates: CandidateUpdateManyWithoutOpportunitiesInput
+  claimedPerson: UserWhereUniqueInput
+  currentStatus: String
+  mappedPerson: CandidateUpdateManyWithoutOpportunitiesInput
+  name: String
+  optionalSkillset: SkillUpdateManyWithoutOpportunitiesInput
+  partner: PartnerWhereUniqueInput
+  procurementStatus: EnumOpportunityProcurementStatus
+  project: ProjectWhereUniqueInput
+  requiredExperience: Float
+  requiredSkills: SkillUpdateManyWithoutOpportunitiesInput
+  requirements: String
+  resumeId: String
+  source: EnumOpportunitySource
+  winOdds: Float
+}
+
+input OpportunityUpdateManyWithoutCandidatesInput {
+  connect: [OpportunityWhereUniqueInput!]
+  disconnect: [OpportunityWhereUniqueInput!]
+  set: [OpportunityWhereUniqueInput!]
+}
+
+input OpportunityUpdateManyWithoutPartnersInput {
+  connect: [OpportunityWhereUniqueInput!]
+  disconnect: [OpportunityWhereUniqueInput!]
+  set: [OpportunityWhereUniqueInput!]
+}
+
+input OpportunityUpdateManyWithoutProjectsInput {
+  connect: [OpportunityWhereUniqueInput!]
+  disconnect: [OpportunityWhereUniqueInput!]
+  set: [OpportunityWhereUniqueInput!]
+}
+
+input OpportunityUpdateManyWithoutUsersInput {
+  connect: [OpportunityWhereUniqueInput!]
+  disconnect: [OpportunityWhereUniqueInput!]
+  set: [OpportunityWhereUniqueInput!]
+}
+
+input OpportunityWhereInput {
+  candidates: CandidateListRelationFilter
+  claimedPerson: UserWhereUniqueInput
+  currentStatus: StringNullableFilter
+  id: StringFilter
+  mappedPerson: CandidateListRelationFilter
+  name: StringNullableFilter
+  optionalSkillset: SkillListRelationFilter
+  partner: PartnerWhereUniqueInput
+  procurementStatus: EnumOpportunityProcurementStatus
+  project: ProjectWhereUniqueInput
+  requiredExperience: IntNullableFilter
+  requiredSkills: SkillListRelationFilter
+  requirements: StringNullableFilter
+  resumeId: StringNullableFilter
+  source: EnumOpportunitySource
+  winOdds: IntNullableFilter
+}
+
+input OpportunityWhereUniqueInput {
+  id: String!
+}
+
+type Partner {
+  createdAt: DateTime!
+  description: String
+  id: String!
+  name: String
+  opportunities(orderBy: [OpportunityOrderByInput!], skip: Float, take: Float, where: OpportunityWhereInput): [Opportunity!]!
+  projects(orderBy: [ProjectOrderByInput!], skip: Float, take: Float, where: ProjectWhereInput): [Project!]!
+  updatedAt: DateTime!
+}
+
+input PartnerCreateInput {
+  description: String
+  name: String
+  opportunities: OpportunityCreateNestedManyWithoutPartnersInput
+  projects: ProjectCreateNestedManyWithoutPartnersInput
+}
+
+input PartnerOrderByInput {
+  createdAt: SortOrder
+  description: SortOrder
+  id: SortOrder
+  name: SortOrder
+  updatedAt: SortOrder
+}
+
+input PartnerUpdateInput {
+  description: String
+  name: String
+  opportunities: OpportunityUpdateManyWithoutPartnersInput
+  projects: ProjectUpdateManyWithoutPartnersInput
+}
+
+input PartnerWhereInput {
+  description: StringNullableFilter
+  id: StringFilter
+  name: StringNullableFilter
+  opportunities: OpportunityListRelationFilter
+  projects: ProjectListRelationFilter
+}
+
+input PartnerWhereUniqueInput {
+  id: String!
+}
+
+type Project {
+  createdAt: DateTime!
+  id: String!
+  name: String
+  opportunities(orderBy: [OpportunityOrderByInput!], skip: Float, take: Float, where: OpportunityWhereInput): [Opportunity!]!
+  partner: Partner
+  projectInvolvements(orderBy: [ProjectInvolvementOrderByInput!], skip: Float, take: Float, where: ProjectInvolvementWhereInput): [ProjectInvolvement!]!
+  startDate: DateTime
+  updatedAt: DateTime!
+  users(orderBy: [UserOrderByInput!], skip: Float, take: Float, where: UserWhereInput): [User!]!
+}
+
+input ProjectCreateInput {
+  name: String
+  opportunities: OpportunityCreateNestedManyWithoutProjectsInput
+  partner: PartnerWhereUniqueInput
+  projectInvolvements: ProjectInvolvementCreateNestedManyWithoutProjectsInput
+  startDate: DateTime
+  users: UserCreateNestedManyWithoutProjectsInput
+}
+
+input ProjectCreateNestedManyWithoutPartnersInput {
+  connect: [ProjectWhereUniqueInput!]
+}
+
+input ProjectCreateNestedManyWithoutUsersInput {
+  connect: [ProjectWhereUniqueInput!]
+}
+
+type ProjectInvolvement {
+  createdAt: DateTime!
+  id: String!
+  involvementPercentage: Float
+  project: Project
+  updatedAt: DateTime!
+  user: User
+}
+
+input ProjectInvolvementCreateInput {
+  involvementPercentage: Float
+  project: ProjectWhereUniqueInput
+  user: UserWhereUniqueInput
+}
+
+input ProjectInvolvementCreateNestedManyWithoutProjectsInput {
+  connect: [ProjectInvolvementWhereUniqueInput!]
+}
+
+input ProjectInvolvementCreateNestedManyWithoutUsersInput {
+  connect: [ProjectInvolvementWhereUniqueInput!]
+}
+
+input ProjectInvolvementListRelationFilter {
+  every: ProjectInvolvementWhereInput
+  none: ProjectInvolvementWhereInput
+  some: ProjectInvolvementWhereInput
+}
+
+input ProjectInvolvementOrderByInput {
+  createdAt: SortOrder
+  id: SortOrder
+  involvementPercentage: SortOrder
+  projectId: SortOrder
+  updatedAt: SortOrder
+  userId: SortOrder
+}
+
+input ProjectInvolvementUpdateInput {
+  involvementPercentage: Float
+  project: ProjectWhereUniqueInput
+  user: UserWhereUniqueInput
+}
+
+input ProjectInvolvementUpdateManyWithoutProjectsInput {
+  connect: [ProjectInvolvementWhereUniqueInput!]
+  disconnect: [ProjectInvolvementWhereUniqueInput!]
+  set: [ProjectInvolvementWhereUniqueInput!]
+}
+
+input ProjectInvolvementUpdateManyWithoutUsersInput {
+  connect: [ProjectInvolvementWhereUniqueInput!]
+  disconnect: [ProjectInvolvementWhereUniqueInput!]
+  set: [ProjectInvolvementWhereUniqueInput!]
+}
+
+input ProjectInvolvementWhereInput {
+  id: StringFilter
+  involvementPercentage: IntNullableFilter
+  project: ProjectWhereUniqueInput
+  user: UserWhereUniqueInput
+}
+
+input ProjectInvolvementWhereUniqueInput {
+  id: String!
+}
+
+input ProjectListRelationFilter {
+  every: ProjectWhereInput
+  none: ProjectWhereInput
+  some: ProjectWhereInput
+}
+
+input ProjectOrderByInput {
+  createdAt: SortOrder
+  id: SortOrder
+  name: SortOrder
+  partnerId: SortOrder
+  startDate: SortOrder
+  updatedAt: SortOrder
+}
+
+input ProjectUpdateInput {
+  name: String
+  opportunities: OpportunityUpdateManyWithoutProjectsInput
+  partner: PartnerWhereUniqueInput
+  projectInvolvements: ProjectInvolvementUpdateManyWithoutProjectsInput
+  startDate: DateTime
+  users: UserUpdateManyWithoutProjectsInput
+}
+
+input ProjectUpdateManyWithoutPartnersInput {
+  connect: [ProjectWhereUniqueInput!]
+  disconnect: [ProjectWhereUniqueInput!]
+  set: [ProjectWhereUniqueInput!]
+}
+
+input ProjectUpdateManyWithoutUsersInput {
+  connect: [ProjectWhereUniqueInput!]
+  disconnect: [ProjectWhereUniqueInput!]
+  set: [ProjectWhereUniqueInput!]
+}
+
+input ProjectWhereInput {
+  id: StringFilter
+  name: StringNullableFilter
+  opportunities: OpportunityListRelationFilter
+  partner: PartnerWhereUniqueInput
+  projectInvolvements: ProjectInvolvementListRelationFilter
+  startDate: DateTimeNullableFilter
+  users: UserListRelationFilter
+}
+
+input ProjectWhereUniqueInput {
+  id: String!
+}
+
+type Query {
+  _awardsMeta(orderBy: [AwardOrderByInput!], skip: Float, take: Float, where: AwardWhereInput): MetaQueryPayload!
+  _candidatesMeta(orderBy: [CandidateOrderByInput!], skip: Float, take: Float, where: CandidateWhereInput): MetaQueryPayload!
+  _clientFeedbacksMeta(orderBy: [ClientFeedbackOrderByInput!], skip: Float, take: Float, where: ClientFeedbackWhereInput): MetaQueryPayload!
+  _communicationFeedbacksMeta(orderBy: [CommunicationFeedbackOrderByInput!], skip: Float, take: Float, where: CommunicationFeedbackWhereInput): MetaQueryPayload!
+  _communitiesMeta(orderBy: [CommunityOrderByInput!], skip: Float, take: Float, where: CommunityWhereInput): MetaQueryPayload!
+  _communityActivitiesMeta(orderBy: [CommunityActivityOrderByInput!], skip: Float, take: Float, where: CommunityActivityWhereInput): MetaQueryPayload!
+  _communityActivityFeedbacksMeta(orderBy: [CommunityActivityFeedbackOrderByInput!], skip: Float, take: Float, where: CommunityActivityFeedbackWhereInput): MetaQueryPayload!
+  _employeeFeedbacksMeta(orderBy: [EmployeeFeedbackOrderByInput!], skip: Float, take: Float, where: EmployeeFeedbackWhereInput): MetaQueryPayload!
+  _interviewFeedbacksMeta(orderBy: [InterviewFeedbackOrderByInput!], skip: Float, take: Float, where: InterviewFeedbackWhereInput): MetaQueryPayload!
+  _interviewsMeta(orderBy: [InterviewOrderByInput!], skip: Float, take: Float, where: InterviewWhereInput): MetaQueryPayload!
+  _opportunitiesMeta(orderBy: [OpportunityOrderByInput!], skip: Float, take: Float, where: OpportunityWhereInput): MetaQueryPayload!
+  _partnersMeta(orderBy: [PartnerOrderByInput!], skip: Float, take: Float, where: PartnerWhereInput): MetaQueryPayload!
+  _projectInvolvementsMeta(orderBy: [ProjectInvolvementOrderByInput!], skip: Float, take: Float, where: ProjectInvolvementWhereInput): MetaQueryPayload!
+  _projectsMeta(orderBy: [ProjectOrderByInput!], skip: Float, take: Float, where: ProjectWhereInput): MetaQueryPayload!
+  _recruitmentPartnersMeta(orderBy: [RecruitmentPartnerOrderByInput!], skip: Float, take: Float, where: RecruitmentPartnerWhereInput): MetaQueryPayload!
+  _skillLevelsMeta(orderBy: [SkillLevelOrderByInput!], skip: Float, take: Float, where: SkillLevelWhereInput): MetaQueryPayload!
+  _skillSetsMeta(orderBy: [SkillSetOrderByInput!], skip: Float, take: Float, where: SkillSetWhereInput): MetaQueryPayload!
+  _skillsMeta(orderBy: [SkillOrderByInput!], skip: Float, take: Float, where: SkillWhereInput): MetaQueryPayload!
+  _usersMeta(orderBy: [UserOrderByInput!], skip: Float, take: Float, where: UserWhereInput): MetaQueryPayload!
+  award(where: AwardWhereUniqueInput!): Award
+  awards(orderBy: [AwardOrderByInput!], skip: Float, take: Float, where: AwardWhereInput): [Award!]!
+  candidate(where: CandidateWhereUniqueInput!): Candidate
+  candidates(orderBy: [CandidateOrderByInput!], skip: Float, take: Float, where: CandidateWhereInput): [Candidate!]!
+  clientFeedback(where: ClientFeedbackWhereUniqueInput!): ClientFeedback
+  clientFeedbacks(orderBy: [ClientFeedbackOrderByInput!], skip: Float, take: Float, where: ClientFeedbackWhereInput): [ClientFeedback!]!
+  communicationFeedback(where: CommunicationFeedbackWhereUniqueInput!): CommunicationFeedback
+  communicationFeedbacks(orderBy: [CommunicationFeedbackOrderByInput!], skip: Float, take: Float, where: CommunicationFeedbackWhereInput): [CommunicationFeedback!]!
+  communities(orderBy: [CommunityOrderByInput!], skip: Float, take: Float, where: CommunityWhereInput): [Community!]!
+  community(where: CommunityWhereUniqueInput!): Community
+  communityActivities(orderBy: [CommunityActivityOrderByInput!], skip: Float, take: Float, where: CommunityActivityWhereInput): [CommunityActivity!]!
+  communityActivity(where: CommunityActivityWhereUniqueInput!): CommunityActivity
+  communityActivityFeedback(where: CommunityActivityFeedbackWhereUniqueInput!): CommunityActivityFeedback
+  communityActivityFeedbacks(orderBy: [CommunityActivityFeedbackOrderByInput!], skip: Float, take: Float, where: CommunityActivityFeedbackWhereInput): [CommunityActivityFeedback!]!
+  employeeFeedback(where: EmployeeFeedbackWhereUniqueInput!): EmployeeFeedback
+  employeeFeedbacks(orderBy: [EmployeeFeedbackOrderByInput!], skip: Float, take: Float, where: EmployeeFeedbackWhereInput): [EmployeeFeedback!]!
+  interview(where: InterviewWhereUniqueInput!): Interview
+  interviewFeedback(where: InterviewFeedbackWhereUniqueInput!): InterviewFeedback
+  interviewFeedbacks(orderBy: [InterviewFeedbackOrderByInput!], skip: Float, take: Float, where: InterviewFeedbackWhereInput): [InterviewFeedback!]!
+  interviews(orderBy: [InterviewOrderByInput!], skip: Float, take: Float, where: InterviewWhereInput): [Interview!]!
+  opportunities(orderBy: [OpportunityOrderByInput!], skip: Float, take: Float, where: OpportunityWhereInput): [Opportunity!]!
+  opportunity(where: OpportunityWhereUniqueInput!): Opportunity
+  partner(where: PartnerWhereUniqueInput!): Partner
+  partners(orderBy: [PartnerOrderByInput!], skip: Float, take: Float, where: PartnerWhereInput): [Partner!]!
+  project(where: ProjectWhereUniqueInput!): Project
+  projectInvolvement(where: ProjectInvolvementWhereUniqueInput!): ProjectInvolvement
+  projectInvolvements(orderBy: [ProjectInvolvementOrderByInput!], skip: Float, take: Float, where: ProjectInvolvementWhereInput): [ProjectInvolvement!]!
+  projects(orderBy: [ProjectOrderByInput!], skip: Float, take: Float, where: ProjectWhereInput): [Project!]!
+  recruitmentPartner(where: RecruitmentPartnerWhereUniqueInput!): RecruitmentPartner
+  recruitmentPartners(orderBy: [RecruitmentPartnerOrderByInput!], skip: Float, take: Float, where: RecruitmentPartnerWhereInput): [RecruitmentPartner!]!
+  skill(where: SkillWhereUniqueInput!): Skill
+  skillLevel(where: SkillLevelWhereUniqueInput!): SkillLevel
+  skillLevels(orderBy: [SkillLevelOrderByInput!], skip: Float, take: Float, where: SkillLevelWhereInput): [SkillLevel!]!
+  skillSet(where: SkillSetWhereUniqueInput!): SkillSet
+  skillSets(orderBy: [SkillSetOrderByInput!], skip: Float, take: Float, where: SkillSetWhereInput): [SkillSet!]!
+  skills(orderBy: [SkillOrderByInput!], skip: Float, take: Float, where: SkillWhereInput): [Skill!]!
+  user(where: UserWhereUniqueInput!): User
+  userInfo: UserInfo!
+  users(orderBy: [UserOrderByInput!], skip: Float, take: Float, where: UserWhereInput): [User!]!
+}
+
+enum QueryMode {
+  Default
+  Insensitive
+}
+
+type RecruitmentPartner {
+  candidates(orderBy: [CandidateOrderByInput!], skip: Float, take: Float, where: CandidateWhereInput): [Candidate!]!
+  createdAt: DateTime!
+  id: String!
+  name: String
+  updatedAt: DateTime!
+}
+
+input RecruitmentPartnerCreateInput {
+  candidates: CandidateCreateNestedManyWithoutRecruitmentPartnersInput
+  name: String
+}
+
+input RecruitmentPartnerOrderByInput {
+  createdAt: SortOrder
+  id: SortOrder
+  name: SortOrder
+  updatedAt: SortOrder
+}
+
+input RecruitmentPartnerUpdateInput {
+  candidates: CandidateUpdateManyWithoutRecruitmentPartnersInput
+  name: String
+}
+
+input RecruitmentPartnerWhereInput {
+  candidates: CandidateListRelationFilter
+  id: StringFilter
+  name: StringNullableFilter
+}
+
+input RecruitmentPartnerWhereUniqueInput {
+  id: String!
+}
+
+type Skill {
+  candidate(orderBy: [CandidateOrderByInput!], skip: Float, take: Float, where: CandidateWhereInput): [Candidate!]!
+  createdAt: DateTime!
+  id: String!
+  name: String!
+  opportunity: Opportunity
+  oppurtunatyRequiredSkills: Opportunity
+  skillMatrices(orderBy: [SkillLevelOrderByInput!], skip: Float, take: Float, where: SkillLevelWhereInput): [SkillLevel!]!
+  skillSets(orderBy: [SkillSetOrderByInput!], skip: Float, take: Float, where: SkillSetWhereInput): [SkillSet!]!
+  updatedAt: DateTime
+}
+
+input SkillCreateInput {
+  candidate: CandidateCreateNestedManyWithoutSkillsInput
+  name: String!
+  opportunity: OpportunityWhereUniqueInput
+  oppurtunatyRequiredSkills: OpportunityWhereUniqueInput
+  skillMatrices: SkillLevelCreateNestedManyWithoutSkillsInput
+  skillSets: SkillSetCreateNestedManyWithoutSkillsInput
+}
+
+input SkillCreateNestedManyWithoutCandidatesInput {
+  connect: [SkillWhereUniqueInput!]
+}
+
+input SkillCreateNestedManyWithoutOpportunitiesInput {
+  connect: [SkillWhereUniqueInput!]
+}
+
+type SkillLevel {
+  createdAt: DateTime!
+  id: String!
+  interviewFeedback: InterviewFeedback
+  level: Float
+  skill: Skill
+  updatedAt: DateTime!
+  users(orderBy: [UserOrderByInput!], skip: Float, take: Float, where: UserWhereInput): [User!]!
+}
+
+input SkillLevelCreateInput {
+  interviewFeedback: InterviewFeedbackWhereUniqueInput
+  level: Float
+  skill: SkillWhereUniqueInput
+  users: UserCreateNestedManyWithoutSkillLevelsInput
+}
+
+input SkillLevelCreateNestedManyWithoutInterviewFeedbacksInput {
+  connect: [SkillLevelWhereUniqueInput!]
+}
+
+input SkillLevelCreateNestedManyWithoutSkillsInput {
+  connect: [SkillLevelWhereUniqueInput!]
+}
+
+input SkillLevelListRelationFilter {
+  every: SkillLevelWhereInput
+  none: SkillLevelWhereInput
+  some: SkillLevelWhereInput
+}
+
+input SkillLevelOrderByInput {
+  createdAt: SortOrder
+  id: SortOrder
+  interviewFeedbackId: SortOrder
+  level: SortOrder
+  skillId: SortOrder
+  updatedAt: SortOrder
+}
+
+input SkillLevelUpdateInput {
+  interviewFeedback: InterviewFeedbackWhereUniqueInput
+  level: Float
+  skill: SkillWhereUniqueInput
+  users: UserUpdateManyWithoutSkillLevelsInput
+}
+
+input SkillLevelUpdateManyWithoutInterviewFeedbacksInput {
+  connect: [SkillLevelWhereUniqueInput!]
+  disconnect: [SkillLevelWhereUniqueInput!]
+  set: [SkillLevelWhereUniqueInput!]
+}
+
+input SkillLevelUpdateManyWithoutSkillsInput {
+  connect: [SkillLevelWhereUniqueInput!]
+  disconnect: [SkillLevelWhereUniqueInput!]
+  set: [SkillLevelWhereUniqueInput!]
+}
+
+input SkillLevelWhereInput {
+  id: StringFilter
+  interviewFeedback: InterviewFeedbackWhereUniqueInput
+  level: IntNullableFilter
+  skill: SkillWhereUniqueInput
+  users: UserListRelationFilter
+}
+
+input SkillLevelWhereUniqueInput {
+  id: String!
+}
+
+input SkillListRelationFilter {
+  every: SkillWhereInput
+  none: SkillWhereInput
+  some: SkillWhereInput
+}
+
+input SkillOrderByInput {
+  createdAt: SortOrder
+  id: SortOrder
+  name: SortOrder
+  opportunityId: SortOrder
+  oppurtunatyRequiredSkillsId: SortOrder
+  updatedAt: SortOrder
+}
+
+type SkillSet {
+  candidate: Candidate
+  createdAt: DateTime!
+  employees(orderBy: [UserOrderByInput!], skip: Float, take: Float, where: UserWhereInput): [User!]!
+  expertiseLevel: Float
+  id: String!
+  interviewFeedback: InterviewFeedback
+  skill: Skill
+  updatedAt: DateTime!
+}
+
+input SkillSetCreateInput {
+  candidate: CandidateWhereUniqueInput
+  employees: UserCreateNestedManyWithoutSkillSetsInput
+  expertiseLevel: Float
+  interviewFeedback: InterviewFeedbackWhereUniqueInput
+  skill: SkillWhereUniqueInput
+}
+
+input SkillSetCreateNestedManyWithoutCandidatesInput {
+  connect: [SkillSetWhereUniqueInput!]
+}
+
+input SkillSetCreateNestedManyWithoutInterviewFeedbacksInput {
+  connect: [SkillSetWhereUniqueInput!]
+}
+
+input SkillSetCreateNestedManyWithoutSkillsInput {
+  connect: [SkillSetWhereUniqueInput!]
+}
+
+input SkillSetCreateNestedManyWithoutUsersInput {
+  connect: [SkillSetWhereUniqueInput!]
+}
+
+input SkillSetListRelationFilter {
+  every: SkillSetWhereInput
+  none: SkillSetWhereInput
+  some: SkillSetWhereInput
+}
+
+input SkillSetOrderByInput {
+  candidateId: SortOrder
+  createdAt: SortOrder
+  expertiseLevel: SortOrder
+  id: SortOrder
+  interviewFeedbackId: SortOrder
+  skillId: SortOrder
+  updatedAt: SortOrder
+}
+
+input SkillSetUpdateInput {
+  candidate: CandidateWhereUniqueInput
+  employees: UserUpdateManyWithoutSkillSetsInput
+  expertiseLevel: Float
+  interviewFeedback: InterviewFeedbackWhereUniqueInput
+  skill: SkillWhereUniqueInput
+}
+
+input SkillSetUpdateManyWithoutCandidatesInput {
+  connect: [SkillSetWhereUniqueInput!]
+  disconnect: [SkillSetWhereUniqueInput!]
+  set: [SkillSetWhereUniqueInput!]
+}
+
+input SkillSetUpdateManyWithoutInterviewFeedbacksInput {
+  connect: [SkillSetWhereUniqueInput!]
+  disconnect: [SkillSetWhereUniqueInput!]
+  set: [SkillSetWhereUniqueInput!]
+}
+
+input SkillSetUpdateManyWithoutSkillsInput {
+  connect: [SkillSetWhereUniqueInput!]
+  disconnect: [SkillSetWhereUniqueInput!]
+  set: [SkillSetWhereUniqueInput!]
+}
+
+input SkillSetUpdateManyWithoutUsersInput {
+  connect: [SkillSetWhereUniqueInput!]
+  disconnect: [SkillSetWhereUniqueInput!]
+  set: [SkillSetWhereUniqueInput!]
+}
+
+input SkillSetWhereInput {
+  candidate: CandidateWhereUniqueInput
+  employees: UserListRelationFilter
+  expertiseLevel: IntNullableFilter
+  id: StringFilter
+  interviewFeedback: InterviewFeedbackWhereUniqueInput
+  skill: SkillWhereUniqueInput
+}
+
+input SkillSetWhereUniqueInput {
+  id: String!
+}
+
+input SkillUpdateInput {
+  candidate: CandidateUpdateManyWithoutSkillsInput
+  name: String
+  opportunity: OpportunityWhereUniqueInput
+  oppurtunatyRequiredSkills: OpportunityWhereUniqueInput
+  skillMatrices: SkillLevelUpdateManyWithoutSkillsInput
+  skillSets: SkillSetUpdateManyWithoutSkillsInput
+}
+
+input SkillUpdateManyWithoutCandidatesInput {
+  connect: [SkillWhereUniqueInput!]
+  disconnect: [SkillWhereUniqueInput!]
+  set: [SkillWhereUniqueInput!]
+}
+
+input SkillUpdateManyWithoutOpportunitiesInput {
+  connect: [SkillWhereUniqueInput!]
+  disconnect: [SkillWhereUniqueInput!]
+  set: [SkillWhereUniqueInput!]
+}
+
+input SkillWhereInput {
+  candidate: CandidateListRelationFilter
+  id: StringFilter
+  name: StringFilter
+  opportunity: OpportunityWhereUniqueInput
+  oppurtunatyRequiredSkills: OpportunityWhereUniqueInput
+  skillMatrices: SkillLevelListRelationFilter
+  skillSets: SkillSetListRelationFilter
+}
+
+input SkillWhereUniqueInput {
+  id: String!
+}
+
+enum SortOrder {
+  Asc
+  Desc
+}
+
+input StringFilter {
+  contains: String
+  endsWith: String
+  equals: String
+  gt: String
+  gte: String
+  in: [String!]
+  lt: String
+  lte: String
+  mode: QueryMode
+  not: String
+  notIn: [String!]
+  startsWith: String
+}
+
+input StringNullableFilter {
+  contains: String
+  endsWith: String
+  equals: String
+  gt: String
+  gte: String
+  in: [String!]
+  lt: String
+  lte: String
+  mode: QueryMode
+  not: String
+  notIn: [String!]
+  startsWith: String
+}
+
+type User {
+  aadarNumber: String
+  address: String
+  awards(orderBy: [AwardOrderByInput!], skip: Float, take: Float, where: AwardWhereInput): [Award!]!
+  bloodGroup: String
+  candidates(orderBy: [CandidateOrderByInput!], skip: Float, take: Float, where: CandidateWhereInput): [Candidate!]!
+  careerStartDate: DateTime
+  clientFeedbacks(orderBy: [ClientFeedbackOrderByInput!], skip: Float, take: Float, where: ClientFeedbackWhereInput): [ClientFeedback!]!
+  communities(orderBy: [CommunityOrderByInput!], skip: Float, take: Float, where: CommunityWhereInput): [Community!]!
+  community: Community
+  communityActivityFeedbacks(orderBy: [CommunityActivityFeedbackOrderByInput!], skip: Float, take: Float, where: CommunityActivityFeedbackWhereInput): [CommunityActivityFeedback!]!
+  communityMentor: User
+  contactNumber: String
+  courseOutDate: DateTime
+  createdAt: DateTime!
+  dateOfJoining: DateTime
+  designation: EnumUserDesignation
+  dob: DateTime
+  email: String
+  emergencyContactNumber: String
+  employeeFeedbacks(orderBy: [EmployeeFeedbackOrderByInput!], skip: Float, take: Float, where: EmployeeFeedbackWhereInput): [EmployeeFeedback!]!
+  firstName: String!
+  folderLink: String
+  fwExperience: String
+  gender: EnumUserGender
+  id: String!
+  image: String
+  imageLink: String
+  interviews(orderBy: [InterviewOrderByInput!], skip: Float, take: Float, where: InterviewWhereInput): [Interview!]!
+  lastName: String!
+  notifications: String
+  opportunities(orderBy: [OpportunityOrderByInput!], skip: Float, take: Float, where: OpportunityWhereInput): [Opportunity!]!
+  panNumber: String
+  personalEmailId: String
+  previousFirmOutDate: DateTime
+  project(orderBy: [ProjectOrderByInput!], skip: Float, take: Float, where: ProjectWhereInput): [Project!]!
+  projectInvolved(orderBy: [ProjectInvolvementOrderByInput!], skip: Float, take: Float, where: ProjectInvolvementWhereInput): [ProjectInvolvement!]!
+  resumeLink: String
+  reviewer(orderBy: [EmployeeFeedbackOrderByInput!], skip: Float, take: Float, where: EmployeeFeedbackWhereInput): [EmployeeFeedback!]!
+  roles: JSON!
+  secondaryEmail: String
+  skillLevel: SkillLevel
+  skillSets(orderBy: [SkillSetOrderByInput!], skip: Float, take: Float, where: SkillSetWhereInput): [SkillSet!]!
+  toPerson(orderBy: [AwardOrderByInput!], skip: Float, take: Float, where: AwardWhereInput): [Award!]!
+  totalExperience: String!
+  updatedAt: DateTime!
+  username: String!
+}
+
+input UserCreateInput {
+  aadarNumber: String
+  address: String
+  awards: AwardCreateNestedManyWithoutUsersInput
+  bloodGroup: String
+  candidates: CandidateCreateNestedManyWithoutUsersInput
+  careerStartDate: DateTime
+  clientFeedbacks: ClientFeedbackCreateNestedManyWithoutUsersInput
+  communities: CommunityCreateNestedManyWithoutUsersInput
+  community: CommunityWhereUniqueInput
+  communityActivityFeedbacks: CommunityActivityFeedbackCreateNestedManyWithoutUsersInput
+  communityMentor: UserWhereUniqueInput
+  contactNumber: String
+  courseOutDate: DateTime
+  dateOfJoining: DateTime
+  designation: EnumUserDesignation
+  dob: DateTime
+  email: String
+  emergencyContactNumber: String
+  employeeFeedbacks: EmployeeFeedbackCreateNestedManyWithoutUsersInput
+  firstName: String!
+  folderLink: String
+  fwExperience: String
+  gender: EnumUserGender
+  image: String
+  imageLink: String
+  interviews: InterviewCreateNestedManyWithoutUsersInput
+  lastName: String!
+  notifications: String
+  opportunities: OpportunityCreateNestedManyWithoutUsersInput
+  panNumber: String
+  password: String!
+  personalEmailId: String
+  previousFirmOutDate: DateTime
+  project: ProjectCreateNestedManyWithoutUsersInput
+  projectInvolved: ProjectInvolvementCreateNestedManyWithoutUsersInput
+  resumeLink: String
+  reviewer: EmployeeFeedbackCreateNestedManyWithoutUsersInput
+  roles: JSON!
+  secondaryEmail: String
+  skillLevel: SkillLevelWhereUniqueInput
+  skillSets: SkillSetCreateNestedManyWithoutUsersInput
+  toPerson: AwardCreateNestedManyWithoutUsersInput
+  totalExperience: String!
+  username: String!
+  users: UserCreateNestedManyWithoutUsersInput
+}
+
+input UserCreateNestedManyWithoutCommunitiesInput {
+  connect: [UserWhereUniqueInput!]
+}
+
+input UserCreateNestedManyWithoutProjectsInput {
+  connect: [UserWhereUniqueInput!]
+}
+
+input UserCreateNestedManyWithoutSkillLevelsInput {
+  connect: [UserWhereUniqueInput!]
+}
+
+input UserCreateNestedManyWithoutSkillSetsInput {
+  connect: [UserWhereUniqueInput!]
+}
+
+input UserCreateNestedManyWithoutUsersInput {
+  connect: [UserWhereUniqueInput!]
+}
+
+type UserInfo {
+  accessToken: String
+  id: String!
+  roles: [String!]!
+  username: String!
+}
+
+input UserListRelationFilter {
+  every: UserWhereInput
+  none: UserWhereInput
+  some: UserWhereInput
+}
+
+input UserOrderByInput {
+  aadarNumber: SortOrder
+  address: SortOrder
+  bloodGroup: SortOrder
+  careerStartDate: SortOrder
+  communityId: SortOrder
+  communityMentorId: SortOrder
+  contactNumber: SortOrder
+  courseOutDate: SortOrder
+  createdAt: SortOrder
+  dateOfJoining: SortOrder
+  designation: SortOrder
+  dob: SortOrder
+  email: SortOrder
+  emergencyContactNumber: SortOrder
+  firstName: SortOrder
+  folderLink: SortOrder
+  fwExperience: SortOrder
+  gender: SortOrder
+  id: SortOrder
+  image: SortOrder
+  imageLink: SortOrder
+  lastName: SortOrder
+  notifications: SortOrder
+  panNumber: SortOrder
+  password: SortOrder
+  personalEmailId: SortOrder
+  previousFirmOutDate: SortOrder
+  resumeLink: SortOrder
+  roles: SortOrder
+  secondaryEmail: SortOrder
+  skillLevelId: SortOrder
+  totalExperience: SortOrder
+  updatedAt: SortOrder
+  username: SortOrder
+}
+
+input UserUpdateInput {
+  aadarNumber: String
+  address: String
+  awards: AwardUpdateManyWithoutUsersInput
+  bloodGroup: String
+  candidates: CandidateUpdateManyWithoutUsersInput
+  careerStartDate: DateTime
+  clientFeedbacks: ClientFeedbackUpdateManyWithoutUsersInput
+  communities: CommunityUpdateManyWithoutUsersInput
+  community: CommunityWhereUniqueInput
+  communityActivityFeedbacks: CommunityActivityFeedbackUpdateManyWithoutUsersInput
+  communityMentor: UserWhereUniqueInput
+  contactNumber: String
+  courseOutDate: DateTime
+  dateOfJoining: DateTime
+  designation: EnumUserDesignation
+  dob: DateTime
+  email: String
+  emergencyContactNumber: String
+  employeeFeedbacks: EmployeeFeedbackUpdateManyWithoutUsersInput
+  firstName: String
+  folderLink: String
+  fwExperience: String
+  gender: EnumUserGender
+  image: String
+  imageLink: String
+  interviews: InterviewUpdateManyWithoutUsersInput
+  lastName: String
+  notifications: String
+  opportunities: OpportunityUpdateManyWithoutUsersInput
+  panNumber: String
+  password: String
+  personalEmailId: String
+  previousFirmOutDate: DateTime
+  project: ProjectUpdateManyWithoutUsersInput
+  projectInvolved: ProjectInvolvementUpdateManyWithoutUsersInput
+  resumeLink: String
+  reviewer: EmployeeFeedbackUpdateManyWithoutUsersInput
+  roles: JSON
+  secondaryEmail: String
+  skillLevel: SkillLevelWhereUniqueInput
+  skillSets: SkillSetUpdateManyWithoutUsersInput
+  toPerson: AwardUpdateManyWithoutUsersInput
+  totalExperience: String
+  username: String
+  users: UserUpdateManyWithoutUsersInput
+}
+
+input UserUpdateManyWithoutCommunitiesInput {
+  connect: [UserWhereUniqueInput!]
+  disconnect: [UserWhereUniqueInput!]
+  set: [UserWhereUniqueInput!]
+}
+
+input UserUpdateManyWithoutProjectsInput {
+  connect: [UserWhereUniqueInput!]
+  disconnect: [UserWhereUniqueInput!]
+  set: [UserWhereUniqueInput!]
+}
+
+input UserUpdateManyWithoutSkillLevelsInput {
+  connect: [UserWhereUniqueInput!]
+  disconnect: [UserWhereUniqueInput!]
+  set: [UserWhereUniqueInput!]
+}
+
+input UserUpdateManyWithoutSkillSetsInput {
+  connect: [UserWhereUniqueInput!]
+  disconnect: [UserWhereUniqueInput!]
+  set: [UserWhereUniqueInput!]
+}
+
+input UserUpdateManyWithoutUsersInput {
+  connect: [UserWhereUniqueInput!]
+  disconnect: [UserWhereUniqueInput!]
+  set: [UserWhereUniqueInput!]
+}
+
+input UserWhereInput {
+  aadarNumber: StringNullableFilter
+  address: StringNullableFilter
+  awards: AwardListRelationFilter
+  bloodGroup: StringNullableFilter
+  candidates: CandidateListRelationFilter
+  careerStartDate: DateTimeNullableFilter
+  clientFeedbacks: ClientFeedbackListRelationFilter
+  communities: CommunityListRelationFilter
+  community: CommunityWhereUniqueInput
+  communityActivityFeedbacks: CommunityActivityFeedbackListRelationFilter
+  communityMentor: UserWhereUniqueInput
+  contactNumber: StringNullableFilter
+  courseOutDate: DateTimeNullableFilter
+  dateOfJoining: DateTimeNullableFilter
+  designation: EnumUserDesignation
+  dob: DateTimeNullableFilter
+  email: StringNullableFilter
+  emergencyContactNumber: StringNullableFilter
+  employeeFeedbacks: EmployeeFeedbackListRelationFilter
+  firstName: StringFilter
+  folderLink: StringNullableFilter
+  fwExperience: StringNullableFilter
+  gender: EnumUserGender
+  id: StringFilter
+  image: StringNullableFilter
+  imageLink: StringNullableFilter
+  interviews: InterviewListRelationFilter
+  lastName: StringFilter
+  notifications: StringNullableFilter
+  opportunities: OpportunityListRelationFilter
+  panNumber: StringNullableFilter
+  personalEmailId: StringNullableFilter
+  previousFirmOutDate: DateTimeNullableFilter
+  project: ProjectListRelationFilter
+  projectInvolved: ProjectInvolvementListRelationFilter
+  resumeLink: StringNullableFilter
+  reviewer: EmployeeFeedbackListRelationFilter
+  secondaryEmail: StringNullableFilter
+  skillLevel: SkillLevelWhereUniqueInput
+  skillSets: SkillSetListRelationFilter
+  toPerson: AwardListRelationFilter
+  totalExperience: StringFilter
+  username: StringFilter
+  users: UserListRelationFilter
+}
+
+input UserWhereUniqueInput {
+  id: String!
+}
