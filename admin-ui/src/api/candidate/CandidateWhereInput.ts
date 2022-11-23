@@ -1,4 +1,5 @@
 import { StringNullableFilter } from "../../util/StringNullableFilter";
+import { OpportunityListRelationFilter } from "../opportunity/OpportunityListRelationFilter";
 import { CommunicationFeedbackWhereUniqueInput } from "../communicationFeedback/CommunicationFeedbackWhereUniqueInput";
 import { FloatNullableFilter } from "../../util/FloatNullableFilter";
 import { StringFilter } from "../../util/StringFilter";
@@ -6,7 +7,6 @@ import { RecruitmentPartnerWhereUniqueInput } from "../recruitmentPartner/Recrui
 import { InterviewListRelationFilter } from "../interview/InterviewListRelationFilter";
 import { BooleanFilter } from "../../util/BooleanFilter";
 import { DateTimeNullableFilter } from "../../util/DateTimeNullableFilter";
-import { OpportunityListRelationFilter } from "../opportunity/OpportunityListRelationFilter";
 import { OpportunityWhereUniqueInput } from "../opportunity/OpportunityWhereUniqueInput";
 import { UserWhereUniqueInput } from "../user/UserWhereUniqueInput";
 import { SkillListRelationFilter } from "../skill/SkillListRelationFilter";
@@ -15,6 +15,7 @@ import { FloatFilter } from "../../util/FloatFilter";
 
 export type CandidateWhereInput = {
   additionalComments?: StringNullableFilter;
+  candidateOpportunity?: OpportunityListRelationFilter;
   category?: "P1" | "P2" | "P3";
   communicationFeedback?: CommunicationFeedbackWhereUniqueInput;
   competitorCtc?: FloatNullableFilter;

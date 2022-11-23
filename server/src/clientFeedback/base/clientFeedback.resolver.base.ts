@@ -85,6 +85,12 @@ export class ClientFeedbackResolverBase {
               connect: args.data.employee,
             }
           : undefined,
+
+        organiser: args.data.organiser
+          ? {
+              connect: args.data.organiser,
+            }
+          : undefined,
       },
     });
   }
@@ -103,6 +109,12 @@ export class ClientFeedbackResolverBase {
           employee: args.data.employee
             ? {
                 connect: args.data.employee,
+              }
+            : undefined,
+
+          organiser: args.data.organiser
+            ? {
+                connect: args.data.organiser,
               }
             : undefined,
         },
@@ -140,6 +152,19 @@ export class ClientFeedbackResolverBase {
     @graphql.Parent() parent: ClientFeedback
   ): Promise<User | null> {
     const result = await this.service.getEmployee(parent.id);
+
+    if (!result) {
+      return null;
+    }
+    return result;
+  }
+
+  @Public()
+  @graphql.ResolveField(() => User, { nullable: true })
+  async organiser(
+    @graphql.Parent() parent: ClientFeedback
+  ): Promise<User | null> {
+    const result = await this.service.getOrganiser(parent.id);
 
     if (!result) {
       return null;

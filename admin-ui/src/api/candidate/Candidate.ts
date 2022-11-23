@@ -1,13 +1,14 @@
+import { Opportunity } from "../opportunity/Opportunity";
 import { CommunicationFeedback } from "../communicationFeedback/CommunicationFeedback";
 import { RecruitmentPartner } from "../recruitmentPartner/RecruitmentPartner";
 import { Interview } from "../interview/Interview";
-import { Opportunity } from "../opportunity/Opportunity";
 import { User } from "../user/User";
 import { Skill } from "../skill/Skill";
 import { SkillSet } from "../skillSet/SkillSet";
 
 export type Candidate = {
   additionalComments: string | null;
+  candidateOpportunity?: Array<Opportunity>;
   category?: "P1" | "P2" | "P3";
   communicationFeedback?: CommunicationFeedback | null;
   competitorCtc: number | null;

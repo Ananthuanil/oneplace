@@ -79,6 +79,15 @@ class ClientFeedbackOrderByInput {
   @Field(() => SortOrder, {
     nullable: true,
   })
+  organiserId?: SortOrder;
+
+  @ApiProperty({
+    required: false,
+    enum: ["asc", "desc"],
+  })
+  @Field(() => SortOrder, {
+    nullable: true,
+  })
   processGovernance?: SortOrder;
 
   @ApiProperty({

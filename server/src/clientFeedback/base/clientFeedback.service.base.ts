@@ -54,4 +54,12 @@ export class ClientFeedbackServiceBase {
       })
       .employee();
   }
+
+  async getOrganiser(parentId: string): Promise<User | null> {
+    return this.prisma.clientFeedback
+      .findUnique({
+        where: { id: parentId },
+      })
+      .organiser();
+  }
 }

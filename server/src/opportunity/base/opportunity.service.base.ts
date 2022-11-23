@@ -107,6 +107,22 @@ export class OpportunityServiceBase {
       .claimedPerson();
   }
 
+  async getMappedCandidates(parentId: string): Promise<Candidate | null> {
+    return this.prisma.opportunity
+      .findUnique({
+        where: { id: parentId },
+      })
+      .mappedCandidates();
+  }
+
+  async getMappedEmployee(parentId: string): Promise<User | null> {
+    return this.prisma.opportunity
+      .findUnique({
+        where: { id: parentId },
+      })
+      .mappedEmployee();
+  }
+
   async getPartner(parentId: string): Promise<Partner | null> {
     return this.prisma.opportunity
       .findUnique({

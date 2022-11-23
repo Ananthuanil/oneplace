@@ -5,6 +5,7 @@ export type ClientFeedbackCreateInput = {
   employee?: UserWhereUniqueInput | null;
   improvementNeeded?: string | null;
   meetingEtiquite?: number | null;
+  organiser?: UserWhereUniqueInput | null;
   processGovernance?: number | null;
   project?: string | null;
   qualityOfDeliverables?: number | null;

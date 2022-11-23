@@ -14,18 +14,18 @@ import { ApiProperty } from "@nestjs/swagger";
 import {
   IsString,
   IsOptional,
-  IsEnum,
   ValidateNested,
+  IsEnum,
   IsNumber,
   IsDate,
   IsBoolean,
 } from "class-validator";
+import { Opportunity } from "../../opportunity/base/Opportunity";
+import { Type } from "class-transformer";
 import { EnumCandidateCategory } from "./EnumCandidateCategory";
 import { CommunicationFeedback } from "../../communicationFeedback/base/CommunicationFeedback";
-import { Type } from "class-transformer";
 import { RecruitmentPartner } from "../../recruitmentPartner/base/RecruitmentPartner";
 import { Interview } from "../../interview/base/Interview";
-import { Opportunity } from "../../opportunity/base/Opportunity";
 import { User } from "../../user/base/User";
 import { Skill } from "../../skill/base/Skill";
 import { SkillSet } from "../../skillSet/base/SkillSet";
@@ -42,6 +42,15 @@ class Candidate {
     nullable: true,
   })
   additionalComments!: string | null;
+
+  @ApiProperty({
+    required: false,
+    type: () => [Opportunity],
+  })
+  @ValidateNested()
+  @Type(() => Opportunity)
+  @IsOptional()
+  candidateOpportunity?: Array<Opportunity>;
 
   @ApiProperty({
     required: true,

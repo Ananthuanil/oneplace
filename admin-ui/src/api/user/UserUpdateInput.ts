@@ -54,6 +54,8 @@ export type UserUpdateInput = {
   lastName?: string;
   notifications?: string | null;
   opportunities?: OpportunityUpdateManyWithoutUsersInput;
+  opportunity?: OpportunityUpdateManyWithoutUsersInput;
+  organiser?: ClientFeedbackUpdateManyWithoutUsersInput;
   panNumber?: string | null;
   password?: string;
   personalEmailId?: string | null;

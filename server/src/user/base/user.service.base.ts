@@ -177,6 +177,28 @@ export class UserServiceBase {
       .opportunities(args);
   }
 
+  async findOpportunity(
+    parentId: string,
+    args: Prisma.OpportunityFindManyArgs
+  ): Promise<Opportunity[]> {
+    return this.prisma.user
+      .findUnique({
+        where: { id: parentId },
+      })
+      .opportunity(args);
+  }
+
+  async findOrganiser(
+    parentId: string,
+    args: Prisma.ClientFeedbackFindManyArgs
+  ): Promise<ClientFeedback[]> {
+    return this.prisma.user
+      .findUnique({
+        where: { id: parentId },
+      })
+      .organiser(args);
+  }
+
   async findProject(
     parentId: string,
     args: Prisma.ProjectFindManyArgs

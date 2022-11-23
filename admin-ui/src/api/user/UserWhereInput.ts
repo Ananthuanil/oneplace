@@ -56,6 +56,8 @@ export type UserWhereInput = {
   lastName?: StringFilter;
   notifications?: StringNullableFilter;
   opportunities?: OpportunityListRelationFilter;
+  opportunity?: OpportunityListRelationFilter;
+  organiser?: ClientFeedbackListRelationFilter;
   panNumber?: StringNullableFilter;
   personalEmailId?: StringNullableFilter;
   previousFirmOutDate?: DateTimeNullableFilter;

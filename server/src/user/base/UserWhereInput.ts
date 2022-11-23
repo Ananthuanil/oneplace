@@ -385,6 +385,30 @@ class UserWhereInput {
 
   @ApiProperty({
     required: false,
+    type: () => OpportunityListRelationFilter,
+  })
+  @ValidateNested()
+  @Type(() => OpportunityListRelationFilter)
+  @IsOptional()
+  @Field(() => OpportunityListRelationFilter, {
+    nullable: true,
+  })
+  opportunity?: OpportunityListRelationFilter;
+
+  @ApiProperty({
+    required: false,
+    type: () => ClientFeedbackListRelationFilter,
+  })
+  @ValidateNested()
+  @Type(() => ClientFeedbackListRelationFilter)
+  @IsOptional()
+  @Field(() => ClientFeedbackListRelationFilter, {
+    nullable: true,
+  })
+  organiser?: ClientFeedbackListRelationFilter;
+
+  @ApiProperty({
+    required: false,
     type: StringNullableFilter,
   })
   @Type(() => StringNullableFilter)

@@ -1,7 +1,7 @@
+import { OpportunityCreateNestedManyWithoutCandidatesInput } from "./OpportunityCreateNestedManyWithoutCandidatesInput";
 import { CommunicationFeedbackWhereUniqueInput } from "../communicationFeedback/CommunicationFeedbackWhereUniqueInput";
 import { RecruitmentPartnerWhereUniqueInput } from "../recruitmentPartner/RecruitmentPartnerWhereUniqueInput";
 import { InterviewCreateNestedManyWithoutCandidatesInput } from "./InterviewCreateNestedManyWithoutCandidatesInput";
-import { OpportunityCreateNestedManyWithoutCandidatesInput } from "./OpportunityCreateNestedManyWithoutCandidatesInput";
 import { OpportunityWhereUniqueInput } from "../opportunity/OpportunityWhereUniqueInput";
 import { UserWhereUniqueInput } from "../user/UserWhereUniqueInput";
 import { SkillCreateNestedManyWithoutCandidatesInput } from "./SkillCreateNestedManyWithoutCandidatesInput";
@@ -9,6 +9,7 @@ import { SkillSetCreateNestedManyWithoutCandidatesInput } from "./SkillSetCreate
 
 export type CandidateCreateInput = {
   additionalComments?: string | null;
+  candidateOpportunity?: OpportunityCreateNestedManyWithoutCandidatesInput;
   category: "P1" | "P2" | "P3";
   communicationFeedback?: CommunicationFeedbackWhereUniqueInput | null;
   competitorCtc?: number | null;

@@ -381,6 +381,30 @@ class UserUpdateInput {
 
   @ApiProperty({
     required: false,
+    type: () => OpportunityUpdateManyWithoutUsersInput,
+  })
+  @ValidateNested()
+  @Type(() => OpportunityUpdateManyWithoutUsersInput)
+  @IsOptional()
+  @Field(() => OpportunityUpdateManyWithoutUsersInput, {
+    nullable: true,
+  })
+  opportunity?: OpportunityUpdateManyWithoutUsersInput;
+
+  @ApiProperty({
+    required: false,
+    type: () => ClientFeedbackUpdateManyWithoutUsersInput,
+  })
+  @ValidateNested()
+  @Type(() => ClientFeedbackUpdateManyWithoutUsersInput)
+  @IsOptional()
+  @Field(() => ClientFeedbackUpdateManyWithoutUsersInput, {
+    nullable: true,
+  })
+  organiser?: ClientFeedbackUpdateManyWithoutUsersInput;
+
+  @ApiProperty({
+    required: false,
     type: String,
   })
   @IsString()

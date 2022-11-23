@@ -358,6 +358,24 @@ class User {
 
   @ApiProperty({
     required: false,
+    type: () => [Opportunity],
+  })
+  @ValidateNested()
+  @Type(() => Opportunity)
+  @IsOptional()
+  opportunity?: Array<Opportunity>;
+
+  @ApiProperty({
+    required: false,
+    type: () => [ClientFeedback],
+  })
+  @ValidateNested()
+  @Type(() => ClientFeedback)
+  @IsOptional()
+  organiser?: Array<ClientFeedback>;
+
+  @ApiProperty({
+    required: false,
     type: String,
   })
   @IsString()

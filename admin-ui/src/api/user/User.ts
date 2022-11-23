@@ -53,6 +53,8 @@ export type User = {
   lastName: string;
   notifications: string | null;
   opportunities?: Array<Opportunity>;
+  opportunity?: Array<Opportunity>;
+  organiser?: Array<ClientFeedback>;
   panNumber: string | null;
   personalEmailId: string | null;
   previousFirmOutDate: Date | null;

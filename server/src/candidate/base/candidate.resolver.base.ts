@@ -24,10 +24,10 @@ import { DeleteCandidateArgs } from "./DeleteCandidateArgs";
 import { CandidateFindManyArgs } from "./CandidateFindManyArgs";
 import { CandidateFindUniqueArgs } from "./CandidateFindUniqueArgs";
 import { Candidate } from "./Candidate";
-import { InterviewFindManyArgs } from "../../interview/base/InterviewFindManyArgs";
-import { Interview } from "../../interview/base/Interview";
 import { OpportunityFindManyArgs } from "../../opportunity/base/OpportunityFindManyArgs";
 import { Opportunity } from "../../opportunity/base/Opportunity";
+import { InterviewFindManyArgs } from "../../interview/base/InterviewFindManyArgs";
+import { Interview } from "../../interview/base/Interview";
 import { SkillFindManyArgs } from "../../skill/base/SkillFindManyArgs";
 import { Skill } from "../../skill/base/Skill";
 import { SkillSetFindManyArgs } from "../../skillSet/base/SkillSetFindManyArgs";
@@ -178,6 +178,24 @@ export class CandidateResolverBase {
       }
       throw error;
     }
+  }
+
+  @Public()
+  @graphql.ResolveField(() => [Opportunity])
+  async candidateOpportunity(
+    @graphql.Parent() parent: Candidate,
+    @graphql.Args() args: OpportunityFindManyArgs
+  ): Promise<Opportunity[]> {
+    const results = await this.service.findCandidateOpportunity(
+      parent.id,
+      args
+    );
+
+    if (!results) {
+      return [];
+    }
+
+    return results;
   }
 
   @Public()
