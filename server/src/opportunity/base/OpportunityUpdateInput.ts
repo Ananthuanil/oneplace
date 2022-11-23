@@ -21,7 +21,7 @@ import {
 } from "class-validator";
 import { Type } from "class-transformer";
 import { UserWhereUniqueInput } from "../../user/base/UserWhereUniqueInput";
-import { CandidateWhereUniqueInput } from "../../candidate/base/CandidateWhereUniqueInput";
+import { UserUpdateManyWithoutOpportunitiesInput } from "./UserUpdateManyWithoutOpportunitiesInput";
 import { SkillUpdateManyWithoutOpportunitiesInput } from "./SkillUpdateManyWithoutOpportunitiesInput";
 import { PartnerWhereUniqueInput } from "../../partner/base/PartnerWhereUniqueInput";
 import { EnumOpportunityProcurementStatus } from "./EnumOpportunityProcurementStatus";
@@ -66,27 +66,27 @@ class OpportunityUpdateInput {
 
   @ApiProperty({
     required: false,
-    type: () => CandidateWhereUniqueInput,
+    type: () => CandidateUpdateManyWithoutOpportunitiesInput,
   })
   @ValidateNested()
-  @Type(() => CandidateWhereUniqueInput)
+  @Type(() => CandidateUpdateManyWithoutOpportunitiesInput)
   @IsOptional()
-  @Field(() => CandidateWhereUniqueInput, {
+  @Field(() => CandidateUpdateManyWithoutOpportunitiesInput, {
     nullable: true,
   })
-  mappedCandidates?: CandidateWhereUniqueInput | null;
+  mappedCandidates?: CandidateUpdateManyWithoutOpportunitiesInput;
 
   @ApiProperty({
     required: false,
-    type: () => UserWhereUniqueInput,
+    type: () => UserUpdateManyWithoutOpportunitiesInput,
   })
   @ValidateNested()
-  @Type(() => UserWhereUniqueInput)
+  @Type(() => UserUpdateManyWithoutOpportunitiesInput)
   @IsOptional()
-  @Field(() => UserWhereUniqueInput, {
+  @Field(() => UserUpdateManyWithoutOpportunitiesInput, {
     nullable: true,
   })
-  mappedEmployee?: UserWhereUniqueInput | null;
+  mappedEmployee?: UserUpdateManyWithoutOpportunitiesInput;
 
   @ApiProperty({
     required: false,

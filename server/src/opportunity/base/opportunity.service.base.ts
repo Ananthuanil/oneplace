@@ -14,8 +14,8 @@ import {
   Prisma,
   Opportunity,
   Candidate,
-  Skill,
   User,
+  Skill,
   Partner,
   Project,
 } from "@prisma/client";
@@ -66,6 +66,28 @@ export class OpportunityServiceBase {
       .candidates(args);
   }
 
+  async findMappedCandidates(
+    parentId: string,
+    args: Prisma.CandidateFindManyArgs
+  ): Promise<Candidate[]> {
+    return this.prisma.opportunity
+      .findUnique({
+        where: { id: parentId },
+      })
+      .mappedCandidates(args);
+  }
+
+  async findMappedEmployee(
+    parentId: string,
+    args: Prisma.UserFindManyArgs
+  ): Promise<User[]> {
+    return this.prisma.opportunity
+      .findUnique({
+        where: { id: parentId },
+      })
+      .mappedEmployee(args);
+  }
+
   async findMappedPerson(
     parentId: string,
     args: Prisma.CandidateFindManyArgs
@@ -105,22 +127,6 @@ export class OpportunityServiceBase {
         where: { id: parentId },
       })
       .claimedPerson();
-  }
-
-  async getMappedCandidates(parentId: string): Promise<Candidate | null> {
-    return this.prisma.opportunity
-      .findUnique({
-        where: { id: parentId },
-      })
-      .mappedCandidates();
-  }
-
-  async getMappedEmployee(parentId: string): Promise<User | null> {
-    return this.prisma.opportunity
-      .findUnique({
-        where: { id: parentId },
-      })
-      .mappedEmployee();
   }
 
   async getPartner(parentId: string): Promise<Partner | null> {

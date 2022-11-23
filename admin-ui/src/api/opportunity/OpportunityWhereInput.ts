@@ -2,7 +2,7 @@ import { CandidateListRelationFilter } from "../candidate/CandidateListRelationF
 import { UserWhereUniqueInput } from "../user/UserWhereUniqueInput";
 import { StringNullableFilter } from "../../util/StringNullableFilter";
 import { StringFilter } from "../../util/StringFilter";
-import { CandidateWhereUniqueInput } from "../candidate/CandidateWhereUniqueInput";
+import { UserListRelationFilter } from "../user/UserListRelationFilter";
 import { SkillListRelationFilter } from "../skill/SkillListRelationFilter";
 import { PartnerWhereUniqueInput } from "../partner/PartnerWhereUniqueInput";
 import { ProjectWhereUniqueInput } from "../project/ProjectWhereUniqueInput";
@@ -13,8 +13,8 @@ export type OpportunityWhereInput = {
   claimedPerson?: UserWhereUniqueInput;
   currentStatus?: StringNullableFilter;
   id?: StringFilter;
-  mappedCandidates?: CandidateWhereUniqueInput;
-  mappedEmployee?: UserWhereUniqueInput;
+  mappedCandidates?: CandidateListRelationFilter;
+  mappedEmployee?: UserListRelationFilter;
   mappedPerson?: CandidateListRelationFilter;
   name?: StringNullableFilter;
   optionalSkillset?: SkillListRelationFilter;

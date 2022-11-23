@@ -1,6 +1,6 @@
 import { CandidateCreateNestedManyWithoutOpportunitiesInput } from "./CandidateCreateNestedManyWithoutOpportunitiesInput";
 import { UserWhereUniqueInput } from "../user/UserWhereUniqueInput";
-import { CandidateWhereUniqueInput } from "../candidate/CandidateWhereUniqueInput";
+import { UserCreateNestedManyWithoutOpportunitiesInput } from "./UserCreateNestedManyWithoutOpportunitiesInput";
 import { SkillCreateNestedManyWithoutOpportunitiesInput } from "./SkillCreateNestedManyWithoutOpportunitiesInput";
 import { PartnerWhereUniqueInput } from "../partner/PartnerWhereUniqueInput";
 import { ProjectWhereUniqueInput } from "../project/ProjectWhereUniqueInput";
@@ -9,8 +9,8 @@ export type OpportunityCreateInput = {
   candidates?: CandidateCreateNestedManyWithoutOpportunitiesInput;
   claimedPerson?: UserWhereUniqueInput | null;
   currentStatus?: string | null;
-  mappedCandidates?: CandidateWhereUniqueInput | null;
-  mappedEmployee?: UserWhereUniqueInput | null;
+  mappedCandidates?: CandidateCreateNestedManyWithoutOpportunitiesInput;
+  mappedEmployee?: UserCreateNestedManyWithoutOpportunitiesInput;
   mappedPerson?: CandidateCreateNestedManyWithoutOpportunitiesInput;
   name?: string | null;
   optionalSkillset?: SkillCreateNestedManyWithoutOpportunitiesInput;
