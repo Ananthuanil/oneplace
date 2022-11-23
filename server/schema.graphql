@@ -1118,8 +1118,8 @@ type Opportunity {
   createdAt: DateTime!
   currentStatus: String
   id: String!
-  mappedCandidates: Candidate
-  mappedEmployee: User
+  mappedCandidates(orderBy: [CandidateOrderByInput!], skip: Float, take: Float, where: CandidateWhereInput): [Candidate!]!
+  mappedEmployee(orderBy: [UserOrderByInput!], skip: Float, take: Float, where: UserWhereInput): [User!]!
   mappedPerson(orderBy: [CandidateOrderByInput!], skip: Float, take: Float, where: CandidateWhereInput): [Candidate!]!
   name: String
   optionalSkillset(orderBy: [SkillOrderByInput!], skip: Float, take: Float, where: SkillWhereInput): [Skill!]!
@@ -1139,8 +1139,8 @@ input OpportunityCreateInput {
   candidates: CandidateCreateNestedManyWithoutOpportunitiesInput
   claimedPerson: UserWhereUniqueInput
   currentStatus: String
-  mappedCandidates: CandidateWhereUniqueInput
-  mappedEmployee: UserWhereUniqueInput
+  mappedCandidates: CandidateCreateNestedManyWithoutOpportunitiesInput
+  mappedEmployee: UserCreateNestedManyWithoutOpportunitiesInput
   mappedPerson: CandidateCreateNestedManyWithoutOpportunitiesInput
   name: String
   optionalSkillset: SkillCreateNestedManyWithoutOpportunitiesInput
@@ -1182,8 +1182,6 @@ input OpportunityOrderByInput {
   createdAt: SortOrder
   currentStatus: SortOrder
   id: SortOrder
-  mappedCandidatesId: SortOrder
-  mappedEmployeeId: SortOrder
   name: SortOrder
   partnerId: SortOrder
   procurementStatus: SortOrder
@@ -1200,8 +1198,8 @@ input OpportunityUpdateInput {
   candidates: CandidateUpdateManyWithoutOpportunitiesInput
   claimedPerson: UserWhereUniqueInput
   currentStatus: String
-  mappedCandidates: CandidateWhereUniqueInput
-  mappedEmployee: UserWhereUniqueInput
+  mappedCandidates: CandidateUpdateManyWithoutOpportunitiesInput
+  mappedEmployee: UserUpdateManyWithoutOpportunitiesInput
   mappedPerson: CandidateUpdateManyWithoutOpportunitiesInput
   name: String
   optionalSkillset: SkillUpdateManyWithoutOpportunitiesInput
@@ -1245,8 +1243,8 @@ input OpportunityWhereInput {
   claimedPerson: UserWhereUniqueInput
   currentStatus: StringNullableFilter
   id: StringFilter
-  mappedCandidates: CandidateWhereUniqueInput
-  mappedEmployee: UserWhereUniqueInput
+  mappedCandidates: CandidateListRelationFilter
+  mappedEmployee: UserListRelationFilter
   mappedPerson: CandidateListRelationFilter
   name: StringNullableFilter
   optionalSkillset: SkillListRelationFilter
@@ -1942,6 +1940,10 @@ input UserCreateNestedManyWithoutCommunitiesInput {
   connect: [UserWhereUniqueInput!]
 }
 
+input UserCreateNestedManyWithoutOpportunitiesInput {
+  connect: [UserWhereUniqueInput!]
+}
+
 input UserCreateNestedManyWithoutProjectsInput {
   connect: [UserWhereUniqueInput!]
 }
@@ -2059,6 +2061,12 @@ input UserUpdateInput {
 }
 
 input UserUpdateManyWithoutCommunitiesInput {
+  connect: [UserWhereUniqueInput!]
+  disconnect: [UserWhereUniqueInput!]
+  set: [UserWhereUniqueInput!]
+}
+
+input UserUpdateManyWithoutOpportunitiesInput {
   connect: [UserWhereUniqueInput!]
   disconnect: [UserWhereUniqueInput!]
   set: [UserWhereUniqueInput!]
