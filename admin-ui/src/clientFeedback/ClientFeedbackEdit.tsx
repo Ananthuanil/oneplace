@@ -34,6 +34,9 @@ export const ClientFeedbackEdit = (props: EditProps): React.ReactElement => {
           label="MeetingEtiquite"
           source="meetingEtiquite"
         />
+        <ReferenceInput source="user.id" reference="User" label="organiser">
+          <SelectInput optionText={UserTitle} />
+        </ReferenceInput>
         <NumberInput
           step={1}
           label=" ProcessGovernance"

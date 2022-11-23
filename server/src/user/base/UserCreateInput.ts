@@ -375,6 +375,30 @@ class UserCreateInput {
 
   @ApiProperty({
     required: false,
+    type: () => OpportunityCreateNestedManyWithoutUsersInput,
+  })
+  @ValidateNested()
+  @Type(() => OpportunityCreateNestedManyWithoutUsersInput)
+  @IsOptional()
+  @Field(() => OpportunityCreateNestedManyWithoutUsersInput, {
+    nullable: true,
+  })
+  opportunity?: OpportunityCreateNestedManyWithoutUsersInput;
+
+  @ApiProperty({
+    required: false,
+    type: () => ClientFeedbackCreateNestedManyWithoutUsersInput,
+  })
+  @ValidateNested()
+  @Type(() => ClientFeedbackCreateNestedManyWithoutUsersInput)
+  @IsOptional()
+  @Field(() => ClientFeedbackCreateNestedManyWithoutUsersInput, {
+    nullable: true,
+  })
+  organiser?: ClientFeedbackCreateNestedManyWithoutUsersInput;
+
+  @ApiProperty({
+    required: false,
     type: String,
   })
   @IsString()

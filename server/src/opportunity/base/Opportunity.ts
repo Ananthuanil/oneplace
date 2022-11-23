@@ -76,6 +76,24 @@ class Opportunity {
 
   @ApiProperty({
     required: false,
+    type: () => Candidate,
+  })
+  @ValidateNested()
+  @Type(() => Candidate)
+  @IsOptional()
+  mappedCandidates?: Candidate | null;
+
+  @ApiProperty({
+    required: false,
+    type: () => User,
+  })
+  @ValidateNested()
+  @Type(() => User)
+  @IsOptional()
+  mappedEmployee?: User | null;
+
+  @ApiProperty({
+    required: false,
     type: () => [Candidate],
   })
   @ValidateNested()

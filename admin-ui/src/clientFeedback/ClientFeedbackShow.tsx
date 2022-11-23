@@ -21,6 +21,9 @@ export const ClientFeedbackShow = (props: ShowProps): React.ReactElement => {
         <TextField label="ID" source="id" />
         <TextField label="ImprovementNeeded" source="improvementNeeded" />
         <TextField label="MeetingEtiquite" source="meetingEtiquite" />
+        <ReferenceField label="organiser" source="user.id" reference="User">
+          <TextField source={USER_TITLE_FIELD} />
+        </ReferenceField>
         <TextField label=" ProcessGovernance" source="processGovernance" />
         <TextField label="Project" source="project" />
         <TextField

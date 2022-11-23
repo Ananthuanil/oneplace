@@ -21,6 +21,7 @@ import {
 } from "class-validator";
 import { Type } from "class-transformer";
 import { UserWhereUniqueInput } from "../../user/base/UserWhereUniqueInput";
+import { CandidateWhereUniqueInput } from "../../candidate/base/CandidateWhereUniqueInput";
 import { SkillCreateNestedManyWithoutOpportunitiesInput } from "./SkillCreateNestedManyWithoutOpportunitiesInput";
 import { PartnerWhereUniqueInput } from "../../partner/base/PartnerWhereUniqueInput";
 import { EnumOpportunityProcurementStatus } from "./EnumOpportunityProcurementStatus";
@@ -62,6 +63,30 @@ class OpportunityCreateInput {
     nullable: true,
   })
   currentStatus?: string | null;
+
+  @ApiProperty({
+    required: false,
+    type: () => CandidateWhereUniqueInput,
+  })
+  @ValidateNested()
+  @Type(() => CandidateWhereUniqueInput)
+  @IsOptional()
+  @Field(() => CandidateWhereUniqueInput, {
+    nullable: true,
+  })
+  mappedCandidates?: CandidateWhereUniqueInput | null;
+
+  @ApiProperty({
+    required: false,
+    type: () => UserWhereUniqueInput,
+  })
+  @ValidateNested()
+  @Type(() => UserWhereUniqueInput)
+  @IsOptional()
+  @Field(() => UserWhereUniqueInput, {
+    nullable: true,
+  })
+  mappedEmployee?: UserWhereUniqueInput | null;
 
   @ApiProperty({
     required: false,

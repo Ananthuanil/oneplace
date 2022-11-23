@@ -70,6 +70,18 @@ class ClientFeedbackUpdateInput {
 
   @ApiProperty({
     required: false,
+    type: () => UserWhereUniqueInput,
+  })
+  @ValidateNested()
+  @Type(() => UserWhereUniqueInput)
+  @IsOptional()
+  @Field(() => UserWhereUniqueInput, {
+    nullable: true,
+  })
+  organiser?: UserWhereUniqueInput | null;
+
+  @ApiProperty({
+    required: false,
     type: Number,
   })
   @IsInt()

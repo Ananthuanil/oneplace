@@ -159,6 +159,22 @@ export const UserCreate = (props: CreateProps): React.ReactElement => {
         >
           <SelectArrayInput optionText={OpportunityTitle} />
         </ReferenceArrayInput>
+        <ReferenceArrayInput
+          source="opportunity"
+          reference="Opportunity"
+          parse={(value: any) => value && value.map((v: any) => ({ id: v }))}
+          format={(value: any) => value && value.map((v: any) => v.id)}
+        >
+          <SelectArrayInput optionText={OpportunityTitle} />
+        </ReferenceArrayInput>
+        <ReferenceArrayInput
+          source="organiser"
+          reference="ClientFeedback"
+          parse={(value: any) => value && value.map((v: any) => ({ id: v }))}
+          format={(value: any) => value && value.map((v: any) => v.id)}
+        >
+          <SelectArrayInput optionText={ClientFeedbackTitle} />
+        </ReferenceArrayInput>
         <TextInput label="Pan Number" source="panNumber" />
         <PasswordInput label="Password" source="password" />
         <TextInput

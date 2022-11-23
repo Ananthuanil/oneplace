@@ -17,6 +17,7 @@ import { Type } from "class-transformer";
 import { UserWhereUniqueInput } from "../../user/base/UserWhereUniqueInput";
 import { StringNullableFilter } from "../../util/StringNullableFilter";
 import { StringFilter } from "../../util/StringFilter";
+import { CandidateWhereUniqueInput } from "../../candidate/base/CandidateWhereUniqueInput";
 import { SkillListRelationFilter } from "../../skill/base/SkillListRelationFilter";
 import { PartnerWhereUniqueInput } from "../../partner/base/PartnerWhereUniqueInput";
 import { EnumOpportunityProcurementStatus } from "./EnumOpportunityProcurementStatus";
@@ -70,6 +71,30 @@ class OpportunityWhereInput {
     nullable: true,
   })
   id?: StringFilter;
+
+  @ApiProperty({
+    required: false,
+    type: () => CandidateWhereUniqueInput,
+  })
+  @ValidateNested()
+  @Type(() => CandidateWhereUniqueInput)
+  @IsOptional()
+  @Field(() => CandidateWhereUniqueInput, {
+    nullable: true,
+  })
+  mappedCandidates?: CandidateWhereUniqueInput;
+
+  @ApiProperty({
+    required: false,
+    type: () => UserWhereUniqueInput,
+  })
+  @ValidateNested()
+  @Type(() => UserWhereUniqueInput)
+  @IsOptional()
+  @Field(() => UserWhereUniqueInput, {
+    nullable: true,
+  })
+  mappedEmployee?: UserWhereUniqueInput;
 
   @ApiProperty({
     required: false,

@@ -14,18 +14,18 @@ import { ApiProperty } from "@nestjs/swagger";
 import {
   IsString,
   IsOptional,
-  IsEnum,
   ValidateNested,
+  IsEnum,
   IsNumber,
   IsBoolean,
   IsDate,
 } from "class-validator";
+import { OpportunityUpdateManyWithoutCandidatesInput } from "./OpportunityUpdateManyWithoutCandidatesInput";
+import { Type } from "class-transformer";
 import { EnumCandidateCategory } from "./EnumCandidateCategory";
 import { CommunicationFeedbackWhereUniqueInput } from "../../communicationFeedback/base/CommunicationFeedbackWhereUniqueInput";
-import { Type } from "class-transformer";
 import { RecruitmentPartnerWhereUniqueInput } from "../../recruitmentPartner/base/RecruitmentPartnerWhereUniqueInput";
 import { InterviewUpdateManyWithoutCandidatesInput } from "./InterviewUpdateManyWithoutCandidatesInput";
-import { OpportunityUpdateManyWithoutCandidatesInput } from "./OpportunityUpdateManyWithoutCandidatesInput";
 import { OpportunityWhereUniqueInput } from "../../opportunity/base/OpportunityWhereUniqueInput";
 import { UserWhereUniqueInput } from "../../user/base/UserWhereUniqueInput";
 import { SkillUpdateManyWithoutCandidatesInput } from "./SkillUpdateManyWithoutCandidatesInput";
@@ -43,6 +43,18 @@ class CandidateUpdateInput {
     nullable: true,
   })
   additionalComments?: string | null;
+
+  @ApiProperty({
+    required: false,
+    type: () => OpportunityUpdateManyWithoutCandidatesInput,
+  })
+  @ValidateNested()
+  @Type(() => OpportunityUpdateManyWithoutCandidatesInput)
+  @IsOptional()
+  @Field(() => OpportunityUpdateManyWithoutCandidatesInput, {
+    nullable: true,
+  })
+  candidateOpportunity?: OpportunityUpdateManyWithoutCandidatesInput;
 
   @ApiProperty({
     required: false,

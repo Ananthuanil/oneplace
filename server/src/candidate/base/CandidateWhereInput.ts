@@ -13,7 +13,8 @@ import { InputType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
 import { StringNullableFilter } from "../../util/StringNullableFilter";
 import { Type } from "class-transformer";
-import { IsOptional, IsEnum, ValidateNested } from "class-validator";
+import { IsOptional, ValidateNested, IsEnum } from "class-validator";
+import { OpportunityListRelationFilter } from "../../opportunity/base/OpportunityListRelationFilter";
 import { EnumCandidateCategory } from "./EnumCandidateCategory";
 import { CommunicationFeedbackWhereUniqueInput } from "../../communicationFeedback/base/CommunicationFeedbackWhereUniqueInput";
 import { FloatNullableFilter } from "../../util/FloatNullableFilter";
@@ -22,7 +23,6 @@ import { RecruitmentPartnerWhereUniqueInput } from "../../recruitmentPartner/bas
 import { InterviewListRelationFilter } from "../../interview/base/InterviewListRelationFilter";
 import { BooleanFilter } from "../../util/BooleanFilter";
 import { DateTimeNullableFilter } from "../../util/DateTimeNullableFilter";
-import { OpportunityListRelationFilter } from "../../opportunity/base/OpportunityListRelationFilter";
 import { OpportunityWhereUniqueInput } from "../../opportunity/base/OpportunityWhereUniqueInput";
 import { UserWhereUniqueInput } from "../../user/base/UserWhereUniqueInput";
 import { SkillListRelationFilter } from "../../skill/base/SkillListRelationFilter";
@@ -41,6 +41,18 @@ class CandidateWhereInput {
     nullable: true,
   })
   additionalComments?: StringNullableFilter;
+
+  @ApiProperty({
+    required: false,
+    type: () => OpportunityListRelationFilter,
+  })
+  @ValidateNested()
+  @Type(() => OpportunityListRelationFilter)
+  @IsOptional()
+  @Field(() => OpportunityListRelationFilter, {
+    nullable: true,
+  })
+  candidateOpportunity?: OpportunityListRelationFilter;
 
   @ApiProperty({
     required: false,

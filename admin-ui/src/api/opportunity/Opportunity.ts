@@ -10,6 +10,8 @@ export type Opportunity = {
   createdAt: Date;
   currentStatus: string | null;
   id: string;
+  mappedCandidates?: Candidate | null;
+  mappedEmployee?: User | null;
   mappedPerson?: Array<Candidate>;
   name: string | null;
   optionalSkillset?: Array<Skill>;

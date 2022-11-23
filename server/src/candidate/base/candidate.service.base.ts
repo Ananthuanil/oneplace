@@ -14,8 +14,8 @@ import { PrismaService } from "nestjs-prisma";
 import {
   Prisma,
   Candidate,
-  Interview,
   Opportunity,
+  Interview,
   Skill,
   SkillSet,
   CommunicationFeedback,
@@ -56,6 +56,17 @@ export class CandidateServiceBase {
     args: Prisma.SelectSubset<T, Prisma.CandidateDeleteArgs>
   ): Promise<Candidate> {
     return this.prisma.candidate.delete(args);
+  }
+
+  async findCandidateOpportunity(
+    parentId: string,
+    args: Prisma.OpportunityFindManyArgs
+  ): Promise<Opportunity[]> {
+    return this.prisma.candidate
+      .findUnique({
+        where: { id: parentId },
+      })
+      .candidateOpportunity(args);
   }
 
   async findInterviews(

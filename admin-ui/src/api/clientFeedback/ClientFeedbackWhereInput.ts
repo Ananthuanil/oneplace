@@ -9,6 +9,7 @@ export type ClientFeedbackWhereInput = {
   id?: StringFilter;
   improvementNeeded?: StringNullableFilter;
   meetingEtiquite?: IntNullableFilter;
+  organiser?: UserWhereUniqueInput;
   processGovernance?: IntNullableFilter;
   project?: StringNullableFilter;
   qualityOfDeliverables?: IntNullableFilter;

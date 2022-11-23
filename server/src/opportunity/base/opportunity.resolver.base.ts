@@ -92,6 +92,18 @@ export class OpportunityResolverBase {
             }
           : undefined,
 
+        mappedCandidates: args.data.mappedCandidates
+          ? {
+              connect: args.data.mappedCandidates,
+            }
+          : undefined,
+
+        mappedEmployee: args.data.mappedEmployee
+          ? {
+              connect: args.data.mappedEmployee,
+            }
+          : undefined,
+
         partner: args.data.partner
           ? {
               connect: args.data.partner,
@@ -121,6 +133,18 @@ export class OpportunityResolverBase {
           claimedPerson: args.data.claimedPerson
             ? {
                 connect: args.data.claimedPerson,
+              }
+            : undefined,
+
+          mappedCandidates: args.data.mappedCandidates
+            ? {
+                connect: args.data.mappedCandidates,
+              }
+            : undefined,
+
+          mappedEmployee: args.data.mappedEmployee
+            ? {
+                connect: args.data.mappedEmployee,
               }
             : undefined,
 
@@ -230,6 +254,32 @@ export class OpportunityResolverBase {
     @graphql.Parent() parent: Opportunity
   ): Promise<User | null> {
     const result = await this.service.getClaimedPerson(parent.id);
+
+    if (!result) {
+      return null;
+    }
+    return result;
+  }
+
+  @Public()
+  @graphql.ResolveField(() => Candidate, { nullable: true })
+  async mappedCandidates(
+    @graphql.Parent() parent: Opportunity
+  ): Promise<Candidate | null> {
+    const result = await this.service.getMappedCandidates(parent.id);
+
+    if (!result) {
+      return null;
+    }
+    return result;
+  }
+
+  @Public()
+  @graphql.ResolveField(() => User, { nullable: true })
+  async mappedEmployee(
+    @graphql.Parent() parent: Opportunity
+  ): Promise<User | null> {
+    const result = await this.service.getMappedEmployee(parent.id);
 
     if (!result) {
       return null;

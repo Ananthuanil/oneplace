@@ -7,6 +7,7 @@ export type ClientFeedbackOrderByInput = {
   id?: SortOrder;
   improvementNeeded?: SortOrder;
   meetingEtiquite?: SortOrder;
+  organiserId?: SortOrder;
   processGovernance?: SortOrder;
   project?: SortOrder;
   qualityOfDeliverables?: SortOrder;

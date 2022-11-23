@@ -7,6 +7,7 @@ export type ClientFeedback = {
   id: string;
   improvementNeeded: string | null;
   meetingEtiquite: number | null;
+  organiser?: User | null;
   processGovernance: number | null;
   project: string | null;
   qualityOfDeliverables: number | null;

@@ -84,6 +84,15 @@ class ClientFeedback {
 
   @ApiProperty({
     required: false,
+    type: () => User,
+  })
+  @ValidateNested()
+  @Type(() => User)
+  @IsOptional()
+  organiser?: User | null;
+
+  @ApiProperty({
+    required: false,
     type: Number,
   })
   @IsInt()

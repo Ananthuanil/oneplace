@@ -5,19 +5,19 @@ import {
   SimpleForm,
   EditProps,
   TextInput,
+  ReferenceArrayInput,
+  SelectArrayInput,
   SelectInput,
   ReferenceInput,
   NumberInput,
-  ReferenceArrayInput,
-  SelectArrayInput,
   BooleanInput,
   DateInput,
 } from "react-admin";
 
+import { OpportunityTitle } from "../opportunity/OpportunityTitle";
 import { CommunicationFeedbackTitle } from "../communicationFeedback/CommunicationFeedbackTitle";
 import { RecruitmentPartnerTitle } from "../recruitmentPartner/RecruitmentPartnerTitle";
 import { InterviewTitle } from "../interview/InterviewTitle";
-import { OpportunityTitle } from "../opportunity/OpportunityTitle";
 import { UserTitle } from "../user/UserTitle";
 import { SkillTitle } from "../skill/SkillTitle";
 import { SkillSetTitle } from "../skillSet/SkillSetTitle";
@@ -31,6 +31,14 @@ export const CandidateEdit = (props: EditProps): React.ReactElement => {
           multiline
           source="additionalComments"
         />
+        <ReferenceArrayInput
+          source="candidateOpportunity"
+          reference="Opportunity"
+          parse={(value: any) => value && value.map((v: any) => ({ id: v }))}
+          format={(value: any) => value && value.map((v: any) => v.id)}
+        >
+          <SelectArrayInput optionText={OpportunityTitle} />
+        </ReferenceArrayInput>
         <SelectInput
           source="category"
           label="category"

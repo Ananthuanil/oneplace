@@ -1,7 +1,7 @@
+import { OpportunityUpdateManyWithoutCandidatesInput } from "./OpportunityUpdateManyWithoutCandidatesInput";
 import { CommunicationFeedbackWhereUniqueInput } from "../communicationFeedback/CommunicationFeedbackWhereUniqueInput";
 import { RecruitmentPartnerWhereUniqueInput } from "../recruitmentPartner/RecruitmentPartnerWhereUniqueInput";
 import { InterviewUpdateManyWithoutCandidatesInput } from "./InterviewUpdateManyWithoutCandidatesInput";
-import { OpportunityUpdateManyWithoutCandidatesInput } from "./OpportunityUpdateManyWithoutCandidatesInput";
 import { OpportunityWhereUniqueInput } from "../opportunity/OpportunityWhereUniqueInput";
 import { UserWhereUniqueInput } from "../user/UserWhereUniqueInput";
 import { SkillUpdateManyWithoutCandidatesInput } from "./SkillUpdateManyWithoutCandidatesInput";
@@ -9,6 +9,7 @@ import { SkillSetUpdateManyWithoutCandidatesInput } from "./SkillSetUpdateManyWi
 
 export type CandidateUpdateInput = {
   additionalComments?: string | null;
+  candidateOpportunity?: OpportunityUpdateManyWithoutCandidatesInput;
   category?: "P1" | "P2" | "P3";
   communicationFeedback?: CommunicationFeedbackWhereUniqueInput | null;
   competitorCtc?: number | null;

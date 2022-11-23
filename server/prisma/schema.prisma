@@ -14,7 +14,7 @@ model User {
   bloodGroup                 String?
   candidates                 Candidate[]
   careerStartDate            DateTime?
-  clientFeedbacks            ClientFeedback[]
+  clientFeedbacks            ClientFeedback[]            @relation(name: "clientFeedbacks")
   communities                Community[]                 @relation(name: "communities")
   community                  Community?                  @relation(name: "CommunityOnUsers", fields: [communityId], references: [id])
   communityId                String?
@@ -40,7 +40,9 @@ model User {
   interviews                 Interview[]
   lastName                   String
   notifications              String?
-  opportunities              Opportunity[]
+  opportunities              Opportunity[]               @relation(name: "claimedPerson")
+  opportunity                Opportunity[]               @relation(name: "mappedEmployee")
+  organiser                  ClientFeedback[]            @relation(name: "ClientFeedbackOrganiserUserOrganiser")
   panNumber                  String?
   password                   String
   personalEmailId            String?
@@ -102,6 +104,7 @@ model SkillSet {
 
 model Candidate {
   additionalComments           String?
+  candidateOpportunity         Opportunity[]          @relation(name: "candidateOpportunity")
   category                     EnumCandidateCategory
   communicationFeedback        CommunicationFeedback?
   competitorCtc                Float?
@@ -174,11 +177,15 @@ model Interview {
 
 model Opportunity {
   candidates         Candidate[]                       @relation(name: "CandidatesOnOpportunity")
-  claimedPerson      User?                             @relation(fields: [claimedPersonId], references: [id])
+  claimedPerson      User?                             @relation(name: "claimedPerson", fields: [claimedPersonId], references: [id])
   claimedPersonId    String?
   createdAt          DateTime                          @default(now())
   currentStatus      String?
   id                 String                            @id @default(cuid())
+  mappedCandidates   Candidate?                        @relation(name: "candidateOpportunity", fields: [mappedCandidatesId], references: [id])
+  mappedCandidatesId String?
+  mappedEmployee     User?                             @relation(name: "mappedEmployee", fields: [mappedEmployeeId], references: [id])
+  mappedEmployeeId   String?
   mappedPerson       Candidate[]                       @relation(name: "mappedPerson")
   name               String?
   optionalSkillset   Skill[]                           @relation(name: "optionalSkillset")
@@ -316,11 +323,13 @@ model CommunityActivityFeedback {
 model ClientFeedback {
   createdAt             DateTime                  @default(now())
   detailedFeedback      String?
-  employee              User?                     @relation(fields: [employeeId], references: [id])
+  employee              User?                     @relation(name: "clientFeedbacks", fields: [employeeId], references: [id])
   employeeId            String?
   id                    String                    @id @default(cuid())
   improvementNeeded     String?
   meetingEtiquite       Int?
+  organiser             User?                     @relation(name: "ClientFeedbackOrganiserUserOrganiser", fields: [organiserId], references: [id])
+  organiserId           String?
   processGovernance     Int?
   project               String?
   qualityOfDeliverables Int?

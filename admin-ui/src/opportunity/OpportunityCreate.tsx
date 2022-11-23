@@ -38,6 +38,20 @@ export const OpportunityCreate = (props: CreateProps): React.ReactElement => {
           <SelectInput optionText={UserTitle} />
         </ReferenceInput>
         <TextInput label="Current Status" source="currentStatus" />
+        <ReferenceInput
+          source="candidate.id"
+          reference="Candidate"
+          label="mappedCandidates"
+        >
+          <SelectInput optionText={CandidateTitle} />
+        </ReferenceInput>
+        <ReferenceInput
+          source="user.id"
+          reference="User"
+          label="mappedEmployee"
+        >
+          <SelectInput optionText={UserTitle} />
+        </ReferenceInput>
         <ReferenceArrayInput
           source="mappedPerson"
           reference="Candidate"

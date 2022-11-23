@@ -54,6 +54,8 @@ export type UserCreateInput = {
   lastName: string;
   notifications?: string | null;
   opportunities?: OpportunityCreateNestedManyWithoutUsersInput;
+  opportunity?: OpportunityCreateNestedManyWithoutUsersInput;
+  organiser?: ClientFeedbackCreateNestedManyWithoutUsersInput;
   panNumber?: string | null;
   password: string;
   personalEmailId?: string | null;
