@@ -182,10 +182,8 @@ model Opportunity {
   createdAt          DateTime                          @default(now())
   currentStatus      String?
   id                 String                            @id @default(cuid())
-  mappedCandidates   Candidate?                        @relation(name: "candidateOpportunity", fields: [mappedCandidatesId], references: [id])
-  mappedCandidatesId String?
-  mappedEmployee     User?                             @relation(name: "mappedEmployee", fields: [mappedEmployeeId], references: [id])
-  mappedEmployeeId   String?
+  mappedCandidates   Candidate[]                       @relation(name: "candidateOpportunity")
+  mappedEmployee     User[]                            @relation(name: "mappedEmployee")
   mappedPerson       Candidate[]                       @relation(name: "mappedPerson")
   name               String?
   optionalSkillset   Skill[]                           @relation(name: "optionalSkillset")

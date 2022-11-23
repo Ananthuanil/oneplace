@@ -26,9 +26,10 @@ import { OpportunityFindUniqueArgs } from "./OpportunityFindUniqueArgs";
 import { Opportunity } from "./Opportunity";
 import { CandidateFindManyArgs } from "../../candidate/base/CandidateFindManyArgs";
 import { Candidate } from "../../candidate/base/Candidate";
+import { UserFindManyArgs } from "../../user/base/UserFindManyArgs";
+import { User } from "../../user/base/User";
 import { SkillFindManyArgs } from "../../skill/base/SkillFindManyArgs";
 import { Skill } from "../../skill/base/Skill";
-import { User } from "../../user/base/User";
 import { Partner } from "../../partner/base/Partner";
 import { Project } from "../../project/base/Project";
 import { OpportunityService } from "../opportunity.service";
@@ -92,18 +93,6 @@ export class OpportunityResolverBase {
             }
           : undefined,
 
-        mappedCandidates: args.data.mappedCandidates
-          ? {
-              connect: args.data.mappedCandidates,
-            }
-          : undefined,
-
-        mappedEmployee: args.data.mappedEmployee
-          ? {
-              connect: args.data.mappedEmployee,
-            }
-          : undefined,
-
         partner: args.data.partner
           ? {
               connect: args.data.partner,
@@ -133,18 +122,6 @@ export class OpportunityResolverBase {
           claimedPerson: args.data.claimedPerson
             ? {
                 connect: args.data.claimedPerson,
-              }
-            : undefined,
-
-          mappedCandidates: args.data.mappedCandidates
-            ? {
-                connect: args.data.mappedCandidates,
-              }
-            : undefined,
-
-          mappedEmployee: args.data.mappedEmployee
-            ? {
-                connect: args.data.mappedEmployee,
               }
             : undefined,
 
@@ -205,6 +182,36 @@ export class OpportunityResolverBase {
 
   @Public()
   @graphql.ResolveField(() => [Candidate])
+  async mappedCandidates(
+    @graphql.Parent() parent: Opportunity,
+    @graphql.Args() args: CandidateFindManyArgs
+  ): Promise<Candidate[]> {
+    const results = await this.service.findMappedCandidates(parent.id, args);
+
+    if (!results) {
+      return [];
+    }
+
+    return results;
+  }
+
+  @Public()
+  @graphql.ResolveField(() => [User])
+  async mappedEmployee(
+    @graphql.Parent() parent: Opportunity,
+    @graphql.Args() args: UserFindManyArgs
+  ): Promise<User[]> {
+    const results = await this.service.findMappedEmployee(parent.id, args);
+
+    if (!results) {
+      return [];
+    }
+
+    return results;
+  }
+
+  @Public()
+  @graphql.ResolveField(() => [Candidate])
   async mappedPerson(
     @graphql.Parent() parent: Opportunity,
     @graphql.Args() args: CandidateFindManyArgs
@@ -254,32 +261,6 @@ export class OpportunityResolverBase {
     @graphql.Parent() parent: Opportunity
   ): Promise<User | null> {
     const result = await this.service.getClaimedPerson(parent.id);
-
-    if (!result) {
-      return null;
-    }
-    return result;
-  }
-
-  @Public()
-  @graphql.ResolveField(() => Candidate, { nullable: true })
-  async mappedCandidates(
-    @graphql.Parent() parent: Opportunity
-  ): Promise<Candidate | null> {
-    const result = await this.service.getMappedCandidates(parent.id);
-
-    if (!result) {
-      return null;
-    }
-    return result;
-  }
-
-  @Public()
-  @graphql.ResolveField(() => User, { nullable: true })
-  async mappedEmployee(
-    @graphql.Parent() parent: Opportunity
-  ): Promise<User | null> {
-    const result = await this.service.getMappedEmployee(parent.id);
 
     if (!result) {
       return null;

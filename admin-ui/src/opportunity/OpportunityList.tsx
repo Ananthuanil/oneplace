@@ -9,7 +9,6 @@ import {
 } from "react-admin";
 import Pagination from "../Components/Pagination";
 import { USER_TITLE_FIELD } from "../user/UserTitle";
-import { CANDIDATE_TITLE_FIELD } from "../candidate/CandidateTitle";
 import { PARTNER_TITLE_FIELD } from "../partner/PartnerTitle";
 import { PROJECT_TITLE_FIELD } from "../project/ProjectTitle";
 
@@ -33,20 +32,6 @@ export const OpportunityList = (props: ListProps): React.ReactElement => {
         <DateField source="createdAt" label="Created At" />
         <TextField label="Current Status" source="currentStatus" />
         <TextField label="ID" source="id" />
-        <ReferenceField
-          label="mappedCandidates"
-          source="candidate.id"
-          reference="Candidate"
-        >
-          <TextField source={CANDIDATE_TITLE_FIELD} />
-        </ReferenceField>
-        <ReferenceField
-          label="mappedEmployee"
-          source="user.id"
-          reference="User"
-        >
-          <TextField source={USER_TITLE_FIELD} />
-        </ReferenceField>
         <TextField label="name" source="name" />
         <ReferenceField label="Partner" source="partner.id" reference="Partner">
           <TextField source={PARTNER_TITLE_FIELD} />

@@ -5,8 +5,6 @@ export type OpportunityOrderByInput = {
   createdAt?: SortOrder;
   currentStatus?: SortOrder;
   id?: SortOrder;
-  mappedCandidatesId?: SortOrder;
-  mappedEmployeeId?: SortOrder;
   name?: SortOrder;
   partnerId?: SortOrder;
   procurementStatus?: SortOrder;

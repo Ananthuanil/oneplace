@@ -17,7 +17,7 @@ import { Type } from "class-transformer";
 import { UserWhereUniqueInput } from "../../user/base/UserWhereUniqueInput";
 import { StringNullableFilter } from "../../util/StringNullableFilter";
 import { StringFilter } from "../../util/StringFilter";
-import { CandidateWhereUniqueInput } from "../../candidate/base/CandidateWhereUniqueInput";
+import { UserListRelationFilter } from "../../user/base/UserListRelationFilter";
 import { SkillListRelationFilter } from "../../skill/base/SkillListRelationFilter";
 import { PartnerWhereUniqueInput } from "../../partner/base/PartnerWhereUniqueInput";
 import { EnumOpportunityProcurementStatus } from "./EnumOpportunityProcurementStatus";
@@ -74,27 +74,27 @@ class OpportunityWhereInput {
 
   @ApiProperty({
     required: false,
-    type: () => CandidateWhereUniqueInput,
+    type: () => CandidateListRelationFilter,
   })
   @ValidateNested()
-  @Type(() => CandidateWhereUniqueInput)
+  @Type(() => CandidateListRelationFilter)
   @IsOptional()
-  @Field(() => CandidateWhereUniqueInput, {
+  @Field(() => CandidateListRelationFilter, {
     nullable: true,
   })
-  mappedCandidates?: CandidateWhereUniqueInput;
+  mappedCandidates?: CandidateListRelationFilter;
 
   @ApiProperty({
     required: false,
-    type: () => UserWhereUniqueInput,
+    type: () => UserListRelationFilter,
   })
   @ValidateNested()
-  @Type(() => UserWhereUniqueInput)
+  @Type(() => UserListRelationFilter)
   @IsOptional()
-  @Field(() => UserWhereUniqueInput, {
+  @Field(() => UserListRelationFilter, {
     nullable: true,
   })
-  mappedEmployee?: UserWhereUniqueInput;
+  mappedEmployee?: UserListRelationFilter;
 
   @ApiProperty({
     required: false,
