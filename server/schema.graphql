@@ -4,6 +4,7 @@
 
 type Attendance {
   createdAt: DateTime!
+  employee: User
   id: String!
   loginTime: String
   logoutTime: String
@@ -14,6 +15,7 @@ type Attendance {
 }
 
 input AttendanceCreateInput {
+  employee: UserWhereUniqueInput
   loginTime: String
   logoutTime: String
   office: EnumAttendanceOffice
@@ -21,8 +23,19 @@ input AttendanceCreateInput {
   workMode: EnumAttendanceWorkMode
 }
 
+input AttendanceCreateNestedManyWithoutUsersInput {
+  connect: [AttendanceWhereUniqueInput!]
+}
+
+input AttendanceListRelationFilter {
+  every: AttendanceWhereInput
+  none: AttendanceWhereInput
+  some: AttendanceWhereInput
+}
+
 input AttendanceOrderByInput {
   createdAt: SortOrder
+  employeeId: SortOrder
   id: SortOrder
   loginTime: SortOrder
   logoutTime: SortOrder
@@ -32,6 +45,7 @@ input AttendanceOrderByInput {
 }
 
 input AttendanceUpdateInput {
+  employee: UserWhereUniqueInput
   loginTime: String
   logoutTime: String
   office: EnumAttendanceOffice
@@ -39,7 +53,14 @@ input AttendanceUpdateInput {
   workMode: EnumAttendanceWorkMode
 }
 
+input AttendanceUpdateManyWithoutUsersInput {
+  connect: [AttendanceWhereUniqueInput!]
+  disconnect: [AttendanceWhereUniqueInput!]
+  set: [AttendanceWhereUniqueInput!]
+}
+
 input AttendanceWhereInput {
+  employee: UserWhereUniqueInput
   id: StringFilter
   loginTime: StringNullableFilter
   logoutTime: StringNullableFilter
@@ -2007,6 +2028,7 @@ input TaskWhereUniqueInput {
 type User {
   aadarNumber: String
   address: String
+  attendances(orderBy: [AttendanceOrderByInput!], skip: Float, take: Float, where: AttendanceWhereInput): [Attendance!]!
   awards(orderBy: [AwardOrderByInput!], skip: Float, take: Float, where: AwardWhereInput): [Award!]!
   bloodGroup: String
   candidates(orderBy: [CandidateOrderByInput!], skip: Float, take: Float, where: CandidateWhereInput): [Candidate!]!
@@ -2058,6 +2080,7 @@ type User {
 input UserCreateInput {
   aadarNumber: String
   address: String
+  attendances: AttendanceCreateNestedManyWithoutUsersInput
   awards: AwardCreateNestedManyWithoutUsersInput
   bloodGroup: String
   candidates: CandidateCreateNestedManyWithoutUsersInput
@@ -2182,6 +2205,7 @@ input UserOrderByInput {
 input UserUpdateInput {
   aadarNumber: String
   address: String
+  attendances: AttendanceUpdateManyWithoutUsersInput
   awards: AwardUpdateManyWithoutUsersInput
   bloodGroup: String
   candidates: CandidateUpdateManyWithoutUsersInput
@@ -2268,6 +2292,7 @@ input UserUpdateManyWithoutUsersInput {
 input UserWhereInput {
   aadarNumber: StringNullableFilter
   address: StringNullableFilter
+  attendances: AttendanceListRelationFilter
   awards: AwardListRelationFilter
   bloodGroup: StringNullableFilter
   candidates: CandidateListRelationFilter
