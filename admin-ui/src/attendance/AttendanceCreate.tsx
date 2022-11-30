@@ -4,18 +4,23 @@ import {
   Create,
   SimpleForm,
   CreateProps,
-  TextInput,
+  ReferenceInput,
   SelectInput,
+  TextInput,
   ReferenceArrayInput,
   SelectArrayInput,
 } from "react-admin";
 
+import { UserTitle } from "../user/UserTitle";
 import { TaskTitle } from "../task/TaskTitle";
 
 export const AttendanceCreate = (props: CreateProps): React.ReactElement => {
   return (
     <Create {...props}>
       <SimpleForm>
+        <ReferenceInput source="user.id" reference="User" label="employee">
+          <SelectInput optionText={UserTitle} />
+        </ReferenceInput>
         <TextInput label="loginTime" source="loginTime" />
         <TextInput label="logoutTime" source="logoutTime" />
         <SelectInput

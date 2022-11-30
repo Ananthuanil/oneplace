@@ -10,6 +10,7 @@ generator client {
 model User {
   aadarNumber                String?
   address                    String?
+  attendances                Attendance[]
   awards                     Award[]                     @relation(name: "awards")
   bloodGroup                 String?
   candidates                 Candidate[]
@@ -359,6 +360,8 @@ model Task {
 
 model Attendance {
   createdAt  DateTime                @default(now())
+  employee   User?                   @relation(fields: [employeeId], references: [id])
+  employeeId String?
   id         String                  @id @default(cuid())
   loginTime  String?
   logoutTime String?

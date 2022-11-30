@@ -19,8 +19,9 @@ import {
   IsEnum,
   IsJSON,
 } from "class-validator";
-import { AwardCreateNestedManyWithoutUsersInput } from "./AwardCreateNestedManyWithoutUsersInput";
+import { AttendanceCreateNestedManyWithoutUsersInput } from "./AttendanceCreateNestedManyWithoutUsersInput";
 import { Type } from "class-transformer";
+import { AwardCreateNestedManyWithoutUsersInput } from "./AwardCreateNestedManyWithoutUsersInput";
 import { CandidateCreateNestedManyWithoutUsersInput } from "./CandidateCreateNestedManyWithoutUsersInput";
 import { ClientFeedbackCreateNestedManyWithoutUsersInput } from "./ClientFeedbackCreateNestedManyWithoutUsersInput";
 import { CommunityCreateNestedManyWithoutUsersInput } from "./CommunityCreateNestedManyWithoutUsersInput";
@@ -62,6 +63,18 @@ class UserCreateInput {
     nullable: true,
   })
   address?: string | null;
+
+  @ApiProperty({
+    required: false,
+    type: () => AttendanceCreateNestedManyWithoutUsersInput,
+  })
+  @ValidateNested()
+  @Type(() => AttendanceCreateNestedManyWithoutUsersInput)
+  @IsOptional()
+  @Field(() => AttendanceCreateNestedManyWithoutUsersInput, {
+    nullable: true,
+  })
+  attendances?: AttendanceCreateNestedManyWithoutUsersInput;
 
   @ApiProperty({
     required: false,

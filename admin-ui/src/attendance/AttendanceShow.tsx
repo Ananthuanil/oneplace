@@ -5,20 +5,24 @@ import {
   SimpleShowLayout,
   ShowProps,
   DateField,
+  ReferenceField,
   TextField,
   ReferenceManyField,
   Datagrid,
-  ReferenceField,
 } from "react-admin";
 
 import { ATTENDANCE_TITLE_FIELD } from "./AttendanceTitle";
 import { PROJECT_TITLE_FIELD } from "../project/ProjectTitle";
+import { USER_TITLE_FIELD } from "../user/UserTitle";
 
 export const AttendanceShow = (props: ShowProps): React.ReactElement => {
   return (
     <Show {...props}>
       <SimpleShowLayout>
         <DateField source="createdAt" label="Created At" />
+        <ReferenceField label="employee" source="user.id" reference="User">
+          <TextField source={USER_TITLE_FIELD} />
+        </ReferenceField>
         <TextField label="ID" source="id" />
         <TextField label="loginTime" source="loginTime" />
         <TextField label="logoutTime" source="logoutTime" />

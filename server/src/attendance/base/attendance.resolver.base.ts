@@ -19,6 +19,7 @@ import { isRecordNotFoundError } from "../../prisma.util";
 import { MetaQueryPayload } from "../../util/MetaQueryPayload";
 import { AclFilterResponseInterceptor } from "../../interceptors/aclFilterResponse.interceptor";
 import { AclValidateRequestInterceptor } from "../../interceptors/aclValidateRequest.interceptor";
+import { Public } from "../../decorators/public.decorator";
 import { CreateAttendanceArgs } from "./CreateAttendanceArgs";
 import { UpdateAttendanceArgs } from "./UpdateAttendanceArgs";
 import { DeleteAttendanceArgs } from "./DeleteAttendanceArgs";
@@ -27,6 +28,7 @@ import { AttendanceFindUniqueArgs } from "./AttendanceFindUniqueArgs";
 import { Attendance } from "./Attendance";
 import { TaskFindManyArgs } from "../../task/base/TaskFindManyArgs";
 import { Task } from "../../task/base/Task";
+import { User } from "../../user/base/User";
 import { AttendanceService } from "../attendance.service";
 
 @graphql.Resolver(() => Attendance)
@@ -98,7 +100,15 @@ export class AttendanceResolverBase {
   ): Promise<Attendance> {
     return await this.service.create({
       ...args,
-      data: args.data,
+      data: {
+        ...args.data,
+
+        employee: args.data.employee
+          ? {
+              connect: args.data.employee,
+            }
+          : undefined,
+      },
     });
   }
 
@@ -115,7 +125,15 @@ export class AttendanceResolverBase {
     try {
       return await this.service.update({
         ...args,
-        data: args.data,
+        data: {
+          ...args.data,
+
+          employee: args.data.employee
+            ? {
+                connect: args.data.employee,
+              }
+            : undefined,
+        },
       });
     } catch (error) {
       if (isRecordNotFoundError(error)) {
@@ -166,5 +184,16 @@ export class AttendanceResolverBase {
     }
 
     return results;
+  }
+
+  @Public()
+  @graphql.ResolveField(() => User, { nullable: true })
+  async employee(@graphql.Parent() parent: Attendance): Promise<User | null> {
+    const result = await this.service.getEmployee(parent.id);
+
+    if (!result) {
+      return null;
+    }
+    return result;
   }
 }

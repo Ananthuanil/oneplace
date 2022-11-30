@@ -1,3 +1,4 @@
+import { Attendance } from "../attendance/Attendance";
 import { Award } from "../award/Award";
 import { Candidate } from "../candidate/Candidate";
 import { ClientFeedback } from "../clientFeedback/ClientFeedback";
@@ -15,6 +16,7 @@ import { SkillSet } from "../skillSet/SkillSet";
 export type User = {
   aadarNumber: string | null;
   address: string | null;
+  attendances?: Array<Attendance>;
   awards?: Array<Award>;
   bloodGroup: string | null;
   candidates?: Array<Candidate>;

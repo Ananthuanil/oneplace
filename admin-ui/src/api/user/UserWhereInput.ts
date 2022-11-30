@@ -1,4 +1,5 @@
 import { StringNullableFilter } from "../../util/StringNullableFilter";
+import { AttendanceListRelationFilter } from "../attendance/AttendanceListRelationFilter";
 import { AwardListRelationFilter } from "../award/AwardListRelationFilter";
 import { CandidateListRelationFilter } from "../candidate/CandidateListRelationFilter";
 import { DateTimeNullableFilter } from "../../util/DateTimeNullableFilter";
@@ -20,6 +21,7 @@ import { UserListRelationFilter } from "./UserListRelationFilter";
 export type UserWhereInput = {
   aadarNumber?: StringNullableFilter;
   address?: StringNullableFilter;
+  attendances?: AttendanceListRelationFilter;
   awards?: AwardListRelationFilter;
   bloodGroup?: StringNullableFilter;
   candidates?: CandidateListRelationFilter;

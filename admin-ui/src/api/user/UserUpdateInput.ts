@@ -1,3 +1,4 @@
+import { AttendanceUpdateManyWithoutUsersInput } from "./AttendanceUpdateManyWithoutUsersInput";
 import { AwardUpdateManyWithoutUsersInput } from "./AwardUpdateManyWithoutUsersInput";
 import { CandidateUpdateManyWithoutUsersInput } from "./CandidateUpdateManyWithoutUsersInput";
 import { ClientFeedbackUpdateManyWithoutUsersInput } from "./ClientFeedbackUpdateManyWithoutUsersInput";
@@ -18,6 +19,7 @@ import { UserUpdateManyWithoutUsersInput } from "./UserUpdateManyWithoutUsersInp
 export type UserUpdateInput = {
   aadarNumber?: string | null;
   address?: string | null;
+  attendances?: AttendanceUpdateManyWithoutUsersInput;
   awards?: AwardUpdateManyWithoutUsersInput;
   bloodGroup?: string | null;
   candidates?: CandidateUpdateManyWithoutUsersInput;

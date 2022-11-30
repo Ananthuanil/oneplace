@@ -10,7 +10,7 @@ https://docs.amplication.com/docs/how-to/custom-code
 ------------------------------------------------------------------------------
   */
 import { PrismaService } from "nestjs-prisma";
-import { Prisma, Attendance, Task } from "@prisma/client";
+import { Prisma, Attendance, Task, User } from "@prisma/client";
 
 export class AttendanceServiceBase {
   constructor(protected readonly prisma: PrismaService) {}
@@ -56,5 +56,13 @@ export class AttendanceServiceBase {
         where: { id: parentId },
       })
       .tasks(args);
+  }
+
+  async getEmployee(parentId: string): Promise<User | null> {
+    return this.prisma.attendance
+      .findUnique({
+        where: { id: parentId },
+      })
+      .employee();
   }
 }
