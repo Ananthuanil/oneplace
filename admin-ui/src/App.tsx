@@ -81,6 +81,14 @@ import { ClientFeedbackList } from "./clientFeedback/ClientFeedbackList";
 import { ClientFeedbackCreate } from "./clientFeedback/ClientFeedbackCreate";
 import { ClientFeedbackEdit } from "./clientFeedback/ClientFeedbackEdit";
 import { ClientFeedbackShow } from "./clientFeedback/ClientFeedbackShow";
+import { TaskList } from "./task/TaskList";
+import { TaskCreate } from "./task/TaskCreate";
+import { TaskEdit } from "./task/TaskEdit";
+import { TaskShow } from "./task/TaskShow";
+import { AttendanceList } from "./attendance/AttendanceList";
+import { AttendanceCreate } from "./attendance/AttendanceCreate";
+import { AttendanceEdit } from "./attendance/AttendanceEdit";
+import { AttendanceShow } from "./attendance/AttendanceShow";
 import { jwtAuthProvider } from "./auth-provider/ra-auth-jwt";
 
 const App = (): React.ReactElement => {
@@ -239,6 +247,20 @@ const App = (): React.ReactElement => {
           edit={ClientFeedbackEdit}
           create={ClientFeedbackCreate}
           show={ClientFeedbackShow}
+        />
+        <Resource
+          name="Task"
+          list={TaskList}
+          edit={TaskEdit}
+          create={TaskCreate}
+          show={TaskShow}
+        />
+        <Resource
+          name="Attendance"
+          list={AttendanceList}
+          edit={AttendanceEdit}
+          create={AttendanceCreate}
+          show={AttendanceShow}
         />
       </Admin>
     </div>

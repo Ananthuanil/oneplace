@@ -16,6 +16,7 @@ import { OpportunityCreateNestedManyWithoutProjectsInput } from "./OpportunityCr
 import { Type } from "class-transformer";
 import { PartnerWhereUniqueInput } from "../../partner/base/PartnerWhereUniqueInput";
 import { ProjectInvolvementCreateNestedManyWithoutProjectsInput } from "./ProjectInvolvementCreateNestedManyWithoutProjectsInput";
+import { TaskCreateNestedManyWithoutProjectsInput } from "./TaskCreateNestedManyWithoutProjectsInput";
 import { UserCreateNestedManyWithoutProjectsInput } from "./UserCreateNestedManyWithoutProjectsInput";
 @InputType()
 class ProjectCreateInput {
@@ -76,6 +77,18 @@ class ProjectCreateInput {
     nullable: true,
   })
   startDate?: Date | null;
+
+  @ApiProperty({
+    required: false,
+    type: () => TaskCreateNestedManyWithoutProjectsInput,
+  })
+  @ValidateNested()
+  @Type(() => TaskCreateNestedManyWithoutProjectsInput)
+  @IsOptional()
+  @Field(() => TaskCreateNestedManyWithoutProjectsInput, {
+    nullable: true,
+  })
+  tasks?: TaskCreateNestedManyWithoutProjectsInput;
 
   @ApiProperty({
     required: false,

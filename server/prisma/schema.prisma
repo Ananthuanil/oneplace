@@ -220,6 +220,7 @@ model Project {
   partnerId           String?
   projectInvolvements ProjectInvolvement[]
   startDate           DateTime?
+  tasks               Task[]
   updatedAt           DateTime             @updatedAt
   users               User[]
 }
@@ -341,6 +342,32 @@ model ClientFeedback {
   updatedAt             DateTime                  @updatedAt
 }
 
+model Task {
+  attendance    Attendance?    @relation(fields: [attendanceId], references: [id])
+  attendanceId  String?
+  createdAt     DateTime       @default(now())
+  id            String         @id @default(cuid())
+  project       Project?       @relation(fields: [projectId], references: [id])
+  projectId     String?
+  specification String?
+  status        EnumTaskStatus
+  ticketId      String?
+  ticketLink    String?
+  ticketName    String
+  updatedAt     DateTime       @updatedAt
+}
+
+model Attendance {
+  createdAt  DateTime                @default(now())
+  id         String                  @id @default(cuid())
+  loginTime  String?
+  logoutTime String?
+  office     EnumAttendanceOffice?
+  tasks      Task[]
+  updatedAt  DateTime                @updatedAt
+  workMode   EnumAttendanceWorkMode?
+}
+
 enum EnumUserDesignation {
   Joe
   Engineer
@@ -397,4 +424,20 @@ enum EnumClientFeedbackStatus {
   WaitingForFeedback
   FeedbackReceived
   NoResponse
+}
+
+enum EnumTaskStatus {
+  Completed
+  inProgress
+  blocker
+}
+
+enum EnumAttendanceOffice {
+  mgRoad
+  infopark
+}
+
+enum EnumAttendanceWorkMode {
+  WFO
+  WFH
 }
