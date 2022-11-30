@@ -14,6 +14,7 @@ import { PrismaService } from "nestjs-prisma";
 import {
   Prisma,
   User,
+  Attendance,
   Award,
   Candidate,
   ClientFeedback,
@@ -87,6 +88,17 @@ export class UserServiceBase {
     args: Prisma.SelectSubset<T, Prisma.UserDeleteArgs>
   ): Promise<User> {
     return this.prisma.user.delete(args);
+  }
+
+  async findAttendances(
+    parentId: string,
+    args: Prisma.AttendanceFindManyArgs
+  ): Promise<Attendance[]> {
+    return this.prisma.user
+      .findUnique({
+        where: { id: parentId },
+      })
+      .attendances(args);
   }
 
   async findAwards(

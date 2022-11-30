@@ -19,8 +19,9 @@ import {
   IsEnum,
   IsJSON,
 } from "class-validator";
-import { AwardUpdateManyWithoutUsersInput } from "./AwardUpdateManyWithoutUsersInput";
+import { AttendanceUpdateManyWithoutUsersInput } from "./AttendanceUpdateManyWithoutUsersInput";
 import { Type } from "class-transformer";
+import { AwardUpdateManyWithoutUsersInput } from "./AwardUpdateManyWithoutUsersInput";
 import { CandidateUpdateManyWithoutUsersInput } from "./CandidateUpdateManyWithoutUsersInput";
 import { ClientFeedbackUpdateManyWithoutUsersInput } from "./ClientFeedbackUpdateManyWithoutUsersInput";
 import { CommunityUpdateManyWithoutUsersInput } from "./CommunityUpdateManyWithoutUsersInput";
@@ -62,6 +63,18 @@ class UserUpdateInput {
     nullable: true,
   })
   address?: string | null;
+
+  @ApiProperty({
+    required: false,
+    type: () => AttendanceUpdateManyWithoutUsersInput,
+  })
+  @ValidateNested()
+  @Type(() => AttendanceUpdateManyWithoutUsersInput)
+  @IsOptional()
+  @Field(() => AttendanceUpdateManyWithoutUsersInput, {
+    nullable: true,
+  })
+  attendances?: AttendanceUpdateManyWithoutUsersInput;
 
   @ApiProperty({
     required: false,

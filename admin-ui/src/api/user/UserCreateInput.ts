@@ -1,3 +1,4 @@
+import { AttendanceCreateNestedManyWithoutUsersInput } from "./AttendanceCreateNestedManyWithoutUsersInput";
 import { AwardCreateNestedManyWithoutUsersInput } from "./AwardCreateNestedManyWithoutUsersInput";
 import { CandidateCreateNestedManyWithoutUsersInput } from "./CandidateCreateNestedManyWithoutUsersInput";
 import { ClientFeedbackCreateNestedManyWithoutUsersInput } from "./ClientFeedbackCreateNestedManyWithoutUsersInput";
@@ -18,6 +19,7 @@ import { UserCreateNestedManyWithoutUsersInput } from "./UserCreateNestedManyWit
 export type UserCreateInput = {
   aadarNumber?: string | null;
   address?: string | null;
+  attendances?: AttendanceCreateNestedManyWithoutUsersInput;
   awards?: AwardCreateNestedManyWithoutUsersInput;
   bloodGroup?: string | null;
   candidates?: CandidateCreateNestedManyWithoutUsersInput;

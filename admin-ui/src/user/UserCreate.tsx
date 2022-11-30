@@ -13,6 +13,7 @@ import {
   PasswordInput,
 } from "react-admin";
 
+import { AttendanceTitle } from "../attendance/AttendanceTitle";
 import { AwardTitle } from "../award/AwardTitle";
 import { CandidateTitle } from "../candidate/CandidateTitle";
 import { ClientFeedbackTitle } from "../clientFeedback/ClientFeedbackTitle";
@@ -34,6 +35,14 @@ export const UserCreate = (props: CreateProps): React.ReactElement => {
       <SimpleForm>
         <TextInput label="Aadar Number" source="aadarNumber" />
         <TextInput label="Address" multiline source="address" />
+        <ReferenceArrayInput
+          source="attendances"
+          reference="Attendance"
+          parse={(value: any) => value && value.map((v: any) => ({ id: v }))}
+          format={(value: any) => value && value.map((v: any) => v.id)}
+        >
+          <SelectArrayInput optionText={AttendanceTitle} />
+        </ReferenceArrayInput>
         <ReferenceArrayInput
           source="awards"
           reference="Award"

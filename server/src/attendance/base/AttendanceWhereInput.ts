@@ -11,15 +11,28 @@ https://docs.amplication.com/docs/how-to/custom-code
   */
 import { InputType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
-import { StringFilter } from "../../util/StringFilter";
+import { UserWhereUniqueInput } from "../../user/base/UserWhereUniqueInput";
+import { ValidateNested, IsOptional, IsEnum } from "class-validator";
 import { Type } from "class-transformer";
-import { IsOptional, IsEnum, ValidateNested } from "class-validator";
+import { StringFilter } from "../../util/StringFilter";
 import { StringNullableFilter } from "../../util/StringNullableFilter";
 import { EnumAttendanceOffice } from "./EnumAttendanceOffice";
 import { TaskListRelationFilter } from "../../task/base/TaskListRelationFilter";
 import { EnumAttendanceWorkMode } from "./EnumAttendanceWorkMode";
 @InputType()
 class AttendanceWhereInput {
+  @ApiProperty({
+    required: false,
+    type: () => UserWhereUniqueInput,
+  })
+  @ValidateNested()
+  @Type(() => UserWhereUniqueInput)
+  @IsOptional()
+  @Field(() => UserWhereUniqueInput, {
+    nullable: true,
+  })
+  employee?: UserWhereUniqueInput;
+
   @ApiProperty({
     required: false,
     type: StringFilter,

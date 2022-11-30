@@ -1,7 +1,9 @@
+import { User } from "../user/User";
 import { Task } from "../task/Task";
 
 export type Attendance = {
   createdAt: Date;
+  employee?: User | null;
   id: string;
   loginTime: string | null;
   logoutTime: string | null;

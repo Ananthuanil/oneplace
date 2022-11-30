@@ -19,8 +19,9 @@ import {
   IsEnum,
   IsJSON,
 } from "class-validator";
-import { Award } from "../../award/base/Award";
+import { Attendance } from "../../attendance/base/Attendance";
 import { Type } from "class-transformer";
+import { Award } from "../../award/base/Award";
 import { Candidate } from "../../candidate/base/Candidate";
 import { ClientFeedback } from "../../clientFeedback/base/ClientFeedback";
 import { Community } from "../../community/base/Community";
@@ -59,6 +60,15 @@ class User {
     nullable: true,
   })
   address!: string | null;
+
+  @ApiProperty({
+    required: false,
+    type: () => [Attendance],
+  })
+  @ValidateNested()
+  @Type(() => Attendance)
+  @IsOptional()
+  attendances?: Array<Attendance>;
 
   @ApiProperty({
     required: false,
