@@ -14,6 +14,7 @@ import {
 import { USER_TITLE_FIELD } from "../user/UserTitle";
 import { PARTNER_TITLE_FIELD } from "../partner/PartnerTitle";
 import { PROJECT_TITLE_FIELD } from "./ProjectTitle";
+import { ATTENDANCE_TITLE_FIELD } from "../attendance/AttendanceTitle";
 
 export const ProjectShow = (props: ShowProps): React.ReactElement => {
   return (
@@ -93,6 +94,32 @@ export const ProjectShow = (props: ShowProps): React.ReactElement => {
             <ReferenceField label="Employees" source="user.id" reference="User">
               <TextField source={USER_TITLE_FIELD} />
             </ReferenceField>
+          </Datagrid>
+        </ReferenceManyField>
+        <ReferenceManyField reference="Task" target="ProjectId" label="Tasks">
+          <Datagrid rowClick="show">
+            <ReferenceField
+              label="attendance"
+              source="attendance.id"
+              reference="Attendance"
+            >
+              <TextField source={ATTENDANCE_TITLE_FIELD} />
+            </ReferenceField>
+            <DateField source="createdAt" label="Created At" />
+            <TextField label="ID" source="id" />
+            <ReferenceField
+              label="Project"
+              source="project.id"
+              reference="Project"
+            >
+              <TextField source={PROJECT_TITLE_FIELD} />
+            </ReferenceField>
+            <TextField label="specification" source="specification" />
+            <TextField label="status" source="status" />
+            <TextField label="Ticket id" source="ticketId" />
+            <TextField label="Ticket link" source="ticketLink" />
+            <TextField label="Ticket name" source="ticketName" />
+            <DateField source="updatedAt" label="Updated At" />
           </Datagrid>
         </ReferenceManyField>
       </SimpleShowLayout>

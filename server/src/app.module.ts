@@ -20,6 +20,8 @@ import { EmployeeFeedbackModule } from "./employeeFeedback/employeeFeedback.modu
 import { CommunityActivityModule } from "./communityActivity/communityActivity.module";
 import { CommunityActivityFeedbackModule } from "./communityActivityFeedback/communityActivityFeedback.module";
 import { ClientFeedbackModule } from "./clientFeedback/clientFeedback.module";
+import { TaskModule } from "./task/task.module";
+import { AttendanceModule } from "./attendance/attendance.module";
 import { ACLModule } from "./auth/acl.module";
 import { AuthModule } from "./auth/auth.module";
 import { HealthModule } from "./health/health.module";
@@ -51,6 +53,8 @@ import { GraphQLModule } from "@nestjs/graphql";
     CommunityActivityModule,
     CommunityActivityFeedbackModule,
     ClientFeedbackModule,
+    TaskModule,
+    AttendanceModule,
     ACLModule,
     AuthModule,
     HealthModule,

@@ -15,6 +15,7 @@ import {
   Project,
   Opportunity,
   ProjectInvolvement,
+  Task,
   User,
   Partner,
 } from "@prisma/client";
@@ -74,6 +75,17 @@ export class ProjectServiceBase {
         where: { id: parentId },
       })
       .projectInvolvements(args);
+  }
+
+  async findTasks(
+    parentId: string,
+    args: Prisma.TaskFindManyArgs
+  ): Promise<Task[]> {
+    return this.prisma.project
+      .findUnique({
+        where: { id: parentId },
+      })
+      .tasks(args);
   }
 
   async findUsers(

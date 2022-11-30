@@ -19,6 +19,7 @@ import { OpportunityListRelationFilter } from "../../opportunity/base/Opportunit
 import { PartnerWhereUniqueInput } from "../../partner/base/PartnerWhereUniqueInput";
 import { ProjectInvolvementListRelationFilter } from "../../projectInvolvement/base/ProjectInvolvementListRelationFilter";
 import { DateTimeNullableFilter } from "../../util/DateTimeNullableFilter";
+import { TaskListRelationFilter } from "../../task/base/TaskListRelationFilter";
 import { UserListRelationFilter } from "../../user/base/UserListRelationFilter";
 @InputType()
 class ProjectWhereInput {
@@ -90,6 +91,18 @@ class ProjectWhereInput {
     nullable: true,
   })
   startDate?: DateTimeNullableFilter;
+
+  @ApiProperty({
+    required: false,
+    type: () => TaskListRelationFilter,
+  })
+  @ValidateNested()
+  @Type(() => TaskListRelationFilter)
+  @IsOptional()
+  @Field(() => TaskListRelationFilter, {
+    nullable: true,
+  })
+  tasks?: TaskListRelationFilter;
 
   @ApiProperty({
     required: false,

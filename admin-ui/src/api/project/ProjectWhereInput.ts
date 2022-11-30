@@ -4,6 +4,7 @@ import { OpportunityListRelationFilter } from "../opportunity/OpportunityListRel
 import { PartnerWhereUniqueInput } from "../partner/PartnerWhereUniqueInput";
 import { ProjectInvolvementListRelationFilter } from "../projectInvolvement/ProjectInvolvementListRelationFilter";
 import { DateTimeNullableFilter } from "../../util/DateTimeNullableFilter";
+import { TaskListRelationFilter } from "../task/TaskListRelationFilter";
 import { UserListRelationFilter } from "../user/UserListRelationFilter";
 
 export type ProjectWhereInput = {
@@ -13,5 +14,6 @@ export type ProjectWhereInput = {
   partner?: PartnerWhereUniqueInput;
   projectInvolvements?: ProjectInvolvementListRelationFilter;
   startDate?: DateTimeNullableFilter;
+  tasks?: TaskListRelationFilter;
   users?: UserListRelationFilter;
 };

@@ -16,6 +16,7 @@ import { OpportunityUpdateManyWithoutProjectsInput } from "./OpportunityUpdateMa
 import { Type } from "class-transformer";
 import { PartnerWhereUniqueInput } from "../../partner/base/PartnerWhereUniqueInput";
 import { ProjectInvolvementUpdateManyWithoutProjectsInput } from "./ProjectInvolvementUpdateManyWithoutProjectsInput";
+import { TaskUpdateManyWithoutProjectsInput } from "./TaskUpdateManyWithoutProjectsInput";
 import { UserUpdateManyWithoutProjectsInput } from "./UserUpdateManyWithoutProjectsInput";
 @InputType()
 class ProjectUpdateInput {
@@ -76,6 +77,18 @@ class ProjectUpdateInput {
     nullable: true,
   })
   startDate?: Date | null;
+
+  @ApiProperty({
+    required: false,
+    type: () => TaskUpdateManyWithoutProjectsInput,
+  })
+  @ValidateNested()
+  @Type(() => TaskUpdateManyWithoutProjectsInput)
+  @IsOptional()
+  @Field(() => TaskUpdateManyWithoutProjectsInput, {
+    nullable: true,
+  })
+  tasks?: TaskUpdateManyWithoutProjectsInput;
 
   @ApiProperty({
     required: false,

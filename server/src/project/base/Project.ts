@@ -16,6 +16,7 @@ import { Type } from "class-transformer";
 import { Opportunity } from "../../opportunity/base/Opportunity";
 import { Partner } from "../../partner/base/Partner";
 import { ProjectInvolvement } from "../../projectInvolvement/base/ProjectInvolvement";
+import { Task } from "../../task/base/Task";
 import { User } from "../../user/base/User";
 @ObjectType()
 class Project {
@@ -83,6 +84,15 @@ class Project {
     nullable: true,
   })
   startDate!: Date | null;
+
+  @ApiProperty({
+    required: false,
+    type: () => [Task],
+  })
+  @ValidateNested()
+  @Type(() => Task)
+  @IsOptional()
+  tasks?: Array<Task>;
 
   @ApiProperty({
     required: true,

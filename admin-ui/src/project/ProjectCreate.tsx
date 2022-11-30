@@ -15,6 +15,7 @@ import {
 import { OpportunityTitle } from "../opportunity/OpportunityTitle";
 import { PartnerTitle } from "../partner/PartnerTitle";
 import { ProjectInvolvementTitle } from "../projectInvolvement/ProjectInvolvementTitle";
+import { TaskTitle } from "../task/TaskTitle";
 import { UserTitle } from "../user/UserTitle";
 
 export const ProjectCreate = (props: CreateProps): React.ReactElement => {
@@ -42,6 +43,14 @@ export const ProjectCreate = (props: CreateProps): React.ReactElement => {
           <SelectArrayInput optionText={ProjectInvolvementTitle} />
         </ReferenceArrayInput>
         <DateTimeInput label="Start Date" source="startDate" />
+        <ReferenceArrayInput
+          source="tasks"
+          reference="Task"
+          parse={(value: any) => value && value.map((v: any) => ({ id: v }))}
+          format={(value: any) => value && value.map((v: any) => v.id)}
+        >
+          <SelectArrayInput optionText={TaskTitle} />
+        </ReferenceArrayInput>
         <ReferenceArrayInput
           source="users"
           reference="User"
