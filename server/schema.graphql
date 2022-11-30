@@ -2,6 +2,56 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
+type Attendance {
+  createdAt: DateTime!
+  id: String!
+  loginTime: String
+  logoutTime: String
+  office: EnumAttendanceOffice
+  tasks(orderBy: [TaskOrderByInput!], skip: Float, take: Float, where: TaskWhereInput): [Task!]!
+  updatedAt: DateTime!
+  workMode: EnumAttendanceWorkMode
+}
+
+input AttendanceCreateInput {
+  loginTime: String
+  logoutTime: String
+  office: EnumAttendanceOffice
+  tasks: TaskCreateNestedManyWithoutAttendancesInput
+  workMode: EnumAttendanceWorkMode
+}
+
+input AttendanceOrderByInput {
+  createdAt: SortOrder
+  id: SortOrder
+  loginTime: SortOrder
+  logoutTime: SortOrder
+  office: SortOrder
+  updatedAt: SortOrder
+  workMode: SortOrder
+}
+
+input AttendanceUpdateInput {
+  loginTime: String
+  logoutTime: String
+  office: EnumAttendanceOffice
+  tasks: TaskUpdateManyWithoutAttendancesInput
+  workMode: EnumAttendanceWorkMode
+}
+
+input AttendanceWhereInput {
+  id: StringFilter
+  loginTime: StringNullableFilter
+  logoutTime: StringNullableFilter
+  office: EnumAttendanceOffice
+  tasks: TaskListRelationFilter
+  workMode: EnumAttendanceWorkMode
+}
+
+input AttendanceWhereUniqueInput {
+  id: String!
+}
+
 type Award {
   awardType: String
   comment: String
@@ -745,6 +795,16 @@ input EmployeeFeedbackWhereUniqueInput {
   id: String!
 }
 
+enum EnumAttendanceOffice {
+  Infopark
+  MgRoad
+}
+
+enum EnumAttendanceWorkMode {
+  WorkFromHome
+  WorkFromOffice
+}
+
 enum EnumCandidateCategory {
   P1
   P2
@@ -784,6 +844,12 @@ enum EnumOpportunityProcurementStatus {
 enum EnumOpportunitySource {
   BackFill
   New
+}
+
+enum EnumTaskStatus {
+  Blocker
+  Completed
+  InProgress
 }
 
 enum EnumUserDesignation {
@@ -1052,6 +1118,7 @@ type MetaQueryPayload {
 }
 
 type Mutation {
+  createAttendance(data: AttendanceCreateInput!): Attendance!
   createAward(data: AwardCreateInput!): Award!
   createCandidate(data: CandidateCreateInput!): Candidate!
   createClientFeedback(data: ClientFeedbackCreateInput!): ClientFeedback!
@@ -1070,7 +1137,9 @@ type Mutation {
   createSkill(data: SkillCreateInput!): Skill!
   createSkillLevel(data: SkillLevelCreateInput!): SkillLevel!
   createSkillSet(data: SkillSetCreateInput!): SkillSet!
+  createTask(data: TaskCreateInput!): Task!
   createUser(data: UserCreateInput!): User!
+  deleteAttendance(where: AttendanceWhereUniqueInput!): Attendance!
   deleteAward(where: AwardWhereUniqueInput!): Award!
   deleteCandidate(where: CandidateWhereUniqueInput!): Candidate!
   deleteClientFeedback(where: ClientFeedbackWhereUniqueInput!): ClientFeedback!
@@ -1089,8 +1158,10 @@ type Mutation {
   deleteSkill(where: SkillWhereUniqueInput!): Skill!
   deleteSkillLevel(where: SkillLevelWhereUniqueInput!): SkillLevel!
   deleteSkillSet(where: SkillSetWhereUniqueInput!): SkillSet!
+  deleteTask(where: TaskWhereUniqueInput!): Task!
   deleteUser(where: UserWhereUniqueInput!): User!
   login(credentials: Credentials!): UserInfo!
+  updateAttendance(data: AttendanceUpdateInput!, where: AttendanceWhereUniqueInput!): Attendance!
   updateAward(data: AwardUpdateInput!, where: AwardWhereUniqueInput!): Award!
   updateCandidate(data: CandidateUpdateInput!, where: CandidateWhereUniqueInput!): Candidate!
   updateClientFeedback(data: ClientFeedbackUpdateInput!, where: ClientFeedbackWhereUniqueInput!): ClientFeedback!
@@ -1109,6 +1180,7 @@ type Mutation {
   updateSkill(data: SkillUpdateInput!, where: SkillWhereUniqueInput!): Skill!
   updateSkillLevel(data: SkillLevelUpdateInput!, where: SkillLevelWhereUniqueInput!): SkillLevel!
   updateSkillSet(data: SkillSetUpdateInput!, where: SkillSetWhereUniqueInput!): SkillSet!
+  updateTask(data: TaskUpdateInput!, where: TaskWhereUniqueInput!): Task!
   updateUser(data: UserUpdateInput!, where: UserWhereUniqueInput!): User!
 }
 
@@ -1315,6 +1387,7 @@ type Project {
   partner: Partner
   projectInvolvements(orderBy: [ProjectInvolvementOrderByInput!], skip: Float, take: Float, where: ProjectInvolvementWhereInput): [ProjectInvolvement!]!
   startDate: DateTime
+  tasks(orderBy: [TaskOrderByInput!], skip: Float, take: Float, where: TaskWhereInput): [Task!]!
   updatedAt: DateTime!
   users(orderBy: [UserOrderByInput!], skip: Float, take: Float, where: UserWhereInput): [User!]!
 }
@@ -1325,6 +1398,7 @@ input ProjectCreateInput {
   partner: PartnerWhereUniqueInput
   projectInvolvements: ProjectInvolvementCreateNestedManyWithoutProjectsInput
   startDate: DateTime
+  tasks: TaskCreateNestedManyWithoutProjectsInput
   users: UserCreateNestedManyWithoutProjectsInput
 }
 
@@ -1424,6 +1498,7 @@ input ProjectUpdateInput {
   partner: PartnerWhereUniqueInput
   projectInvolvements: ProjectInvolvementUpdateManyWithoutProjectsInput
   startDate: DateTime
+  tasks: TaskUpdateManyWithoutProjectsInput
   users: UserUpdateManyWithoutProjectsInput
 }
 
@@ -1446,6 +1521,7 @@ input ProjectWhereInput {
   partner: PartnerWhereUniqueInput
   projectInvolvements: ProjectInvolvementListRelationFilter
   startDate: DateTimeNullableFilter
+  tasks: TaskListRelationFilter
   users: UserListRelationFilter
 }
 
@@ -1454,6 +1530,7 @@ input ProjectWhereUniqueInput {
 }
 
 type Query {
+  _attendancesMeta(orderBy: [AttendanceOrderByInput!], skip: Float, take: Float, where: AttendanceWhereInput): MetaQueryPayload!
   _awardsMeta(orderBy: [AwardOrderByInput!], skip: Float, take: Float, where: AwardWhereInput): MetaQueryPayload!
   _candidatesMeta(orderBy: [CandidateOrderByInput!], skip: Float, take: Float, where: CandidateWhereInput): MetaQueryPayload!
   _clientFeedbacksMeta(orderBy: [ClientFeedbackOrderByInput!], skip: Float, take: Float, where: ClientFeedbackWhereInput): MetaQueryPayload!
@@ -1472,7 +1549,10 @@ type Query {
   _skillLevelsMeta(orderBy: [SkillLevelOrderByInput!], skip: Float, take: Float, where: SkillLevelWhereInput): MetaQueryPayload!
   _skillSetsMeta(orderBy: [SkillSetOrderByInput!], skip: Float, take: Float, where: SkillSetWhereInput): MetaQueryPayload!
   _skillsMeta(orderBy: [SkillOrderByInput!], skip: Float, take: Float, where: SkillWhereInput): MetaQueryPayload!
+  _tasksMeta(orderBy: [TaskOrderByInput!], skip: Float, take: Float, where: TaskWhereInput): MetaQueryPayload!
   _usersMeta(orderBy: [UserOrderByInput!], skip: Float, take: Float, where: UserWhereInput): MetaQueryPayload!
+  attendance(where: AttendanceWhereUniqueInput!): Attendance
+  attendances(orderBy: [AttendanceOrderByInput!], skip: Float, take: Float, where: AttendanceWhereInput): [Attendance!]!
   award(where: AwardWhereUniqueInput!): Award
   awards(orderBy: [AwardOrderByInput!], skip: Float, take: Float, where: AwardWhereInput): [Award!]!
   candidate(where: CandidateWhereUniqueInput!): Candidate
@@ -1509,6 +1589,8 @@ type Query {
   skillSet(where: SkillSetWhereUniqueInput!): SkillSet
   skillSets(orderBy: [SkillSetOrderByInput!], skip: Float, take: Float, where: SkillSetWhereInput): [SkillSet!]!
   skills(orderBy: [SkillOrderByInput!], skip: Float, take: Float, where: SkillWhereInput): [Skill!]!
+  task(where: TaskWhereUniqueInput!): Task
+  tasks(orderBy: [TaskOrderByInput!], skip: Float, take: Float, where: TaskWhereInput): [Task!]!
   user(where: UserWhereUniqueInput!): User
   userInfo: UserInfo!
   users(orderBy: [UserOrderByInput!], skip: Float, take: Float, where: UserWhereInput): [User!]!
@@ -1833,6 +1915,93 @@ input StringNullableFilter {
   not: String
   notIn: [String!]
   startsWith: String
+}
+
+type Task {
+  attendance: Attendance
+  createdAt: DateTime!
+  id: String!
+  project: Project
+  specification: String
+  status: EnumTaskStatus
+  ticketId: String
+  ticketLink: String
+  ticketName: String!
+  updatedAt: DateTime!
+}
+
+input TaskCreateInput {
+  attendance: AttendanceWhereUniqueInput
+  project: ProjectWhereUniqueInput
+  specification: String
+  status: EnumTaskStatus!
+  ticketId: String
+  ticketLink: String
+  ticketName: String!
+}
+
+input TaskCreateNestedManyWithoutAttendancesInput {
+  connect: [TaskWhereUniqueInput!]
+}
+
+input TaskCreateNestedManyWithoutProjectsInput {
+  connect: [TaskWhereUniqueInput!]
+}
+
+input TaskListRelationFilter {
+  every: TaskWhereInput
+  none: TaskWhereInput
+  some: TaskWhereInput
+}
+
+input TaskOrderByInput {
+  attendanceId: SortOrder
+  createdAt: SortOrder
+  id: SortOrder
+  projectId: SortOrder
+  specification: SortOrder
+  status: SortOrder
+  ticketId: SortOrder
+  ticketLink: SortOrder
+  ticketName: SortOrder
+  updatedAt: SortOrder
+}
+
+input TaskUpdateInput {
+  attendance: AttendanceWhereUniqueInput
+  project: ProjectWhereUniqueInput
+  specification: String
+  status: EnumTaskStatus
+  ticketId: String
+  ticketLink: String
+  ticketName: String
+}
+
+input TaskUpdateManyWithoutAttendancesInput {
+  connect: [TaskWhereUniqueInput!]
+  disconnect: [TaskWhereUniqueInput!]
+  set: [TaskWhereUniqueInput!]
+}
+
+input TaskUpdateManyWithoutProjectsInput {
+  connect: [TaskWhereUniqueInput!]
+  disconnect: [TaskWhereUniqueInput!]
+  set: [TaskWhereUniqueInput!]
+}
+
+input TaskWhereInput {
+  attendance: AttendanceWhereUniqueInput
+  id: StringFilter
+  project: ProjectWhereUniqueInput
+  specification: StringNullableFilter
+  status: EnumTaskStatus
+  ticketId: StringNullableFilter
+  ticketLink: StringNullableFilter
+  ticketName: StringFilter
+}
+
+input TaskWhereUniqueInput {
+  id: String!
 }
 
 type User {
