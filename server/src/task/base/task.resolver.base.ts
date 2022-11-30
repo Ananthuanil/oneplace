@@ -17,8 +17,6 @@ import { GqlDefaultAuthGuard } from "../../auth/gqlDefaultAuth.guard";
 import * as gqlACGuard from "../../auth/gqlAC.guard";
 import { isRecordNotFoundError } from "../../prisma.util";
 import { MetaQueryPayload } from "../../util/MetaQueryPayload";
-import { AclFilterResponseInterceptor } from "../../interceptors/aclFilterResponse.interceptor";
-import { AclValidateRequestInterceptor } from "../../interceptors/aclValidateRequest.interceptor";
 import { Public } from "../../decorators/public.decorator";
 import { CreateTaskArgs } from "./CreateTaskArgs";
 import { UpdateTaskArgs } from "./UpdateTaskArgs";
@@ -38,12 +36,8 @@ export class TaskResolverBase {
     protected readonly rolesBuilder: nestAccessControl.RolesBuilder
   ) {}
 
+  @Public()
   @graphql.Query(() => MetaQueryPayload)
-  @nestAccessControl.UseRoles({
-    resource: "Task",
-    action: "read",
-    possession: "any",
-  })
   async _tasksMeta(
     @graphql.Args() args: TaskFindManyArgs
   ): Promise<MetaQueryPayload> {
@@ -57,24 +51,14 @@ export class TaskResolverBase {
     };
   }
 
-  @common.UseInterceptors(AclFilterResponseInterceptor)
+  @Public()
   @graphql.Query(() => [Task])
-  @nestAccessControl.UseRoles({
-    resource: "Task",
-    action: "read",
-    possession: "any",
-  })
   async tasks(@graphql.Args() args: TaskFindManyArgs): Promise<Task[]> {
     return this.service.findMany(args);
   }
 
-  @common.UseInterceptors(AclFilterResponseInterceptor)
+  @Public()
   @graphql.Query(() => Task, { nullable: true })
-  @nestAccessControl.UseRoles({
-    resource: "Task",
-    action: "read",
-    possession: "own",
-  })
   async task(@graphql.Args() args: TaskFindUniqueArgs): Promise<Task | null> {
     const result = await this.service.findOne(args);
     if (result === null) {
@@ -83,13 +67,8 @@ export class TaskResolverBase {
     return result;
   }
 
-  @common.UseInterceptors(AclValidateRequestInterceptor)
+  @Public()
   @graphql.Mutation(() => Task)
-  @nestAccessControl.UseRoles({
-    resource: "Task",
-    action: "create",
-    possession: "any",
-  })
   async createTask(@graphql.Args() args: CreateTaskArgs): Promise<Task> {
     return await this.service.create({
       ...args,
@@ -111,13 +90,8 @@ export class TaskResolverBase {
     });
   }
 
-  @common.UseInterceptors(AclValidateRequestInterceptor)
+  @Public()
   @graphql.Mutation(() => Task)
-  @nestAccessControl.UseRoles({
-    resource: "Task",
-    action: "update",
-    possession: "any",
-  })
   async updateTask(@graphql.Args() args: UpdateTaskArgs): Promise<Task | null> {
     try {
       return await this.service.update({
@@ -148,12 +122,8 @@ export class TaskResolverBase {
     }
   }
 
+  @Public()
   @graphql.Mutation(() => Task)
-  @nestAccessControl.UseRoles({
-    resource: "Task",
-    action: "delete",
-    possession: "any",
-  })
   async deleteTask(@graphql.Args() args: DeleteTaskArgs): Promise<Task | null> {
     try {
       return await this.service.delete(args);
@@ -167,13 +137,8 @@ export class TaskResolverBase {
     }
   }
 
-  @common.UseInterceptors(AclFilterResponseInterceptor)
+  @Public()
   @graphql.ResolveField(() => Attendance, { nullable: true })
-  @nestAccessControl.UseRoles({
-    resource: "Attendance",
-    action: "read",
-    possession: "any",
-  })
   async attendance(@graphql.Parent() parent: Task): Promise<Attendance | null> {
     const result = await this.service.getAttendance(parent.id);
 
