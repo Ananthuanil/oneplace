@@ -7,7 +7,7 @@ export type Task = {
   id: string;
   project?: Project | null;
   specification: string | null;
-  status?: "Completed" | "inProgress" | "blocker";
+  status?: "completed" | "inProgress" | "blocker";
   ticketId: string | null;
   ticketLink: string | null;
   ticketName: string;

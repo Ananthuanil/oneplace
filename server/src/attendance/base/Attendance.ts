@@ -12,9 +12,10 @@ https://docs.amplication.com/docs/how-to/custom-code
 import { ObjectType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
 import {
+  IsBoolean,
+  IsOptional,
   IsDate,
   ValidateNested,
-  IsOptional,
   IsString,
   IsEnum,
 } from "class-validator";
@@ -25,6 +26,17 @@ import { Task } from "../../task/base/Task";
 import { EnumAttendanceWorkMode } from "./EnumAttendanceWorkMode";
 @ObjectType()
 class Attendance {
+  @ApiProperty({
+    required: false,
+    type: Boolean,
+  })
+  @IsBoolean()
+  @IsOptional()
+  @Field(() => Boolean, {
+    nullable: true,
+  })
+  attendanceStatus!: boolean | null;
+
   @ApiProperty({
     required: true,
   })
@@ -52,25 +64,25 @@ class Attendance {
 
   @ApiProperty({
     required: false,
-    type: String,
   })
-  @IsString()
+  @IsDate()
+  @Type(() => Date)
   @IsOptional()
-  @Field(() => String, {
+  @Field(() => Date, {
     nullable: true,
   })
-  loginTime!: string | null;
+  loginTime!: Date | null;
 
   @ApiProperty({
     required: false,
-    type: String,
   })
-  @IsString()
+  @IsDate()
+  @Type(() => Date)
   @IsOptional()
-  @Field(() => String, {
+  @Field(() => Date, {
     nullable: true,
   })
-  logoutTime!: string | null;
+  logoutTime!: Date | null;
 
   @ApiProperty({
     required: false,

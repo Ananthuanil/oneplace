@@ -29,7 +29,7 @@ export const TaskCreate = (props: CreateProps): React.ReactElement => {
           source="status"
           label="status"
           choices={[
-            { label: "Completed", value: "Completed" },
+            { label: "Completed", value: "completed" },
             { label: "In Progress", value: "inProgress" },
             { label: "Blocker", value: "blocker" },
           ]}

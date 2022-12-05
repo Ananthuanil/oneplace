@@ -62,7 +62,7 @@ class TaskUpdateInput {
   @Field(() => EnumTaskStatus, {
     nullable: true,
   })
-  status?: "Completed" | "inProgress" | "blocker";
+  status?: "completed" | "inProgress" | "blocker";
 
   @ApiProperty({
     required: false,
