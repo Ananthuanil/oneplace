@@ -3,11 +3,12 @@
 # ------------------------------------------------------
 
 type Attendance {
+  attendanceStatus: Boolean
   createdAt: DateTime!
   employee: User
   id: String!
-  loginTime: String
-  logoutTime: String
+  loginTime: DateTime
+  logoutTime: DateTime
   office: EnumAttendanceOffice
   tasks(orderBy: [TaskOrderByInput!], skip: Float, take: Float, where: TaskWhereInput): [Task!]!
   updatedAt: DateTime!
@@ -15,9 +16,10 @@ type Attendance {
 }
 
 input AttendanceCreateInput {
+  attendanceStatus: Boolean
   employee: UserWhereUniqueInput
-  loginTime: String
-  logoutTime: String
+  loginTime: DateTime
+  logoutTime: DateTime
   office: EnumAttendanceOffice
   tasks: TaskCreateNestedManyWithoutAttendancesInput
   workMode: EnumAttendanceWorkMode
@@ -34,6 +36,7 @@ input AttendanceListRelationFilter {
 }
 
 input AttendanceOrderByInput {
+  attendanceStatus: SortOrder
   createdAt: SortOrder
   employeeId: SortOrder
   id: SortOrder
@@ -45,9 +48,10 @@ input AttendanceOrderByInput {
 }
 
 input AttendanceUpdateInput {
+  attendanceStatus: Boolean
   employee: UserWhereUniqueInput
-  loginTime: String
-  logoutTime: String
+  loginTime: DateTime
+  logoutTime: DateTime
   office: EnumAttendanceOffice
   tasks: TaskUpdateManyWithoutAttendancesInput
   workMode: EnumAttendanceWorkMode
@@ -60,10 +64,11 @@ input AttendanceUpdateManyWithoutUsersInput {
 }
 
 input AttendanceWhereInput {
+  attendanceStatus: BooleanNullableFilter
   employee: UserWhereUniqueInput
   id: StringFilter
-  loginTime: StringNullableFilter
-  logoutTime: StringNullableFilter
+  loginTime: DateTimeNullableFilter
+  logoutTime: DateTimeNullableFilter
   office: EnumAttendanceOffice
   tasks: TaskListRelationFilter
   workMode: EnumAttendanceWorkMode
