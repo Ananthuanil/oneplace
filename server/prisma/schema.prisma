@@ -359,16 +359,17 @@ model Task {
 }
 
 model Attendance {
-  createdAt  DateTime                @default(now())
-  employee   User?                   @relation(fields: [employeeId], references: [id])
-  employeeId String?
-  id         String                  @id @default(cuid())
-  loginTime  String?
-  logoutTime String?
-  office     EnumAttendanceOffice?
-  tasks      Task[]
-  updatedAt  DateTime                @updatedAt
-  workMode   EnumAttendanceWorkMode?
+  attendanceStatus Boolean?
+  createdAt        DateTime                @default(now())
+  employee         User?                   @relation(fields: [employeeId], references: [id])
+  employeeId       String?
+  id               String                  @id @default(cuid())
+  loginTime        DateTime?
+  logoutTime       DateTime?
+  office           EnumAttendanceOffice?
+  tasks            Task[]
+  updatedAt        DateTime                @updatedAt
+  workMode         EnumAttendanceWorkMode?
 }
 
 enum EnumUserDesignation {
@@ -430,7 +431,7 @@ enum EnumClientFeedbackStatus {
 }
 
 enum EnumTaskStatus {
-  Completed
+  completed
   inProgress
   blocker
 }

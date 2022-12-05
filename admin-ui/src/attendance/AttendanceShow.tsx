@@ -4,6 +4,7 @@ import {
   Show,
   SimpleShowLayout,
   ShowProps,
+  BooleanField,
   DateField,
   ReferenceField,
   TextField,
@@ -19,6 +20,7 @@ export const AttendanceShow = (props: ShowProps): React.ReactElement => {
   return (
     <Show {...props}>
       <SimpleShowLayout>
+        <BooleanField label="attendanceStatus" source="attendanceStatus" />
         <DateField source="createdAt" label="Created At" />
         <ReferenceField label="employee" source="user.id" reference="User">
           <TextField source={USER_TITLE_FIELD} />

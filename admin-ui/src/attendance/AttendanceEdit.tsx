@@ -4,9 +4,10 @@ import {
   Edit,
   SimpleForm,
   EditProps,
+  BooleanInput,
   ReferenceInput,
   SelectInput,
-  TextInput,
+  DateTimeInput,
   ReferenceArrayInput,
   SelectArrayInput,
 } from "react-admin";
@@ -18,11 +19,12 @@ export const AttendanceEdit = (props: EditProps): React.ReactElement => {
   return (
     <Edit {...props}>
       <SimpleForm>
+        <BooleanInput label="attendanceStatus" source="attendanceStatus" />
         <ReferenceInput source="user.id" reference="User" label="employee">
           <SelectInput optionText={UserTitle} />
         </ReferenceInput>
-        <TextInput label="loginTime" source="loginTime" />
-        <TextInput label="logoutTime" source="logoutTime" />
+        <DateTimeInput label="loginTime" source="loginTime" />
+        <DateTimeInput label="logoutTime" source="logoutTime" />
         <SelectInput
           source="office"
           label="office"

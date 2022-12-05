@@ -12,7 +12,7 @@ https://docs.amplication.com/docs/how-to/custom-code
 import { registerEnumType } from "@nestjs/graphql";
 
 export enum EnumTaskStatus {
-  Completed = "Completed",
+  Completed = "completed",
   InProgress = "inProgress",
   Blocker = "blocker",
 }

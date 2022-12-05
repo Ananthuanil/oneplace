@@ -1,5 +1,5 @@
 export enum EnumTaskStatus {
-  Completed = "Completed",
+  Completed = "completed",
   InProgress = "inProgress",
   Blocker = "blocker",
 }

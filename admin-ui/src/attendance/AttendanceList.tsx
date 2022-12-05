@@ -1,12 +1,15 @@
 import * as React from "react";
+
 import {
   List,
   Datagrid,
   ListProps,
+  BooleanField,
   DateField,
   ReferenceField,
   TextField,
 } from "react-admin";
+
 import Pagination from "../Components/Pagination";
 import { USER_TITLE_FIELD } from "../user/UserTitle";
 
@@ -20,6 +23,7 @@ export const AttendanceList = (props: ListProps): React.ReactElement => {
       pagination={<Pagination />}
     >
       <Datagrid rowClick="show">
+        <BooleanField label="attendanceStatus" source="attendanceStatus" />
         <DateField source="createdAt" label="Created At" />
         <ReferenceField label="employee" source="user.id" reference="User">
           <TextField source={USER_TITLE_FIELD} />
