@@ -4,7 +4,7 @@ import {
   Create,
   SimpleForm,
   CreateProps,
-  BooleanInput,
+  TextInput,
   ReferenceInput,
   SelectInput,
   DateTimeInput,
@@ -19,7 +19,7 @@ export const AttendanceCreate = (props: CreateProps): React.ReactElement => {
   return (
     <Create {...props}>
       <SimpleForm>
-        <BooleanInput label="attendanceStatus" source="attendanceStatus" />
+        <TextInput label="attendanceStatus" source="attendanceStatus" />
         <ReferenceInput source="user.id" reference="User" label="employee">
           <SelectInput optionText={UserTitle} />
         </ReferenceInput>
@@ -44,6 +44,7 @@ export const AttendanceCreate = (props: CreateProps): React.ReactElement => {
         >
           <SelectArrayInput optionText={TaskTitle} />
         </ReferenceArrayInput>
+        <TextInput label="temp" source="temp" />
         <SelectInput
           source="workMode"
           label="work mode"

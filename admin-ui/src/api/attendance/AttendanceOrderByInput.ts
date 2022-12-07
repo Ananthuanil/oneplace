@@ -8,6 +8,7 @@ export type AttendanceOrderByInput = {
   loginTime?: SortOrder;
   logoutTime?: SortOrder;
   office?: SortOrder;
+  temp?: SortOrder;
   updatedAt?: SortOrder;
   workMode?: SortOrder;
 };

@@ -90,7 +90,7 @@ export const UserShow = (props: ShowProps): React.ReactElement => {
           label="attendances"
         >
           <Datagrid rowClick="show">
-            <BooleanField label="attendanceStatus" source="attendanceStatus" />
+            <TextField label="attendanceStatus" source="attendanceStatus" />
             <DateField source="createdAt" label="Created At" />
             <ReferenceField label="employee" source="user.id" reference="User">
               <TextField source={USER_TITLE_FIELD} />
@@ -99,6 +99,7 @@ export const UserShow = (props: ShowProps): React.ReactElement => {
             <TextField label="loginTime" source="loginTime" />
             <TextField label="logoutTime" source="logoutTime" />
             <TextField label="office" source="office" />
+            <TextField label="temp" source="temp" />
             <DateField source="updatedAt" label="Updated At" />
             <TextField label="work mode" source="workMode" />
           </Datagrid>

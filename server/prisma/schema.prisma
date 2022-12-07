@@ -359,7 +359,7 @@ model Task {
 }
 
 model Attendance {
-  attendanceStatus Boolean?
+  attendanceStatus String?
   createdAt        DateTime                @default(now())
   employee         User?                   @relation(fields: [employeeId], references: [id])
   employeeId       String?
@@ -368,6 +368,7 @@ model Attendance {
   logoutTime       DateTime?
   office           EnumAttendanceOffice?
   tasks            Task[]
+  temp             String?
   updatedAt        DateTime                @updatedAt
   workMode         EnumAttendanceWorkMode?
 }

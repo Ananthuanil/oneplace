@@ -4,7 +4,7 @@ import {
   Edit,
   SimpleForm,
   EditProps,
-  BooleanInput,
+  TextInput,
   ReferenceInput,
   SelectInput,
   DateTimeInput,
@@ -19,7 +19,7 @@ export const AttendanceEdit = (props: EditProps): React.ReactElement => {
   return (
     <Edit {...props}>
       <SimpleForm>
-        <BooleanInput label="attendanceStatus" source="attendanceStatus" />
+        <TextInput label="attendanceStatus" source="attendanceStatus" />
         <ReferenceInput source="user.id" reference="User" label="employee">
           <SelectInput optionText={UserTitle} />
         </ReferenceInput>
@@ -44,6 +44,7 @@ export const AttendanceEdit = (props: EditProps): React.ReactElement => {
         >
           <SelectArrayInput optionText={TaskTitle} />
         </ReferenceArrayInput>
+        <TextInput label="temp" source="temp" />
         <SelectInput
           source="workMode"
           label="work mode"
