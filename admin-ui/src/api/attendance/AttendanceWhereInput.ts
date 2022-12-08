@@ -1,16 +1,15 @@
-import { BooleanNullableFilter } from "../../util/BooleanNullableFilter";
 import { UserWhereUniqueInput } from "../user/UserWhereUniqueInput";
 import { StringFilter } from "../../util/StringFilter";
-import { DateTimeNullableFilter } from "../../util/DateTimeNullableFilter";
+import { StringNullableFilter } from "../../util/StringNullableFilter";
 import { TaskListRelationFilter } from "../task/TaskListRelationFilter";
 
 export type AttendanceWhereInput = {
-  attendanceStatus?: BooleanNullableFilter;
   employee?: UserWhereUniqueInput;
   id?: StringFilter;
-  loginTime?: DateTimeNullableFilter;
-  logoutTime?: DateTimeNullableFilter;
+  loginTime?: StringNullableFilter;
+  logoutTime?: StringNullableFilter;
   office?: "mgRoad" | "infopark";
   tasks?: TaskListRelationFilter;
+  temp?: StringNullableFilter;
   workMode?: "WFO" | "WFH";
 };

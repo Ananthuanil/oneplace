@@ -8,7 +8,7 @@ export type TaskWhereInput = {
   id?: StringFilter;
   project?: ProjectWhereUniqueInput;
   specification?: StringNullableFilter;
-  status?: "completed" | "inProgress" | "blocker";
+  status?: "completed" | "iInProgress" | "blocker";
   ticketId?: StringNullableFilter;
   ticketLink?: StringNullableFilter;
   ticketName?: StringFilter;
