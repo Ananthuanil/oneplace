@@ -59,7 +59,7 @@ class TaskCreateInput {
   })
   @IsEnum(EnumTaskStatus)
   @Field(() => EnumTaskStatus)
-  status!: "completed" | "iInProgress" | "blocker";
+  status!: "completed" | "inProgress" | "blocker";
 
   @ApiProperty({
     required: false,

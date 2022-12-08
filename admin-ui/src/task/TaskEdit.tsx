@@ -30,7 +30,7 @@ export const TaskEdit = (props: EditProps): React.ReactElement => {
           label="status"
           choices={[
             { label: "Completed", value: "completed" },
-            { label: "In Progress", value: "iInProgress" },
+            { label: "In Progress", value: "inProgress" },
             { label: "Blocker", value: "blocker" },
           ]}
           optionText="label"
