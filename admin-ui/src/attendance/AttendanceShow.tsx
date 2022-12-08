@@ -4,9 +4,9 @@ import {
   Show,
   SimpleShowLayout,
   ShowProps,
+  TextField,
   DateField,
   ReferenceField,
-  TextField,
   ReferenceManyField,
   Datagrid,
 } from "react-admin";
@@ -19,6 +19,7 @@ export const AttendanceShow = (props: ShowProps): React.ReactElement => {
   return (
     <Show {...props}>
       <SimpleShowLayout>
+        <TextField label="attendanceStatus" source="attendanceStatus" />
         <DateField source="createdAt" label="Created At" />
         <ReferenceField label="employee" source="user.id" reference="User">
           <TextField source={USER_TITLE_FIELD} />
