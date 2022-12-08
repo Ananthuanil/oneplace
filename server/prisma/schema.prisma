@@ -359,17 +359,18 @@ model Task {
 }
 
 model Attendance {
-  createdAt  DateTime                @default(now())
-  employee   User?                   @relation(fields: [employeeId], references: [id])
-  employeeId String?
-  id         String                  @id @default(cuid())
-  loginTime  String?
-  logoutTime String?
-  office     EnumAttendanceOffice?
-  tasks      Task[]
-  temp       String?
-  updatedAt  DateTime                @updatedAt
-  workMode   EnumAttendanceWorkMode?
+  attendanceStatus String?
+  createdAt        DateTime                @default(now())
+  employee         User?                   @relation(fields: [employeeId], references: [id])
+  employeeId       String?
+  id               String                  @id @default(cuid())
+  loginTime        String?
+  logoutTime       String?
+  office           EnumAttendanceOffice?
+  tasks            Task[]
+  temp             String?
+  updatedAt        DateTime                @updatedAt
+  workMode         EnumAttendanceWorkMode?
 }
 
 enum EnumUserDesignation {

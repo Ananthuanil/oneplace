@@ -11,14 +11,25 @@ https://docs.amplication.com/how-to/custom-code
   */
 import { InputType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
+import { IsString, IsOptional, ValidateNested, IsEnum } from "class-validator";
 import { UserWhereUniqueInput } from "../../user/base/UserWhereUniqueInput";
-import { ValidateNested, IsOptional, IsString, IsEnum } from "class-validator";
 import { Type } from "class-transformer";
 import { EnumAttendanceOffice } from "./EnumAttendanceOffice";
 import { TaskCreateNestedManyWithoutAttendancesInput } from "./TaskCreateNestedManyWithoutAttendancesInput";
 import { EnumAttendanceWorkMode } from "./EnumAttendanceWorkMode";
 @InputType()
 class AttendanceCreateInput {
+  @ApiProperty({
+    required: false,
+    type: String,
+  })
+  @IsString()
+  @IsOptional()
+  @Field(() => String, {
+    nullable: true,
+  })
+  attendanceStatus?: string | null;
+
   @ApiProperty({
     required: false,
     type: () => UserWhereUniqueInput,

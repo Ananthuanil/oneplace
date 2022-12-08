@@ -2,6 +2,7 @@ import { UserWhereUniqueInput } from "../user/UserWhereUniqueInput";
 import { TaskUpdateManyWithoutAttendancesInput } from "./TaskUpdateManyWithoutAttendancesInput";
 
 export type AttendanceUpdateInput = {
+  attendanceStatus?: string | null;
   employee?: UserWhereUniqueInput | null;
   loginTime?: string | null;
   logoutTime?: string | null;

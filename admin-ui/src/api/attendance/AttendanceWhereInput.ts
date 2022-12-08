@@ -1,9 +1,10 @@
+import { StringNullableFilter } from "../../util/StringNullableFilter";
 import { UserWhereUniqueInput } from "../user/UserWhereUniqueInput";
 import { StringFilter } from "../../util/StringFilter";
-import { StringNullableFilter } from "../../util/StringNullableFilter";
 import { TaskListRelationFilter } from "../task/TaskListRelationFilter";
 
 export type AttendanceWhereInput = {
+  attendanceStatus?: StringNullableFilter;
   employee?: UserWhereUniqueInput;
   id?: StringFilter;
   loginTime?: StringNullableFilter;

@@ -1,6 +1,7 @@
 import { SortOrder } from "../../util/SortOrder";
 
 export type AttendanceOrderByInput = {
+  attendanceStatus?: SortOrder;
   createdAt?: SortOrder;
   employeeId?: SortOrder;
   id?: SortOrder;
