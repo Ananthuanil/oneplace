@@ -75,7 +75,7 @@ class TaskWhereInput {
   @Field(() => EnumTaskStatus, {
     nullable: true,
   })
-  status?: "completed" | "iInProgress" | "blocker";
+  status?: "completed" | "inProgress" | "blocker";
 
   @ApiProperty({
     required: false,

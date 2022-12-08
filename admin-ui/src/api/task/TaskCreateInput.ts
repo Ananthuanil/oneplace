@@ -5,7 +5,7 @@ export type TaskCreateInput = {
   attendance?: AttendanceWhereUniqueInput | null;
   project?: ProjectWhereUniqueInput | null;
   specification?: string | null;
-  status: "completed" | "iInProgress" | "blocker";
+  status: "completed" | "inProgress" | "blocker";
   ticketId?: string | null;
   ticketLink?: string | null;
   ticketName: string;

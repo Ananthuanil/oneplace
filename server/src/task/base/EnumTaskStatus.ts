@@ -13,7 +13,7 @@ import { registerEnumType } from "@nestjs/graphql";
 
 export enum EnumTaskStatus {
   Completed = "completed",
-  InProgress = "iInProgress",
+  InProgress = "inProgress",
   Blocker = "blocker",
 }
 
