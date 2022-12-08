@@ -2,11 +2,11 @@ import { UserWhereUniqueInput } from "../user/UserWhereUniqueInput";
 import { TaskCreateNestedManyWithoutAttendancesInput } from "./TaskCreateNestedManyWithoutAttendancesInput";
 
 export type AttendanceCreateInput = {
-  attendanceStatus?: boolean | null;
   employee?: UserWhereUniqueInput | null;
-  loginTime?: Date | null;
-  logoutTime?: Date | null;
+  loginTime?: string | null;
+  logoutTime?: string | null;
   office?: "mgRoad" | "infopark" | null;
   tasks?: TaskCreateNestedManyWithoutAttendancesInput;
+  temp?: string | null;
   workMode?: "WFO" | "WFH" | null;
 };
