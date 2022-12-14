@@ -59,7 +59,7 @@ export class SkillSetServiceBase {
     args: Prisma.UserFindManyArgs
   ): Promise<User[]> {
     return this.prisma.skillSet
-      .findUnique({
+      .findUniqueOrThrow({
         where: { id: parentId },
       })
       .employees(args);

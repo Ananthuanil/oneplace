@@ -57,7 +57,7 @@ export class CommunityActivityServiceBase {
     args: Prisma.CommunityActivityFeedbackFindManyArgs
   ): Promise<CommunityActivityFeedback[]> {
     return this.prisma.communityActivity
-      .findUnique({
+      .findUniqueOrThrow({
         where: { id: parentId },
       })
       .communityActivityFeedbacks(args);
