@@ -63,7 +63,7 @@ export class CandidateServiceBase {
     args: Prisma.OpportunityFindManyArgs
   ): Promise<Opportunity[]> {
     return this.prisma.candidate
-      .findUnique({
+      .findUniqueOrThrow({
         where: { id: parentId },
       })
       .candidateOpportunity(args);
@@ -74,7 +74,7 @@ export class CandidateServiceBase {
     args: Prisma.InterviewFindManyArgs
   ): Promise<Interview[]> {
     return this.prisma.candidate
-      .findUnique({
+      .findUniqueOrThrow({
         where: { id: parentId },
       })
       .interviews(args);
@@ -85,7 +85,7 @@ export class CandidateServiceBase {
     args: Prisma.OpportunityFindManyArgs
   ): Promise<Opportunity[]> {
     return this.prisma.candidate
-      .findUnique({
+      .findUniqueOrThrow({
         where: { id: parentId },
       })
       .opportunities(args);
@@ -96,7 +96,7 @@ export class CandidateServiceBase {
     args: Prisma.SkillFindManyArgs
   ): Promise<Skill[]> {
     return this.prisma.candidate
-      .findUnique({
+      .findUniqueOrThrow({
         where: { id: parentId },
       })
       .skills(args);
@@ -107,7 +107,7 @@ export class CandidateServiceBase {
     args: Prisma.SkillSetFindManyArgs
   ): Promise<SkillSet[]> {
     return this.prisma.candidate
-      .findUnique({
+      .findUniqueOrThrow({
         where: { id: parentId },
       })
       .skillSets(args);

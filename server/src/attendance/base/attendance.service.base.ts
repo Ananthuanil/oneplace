@@ -52,7 +52,7 @@ export class AttendanceServiceBase {
     args: Prisma.TaskFindManyArgs
   ): Promise<Task[]> {
     return this.prisma.attendance
-      .findUnique({
+      .findUniqueOrThrow({
         where: { id: parentId },
       })
       .tasks(args);

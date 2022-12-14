@@ -58,7 +58,7 @@ export class InterviewServiceBase {
     args: Prisma.InterviewFeedbackFindManyArgs
   ): Promise<InterviewFeedback[]> {
     return this.prisma.interview
-      .findUnique({
+      .findUniqueOrThrow({
         where: { id: parentId },
       })
       .feedback(args);

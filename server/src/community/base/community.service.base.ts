@@ -52,7 +52,7 @@ export class CommunityServiceBase {
     args: Prisma.CommunityActivityFindManyArgs
   ): Promise<CommunityActivity[]> {
     return this.prisma.community
-      .findUnique({
+      .findUniqueOrThrow({
         where: { id: parentId },
       })
       .communityActivities(args);
@@ -63,7 +63,7 @@ export class CommunityServiceBase {
     args: Prisma.UserFindManyArgs
   ): Promise<User[]> {
     return this.prisma.community
-      .findUnique({
+      .findUniqueOrThrow({
         where: { id: parentId },
       })
       .communityLeads(args);
@@ -74,7 +74,7 @@ export class CommunityServiceBase {
     args: Prisma.UserFindManyArgs
   ): Promise<User[]> {
     return this.prisma.community
-      .findUnique({
+      .findUniqueOrThrow({
         where: { id: parentId },
       })
       .users(args);
