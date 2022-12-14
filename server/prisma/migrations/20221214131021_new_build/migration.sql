@@ -1,0 +1,5 @@
+-- AlterTable
+ALTER TABLE "Attendance" ADD COLUMN     "temp" TEXT,
+ALTER COLUMN "attendanceStatus" SET DATA TYPE TEXT,
+ALTER COLUMN "loginTime" SET DATA TYPE TEXT,
+ALTER COLUMN "logoutTime" SET DATA TYPE TEXT;
