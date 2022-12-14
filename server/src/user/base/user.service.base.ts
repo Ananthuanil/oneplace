@@ -95,7 +95,7 @@ export class UserServiceBase {
     args: Prisma.AttendanceFindManyArgs
   ): Promise<Attendance[]> {
     return this.prisma.user
-      .findUnique({
+      .findUniqueOrThrow({
         where: { id: parentId },
       })
       .attendances(args);
@@ -106,7 +106,7 @@ export class UserServiceBase {
     args: Prisma.AwardFindManyArgs
   ): Promise<Award[]> {
     return this.prisma.user
-      .findUnique({
+      .findUniqueOrThrow({
         where: { id: parentId },
       })
       .awards(args);
@@ -117,7 +117,7 @@ export class UserServiceBase {
     args: Prisma.CandidateFindManyArgs
   ): Promise<Candidate[]> {
     return this.prisma.user
-      .findUnique({
+      .findUniqueOrThrow({
         where: { id: parentId },
       })
       .candidates(args);
@@ -128,7 +128,7 @@ export class UserServiceBase {
     args: Prisma.ClientFeedbackFindManyArgs
   ): Promise<ClientFeedback[]> {
     return this.prisma.user
-      .findUnique({
+      .findUniqueOrThrow({
         where: { id: parentId },
       })
       .clientFeedbacks(args);
@@ -139,7 +139,7 @@ export class UserServiceBase {
     args: Prisma.CommunityFindManyArgs
   ): Promise<Community[]> {
     return this.prisma.user
-      .findUnique({
+      .findUniqueOrThrow({
         where: { id: parentId },
       })
       .communities(args);
@@ -150,7 +150,7 @@ export class UserServiceBase {
     args: Prisma.CommunityActivityFeedbackFindManyArgs
   ): Promise<CommunityActivityFeedback[]> {
     return this.prisma.user
-      .findUnique({
+      .findUniqueOrThrow({
         where: { id: parentId },
       })
       .communityActivityFeedbacks(args);
@@ -161,7 +161,7 @@ export class UserServiceBase {
     args: Prisma.EmployeeFeedbackFindManyArgs
   ): Promise<EmployeeFeedback[]> {
     return this.prisma.user
-      .findUnique({
+      .findUniqueOrThrow({
         where: { id: parentId },
       })
       .employeeFeedbacks(args);
@@ -172,7 +172,7 @@ export class UserServiceBase {
     args: Prisma.InterviewFindManyArgs
   ): Promise<Interview[]> {
     return this.prisma.user
-      .findUnique({
+      .findUniqueOrThrow({
         where: { id: parentId },
       })
       .interviews(args);
@@ -183,7 +183,7 @@ export class UserServiceBase {
     args: Prisma.OpportunityFindManyArgs
   ): Promise<Opportunity[]> {
     return this.prisma.user
-      .findUnique({
+      .findUniqueOrThrow({
         where: { id: parentId },
       })
       .opportunities(args);
@@ -194,7 +194,7 @@ export class UserServiceBase {
     args: Prisma.OpportunityFindManyArgs
   ): Promise<Opportunity[]> {
     return this.prisma.user
-      .findUnique({
+      .findUniqueOrThrow({
         where: { id: parentId },
       })
       .opportunity(args);
@@ -205,7 +205,7 @@ export class UserServiceBase {
     args: Prisma.ClientFeedbackFindManyArgs
   ): Promise<ClientFeedback[]> {
     return this.prisma.user
-      .findUnique({
+      .findUniqueOrThrow({
         where: { id: parentId },
       })
       .organiser(args);
@@ -216,7 +216,7 @@ export class UserServiceBase {
     args: Prisma.ProjectFindManyArgs
   ): Promise<Project[]> {
     return this.prisma.user
-      .findUnique({
+      .findUniqueOrThrow({
         where: { id: parentId },
       })
       .project(args);
@@ -227,7 +227,7 @@ export class UserServiceBase {
     args: Prisma.ProjectInvolvementFindManyArgs
   ): Promise<ProjectInvolvement[]> {
     return this.prisma.user
-      .findUnique({
+      .findUniqueOrThrow({
         where: { id: parentId },
       })
       .projectInvolved(args);
@@ -238,7 +238,7 @@ export class UserServiceBase {
     args: Prisma.EmployeeFeedbackFindManyArgs
   ): Promise<EmployeeFeedback[]> {
     return this.prisma.user
-      .findUnique({
+      .findUniqueOrThrow({
         where: { id: parentId },
       })
       .reviewer(args);
@@ -249,7 +249,7 @@ export class UserServiceBase {
     args: Prisma.SkillSetFindManyArgs
   ): Promise<SkillSet[]> {
     return this.prisma.user
-      .findUnique({
+      .findUniqueOrThrow({
         where: { id: parentId },
       })
       .skillSets(args);
@@ -260,7 +260,7 @@ export class UserServiceBase {
     args: Prisma.AwardFindManyArgs
   ): Promise<Award[]> {
     return this.prisma.user
-      .findUnique({
+      .findUniqueOrThrow({
         where: { id: parentId },
       })
       .toPerson(args);
@@ -271,7 +271,7 @@ export class UserServiceBase {
     args: Prisma.UserFindManyArgs
   ): Promise<User[]> {
     return this.prisma.user
-      .findUnique({
+      .findUniqueOrThrow({
         where: { id: parentId },
       })
       .users(args);

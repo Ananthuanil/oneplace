@@ -52,7 +52,7 @@ export class PartnerServiceBase {
     args: Prisma.OpportunityFindManyArgs
   ): Promise<Opportunity[]> {
     return this.prisma.partner
-      .findUnique({
+      .findUniqueOrThrow({
         where: { id: parentId },
       })
       .opportunities(args);
@@ -63,7 +63,7 @@ export class PartnerServiceBase {
     args: Prisma.ProjectFindManyArgs
   ): Promise<Project[]> {
     return this.prisma.partner
-      .findUnique({
+      .findUniqueOrThrow({
         where: { id: parentId },
       })
       .projects(args);

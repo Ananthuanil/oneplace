@@ -58,7 +58,7 @@ export class SkillLevelServiceBase {
     args: Prisma.UserFindManyArgs
   ): Promise<User[]> {
     return this.prisma.skillLevel
-      .findUnique({
+      .findUniqueOrThrow({
         where: { id: parentId },
       })
       .users(args);

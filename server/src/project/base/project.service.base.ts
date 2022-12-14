@@ -60,7 +60,7 @@ export class ProjectServiceBase {
     args: Prisma.OpportunityFindManyArgs
   ): Promise<Opportunity[]> {
     return this.prisma.project
-      .findUnique({
+      .findUniqueOrThrow({
         where: { id: parentId },
       })
       .opportunities(args);
@@ -71,7 +71,7 @@ export class ProjectServiceBase {
     args: Prisma.ProjectInvolvementFindManyArgs
   ): Promise<ProjectInvolvement[]> {
     return this.prisma.project
-      .findUnique({
+      .findUniqueOrThrow({
         where: { id: parentId },
       })
       .projectInvolvements(args);
@@ -82,7 +82,7 @@ export class ProjectServiceBase {
     args: Prisma.TaskFindManyArgs
   ): Promise<Task[]> {
     return this.prisma.project
-      .findUnique({
+      .findUniqueOrThrow({
         where: { id: parentId },
       })
       .tasks(args);
@@ -93,7 +93,7 @@ export class ProjectServiceBase {
     args: Prisma.UserFindManyArgs
   ): Promise<User[]> {
     return this.prisma.project
-      .findUnique({
+      .findUniqueOrThrow({
         where: { id: parentId },
       })
       .users(args);

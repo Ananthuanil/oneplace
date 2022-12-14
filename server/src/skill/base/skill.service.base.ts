@@ -59,7 +59,7 @@ export class SkillServiceBase {
     args: Prisma.CandidateFindManyArgs
   ): Promise<Candidate[]> {
     return this.prisma.skill
-      .findUnique({
+      .findUniqueOrThrow({
         where: { id: parentId },
       })
       .candidate(args);
@@ -70,7 +70,7 @@ export class SkillServiceBase {
     args: Prisma.SkillLevelFindManyArgs
   ): Promise<SkillLevel[]> {
     return this.prisma.skill
-      .findUnique({
+      .findUniqueOrThrow({
         where: { id: parentId },
       })
       .skillMatrices(args);
@@ -81,7 +81,7 @@ export class SkillServiceBase {
     args: Prisma.SkillSetFindManyArgs
   ): Promise<SkillSet[]> {
     return this.prisma.skill
-      .findUnique({
+      .findUniqueOrThrow({
         where: { id: parentId },
       })
       .skillSets(args);

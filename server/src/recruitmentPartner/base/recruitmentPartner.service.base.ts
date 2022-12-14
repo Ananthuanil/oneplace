@@ -52,7 +52,7 @@ export class RecruitmentPartnerServiceBase {
     args: Prisma.CandidateFindManyArgs
   ): Promise<Candidate[]> {
     return this.prisma.recruitmentPartner
-      .findUnique({
+      .findUniqueOrThrow({
         where: { id: parentId },
       })
       .candidates(args);

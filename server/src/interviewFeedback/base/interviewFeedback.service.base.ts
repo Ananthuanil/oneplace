@@ -60,7 +60,7 @@ export class InterviewFeedbackServiceBase {
     args: Prisma.SkillLevelFindManyArgs
   ): Promise<SkillLevel[]> {
     return this.prisma.interviewFeedback
-      .findUnique({
+      .findUniqueOrThrow({
         where: { id: parentId },
       })
       .skillMatrices(args);
@@ -71,7 +71,7 @@ export class InterviewFeedbackServiceBase {
     args: Prisma.SkillSetFindManyArgs
   ): Promise<SkillSet[]> {
     return this.prisma.interviewFeedback
-      .findUnique({
+      .findUniqueOrThrow({
         where: { id: parentId },
       })
       .skillSets(args);
